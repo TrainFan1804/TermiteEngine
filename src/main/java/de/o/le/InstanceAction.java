@@ -2,7 +2,7 @@ package de.o.le;
 
 /**
  * @author                              o.le
- * @version                             0.3
+ * @version                             0.4
  * @since                               0.1
  */
 public interface InstanceAction {
@@ -15,7 +15,7 @@ public interface InstanceAction {
      * @return                          Return the saved message.
      */
     String display();
-
+    
     /**
      * Will execute the talk action of the {@link NonPlayerCharacter} of the 
      * {@link Instance}.

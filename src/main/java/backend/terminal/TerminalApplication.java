@@ -5,16 +5,18 @@ import de.o.le.Game;
 
 /**
  * @author                              o.le
- * @version                             0.3
+ * @version                             0.5
  * @since                               0.1
  */
 public class TerminalApplication {
 
     private Game game;
+    private KeyWordInputEngine inputEngine;
 
     public TerminalApplication(Game game) {
 
         this.game = game;
+        this.inputEngine = new KeyWordInputEngine();
         this.game.create();
         this.run();
     }
@@ -24,11 +26,9 @@ public class TerminalApplication {
         while(this.game.getInstance() != null) {
 
             System.out.println(this.game.getInstance().display());
-            // ask for input
-    
-            this.game.getInstance().talk();
-            this.game.getInstance().use();
-            this.game.getInstance().search();
+            
+            this.game.setCommand(this.inputEngine.waitForInput());
+            this.game.execute();
         }
     }
 }

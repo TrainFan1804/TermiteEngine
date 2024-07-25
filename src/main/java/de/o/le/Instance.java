@@ -7,21 +7,46 @@ package de.o.le;
  * to use.
  * 
  * @author                              o.le
- * @version                             0.5
+ * @version                             0.7
  * @since                               0.1
  */
 public abstract class Instance implements InstanceAction {
 
-    protected Game game;
+    private InstanceState state;
 
-    protected Instance(Game game) {
+    /**
+     * This method will set the state of the instance.
+     * 
+     * @param state                     The new state of the instance.
+     */
+    void setState(InstanceState state) {
 
-        this.game = game;
-        this.game.setInstance(this);
+        this.state = state;
     }
     
-    @Override
-    public abstract String display();
+    /**
+     * Execute the action that belong to the saved state. 
+     */
+    void executeAction() {
+
+        switch (state) {
+            case TALK:
+                this.talk();
+                break;
+            case SEARCH:
+                this.search();
+                break;
+            case USE:
+                this.use();
+                break;
+            case GO:
+                this.go();
+                break;
+            case LEAVE:
+                this.leave();
+                break;
+        }
+    }
 
     @Override
     public void talk() {
@@ -64,4 +89,12 @@ public abstract class Instance implements InstanceAction {
         
         System.out.println("You can't leave this instance");
     }
+
+    @Override
+    public abstract String display();
+
+    /**
+     * This method is do something as soon as the player enter this instance.
+     */
+    public abstract void enter();
 }

@@ -20,28 +20,36 @@ class TestGame extends Game {
 
     String title;
     PlayerCharacter playerCharacter;
-    Inventory inventory;
 
     @Override
     public void create() {
     
         this.title = "Test game";
         this.playerCharacter = new PlayerCharacter("John");
-        this.inventory = new Inventory();
+
         this.setInstance(new TestInstance(this));
     }
 }
 
 class TestInstance extends Instance {
 
-    protected TestInstance(Game game) {
-        super(game);
+    final Game game;
+
+    TestInstance(Game game) {
+        
+        this.game = game;
+    }
+
+    @Override
+    public void enter() {
+        
+        System.out.println("This is the enter method in TestInstance");
     }
 
     @Override
     public String display() {
      
-        return this.game.toString();
+        return "This is the display method in TestInstance";
     }
 
     @Override
@@ -54,20 +62,31 @@ class TestInstance extends Instance {
 
 class TestInstanceTwo extends Instance {
 
-    protected TestInstanceTwo(Game game) {
-        super(game);
+    final Game game;
+
+    TestInstanceTwo(Game game) {
+        
+        this.game = game;
     }
+
+    
+    @Override
+    public void enter() {
+        
+        System.out.println("This is the enter method in TestInstanceTwo");
+    }
+
 
     @Override
     public String display() {
      
-        return "You enterd a new instance";
+        return "This is the display method in TestInstanceTwo";
     }
 
     @Override
-    public void search() {
+    public void use() {
         
-        System.out.println("Find something cool twice!");
+        System.out.println("Use something cool");
         this.game.setInstance(null);
     }
 }
