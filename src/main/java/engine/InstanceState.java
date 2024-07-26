@@ -1,4 +1,4 @@
-package de.o.le;
+package engine;
 
 // custom import
 import backend.terminal.Command;
@@ -13,6 +13,7 @@ import backend.terminal.Command;
  * @version                             1.0
  * @since                               0.2
  */
+@Deprecated
 enum InstanceState {
 
     TALK, SEARCH, USE, GO, LEAVE;

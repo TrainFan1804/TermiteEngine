@@ -2,6 +2,9 @@ package de.o.le;
 
 // custom import
 import backend.terminal.TerminalApplication;
+import engine.Game;
+import engine.Instance;
+import engine.PlayerCharacter;
 
 /**
  * @author                              o.le
@@ -12,7 +15,7 @@ public class MainTest {
     
     public static void main(String[] args) {
         
-        new TerminalApplication(new TestGame());
+        new TerminalApplication(new TestGame()).start();
     }
 }
 
@@ -87,6 +90,29 @@ class TestInstanceTwo extends Instance {
     public void use() {
         
         System.out.println("Use something cool");
-        this.game.setInstance(null);
+        this.game.setInstance(new EndInstance(this.game));
+    }
+}
+
+class EndInstance extends Instance implements engine.utils.EndInstance {
+
+    final Game game;
+
+    EndInstance(Game game) {
+        
+        this.game = game;
+    }
+    
+    @Override
+    public void enter() {
+        
+        System.out.println("This is the enter method in EndInstance");
+    }
+
+    @Override
+    public String display() {
+     
+        // this shouldn't be printed
+        return "This is the display method in EndInstance";
     }
 }

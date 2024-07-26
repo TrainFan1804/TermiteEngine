@@ -1,4 +1,4 @@
-package de.o.le;
+package engine;
 
 /**
  * A instance represent the most used asset in an textadventure. The current 
@@ -7,46 +7,10 @@ package de.o.le;
  * to use.
  * 
  * @author                              o.le
- * @version                             0.7
+ * @version                             0.8
  * @since                               0.1
  */
 public abstract class Instance implements InstanceAction {
-
-    private InstanceState state;
-
-    /**
-     * This method will set the state of the instance.
-     * 
-     * @param state                     The new state of the instance.
-     */
-    void setState(InstanceState state) {
-
-        this.state = state;
-    }
-    
-    /**
-     * Execute the action that belong to the saved state. 
-     */
-    void executeAction() {
-
-        switch (state) {
-            case TALK:
-                this.talk();
-                break;
-            case SEARCH:
-                this.search();
-                break;
-            case USE:
-                this.use();
-                break;
-            case GO:
-                this.go();
-                break;
-            case LEAVE:
-                this.leave();
-                break;
-        }
-    }
 
     @Override
     public void talk() {

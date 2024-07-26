@@ -1,4 +1,4 @@
-package de.o.le;
+package engine;
 
 /**
  * @author                              o.le
@@ -7,5 +7,5 @@ package de.o.le;
  */
 public abstract class Item {
 
-    public abstract void useItem(); 
+    public abstract void useItem();
 }

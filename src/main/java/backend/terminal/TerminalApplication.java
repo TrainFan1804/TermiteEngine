@@ -1,16 +1,19 @@
 package backend.terminal;
 
 // custom import
-import de.o.le.Game;
+import engine.Game;
+import engine.Instance;
+import engine.utils.EndInstance;
 
 /**
  * @author                              o.le
- * @version                             0.5
+ * @version                             0.8
  * @since                               0.1
  */
 public class TerminalApplication {
 
     private Game game;
+    private Instance currentInstance;
     private KeyWordInputEngine inputEngine;
 
     public TerminalApplication(Game game) {
@@ -18,17 +21,74 @@ public class TerminalApplication {
         this.game = game;
         this.inputEngine = new KeyWordInputEngine();
         this.game.create();
-        this.run();
+        this.currentInstance = this.game.getInstance();
     }
     
-    private void run() {
+    public void start() {
 
-        while(this.game.getInstance() != null) {
+        while(!this.checkIfEndInstance()) {
 
-            System.out.println(this.game.getInstance().display());
+            OutputEngine.printMessasgeToTerminal(this.currentInstance
+            .display());
             
-            this.game.setCommand(this.inputEngine.waitForInput());
-            this.game.execute();
+            this.executeCommand(this.inputEngine.waitForInput());
+
+            this.currentInstance = this.game.getInstance();
         }
+    }
+
+    private void executeCommand(Command command) {
+
+        switch (command) {
+            case SAVE:
+                System.out.println("Save game");
+                break;
+            case LOAD:
+                System.out.println("Load game");;
+                break;
+            case EXIT:
+                System.out.println("Exit game");;
+                break;
+            case HELP:
+                System.out.println("Help");;
+                break;
+            default:
+                this.executeInstanceCommand(command);
+                break;
+        }
+    }
+
+    private void executeInstanceCommand(Command command) {
+
+        switch (command) {
+            case TALK:
+                this.currentInstance.talk();
+                break;
+            case SEARCH:
+                this.currentInstance.search();
+                break;
+            case USE:
+                this.currentInstance.use();
+                break;
+            case GO:
+                this.currentInstance.go();
+                break;
+            case LEAVE:
+                this.currentInstance.leave();
+                break;
+            default:
+                // this is fine (I guess)
+                break;
+        }
+    }
+
+    private boolean checkIfEndInstance() {
+
+        if (this.currentInstance instanceof EndInstance) {
+
+            return true;
+        }
+
+        return false;
     }
 }

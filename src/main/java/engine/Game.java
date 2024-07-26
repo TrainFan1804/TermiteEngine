@@ -1,7 +1,4 @@
-package de.o.le;
-
-// custom import
-import backend.terminal.Command;
+package engine;
 
 /**
  * A game contains everything the user needs during the course of the game no
@@ -12,47 +9,13 @@ import backend.terminal.Command;
  * - {@link Inventory}
  * 
  * @author                              o.le
- * @version                             0.8
+ * @version                             0.9
  * @since                               0.1
  */
 public abstract class Game {
 
     protected Instance instance;
-    private Command lastCommand;
 
-    /**
-     * Set the command that should be executed next.
-     * 
-     * @param command                   The command the user entered.
-     */
-    public void setCommand(Command command) {
-
-        this.lastCommand = command;
-    }
-
-    /**
-     * Execute the saved command.
-     */
-    public void execute() {
-
-        switch (this.lastCommand) {
-            case SAVE:
-                System.out.println("Save game");
-                break;
-            case LOAD:
-                System.out.println("Load game");;
-                break;
-            case EXIT:
-                System.out.println("Exit game");;
-                break;
-            case HELP:
-                System.out.println("Help");;
-                break;
-            default:
-                this.instance.setState(InstanceState.valueOf(this.lastCommand.toString()));
-                this.instance.executeAction();
-        }
-    }
     /**
      * Get the {@link Instance} the game is currently in.
      * 
