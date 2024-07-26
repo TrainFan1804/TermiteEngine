@@ -1,6 +1,5 @@
 package engine.utils;
 
-// custom import
 import engine.Instance;
 
 /**

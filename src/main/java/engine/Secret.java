@@ -2,7 +2,7 @@ package engine;
 
 /**
  * @author                              o.le
- * @version                             0.2
+ * @version                             1.0
  * @since                               0.1
  */
 public abstract class Secret {

@@ -7,7 +7,7 @@ import engine.utils.EndInstance;
 
 /**
  * @author                              o.le
- * @version                             0.8
+ * @version                             0.9
  * @since                               0.1
  */
 public class TerminalApplication {
@@ -28,8 +28,7 @@ public class TerminalApplication {
 
         while(!this.checkIfEndInstance()) {
 
-            OutputEngine.printMessasgeToTerminal(this.currentInstance
-            .display());
+            this.currentInstance.display();
             
             this.executeCommand(this.inputEngine.waitForInput());
 

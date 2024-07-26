@@ -1,21 +1,19 @@
-package engine;
+package engine.utils;
+
+// custom import
+import engine.Instance;
+import engine.Item;
+import engine.Secret;
+import engine.PlayerCharacter;
+import engine.NonPlayerCharacter;
 
 /**
  * @author                              o.le
- * @version                             0.4
+ * @version                             1.3
  * @since                               0.1
  */
 public interface InstanceAction {
 
-    /**
-     * Return the message that is saved in the {@link Instance}. Don't print
-     * something out in this method because the engine will formate the returned
-     * String for you.
-     * 
-     * @return                          Return the saved message.
-     */
-    String display();
-    
     /**
      * Will execute the talk action of the {@link NonPlayerCharacter} of the 
      * {@link Instance}.

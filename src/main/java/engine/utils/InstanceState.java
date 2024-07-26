@@ -1,6 +1,7 @@
-package engine;
+package engine.utils;
 
 // custom import
+import engine.Instance;
 import backend.terminal.Command;
 
 /**

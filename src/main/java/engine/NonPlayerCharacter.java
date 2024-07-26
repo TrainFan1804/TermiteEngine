@@ -1,7 +1,7 @@
 package engine;
 
 // java import
-import java.util.Map;
+import java.util.List;
 
 /**
  * @author                              o.le
@@ -11,9 +11,9 @@ import java.util.Map;
 public class NonPlayerCharacter {
 
     private String name;
-    private Map<Integer, String> dialogLines;
+    private List<String> dialogLines;
 
-    public NonPlayerCharacter(String name, Map<Integer, String> dialogLines) {
+    public NonPlayerCharacter(String name, List<String> dialogLines) {
 
         this.name = name;
         this.dialogLines = dialogLines;

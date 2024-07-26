@@ -9,19 +9,19 @@ package engine;
  * - {@link Inventory}
  * 
  * @author                              o.le
- * @version                             0.9
+ * @version                             1.1
  * @since                               0.1
  */
 public abstract class Game {
 
-    protected Instance instance;
+    private Instance instance;
 
     /**
      * Get the {@link Instance} the game is currently in.
      * 
      * @return                          The current instance.
      */
-    public Instance getInstance() {
+    public final Instance getInstance() {
 
         return this.instance;
     }
@@ -32,7 +32,7 @@ public abstract class Game {
      * 
      * @param instance                  The new instance.
      */
-    public void setInstance(Instance instance) {
+    public final void setInstance(Instance instance) {
 
         this.instance = instance;
         this.instance.enter();
