@@ -31,3 +31,13 @@ An *Instanceaction* is a action the user can **only** perfrom if the current ins
     - use (use something in the room)
     - go (enter a new room)
     - leave (go one room back)
+
+# Further explanation on the different instanceactions
+
+|Instanceaction |Explanation|
+|---|---|
+|TALK   |The player talks to the NPC in the current instance. When there are multiple NPC the user need to enter TALK [NPC name]| 
+|SEARCH |The player search for secrets in the current room. When the player found a secret an event will be triggered. E.g a hidden lever was found, the player goes to a trap, the player found a hidden instance, etc.| 
+|USE    |The player will use an Item that is in the room. When there are multiple Items the user need to enter USE [Item name]|
+|GO     |The player will go to the next instance. When there are multiple direction the user need to enter GO [direction]. Some instances may have hidden doors that must be find with SEARCH first or the player need to reach other requirements first|
+|LEAVE  |The player will go back to the previous instance. Some instances may not have a way back.|

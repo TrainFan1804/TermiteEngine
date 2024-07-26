@@ -2,9 +2,11 @@ package engine;
 
 // custom import
 import engine.utils.InstanceAction;
-import backend.terminal.Command;
 
 import static backend.terminal.OutputEngine.printMessasgeToTerminal;
+
+import backend.actions.CommandType;
+
 import static backend.terminal.OutputEngine.printErrorToTerminal;
 
 /**
@@ -20,7 +22,7 @@ import static backend.terminal.OutputEngine.printErrorToTerminal;
 public abstract class Instance implements InstanceAction {
     
     /**
-     * This method will be executed after each {@link Command} the user has
+     * This method will be executed after each {@link CommandType} the user has
      * entered in the terminal. The user also need to be in this instance.
      */
     public abstract void display();

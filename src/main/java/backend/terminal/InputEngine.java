@@ -3,16 +3,18 @@ package backend.terminal;
 // java import
 import java.util.Scanner;
 
+import backend.actions.CommandType;
+
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.2
  */
-class KeyWordInputEngine {
+class InputEngine {
 
     private Scanner input;
 
-    KeyWordInputEngine() {
+    InputEngine() {
 
         this.input = new Scanner(System.in);
     }
@@ -22,16 +24,16 @@ class KeyWordInputEngine {
      *  
      * @return                          The keyword the user entered.
      */
-    Command waitForInput() {
+    CommandType commandInput() {
 
         String inString;
-        Command inKeyword;
+        CommandType inKeyword;
         do {
 
             inString = this.input.next();
             try {
 
-                inKeyword = Command.valueOf(inString.toUpperCase());
+                inKeyword = CommandType.valueOf(inString.toUpperCase());
             } catch (IllegalArgumentException e) {
 
                 System.out.println("Invalid input");

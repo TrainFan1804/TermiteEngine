@@ -1,89 +1,52 @@
 package backend.terminal;
 
 // custom import
+import backend.Termite;
+import backend.actions.Action;
+import backend.actions.ActionFactory;
+import backend.actions.CommandType;
 import engine.Game;
-import engine.Instance;
 import engine.utils.EndInstance;
 
 /**
  * @author                              o.le
- * @version                             0.9
+ * @version                             0.10
  * @since                               0.1
  */
 public class TerminalApplication {
 
     private Game game;
-    private Instance currentInstance;
-    private KeyWordInputEngine inputEngine;
+    private InputEngine inputEngine;
 
     public TerminalApplication(Game game) {
 
         this.game = game;
-        this.inputEngine = new KeyWordInputEngine();
+        this.inputEngine = new InputEngine();
         this.game.create();
-        this.currentInstance = this.game.getInstance();
+        Termite.currentInstance = this.game.getInstance();
     }
     
     public void start() {
 
+        ActionFactory factory = ActionFactory.getFactory();
+        CommandType typedCommand;
+        Action commandAction;
+
         while(!this.checkIfEndInstance()) {
 
-            this.currentInstance.display();
+            Termite.currentInstance.display();
             
-            this.executeCommand(this.inputEngine.waitForInput());
+            typedCommand = this.inputEngine.commandInput();
+            commandAction = factory.commandToAction(typedCommand);
+            commandAction.execute();
 
-            this.currentInstance = this.game.getInstance();
-        }
-    }
-
-    private void executeCommand(Command command) {
-
-        switch (command) {
-            case SAVE:
-                System.out.println("Save game");
-                break;
-            case LOAD:
-                System.out.println("Load game");;
-                break;
-            case EXIT:
-                System.out.println("Exit game");;
-                break;
-            case HELP:
-                System.out.println("Help");;
-                break;
-            default:
-                this.executeInstanceCommand(command);
-                break;
-        }
-    }
-
-    private void executeInstanceCommand(Command command) {
-
-        switch (command) {
-            case TALK:
-                this.currentInstance.talk();
-                break;
-            case SEARCH:
-                this.currentInstance.search();
-                break;
-            case USE:
-                this.currentInstance.use();
-                break;
-            case GO:
-                this.currentInstance.go();
-                break;
-            case LEAVE:
-                this.currentInstance.leave();
-                break;
-            default:
-                // this is fine (I guess)
-                break;
+            Termite.currentInstance = this.game.getInstance();
         }
     }
 
     private boolean checkIfEndInstance() {
 
-        if (this.currentInstance instanceof EndInstance) {
+        if (Termite.currentInstance instanceof EndInstance) {
 
             return true;
         }

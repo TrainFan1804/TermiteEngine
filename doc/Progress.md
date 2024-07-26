@@ -13,3 +13,4 @@ After the Instance is displayed the TerminalApplication will wait for a user inp
 
 I added the EndInstance marker interface that will tell the engine that the gam reached his end. There could also be multiple EndInstance subtypes so the created games could also have multiple endings. I also cleaned the Game and Instance class a bit so there are more readable.
 I got the idea that the developer need to write the dialogs for the NPC in a seperate file and the engine will read the file.
+Start working on a small example game to create a small "tutorial" how to build a textadventure with this engine. This game doesn't show what is possible just the basics.
