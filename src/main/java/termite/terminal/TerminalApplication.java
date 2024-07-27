@@ -36,29 +36,23 @@ public class TerminalApplication extends Application {
          * 6. 
          */
 
-        CommandType command = null;
+        while(true) {
 
-        while (command == null) {
+            outEngine.printMessasge(this.game.getCurrentInstance().display().getMessage());
 
-            try {
-                
-                String input = this.inEngine.strInput();
-                command = super.decode(input);
-            } catch (IllegalArgumentException e) {
+            CommandType command = null;
 
-                outEngine.printErrorMessage("Invalid input");;
+            while (command == null) {
+
+                try {
+                    
+                    String input = this.inEngine.strInput();
+                    command = super.decode(input);
+                } catch (IllegalArgumentException e) {
+
+                    outEngine.printErrorMessage("Invalid input");
+                }
             }
-        } 
-    }
-
-    public static void main(String[] args) {
-        
-        TerminalApplication t = new TerminalApplication(new Game() {
-
-            @Override
-            public void init() {}
-        });
-
-        t.start();
+        }
     }
 }

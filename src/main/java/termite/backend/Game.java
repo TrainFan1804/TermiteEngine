@@ -7,7 +7,18 @@ package termite.backend;
  */
 public abstract class Game {
 
-    private InstanceManager manager;
+    protected final InstanceManager manager;
+    protected Instance currentInstance;
+
+    protected Game(InstanceManager manager) {
+
+        this.manager = manager;
+    }
+
+    public Instance getCurrentInstance() {
+
+        return this.currentInstance;
+    }
 
     public abstract void init();
 }

@@ -1,20 +1,20 @@
 package termite.backend;
 
 // java import
-import java.util.function.BiConsumer;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.function.BiConsumer;
 // custom import
 import termite.backend.utils.SameArgumentObjectException;
 
 /**
  * @author                              o.le
- * @version                             0.4
+ * @version                             0.5
  * @since                               0.12
  */
 public class InstanceManager {
 
-    private Map<String, Instance> instances;
+    private Map<Integer, Instance> instances;
 
     public InstanceManager() {
 
@@ -24,20 +24,20 @@ public class InstanceManager {
     /**
      * Get the instance by it's name.
      * 
-     * @param name                      The name of the instance. Can't be 
-     *                                  {@code null}.
+     * @param id                        The id of the instance. Can't be 
+     *                                  below 0.
      * @return                          The instance with the given name. When
-     *                                  there is no instance with the given name
+     *                                  there is no instance with the given id
      *                                  return {@code null}.
      */
-    public Instance getInstance(String name) {
+    public Instance getInstance(int id) {
 
-        if (name == null) {
+        if (id < 0) {
 
-            throw new IllegalArgumentException("Argument can't be null");
+            throw new IllegalArgumentException("Argument can't be below 0");
         }
 
-        return this.instances.get(name);
+        return this.instances.get(id);
     }
 
     /**
@@ -53,7 +53,7 @@ public class InstanceManager {
             throw new IllegalArgumentException("Argument can't be null!");
         }
 
-        this.instances.put(newInstance.getName(), newInstance);
+        this.instances.put(newInstance.getID(), newInstance);
     }
 
     /**

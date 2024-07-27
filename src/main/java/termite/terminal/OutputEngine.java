@@ -5,7 +5,7 @@ package termite.terminal;
  * the terminal. The output will be automaticly formated.
  * 
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               0.13
  */
 final class OutputEngine {
@@ -26,7 +26,7 @@ final class OutputEngine {
      */
     public void printMessasge(String msg) {
 
-        System.out.println(">>" + msg);
+        System.out.println(">> " + msg);
     }
 
     /**

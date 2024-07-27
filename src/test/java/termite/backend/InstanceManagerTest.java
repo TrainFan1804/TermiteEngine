@@ -12,30 +12,33 @@ import static org.junit.Assert.assertThrows;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.3
  * @since                               0.12
  */
 public class InstanceManagerTest {
 
     private InstanceManager testManager;
-    private final String TESTNAME = "Germany";
+    private final int TESTID = 0;
     private Instance testInstance;
 
     @Before
     public void init() {
 
         this.testManager = new InstanceManager();
-        this.testInstance = new TestInstance(this.TESTNAME);
+        this.testInstance = new TestInstance(this.TESTID);
     }
 
     @Test
     public void testGetInstanceIsNullWhenEmpty() {
 
-        assertNull(this.testManager.getInstance(this.TESTNAME));
+        assertNull(this.testManager.getInstance(this.TESTID));
     }
 
     @Test
     public void testExceptions() {
+
+        assertThrows(IllegalArgumentException.class,
+                () -> this.testManager.getInstance(-1));
 
         assertThrows(IllegalArgumentException.class,
                 () -> this.testManager.addInstance(null));
@@ -53,24 +56,24 @@ public class InstanceManagerTest {
 
         this.testManager.addInstance(this.testInstance);
         assertEquals(this.testInstance, 
-                this.testManager.getInstance(this.TESTNAME));
+                this.testManager.getInstance(this.TESTID));
     }
 
     @Test
     public void testAddMultipleInstance() {
         
-        this.testManager.addInstance(new TestInstance("First Dummy"));
+        this.testManager.addInstance(new TestInstance(401));
         this.testManager.addInstance(this.testInstance);
-        this.testManager.addInstance(new TestInstance("Second Dummy"));
+        this.testManager.addInstance(new TestInstance(420));
 
         assertEquals(this.testInstance, 
-                this.testManager.getInstance(this.TESTNAME));
+                this.testManager.getInstance(this.TESTID));
     }
     
     @Test
     public void testAddInstanceWithUniConnection() {
 
-        Instance instance = new TestInstance("Japan");
+        Instance instance = new TestInstance(69);
 
         this.testManager.addInstanceConnection(this.testInstance, instance, 
                 new UniDirectionalConnection());
@@ -84,7 +87,7 @@ public class InstanceManagerTest {
     @Test
     public void testAddInstanceWithBiConnection() {
 
-        Instance instance = new TestInstance("Japan");
+        Instance instance = new TestInstance(69);
 
         this.testManager.addInstanceConnection(this.testInstance, instance, 
                 new BiDirectionalConnection());
@@ -97,8 +100,8 @@ public class InstanceManagerTest {
 
 class TestInstance extends Instance {
 
-    protected TestInstance(String name) {
+    protected TestInstance(int id) {
         
-        super(name);
+        super(id);
     }
 }
