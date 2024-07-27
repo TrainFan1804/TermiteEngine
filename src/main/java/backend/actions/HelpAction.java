@@ -15,7 +15,7 @@ import backend.terminal.GameMessage;
 class HelpAction implements Action {
 
     @Override
-    public Message execute() {
+    public Message executeEvent() {
      
         StringBuilder sb = new StringBuilder();
 

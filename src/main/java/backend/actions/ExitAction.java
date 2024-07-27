@@ -1,8 +1,5 @@
 package backend.actions;
 
-// custom import
-import backend.terminal.Message;
-
 /**
  * This action will end the game process.
  * 
@@ -13,7 +10,7 @@ import backend.terminal.Message;
 class ExitAction implements Action {
 
     @Override
-    public Message execute() {
+    public void executeEvent() {
         
         System.out.println("Close game");
         System.exit(0);

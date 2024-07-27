@@ -1,5 +1,6 @@
 package backend.actions;
 
+// custom import
 import backend.terminal.Message;
 
 /**
@@ -7,14 +8,15 @@ import backend.terminal.Message;
  * has one Action subtype that will execute the right command.
  * 
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.8
  */
 public interface Action {
 
     /**
-     * Execute the action.
-     * @return TODO
+     * Execute the action. An send the message to the front end.
      */
-    Message execute();
+    void executeEvent(int eventIndex);
+
+    Message getEventMessage();
 }

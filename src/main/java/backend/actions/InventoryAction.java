@@ -12,7 +12,7 @@ import backend.terminal.GameMessage;
 class InventoryAction implements Action {
 
     @Override
-    public Message execute() {
+    public Message executeEvent() {
         
         return new GameMessage("Open inventory");
     }

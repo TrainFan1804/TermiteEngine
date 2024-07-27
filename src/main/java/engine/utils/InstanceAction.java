@@ -5,6 +5,7 @@ import backend.terminal.Message;
 import engine.Instance;
 import engine.Item;
 import engine.Secret;
+import engine.events.MoveEvent;
 import engine.PlayerCharacter;
 import engine.NonPlayerCharacter;
 
@@ -40,7 +41,7 @@ public interface InstanceAction {
      * Will move the {@link PlayerCharacter} to the next instance.
      * @return TODO
      */
-    Message go();
+    MoveEvent move();
 
     /**
      * When possible the {@link PlayerCharacter} will return to the previous

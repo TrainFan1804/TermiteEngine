@@ -12,7 +12,7 @@ import backend.terminal.GameMessage;
 class SaveAction implements Action {
 
     @Override
-    public Message execute() {
+    public Message executeEvent() {
    
         return new GameMessage("Game saved");   // TODO make a SystemMessage type
     }

@@ -1,11 +1,10 @@
 package engine;
 
-import static backend.terminal.OutputEngine.printMessasge;
-
 // custom import
 import backend.actions.CommandType;
 import backend.terminal.Message;
 import backend.terminal.GameMessage;
+import engine.events.MoveEvent;
 import engine.utils.InstanceAction;
 
 /**
@@ -55,9 +54,10 @@ public abstract class Instance implements InstanceAction {
     }
 
     @Override
-    public Message go() {
+    public MoveEvent move() {
         
-        return new GameMessage("You can't go to another instance");
+        return new MoveEvent(null, 
+                new GameMessage("You can't move to another instance")); 
     }
 
     @Override

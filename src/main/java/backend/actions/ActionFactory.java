@@ -44,7 +44,7 @@ public class ActionFactory {
         switch (command) {
             case SAVE: return new SaveAction();
             case EXIT: return new ExitAction();
-            case GO: return new GoAction();
+            case GO: return new MoveAction();
             case HELP: return new HelpAction();
             case INV: return new InventoryAction();
             case LEAVE: return new LeaveAction();

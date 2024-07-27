@@ -1,8 +1,11 @@
 package example;
 
+import java.util.List;
+import java.util.LinkedList;
 // custom import
 import engine.Game;
 import engine.Instance;
+import engine.events.MoveEvent;
 import backend.terminal.Message;
 import backend.terminal.GameMessage;
 
@@ -38,34 +41,19 @@ class StartInstance extends Instance {
     }
 
     @Override
-    public Message go() {
+    public MoveEvent move() {
+        
+        List<Instance> nextInstances = new LinkedList<>();
+        nextInstances.add(new TalkInstance(this, game));
+        nextInstances.add(new SearchInstance(this, game));
+        nextInstances.add(new UseInstance(this, game));
+        nextInstances.add(new ExampleEndInstance());
 
-        // printMessasge("Where do you want to go? "
-        // + "\n1. Talk"
-        // + "\n2. Search"
-        // + "\n3. Use");
+        Message m = new GameMessage("Where do you want to go? "
+                                    + "\n1. Talk"
+                                    + "\n2. Search"
+                                    + "\n3. Use");
 
-        // scanner
-        int input = 1;
-
-        // I could make this easier but I don't want to
-        if (input == 1) {
-
-            this.game.setInstance(new TalkInstance(this, this.game));
-        } else if (input == 2) {
-
-            this.game.setInstance(new SearchInstance(this, this.game));
-        } else if (input == 3) {
-
-            this.game.setInstance(new UseInstance(this, this.game));
-        } else if (input == 0) {
-            
-            this.game.setInstance(new ExampleEndInstance());
-        } else {
-
-            printErrorToTerminal("Wrong input");
-        }
-
-        return new GameMessage("You are going to a new instance.");
+        return new MoveEvent(nextInstances, m);
     }
 }

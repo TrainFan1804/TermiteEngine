@@ -14,7 +14,7 @@ import backend.terminal.Message;
 class TalkAction implements Action {
 
     @Override
-    public Message execute() {
+    public Message executeEvent() {
         
         // get the npc in the instance
         // start the talk prorcess

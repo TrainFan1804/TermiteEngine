@@ -14,7 +14,7 @@ import backend.terminal.Message;
 class LeaveAction implements Action {
 
     @Override
-    public Message execute() {
+    public Message executeEvent() {
      
         return TermiteSettings.currentInstance.leave();
     }
