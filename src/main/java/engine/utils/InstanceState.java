@@ -1,7 +1,7 @@
 package engine.utils;
 
-import backend.actions.CommandType;
 // custom import
+import backend.actions.CommandType;
 import engine.Instance;
 
 /**

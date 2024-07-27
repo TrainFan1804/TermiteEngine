@@ -5,7 +5,7 @@ package backend.terminal;
  * the terminal. The output will be automaticly formated.
  * 
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.4
  */
 public final class OutputEngine {
@@ -19,7 +19,7 @@ public final class OutputEngine {
      */
     public static void printMessasgeToTerminal(String msg) {
 
-        System.out.println(msg);
+        System.out.println(">>" + msg);
     }
 
     /**
@@ -29,6 +29,6 @@ public final class OutputEngine {
      */
     public static void printErrorToTerminal(String msg) {
 
-        System.err.println(msg);
+        System.err.println("[Error] " + msg);
     }
 }

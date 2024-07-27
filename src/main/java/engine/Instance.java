@@ -1,12 +1,10 @@
 package engine;
 
 // custom import
+import backend.actions.CommandType;
 import engine.utils.InstanceAction;
 
 import static backend.terminal.OutputEngine.printMessasgeToTerminal;
-
-import backend.actions.CommandType;
-
 import static backend.terminal.OutputEngine.printErrorToTerminal;
 
 /**
@@ -29,6 +27,8 @@ public abstract class Instance implements InstanceAction {
 
     /**
      * This method is do something as soon as the player enter this instance.
+     * 
+     * TODO it's not very pretty that an EndInstance will execute this one more time
      */
     public void enter() {
 

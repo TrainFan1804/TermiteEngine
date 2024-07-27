@@ -2,19 +2,38 @@ package backend.terminal;
 
 // java import
 import java.util.Scanner;
-
+import java.util.InputMismatchException;
+// custom import
 import backend.actions.CommandType;
 
+import static backend.terminal.OutputEngine.printErrorToTerminal;
+
 /**
+ * 
+ * <p>
+ * This type use the GoF Singleton pattern.
+ * 
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.4
  * @since                               0.2
  */
 class InputEngine {
 
+    private static InputEngine inputEngine;
+
     private Scanner input;
 
-    InputEngine() {
+    public static InputEngine getEngine() {
+
+        if (inputEngine == null) {
+
+            inputEngine = new InputEngine();
+        }
+
+        return inputEngine;
+    }
+
+    private InputEngine() {
 
         this.input = new Scanner(System.in);
     }
@@ -27,7 +46,7 @@ class InputEngine {
     CommandType commandInput() {
 
         String inString;
-        CommandType inKeyword;
+        CommandType inKeyword = null;
         do {
 
             inString = this.input.next();
@@ -37,11 +56,34 @@ class InputEngine {
             } catch (IllegalArgumentException e) {
 
                 System.out.println("Invalid input");
-                inKeyword = null;   // TODO I don't like this line
             }
-
         } while(inKeyword == null);
 
         return inKeyword;
+    }
+
+    public int intInput() {
+
+        boolean isValid = false;
+        int scan = 0;
+
+        do {
+            
+            try {
+    
+                scan = this.input.nextInt();
+                isValid = true;
+            } catch (InputMismatchException e) {
+    
+                printErrorToTerminal("Wrong input! Please try again.");
+            }
+        } while(!isValid);
+
+        return scan;
+    }
+
+    public String strInput() {
+
+        return this.input.next();
     }
 }

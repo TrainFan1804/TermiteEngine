@@ -19,10 +19,12 @@ public class TerminalApplication {
     private InputEngine inputEngine;
 
     public TerminalApplication(Game game) {
+        
+        this.inputEngine = InputEngine.getEngine();
 
         this.game = game;
-        this.inputEngine = new InputEngine();
         this.game.create();
+        
         Termite.currentInstance = this.game.getInstance();
     }
     
