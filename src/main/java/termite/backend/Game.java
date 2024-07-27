@@ -8,4 +8,6 @@ package termite.backend;
 public abstract class Game {
 
     private InstanceManager manager;
+
+    public abstract void init();
 }
