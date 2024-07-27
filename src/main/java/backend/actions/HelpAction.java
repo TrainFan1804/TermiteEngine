@@ -1,7 +1,5 @@
 package backend.actions;
 
-// custom import
-import backend.terminal.Message;
 import backend.terminal.GameMessage;
 
 /**
@@ -15,7 +13,7 @@ import backend.terminal.GameMessage;
 class HelpAction implements Action {
 
     @Override
-    public Message executeEvent() {
+    public void executeEvent() {
      
         StringBuilder sb = new StringBuilder();
 

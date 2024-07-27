@@ -2,7 +2,6 @@ package backend.actions;
 
 // custom import
 import backend.TermiteSettings;
-import backend.terminal.Message;
 
 /**
  * This action will execute the use process in the current instance.
@@ -14,7 +13,7 @@ import backend.terminal.Message;
 class UseAction implements Action{
 
     @Override
-    public Message executeEvent() {
+    public void executeEvent() {
         
         return TermiteSettings.currentInstance.use();   
     }
