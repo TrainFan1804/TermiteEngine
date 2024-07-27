@@ -1,5 +1,9 @@
 package backend.actions;
 
+// custom import
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
+
 /**
  * @author                              o.le
  * @version                             0.1
@@ -8,8 +12,8 @@ package backend.actions;
 class InventoryAction implements Action {
 
     @Override
-    public void execute() {
+    public Message execute() {
         
-        System.out.println("Print the Inventory");   
+        return new GameMessage("Open inventory");
     }
 }

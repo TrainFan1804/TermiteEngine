@@ -1,7 +1,8 @@
 package backend.actions;
 
 // custom import
-import backend.Termite;
+import backend.TermiteSettings;
+import backend.terminal.Message;
 
 /**
  * @author                              o.le
@@ -11,8 +12,8 @@ import backend.Termite;
 class GoAction implements Action {
 
     @Override
-    public void execute() {
+    public Message execute() {
 
-        Termite.currentInstance.go();
+        return TermiteSettings.currentInstance.go();
     }
 }

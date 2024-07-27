@@ -1,5 +1,7 @@
 package backend.actions;
 
+import backend.terminal.Message;
+
 /**
  * An action is the executable form of a {@link CommandType}. Each CommandType
  * has one Action subtype that will execute the right command.
@@ -12,6 +14,7 @@ public interface Action {
 
     /**
      * Execute the action.
+     * @return TODO
      */
-    void execute();
+    Message execute();
 }

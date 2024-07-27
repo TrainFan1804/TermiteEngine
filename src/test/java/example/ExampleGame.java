@@ -17,6 +17,7 @@ class ExampleGame extends Game  {
     
         this.title = "Simple Example Game";
 
+        // set the first instance of the game
         super.setInstance(new StartInstance(this));
     }
 

@@ -3,13 +3,15 @@ package example;
 // custom import
 import engine.Game;
 import engine.Instance;
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
 
-import static backend.terminal.OutputEngine.printMessasgeToTerminal;
 import static backend.terminal.OutputEngine.printErrorToTerminal;
+import static backend.terminal.OutputEngine.printMessasge;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.7
  */
 class StartInstance extends Instance {
@@ -22,26 +24,26 @@ class StartInstance extends Instance {
     }
 
     @Override
-    public void enter() {
+    public Message enter() {
 
-        printMessasgeToTerminal("Welcome to " + this.game.toString() + "."
+        return new GameMessage("Welcome to " + this.game.toString() + "."
                                 + "\nThis an example game using this engine.");
     }
 
     @Override
     public void display() {
         
-        printMessasgeToTerminal("You are in a dark room. " 
-                                + "What do you want to do next?");
+        // printMessasge("You are in a dark room. " 
+        //                         + "What do you want to do next?");
     }
 
     @Override
-    public void go() {
+    public Message go() {
 
-        printMessasgeToTerminal("Where do you want to go? "
-        + "\n1. Talk"
-        + "\n2. Search"
-        + "\n3. Use");
+        // printMessasge("Where do you want to go? "
+        // + "\n1. Talk"
+        // + "\n2. Search"
+        // + "\n3. Use");
 
         // scanner
         int input = 1;
@@ -63,5 +65,7 @@ class StartInstance extends Instance {
 
             printErrorToTerminal("Wrong input");
         }
+
+        return new GameMessage("You are going to a new instance.");
     }
 }

@@ -1,6 +1,7 @@
 package engine.utils;
 
 // custom import
+import backend.terminal.Message;
 import engine.Instance;
 import engine.Item;
 import engine.Secret;
@@ -9,7 +10,7 @@ import engine.NonPlayerCharacter;
 
 /**
  * @author                              o.le
- * @version                             1.3
+ * @version                             1.4
  * @since                               0.1
  */
 public interface InstanceAction {
@@ -17,29 +18,34 @@ public interface InstanceAction {
     /**
      * Will execute the talk action of the {@link NonPlayerCharacter} of the 
      * {@link Instance}.
+     * @return TODO
      */
-    void talk();
+    Message talk();
 
     /**
      * Will execute the expose action of the {@link Secret} of the
      * {@link Instance}.
+     * @return TODO
      */
-    void search();
+    Message search();
 
     /**
      * Will execute the use item action of the {@link Item} of the
      * {@link Instance}.
+     * @return TODO
      */
-    void use();
+    Message use();
 
     /**
      * Will move the {@link PlayerCharacter} to the next instance.
+     * @return TODO
      */
-    void go();
+    Message go();
 
     /**
      * When possible the {@link PlayerCharacter} will return to the previous
      * instance.
+     * @return TODO
      */
-    void leave();
+    Message leave();
 }

@@ -1,9 +1,9 @@
 package example;
 
+import static backend.terminal.OutputEngine.printMessasge;
+
 // custom import
 import engine.Item;
-
-import static backend.terminal.OutputEngine.printMessasgeToTerminal;
 
 /**
  * @author                              o.le
@@ -21,6 +21,6 @@ class ExampleKeyItem extends Item {
     @Override
     public void useItem() {
      
-        printMessasgeToTerminal("You found a key!");   
+        // printMessasge("You found a key!");
     }
 }

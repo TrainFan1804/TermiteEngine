@@ -1,0 +1,7 @@
+{
+    "welcome":      ["Hello, what do you want to know?"],
+    "userOptions":  ["I don't need anything", 
+                    "Is here a secret to discover?"],
+    "npcAnswer":    ["Ok, have a nice day", 
+                    "No, here is nothing to find"]
+}

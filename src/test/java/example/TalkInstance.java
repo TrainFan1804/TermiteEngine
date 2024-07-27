@@ -1,15 +1,15 @@
 package example;
 
 // custom import
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
 import engine.Game;
 import engine.Instance;
 import engine.NonPlayerCharacter;
 
-import static backend.terminal.OutputEngine.printMessasgeToTerminal;
-
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.7
  */
 public class TalkInstance extends Instance {
@@ -23,26 +23,28 @@ public class TalkInstance extends Instance {
 
         this.previous = previous;
         this.game = game;
-        this.npc = new NonPlayerCharacter(null, null);
+        this.npc = new ExampleNPC(null);
     }
 
     @Override
     public void display() {
         
-        printMessasgeToTerminal("You are in room without a roof. "
-                                + "You see an NPC in the middle of the room."
-                                + "\nWhat do you want to do next?");
+        // printMessasge("You are in room without a roof. "
+        //                         + "You see an NPC in the middle of the room."
+        //                         + "\nWhat do you want to do next?");
     }
 
     @Override
-    public void talk() {
-        // TODO implement the talking
+    public Message talk() {
+        
+        this.npc.getDialog();
+        return null;
     }
 
     @Override
-    public void leave() {
+    public Message leave() {
     
-        printMessasgeToTerminal("Leave this instance.");
         this.game.setInstance(this.previous);
+        return new GameMessage("Leave this instance.");
     }
 }

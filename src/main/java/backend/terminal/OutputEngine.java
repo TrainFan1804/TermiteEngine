@@ -5,7 +5,7 @@ package backend.terminal;
  * the terminal. The output will be automaticly formated.
  * 
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               0.4
  */
 public final class OutputEngine {
@@ -17,9 +17,9 @@ public final class OutputEngine {
      * 
      * @param msg                       The printed message.
      */
-    public static void printMessasgeToTerminal(String msg) {
+    public static void printMessasge(Message msg) {
 
-        System.out.println(">>" + msg);
+        System.out.println(">>" + msg.toString());
     }
 
     /**

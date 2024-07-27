@@ -1,11 +1,12 @@
 package engine;
 
+import static backend.terminal.OutputEngine.printMessasge;
+
 // custom import
 import backend.actions.CommandType;
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
 import engine.utils.InstanceAction;
-
-import static backend.terminal.OutputEngine.printMessasgeToTerminal;
-import static backend.terminal.OutputEngine.printErrorToTerminal;
 
 /**
  * A instance represent the most used asset in an textadventure. The current 
@@ -30,38 +31,38 @@ public abstract class Instance implements InstanceAction {
      * 
      * TODO it's not very pretty that an EndInstance will execute this one more time
      */
-    public void enter() {
+    public Message enter() {
 
-        printMessasgeToTerminal("You enter a new instance.");
+        return new GameMessage("You enter a new instance.");
     }
 
     @Override
-    public void talk() {
+    public Message talk() {
 
-        printErrorToTerminal("You can't talk to anyone");
+        return new GameMessage("You can't talk to anyone");
     }
 
     @Override
-    public void search() {
+    public Message search() {
 
-        printErrorToTerminal("There are no secrets");
+        return new GameMessage("There are no secrets");
     }
 
     @Override
-    public void use() {
+    public Message use() {
         
-        printErrorToTerminal("There are no items");
+        return new GameMessage("There are no items");
     }
 
     @Override
-    public void go() {
+    public Message go() {
         
-        printErrorToTerminal("You can't go to another instance");
+        return new GameMessage("You can't go to another instance");
     }
 
     @Override
-    public void leave() {
+    public Message leave() {
         
-        printErrorToTerminal("You can't leave this instance");
+        return new GameMessage("You can't leave this instance");
     }
 }

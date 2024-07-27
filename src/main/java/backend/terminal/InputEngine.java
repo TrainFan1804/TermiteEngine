@@ -1,9 +1,11 @@
 package backend.terminal;
 
 // java import
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 // custom import
+import backend.TermiteSettings;
 import backend.actions.CommandType;
 
 import static backend.terminal.OutputEngine.printErrorToTerminal;
@@ -14,28 +16,30 @@ import static backend.terminal.OutputEngine.printErrorToTerminal;
  * This type use the GoF Singleton pattern.
  * 
  * @author                              o.le
- * @version                             1.4
+ * @version                             1.5
  * @since                               0.2
  */
 class InputEngine {
 
-    private static InputEngine inputEngine;
+    // changable input streams
+    public static InputStream inputStream = TermiteSettings.DEFAULT_INPUT;
+    private static InputEngine engine;
 
     private Scanner input;
 
     public static InputEngine getEngine() {
 
-        if (inputEngine == null) {
+        if (engine == null) {
 
-            inputEngine = new InputEngine();
+            engine = new InputEngine();
         }
 
-        return inputEngine;
+        return engine;
     }
 
     private InputEngine() {
 
-        this.input = new Scanner(System.in);
+        this.input = new Scanner(inputStream);
     }
 
     /**

@@ -1,13 +1,14 @@
 package example;
 
 // custom import
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
 import engine.Game;
 import engine.Instance;
-import static backend.terminal.OutputEngine.printMessasgeToTerminal;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.7
  */
 public class SearchInstance extends Instance {
@@ -24,20 +25,21 @@ public class SearchInstance extends Instance {
     @Override
     public void display() {
         
-        printMessasgeToTerminal("You enter an emtpy room." 
-                                + "\nWhat do you want to do next?");
+        // printMessasge("You enter an emtpy room." 
+        //                         + "\nWhat do you want to do next?");
     }
 
     @Override
-    public void search() {
+    public Message search() {
         
         // TODO implement the secret search
+        return null;
     }
 
     @Override
-    public void leave() {
+    public Message leave() {
     
-        printMessasgeToTerminal("Leave this instance.");
         this.game.setInstance(this.previous);
+        return new GameMessage("Leave this instance.");
     }
 }

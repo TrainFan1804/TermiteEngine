@@ -1,7 +1,9 @@
 package backend.terminal;
 
+import static backend.terminal.OutputEngine.printMessasge;
+
 // custom import
-import backend.Termite;
+import backend.TermiteSettings;
 import backend.actions.Action;
 import backend.actions.ActionFactory;
 import backend.actions.CommandType;
@@ -10,45 +12,52 @@ import engine.utils.EndInstance;
 
 /**
  * @author                              o.le
- * @version                             0.10
+ * @version                             0.12
  * @since                               0.1
  */
 public class TerminalApplication {
 
-    private Game game;
     private InputEngine inputEngine;
+    private ActionFactory factory;
+    private Game game;
 
     public TerminalApplication(Game game) {
         
         this.inputEngine = InputEngine.getEngine();
-
+        this.factory = ActionFactory.getFactory();
         this.game = game;
+
+        this.initilize();
+    }
+
+    private void initilize() {
+
         this.game.create();
-        
-        Termite.currentInstance = this.game.getInstance();
+        TermiteSettings.currentInstance = this.game.getInstance();
     }
     
     public void start() {
 
-        ActionFactory factory = ActionFactory.getFactory();
         CommandType typedCommand;
         Action commandAction;
 
         while(!this.checkIfEndInstance()) {
 
-            Termite.currentInstance.display();
+            TermiteSettings.currentInstance.display();
             
             typedCommand = this.inputEngine.commandInput();
-            commandAction = factory.commandToAction(typedCommand);
-            commandAction.execute();
+            commandAction = this.factory.commandToAction(typedCommand);
 
-            Termite.currentInstance = this.game.getInstance();
+            // TODO deteminee between error and normal
+            printMessasge(commandAction.execute());
+
+            TermiteSettings.currentInstance = this.game.getInstance();
         }
     }
 
     private boolean checkIfEndInstance() {
 
-        if (Termite.currentInstance instanceof EndInstance) {
+        if (TermiteSettings.currentInstance instanceof EndInstance) {
 
             return true;
         }

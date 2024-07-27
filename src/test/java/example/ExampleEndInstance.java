@@ -1,22 +1,22 @@
 package example;
 
 // custom import
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
 import engine.Instance;
 import engine.utils.EndInstance;
 
-import static backend.terminal.OutputEngine.printMessasgeToTerminal;
-
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.7
  */
 class ExampleEndInstance extends Instance implements EndInstance {
     
     @Override
-    public void enter() {
+    public Message enter() {
 
-        printMessasgeToTerminal("This is the enter method in EndInstance");
+        return new GameMessage("This is the enter method in EndInstance");
     }
 
     @Override

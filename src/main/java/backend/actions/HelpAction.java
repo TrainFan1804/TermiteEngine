@@ -1,15 +1,29 @@
 package backend.actions;
 
+// custom import
+import backend.terminal.Message;
+import backend.terminal.GameMessage;
+
 /**
+ * This action will show the help menu. The help menu will display all avaiable 
+ * commands.
+ * 
  * @author                              o.le
- * @version                             0.1
+ * @version                             1.2
  * @since                               0.8
  */
 class HelpAction implements Action {
 
     @Override
-    public void execute() {
+    public Message execute() {
      
-        System.out.println("Print out the Help menu");
+        StringBuilder sb = new StringBuilder();
+
+        for (CommandType c : CommandType.getKeywordList()) {
+
+            sb.append(c.toString());
+        }
+
+        return new GameMessage(sb.toString());
     }
 }
