@@ -9,31 +9,24 @@ import java.util.List;
  * the game through the front end.
  * 
  * @author                              o.le
- * @version                             1.5
+ * @version                             1.6
  * @since                               0.13
  */
 public enum CommandType {
     
-    SAVE(true),
-    LOAD(true),
-    EXIT(true),
-    HELP(true),
+    SAVE,
+    LOAD,
+    EXIT,
+    HELP,
 
-    INV(false),
-    MAP(false),
+    INV,
+    MAP,
 
-    TALK(false),
-    SEARCH(false), 
-    USE(false),
-    GO(false),
-    LEAVE(false);
-
-    public final boolean isEngineCommand;
-
-    CommandType(boolean isEngineCommand) {
-
-        this.isEngineCommand = isEngineCommand;
-    }
+    TALK,
+    SEARCH, 
+    USE,
+    GO,
+    LEAVE;
 
     /**
      * Get all keywords in a list.

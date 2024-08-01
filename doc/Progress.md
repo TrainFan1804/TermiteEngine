@@ -20,3 +20,7 @@ I changed the way how different actions will be handled by the TerminalApplicati
 
 Today I improved the Input- and OutputEngine. The engine will now handle different message from the different classes differently. The messages will now be created by an own message type.
 I started to rewrite and redesign the engine because I didn't like the road I took with the old design. The old design will still be present till I rewrote everything.
+
+# 01.08.2024
+
+Today I added the Command decode system. This system will decode the entered command of the end-user to a command that the engine can read and interprete.

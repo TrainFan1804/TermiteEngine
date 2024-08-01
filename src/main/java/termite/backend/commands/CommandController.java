@@ -1,10 +1,13 @@
 package termite.backend.commands;
 
 /**
+ * This class will controll the command flow of the game. This class is only
+ * used in {@link CommandDecoder}.
+ * <p>
  * This type use the GoF Singleton pattern.
  * 
  * @author                              o.le
- * @version                             0.6
+ * @version                             1.0
  * @since                               0.15
  */
 final class CommandController {
