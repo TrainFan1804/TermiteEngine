@@ -1,5 +1,7 @@
 package termite.backend;
 
+import termite.backend.instances.BiDirectionalConnection;
+import termite.backend.instances.UniDirectionalConnection;
 // custom import
 import termite.backend.utils.SameArgumentObjectException;
 // JUnit import
@@ -100,7 +102,7 @@ public class InstanceManagerTest {
 
 class TestInstance extends Instance {
 
-    protected TestInstance(int id) {
+    TestInstance(int id) {
         
         super(id);
     }

@@ -1,10 +1,10 @@
-package termite.backend;
+package termite.backend.commands;
 
 /**
  * This type use the GoF Singleton pattern.
  * 
  * @author                              o.le
- * @version                             0.2
+ * @version                             1.1
  * @since                               0.13
  */
 public final class CommandDecoder {
@@ -18,8 +18,9 @@ public final class CommandDecoder {
 
     private CommandDecoder() {}
 
-    public CommandType decode(String input) {
+    public CommandAction decode(String input) {
 
-        return CommandType.valueOf(input.toUpperCase());
+        CommandType type = CommandType.valueOf(input.toUpperCase());
+        return CommandController.getController().getCommandAction(type);
     }
 }

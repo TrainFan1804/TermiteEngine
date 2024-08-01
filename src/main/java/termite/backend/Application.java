@@ -1,8 +1,11 @@
 package termite.backend;
 
+import termite.backend.commands.CommandAction;
+import termite.backend.commands.CommandDecoder;
+
 /**
  * @author                              o.le
- * @version                             0.3
+ * @version                             0.4
  * @since                               0.12
  */
 public abstract class Application {
@@ -20,7 +23,7 @@ public abstract class Application {
 
     public abstract void start();
 
-    protected CommandType decode(String input) {
+    protected CommandAction decode(String input) {
 
         return this.decoder.decode(input);
     }

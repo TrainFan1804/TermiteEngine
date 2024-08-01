@@ -1,4 +1,6 @@
-package termite.backend;
+package termite.backend.instances;
+
+import termite.backend.Message;
 
 /**
  * @author                              o.le

@@ -2,8 +2,9 @@ package termite.terminal;
 
 // custom import
 import termite.backend.Application;
-import termite.backend.CommandType;
 import termite.backend.Game;
+import termite.backend.commands.CommandAction;
+import termite.backend.commands.CommandType;
 
 /**
  * @author                              o.le
@@ -28,9 +29,9 @@ public class TerminalApplication extends Application {
         // start game
         /*
          * Steps:
-         * 1. display instance screen
-         * 2. wait for input    check
-         * 3. check if input is valid command, if not go back to 2. check
+         * 1. display instance screen   -- check
+         * 2. wait for input    -- check
+         * 3. check if input is valid command, if not go back to 2. -- check
          * 4. determie what action is decoded in the command
          * 5. if action is engine command handle here else send the command to game ?
          * 6. 
@@ -38,21 +39,30 @@ public class TerminalApplication extends Application {
 
         while(true) {
 
-            outEngine.printMessasge(this.game.getCurrentInstance().display().getMessage());
+            this.outEngine.printMessasge(this.game.getCurrentInstance()
+                                                .display()
+                                                .getMessage());
 
-            CommandType command = null;
+            CommandAction action = this.askForCommand();
+        }
+    }
 
-            while (command == null) {
+    private CommandAction askForCommand() {
 
-                try {
+        CommandAction command = null;
+
+        while (command == null) {
+
+            try {
                     
-                    String input = this.inEngine.strInput();
-                    command = super.decode(input);
-                } catch (IllegalArgumentException e) {
+                String input = this.inEngine.strInput();
+                command = super.decode(input);
+            } catch (IllegalArgumentException e) {
 
-                    outEngine.printErrorMessage("Invalid input");
-                }
+                outEngine.printErrorMessage("Invalid input");
             }
         }
+
+        return command;
     }
 }

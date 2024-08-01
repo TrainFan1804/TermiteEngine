@@ -1,4 +1,4 @@
-package termite.backend;
+package termite.backend.instances;
 
 // java import
 import java.util.function.BiConsumer;

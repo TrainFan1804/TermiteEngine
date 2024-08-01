@@ -1,4 +1,4 @@
-package termite.backend;
+package termite.backend.commands;
 
 // java import
 import java.util.Arrays;
@@ -9,24 +9,31 @@ import java.util.List;
  * the game through the front end.
  * 
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.5
  * @since                               0.13
  */
 public enum CommandType {
-
-    SAVE, 
-    LOAD, 
-    EXIT,
-
-    INV, 
-    MAP, 
-    HELP,
     
-    TALK, 
-    SEARCH, 
-    USE, 
-    GO, 
-    LEAVE;
+    SAVE(true),
+    LOAD(true),
+    EXIT(true),
+    HELP(true),
+
+    INV(false),
+    MAP(false),
+
+    TALK(false),
+    SEARCH(false), 
+    USE(false),
+    GO(false),
+    LEAVE(false);
+
+    public final boolean isEngineCommand;
+
+    CommandType(boolean isEngineCommand) {
+
+        this.isEngineCommand = isEngineCommand;
+    }
 
     /**
      * Get all keywords in a list.

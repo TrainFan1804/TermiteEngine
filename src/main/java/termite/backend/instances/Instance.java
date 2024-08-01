@@ -1,8 +1,11 @@
-package termite.backend;
+package termite.backend.instances;
 
 // java import
 import java.util.List;
 import java.util.LinkedList;
+
+import termite.backend.Displayable;
+import termite.backend.Message;
 
 /**
  * @author                              o.le

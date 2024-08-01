@@ -1,5 +1,8 @@
 package termite.backend;
 
+import termite.backend.instances.Instance;
+import termite.backend.instances.InstanceDisplayMessage;
+import termite.backend.instances.InstanceManager;
 import termite.terminal.TerminalApplication;
 
 public class GameTest {

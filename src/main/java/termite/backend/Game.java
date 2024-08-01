@@ -1,5 +1,8 @@
 package termite.backend;
 
+import termite.backend.instances.Instance;
+import termite.backend.instances.InstanceManager;
+
 /**
  * @author                              o.le
  * @version                             0.1
