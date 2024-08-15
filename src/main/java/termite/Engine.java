@@ -39,9 +39,10 @@ public class Engine {
     
     private void sendToGame(Command command) {
         
-        
         EventType type = CommandEventMapper.mapCommandToEventType(command);
 
-        this.game.getInstanceManger().getInstanceById(0).getEventHandler().getEventById(type.ID).startEvent();
+        this.game.getInstanceManger().getInstanceById(0)
+                    .getEventHandler().getEventById(type.ID)
+                    .startEvent();
     } 
 }

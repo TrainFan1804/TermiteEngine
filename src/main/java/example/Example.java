@@ -16,7 +16,13 @@ public class Example {
     public static void main(String[] args) {
         
         Instance firstInstance = new Instance(0);
-        firstInstance.addEvent(new TalkEvent());
+        firstInstance.addEvent(new TalkEvent() {
+
+            public void talk() {
+
+                System.out.println("Talk");
+            }
+        });
 
         InstanceManager manager = new InstanceManager();
         manager.addInstance(firstInstance);

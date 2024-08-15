@@ -24,3 +24,7 @@ I started to rewrite and redesign the engine because I didn't like the road I to
 # 01.08.2024
 
 Today I added the Command decode system. This system will decode the entered command of the end-user to a command that the engine can read and interprete.
+
+# Note
+
+Documentation moved to another repository!
