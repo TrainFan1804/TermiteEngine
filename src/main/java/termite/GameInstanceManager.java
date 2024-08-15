@@ -1,5 +1,7 @@
 package termite;
 
+import termite.instance.Instance;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -8,11 +10,11 @@ import java.util.HashMap;
  * @version                             1.0
  * @since                               0.17
  */
-public class InstanceManager {
+public class GameInstanceManager {
 
     private Map<Integer, Instance> instances;
 
-    public InstanceManager() {
+    public GameInstanceManager() {
 
         this.instances = new HashMap<>();
     }

@@ -1,5 +1,8 @@
 package termite;
 
+import termite.instance.event.InstanceEventType;
+import termite.instance.event.InstanceEvent;
+
 import java.util.Scanner;
 
 /**
@@ -20,29 +23,44 @@ public class Engine {
 
     public void start() {
 
-        // ask for input
-        String input = scanner.next().toUpperCase();
-        // decode input to command
-        Command command = Command.valueOf(input);
-        // determine if engine / game command
-        switch (command) {
-            case SAVE:
-            case LOAD:
-            case HELP:
-                break; 
-            default:
-                this.sendToGame(command);
-                break;
+        Command command;
+        String input;
+        while (true) {
+
+            // ask for input
+            input = scanner.next().toUpperCase();
+            try {
+
+                // decode input to command
+                command = Command.valueOf(input);
+
+            } catch (IllegalArgumentException exception) {
+
+                System.out.println("Invalid command");
+                continue;
+            }
+            // determine if engine / game command
+            switch (command) {
+                case SAVE:
+                case LOAD:
+                case EXIT:
+                case HELP:
+                    System.exit(0);
+                default:
+                    this.sendToGame(command);
+                    break;
+            }
+            // send engine command to engine or game command to game instance
         }
-        // send engine command to engine or game command to game instance
     }
     
     private void sendToGame(Command command) {
         
-        EventType type = CommandEventMapper.mapCommandToEventType(command);
+        InstanceEventType type = CommandInstanceEventMapper.mapCommandToInstanceEventType(command);
 
-        this.game.getInstanceManger().getInstanceById(0)
-                    .getEventHandler().getEventById(type.ID)
-                    .startEvent();
+        InstanceEvent event = this.game.getInstanceManger().getInstanceById(0)
+                                        .getEventHandler().getEventById(type.ID);
+
+        event.startEvent();
     } 
 }

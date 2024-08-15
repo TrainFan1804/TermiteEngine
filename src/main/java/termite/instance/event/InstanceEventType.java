@@ -1,11 +1,11 @@
-package termite;
+package termite.instance.event;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.17
  */
-public enum EventType {
+public enum InstanceEventType {
 
     TALK_EVENT(0),
     SEARCH_EVENT(1),
@@ -13,9 +13,9 @@ public enum EventType {
     GO_EVENT(3),
     LEAVE_EVENT(4);
 
-    final int ID;
+    public final int ID;
 
-    EventType(int id) {
+    InstanceEventType(int id) {
 
         this.ID = id;
     }

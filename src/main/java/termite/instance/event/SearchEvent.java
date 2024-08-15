@@ -1,15 +1,15 @@
-package termite;
+package termite.instance.event;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.18
  */
-public abstract class SearchEvent extends  InstanceEvent {
+public abstract class SearchEvent extends InstanceEvent {
 
     protected SearchEvent() {
 
-        super(EventType.SEARCH_EVENT);
+        super(InstanceEventType.SEARCH_EVENT);
     }
 
     @Override

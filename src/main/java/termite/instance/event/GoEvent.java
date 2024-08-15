@@ -1,22 +1,22 @@
-package termite;
+package termite.instance.event;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.18
  */
-public abstract class LeaveEvent extends InstanceEvent {
+public abstract class GoEvent extends InstanceEvent {
 
-    protected LeaveEvent() {
+    protected GoEvent() {
 
-        super(EventType.LEAVE_EVENT);
+        super(InstanceEventType.GO_EVENT);
     }
 
     @Override
     public void startEvent() {
 
-        this.leave();
+        this.go();
     }
 
-    public abstract void leave();
+    public abstract void go();
 }

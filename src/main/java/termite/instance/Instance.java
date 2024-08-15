@@ -1,7 +1,6 @@
-package termite;
+package termite.instance;
 
-import java.util.List;
-import java.util.ArrayList;
+import termite.instance.event.InstanceEvent;
 
 /**
  * @author                              o.le
@@ -25,6 +24,8 @@ public class Instance {
     public InstanceEventHandler getEventHandler() { return this.eventHandler; }
 
     public void addEvent(InstanceEvent event) {
+
+        if (event == null) throw new IllegalArgumentException("Event can't be null");
 
         this.eventHandler.addEvent(event);
     }

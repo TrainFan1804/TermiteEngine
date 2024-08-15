@@ -1,4 +1,4 @@
-package termite;
+package termite.instance.event;
 
 /**
  * @author                              o.le
@@ -7,9 +7,9 @@ package termite;
  */
 public abstract class InstanceEvent {
 
-    private EventType eventType;
+    private InstanceEventType eventType;
 
-    protected InstanceEvent(EventType eventType) {
+    protected InstanceEvent(InstanceEventType eventType) {
 
         this.eventType = eventType;
     }

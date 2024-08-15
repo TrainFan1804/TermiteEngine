@@ -1,10 +1,9 @@
 package example;
 
-import termite.Engine;
-import termite.Game;
-import termite.Instance;
-import termite.InstanceManager;
-import termite.TalkEvent;
+import termite.*;
+import termite.instance.Instance;
+import termite.instance.event.TalkEvent;
+import termite.instance.event.UseEvent;
 
 /**
  * @author                              o.le
@@ -16,15 +15,10 @@ public class Example {
     public static void main(String[] args) {
         
         Instance firstInstance = new Instance(0);
-        firstInstance.addEvent(new TalkEvent() {
+        firstInstance.addEvent(new TalkEvent(() -> System.out.println("Talk")));
+        firstInstance.addEvent(new UseEvent(() -> System.out.println("Use")));
 
-            public void talk() {
-
-                System.out.println("Talk");
-            }
-        });
-
-        InstanceManager manager = new InstanceManager();
+        GameInstanceManager manager = new GameInstanceManager();
         manager.addInstance(firstInstance);
 
         Game game = new Game(manager);

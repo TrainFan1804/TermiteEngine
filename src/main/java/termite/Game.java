@@ -7,12 +7,12 @@ package termite;
  */
 public class Game {
 
-    private InstanceManager instanceManger;
+    private GameInstanceManager instanceManger;
 
-    public Game(InstanceManager instanceManager) { 
+    public Game(GameInstanceManager instanceManager) {
         
         this.instanceManger = instanceManager;
     }
 
-    public InstanceManager getInstanceManger() { return this.instanceManger; }
+    public GameInstanceManager getInstanceManger() { return this.instanceManger; }
 }

@@ -1,4 +1,4 @@
-package termite;
+package termite.instance;
 
 /**
  * @author                              o.le
