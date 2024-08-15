@@ -1,6 +1,7 @@
 package example;
 
 import termite.*;
+import termite.engine.Application;
 import termite.instance.Instance;
 import termite.instance.event.TalkEvent;
 import termite.instance.event.UseEvent;
@@ -21,10 +22,8 @@ public class Example {
         GameInstanceManager manager = new GameInstanceManager();
         manager.addInstance(firstInstance);
 
-        Game game = new Game(manager);
+        Application application = new Application(manager);
 
-        Engine engine = new Engine(game);
-
-        engine.start();
+        application.start();
     }
 }

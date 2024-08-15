@@ -1,4 +1,4 @@
-package termite;
+package termite.engine;
 
 import termite.instance.event.InstanceEventType;
 

@@ -1,4 +1,4 @@
-package termite;
+package termite.engine;
 
 /**
  * @author                              o.le
