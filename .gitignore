@@ -4,6 +4,9 @@
 # VS Code
 .vscode/
 
+# Idea config files
+.idea/
+
 # Compiled class file
 *.class
 
