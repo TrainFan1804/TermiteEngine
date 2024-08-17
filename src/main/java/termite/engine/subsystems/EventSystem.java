@@ -1,8 +1,9 @@
-package termite.engine.delegationsystem;
+package termite.engine.subsystems;
 
-import termite.engine.Application;
 import termite.engine.ApplicationResources;
 import termite.instance.Instance;
+import termite.instance.event.InstanceEvent;
+import termite.instance.event.InstanceEventType;
 
 /**
  * @author                              o.le
@@ -11,19 +12,24 @@ import termite.instance.Instance;
  */
 public class EventSystem implements EngineSystem {
 
+    private InstanceEventType event;
+
+    public EventSystem(InstanceEventType event) {
+
+        this.event = event;
+    }
+
     /*
-     TODO
      I need to create subclasses? for each unique event type.
 
      I could also create a constructor that take a Command / InstanceEvent
      as a parameter. Than I could use the saved instance in the handle method.
      */
     @Override
-    public void handle() {
+    public void execute() {
 
         Instance currentInstance = ApplicationResources.INSTANCE_MANAGER.getInstanceById(0);
-
-
-        System.out.println("Handle event..");
+        InstanceEvent event = currentInstance.getEventHandler().getEventById(this.event.ID);
+        event.startEvent();
     }
 }

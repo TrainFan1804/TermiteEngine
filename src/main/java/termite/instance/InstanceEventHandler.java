@@ -13,6 +13,9 @@ import java.util.Map;
  */
 public class InstanceEventHandler {
 
+    /*
+    If I could change this to a list I wouldn't need a ID 
+     */
     private Map<Integer, InstanceEvent> events;
     
     public InstanceEventHandler() {

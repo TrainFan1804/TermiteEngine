@@ -1,5 +1,6 @@
-package termite.engine;
+package termite.engine.subsystems;
 
+import termite.engine.Command;
 import termite.instance.event.InstanceEventType;
 
 /**
@@ -7,9 +8,7 @@ import termite.instance.event.InstanceEventType;
  * @version                             1.0
  * @since                               0.17
  */
-public final class CommandInstanceEventMapper {
-
-    private CommandInstanceEventMapper() { }
+final class CommandInstanceEventMapper {
 
     /**
      * Map a command to his {@link InstanceEventType} counterpart.
@@ -17,7 +16,7 @@ public final class CommandInstanceEventMapper {
      * @param command                   The command to map.
      * @return                          The commands' counterpart.
      */
-    public static InstanceEventType mapCommandToInstanceEventType(Command command) {
+    public InstanceEventType mapCommandToInstanceEventType(Command command) {
 
         return switch (command) {
             case TALK -> InstanceEventType.TALK_EVENT;

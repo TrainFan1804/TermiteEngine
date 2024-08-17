@@ -1,4 +1,4 @@
-package termite.engine.delegationsystem;
+package termite.engine.subsystems;
 
 /**
  * @author                              o.le
@@ -7,5 +7,5 @@ package termite.engine.delegationsystem;
  */
 public interface EngineSystem {
 
-    void handle();
+    void execute();
 }

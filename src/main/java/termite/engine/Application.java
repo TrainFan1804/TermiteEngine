@@ -1,8 +1,8 @@
 package termite.engine;
 
 import termite.GameInstanceManager;
-import termite.engine.delegationsystem.CommandDelegation;
-import termite.engine.delegationsystem.DelegationHandler;
+import termite.engine.subsystems.CommandDelegationService;
+import termite.engine.subsystems.EngineSystem;
 
 import java.util.Scanner;
 
@@ -14,38 +14,46 @@ import java.util.Scanner;
 public class Application {
 
     private Scanner scanner;
-    private CommandDelegation commandDelegation;
+    private CommandDelegationService commandDelegation;
 
     public Application(GameInstanceManager instanceManager) {
 
         this.scanner = new Scanner(System.in);
-        this.commandDelegation = new CommandDelegation();
+        this.commandDelegation = new CommandDelegationService();
         ApplicationResources.initResources(instanceManager);
     }
 
     public void start() {
 
         Command command;
-        String input;
         while (true) {
 
-            // ask for input
-            input = scanner.next().toUpperCase();
             try {
-
-                // decode input to command
-                command = Command.valueOf(input);
-
+                
+                // represent the command decode service
+                command = this.commandDecode();
+                
             } catch (IllegalArgumentException exception) {
-
+                
                 System.out.println("Invalid command");
                 continue;
             }
-
-            // determine if engine / game command
-            DelegationHandler handler = this.commandDelegation.determineDelegation(command);
-            // send engine command to engine or game command to game instance
-            handler.send();
+            
+            EngineSystem system = this.delegateCommand(command);
+            system.execute();
         }
+    }
+    
+    private Command commandDecode() throws IllegalArgumentException {
+        
+        // ask for input
+        String input = this.scanner.next().toUpperCase();
+        // decode input to command
+        return Command.valueOf(input);
+    }
+    
+    private EngineSystem delegateCommand(Command command) {
+        
+        return this.commandDelegation.determineDelegation(command);
     }
 }

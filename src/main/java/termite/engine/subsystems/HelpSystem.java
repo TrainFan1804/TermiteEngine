@@ -1,4 +1,4 @@
-package termite.engine.delegationsystem;
+package termite.engine.subsystems;
 
 /**
  * @author                              o.le
@@ -8,7 +8,7 @@ package termite.engine.delegationsystem;
 public class HelpSystem implements EngineSystem {
 
     @Override
-    public void handle() {
+    public void execute() {
 
         System.out.println("Display help..");
     }
