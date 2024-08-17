@@ -20,6 +20,12 @@ public class Application {
 
         this.scanner = new Scanner(System.in);
         this.commandDelegation = new CommandDelegationService();
+
+        /*
+         * I don't like the idea of a static class that provide the resources
+         * The only resources are the instances and also just one class use these
+         * resources anyway (The EventSystem class)
+         */
         ApplicationResources.initResources(instanceManager);
     }
 

@@ -5,18 +5,16 @@ package termite.instance.event;
  * @version                             1.0
  * @since                               0.18
  */
-public abstract class GoEvent extends InstanceEvent {
+public class GoEvent extends InstanceEvent {
 
-    protected GoEvent() {
+    private IGo go;
+
+    public GoEvent(IGo go) {
 
         super(InstanceEventType.GO_EVENT);
+        this.go = go;
     }
 
     @Override
-    public void startEvent() {
-
-        this.go();
-    }
-
-    public abstract void go();
+    public void startEvent() { this.go.go(); }
 }

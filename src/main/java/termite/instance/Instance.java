@@ -10,7 +10,7 @@ import termite.instance.event.InstanceEvent;
 public class Instance {
 
     public final int ID_INSTANCE;
-    // private List<Instance> neighbors;
+    
     private Message instanceMessage;
     private InstanceEventHandler eventHandler;
 
@@ -18,7 +18,6 @@ public class Instance {
 
         this.ID_INSTANCE = id;
         this.eventHandler = new InstanceEventHandler();
-        // this.neighbors = new ArrayList<>();
     }
 
     public InstanceEventHandler getEventHandler() { return this.eventHandler; }

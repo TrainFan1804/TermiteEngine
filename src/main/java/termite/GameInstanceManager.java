@@ -14,14 +14,29 @@ public class GameInstanceManager {
 
     private Map<Integer, Instance> instances;
 
+    private Instance currentInstance;
+
     public GameInstanceManager() {
 
         this.instances = new HashMap<>();
     }
 
+    public Instance getCurrentInstance() { return this.currentInstance; }
+
+    public void setCurrentInstance(Instance instance) { this.currentInstance = instance; }
+
+    /**
+     * Add a new instance to the instance manager.
+     * <p>
+     * CAUTION: The first instance that is added is the starting instance!
+     * 
+     * @param instance                  The new instance.
+     */
     public void addInstance(Instance instance) {
 
         if (instance == null) throw new IllegalArgumentException();
+
+        if (this.instances.isEmpty()) this.currentInstance = instance;
 
         this.instances.put(instance.ID_INSTANCE, instance);
     }
