@@ -12,8 +12,8 @@ public enum Command {
     EXIT,
     HELP,
 
-    INV,
-    MAP,
+    // INV,
+    // MAP,
 
     TALK,
     SEARCH,

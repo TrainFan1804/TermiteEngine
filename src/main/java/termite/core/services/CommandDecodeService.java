@@ -14,6 +14,7 @@ public class CommandDecodeService {
 
         try {
 
+            commandInput = commandInput.toUpperCase();
             // decode input to commands
             return Command.valueOf(commandInput);
         } catch (IllegalArgumentException e) {

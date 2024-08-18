@@ -76,7 +76,7 @@ public class Application {
      */
     private String startInputService() {
         
-        return this.scanner.next().toUpperCase();
+        return this.scanner.next();
     }
 
     private Command startDecodeService(String input) throws UnknownCommandException {

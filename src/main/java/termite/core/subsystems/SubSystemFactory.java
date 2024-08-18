@@ -28,6 +28,8 @@ public class SubSystemFactory {
             case LOAD -> new LoadSystem();
             case EXIT -> new ExitSystem();
             case HELP -> new HelpSystem();
+            // case INV -> new NullSystem();
+            // case MAP -> new NullSystem();
             default -> new EventSystem(this.MAPPER
             .mapCommandToInstanceEventType(command));
         };
