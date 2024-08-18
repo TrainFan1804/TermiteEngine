@@ -28,8 +28,8 @@ public class EventSystem implements EngineSystem {
     @Override
     public void execute() {
 
-        Instance currentInstance = ApplicationResources.INSTANCE_MANAGER.getCurrentInstance();
-        InstanceEvent event = currentInstance.getEventHandler().getEventById(this.event.ID);
+        Instance currentInstance = ApplicationResources.GAME.getCurrentInstance();
+        InstanceEvent event = currentInstance.getEventById(this.event.ID);
         event.startEvent();
     }
 }

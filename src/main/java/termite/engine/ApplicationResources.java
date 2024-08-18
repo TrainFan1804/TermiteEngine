@@ -1,6 +1,6 @@
 package termite.engine;
 
-import termite.GameInstanceManager;
+import termite.Game;
 
 /**
  * @author                              o.le
@@ -9,15 +9,15 @@ import termite.GameInstanceManager;
  */
 public class ApplicationResources {
 
-    public static GameInstanceManager INSTANCE_MANAGER;
+    public static Game GAME;
 
     static {
-        INSTANCE_MANAGER = null;
+        GAME = null;
     }
 
-    public static void initResources(GameInstanceManager manager) {
+    public static void initResources(Game game) {
 
-        if (INSTANCE_MANAGER == null) INSTANCE_MANAGER = manager;
+        if (GAME == null) GAME = game;
     }
 
     private ApplicationResources() { }

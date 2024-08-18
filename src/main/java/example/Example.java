@@ -25,15 +25,14 @@ public class Example {
         Instance secondInstance = new Instance(1);
         secondInstance.addEvent(new SearchEvent(() -> System.out.println("Search..")));
 
-        
-        GameInstanceManager manager = new GameInstanceManager();
-        manager.addInstance(firstInstance);
-        manager.addInstance(secondInstance);
+        Game game = new Game();
+        game.addInstance(firstInstance);
+        game.addInstance(secondInstance);
 
-        firstInstance.addEvent(new GoEvent(() -> manager.setCurrentInstance(secondInstance)));
-        secondInstance.addEvent(new LeaveEvent(() -> manager.setCurrentInstance(firstInstance)));
+        firstInstance.addEvent(new GoEvent(() -> game.setCurrentInstance(secondInstance.ID_INSTANCE)));
+        secondInstance.addEvent(new LeaveEvent(() -> game.setCurrentInstance(firstInstance.ID_INSTANCE)));
 
-        Application application = new Application(manager);
+        Application application = new Application(game);
 
         application.start();
     }

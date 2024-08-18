@@ -1,6 +1,6 @@
 package termite.engine;
 
-import termite.GameInstanceManager;
+import termite.Game;
 import termite.engine.subsystems.CommandDelegationService;
 import termite.engine.subsystems.EngineSystem;
 
@@ -16,7 +16,7 @@ public class Application {
     private Scanner scanner;
     private CommandDelegationService commandDelegation;
 
-    public Application(GameInstanceManager instanceManager) {
+    public Application(Game game) {
 
         this.scanner = new Scanner(System.in);
         this.commandDelegation = new CommandDelegationService();
@@ -26,36 +26,49 @@ public class Application {
          * The only resources are the instances and also just one class use these
          * resources anyway (The EventSystem class)
          */
-        ApplicationResources.initResources(instanceManager);
+        ApplicationResources.initResources(game);
     }
 
     public void start() {
 
         Command command;
         while (true) {
-
-            try {
-                
-                // represent the command decode service
-                command = this.commandDecode();
-                
-            } catch (IllegalArgumentException exception) {
-                
-                System.out.println("Invalid command");
-                continue;
-            }
+    
+            command = this.askForUserInput();            
             
             EngineSystem system = this.delegateCommand(command);
             system.execute();
         }
     }
     
-    private Command commandDecode() throws IllegalArgumentException {
+    private Command askForUserInput() {
+        
+        while (true) {
+            
+            try {
+                
+                // represent the command decode service
+                return this.commandDecode();
+            } catch (UnknownCommandException e) {
+                
+                System.out.println(e.getLocalizedMessage());
+            }
+        }
+    }
+    
+    private Command commandDecode() throws UnknownCommandException {
         
         // ask for input
         String input = this.scanner.next().toUpperCase();
-        // decode input to command
-        return Command.valueOf(input);
+        
+        try {
+
+            // decode input to commands
+            return Command.valueOf(input);
+        } catch (IllegalArgumentException e) {
+ 
+            throw new UnknownCommandException(input);
+        }
     }
     
     private EngineSystem delegateCommand(Command command) {

@@ -16,5 +16,11 @@ public class GoEvent extends InstanceEvent {
     }
 
     @Override
-    public void startEvent() { this.go.go(); }
+    public void startEvent() { 
+    
+        // get current instance?
+        // get the neighbor
+        // set current instance to neighbor?
+        this.go.go(); 
+    }
 }
