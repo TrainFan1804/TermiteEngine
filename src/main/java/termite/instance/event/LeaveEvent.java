@@ -1,5 +1,8 @@
 package termite.instance.event;
 
+import termite.core.ApplicationResources;
+import termite.instance.Instance;
+
 /**
  * @author                              o.le
  * @version                             1.0
@@ -7,14 +10,16 @@ package termite.instance.event;
  */
 public class LeaveEvent extends InstanceEvent {
 
-    private ILeave leave;
-
-    public LeaveEvent(ILeave leave) {
+    public LeaveEvent() {
 
         super(InstanceEventType.LEAVE_EVENT);
-        this.leave = leave;
     }
 
     @Override
-    public void startEvent() { this.leave.leave(); }
+    public void startEvent() { 
+
+        ApplicationResources.wasInstanceSwitch = false;
+        Instance pre = ApplicationResources.GAME.getCurrentInstance().getPreInstance();
+        ApplicationResources.GAME.setCurrentInstance(pre.ID_INSTANCE);
+    }
 }

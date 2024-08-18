@@ -41,7 +41,7 @@ public class Game {
 
             if (!this.instances.containsKey(id)) {
                 
-                throw new IllegalArgumentException("The provided id doesn't exist!");  // Null pattern
+                throw new IllegalArgumentException("The provided id doesn't exist!");
             }
 
             return this.instances.get(id);
@@ -64,5 +64,4 @@ public class Game {
     public void addInstance(Instance instance) { this.manager.addInstance(instance); }
 
     public Instance getInstanceById(int id) { return this.manager.getInstanceById(id); }
-
 }

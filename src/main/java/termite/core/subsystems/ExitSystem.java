@@ -1,15 +1,16 @@
-package termite.engine.subsystems;
+package termite.core.subsystems;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.22
  */
-public class SaveSystem implements EngineSystem {
+class ExitSystem implements EngineCommandSystem {
 
     @Override
     public void execute() {
 
-        System.out.println("Save game..");
+        System.out.println("Leave game");
+        System.exit(0);
     }
 }

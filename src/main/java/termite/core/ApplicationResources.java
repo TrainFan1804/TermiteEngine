@@ -1,4 +1,4 @@
-package termite.engine;
+package termite.core;
 
 import termite.Game;
 
@@ -10,6 +10,8 @@ import termite.Game;
 public class ApplicationResources {
 
     public static Game GAME;
+
+    public static boolean wasInstanceSwitch = false;
 
     static {
         GAME = null;

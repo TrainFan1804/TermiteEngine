@@ -1,7 +1,7 @@
 package example;
 
 import termite.*;
-import termite.engine.Application;
+import termite.core.Application;
 import termite.instance.Instance;
 import termite.instance.event.GoEvent;
 import termite.instance.event.LeaveEvent;
@@ -24,13 +24,16 @@ public class Example {
 
         Instance secondInstance = new Instance(1);
         secondInstance.addEvent(new SearchEvent(() -> System.out.println("Search..")));
+        
+        firstInstance.setNextInstance(secondInstance);
+        secondInstance.setPreInstance(firstInstance);
+        
+        firstInstance.addEvent(new GoEvent());
+        secondInstance.addEvent(new LeaveEvent());
 
         Game game = new Game();
         game.addInstance(firstInstance);
         game.addInstance(secondInstance);
-
-        firstInstance.addEvent(new GoEvent(() -> game.setCurrentInstance(secondInstance.ID_INSTANCE)));
-        secondInstance.addEvent(new LeaveEvent(() -> game.setCurrentInstance(firstInstance.ID_INSTANCE)));
 
         Application application = new Application(game);
 

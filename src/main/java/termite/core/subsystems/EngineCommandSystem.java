@@ -1,11 +1,11 @@
-package termite.engine.subsystems;
+package termite.core.subsystems;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.22
  */
-public interface EngineSystem {
+public interface EngineCommandSystem {
 
     void execute();
 }

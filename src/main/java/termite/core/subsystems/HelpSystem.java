@@ -1,15 +1,15 @@
-package termite.engine.subsystems;
+package termite.core.subsystems;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.22
  */
-public class LoadSystem implements EngineSystem {
+class HelpSystem implements EngineCommandSystem {
 
     @Override
     public void execute() {
 
-        System.out.println("Load game..");
+        System.out.println("Display help..");
     }
 }

@@ -1,4 +1,4 @@
-package termite.engine;
+package termite.core.exceptions;
 
 /**
  * @author                              o.le

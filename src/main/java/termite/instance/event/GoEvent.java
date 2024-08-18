@@ -1,5 +1,8 @@
 package termite.instance.event;
 
+import termite.core.ApplicationResources;
+import termite.instance.Instance;
+
 /**
  * @author                              o.le
  * @version                             1.0
@@ -7,12 +10,9 @@ package termite.instance.event;
  */
 public class GoEvent extends InstanceEvent {
 
-    private IGo go;
-
-    public GoEvent(IGo go) {
+    public GoEvent() {
 
         super(InstanceEventType.GO_EVENT);
-        this.go = go;
     }
 
     @Override
@@ -21,6 +21,8 @@ public class GoEvent extends InstanceEvent {
         // get current instance?
         // get the neighbor
         // set current instance to neighbor?
-        this.go.go(); 
+        ApplicationResources.wasInstanceSwitch = false; // bad 
+        Instance next = ApplicationResources.GAME.getCurrentInstance().getNextInstance();
+        ApplicationResources.GAME.setCurrentInstance(next.ID_INSTANCE);
     }
 }

@@ -1,6 +1,7 @@
-package termite.engine.subsystems;
+package termite.core.subsystems;
 
-import termite.engine.ApplicationResources;
+import termite.core.ApplicationResources;
+import termite.instance.EventIdNotPresentException;
 import termite.instance.Instance;
 import termite.instance.event.InstanceEvent;
 import termite.instance.event.InstanceEventType;
@@ -10,11 +11,11 @@ import termite.instance.event.InstanceEventType;
  * @version                             1.0
  * @since                               0.22
  */
-public class EventSystem implements EngineSystem {
+class EventSystem implements EngineCommandSystem {
 
     private InstanceEventType event;
 
-    public EventSystem(InstanceEventType event) {
+    EventSystem(InstanceEventType event) {
 
         this.event = event;
     }
@@ -29,7 +30,14 @@ public class EventSystem implements EngineSystem {
     public void execute() {
 
         Instance currentInstance = ApplicationResources.GAME.getCurrentInstance();
-        InstanceEvent event = currentInstance.getEventById(this.event.ID);
-        event.startEvent();
+        InstanceEvent event;
+
+        try {
+            event = currentInstance.getEventById(this.event.ID);
+            event.startEvent();
+        } catch (EventIdNotPresentException e) {
+            
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 }
