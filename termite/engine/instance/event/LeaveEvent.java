@@ -26,7 +26,7 @@ public final class LeaveEvent extends InstanceEvent {
     }
 
     @Override
-    public final void startEvent() {
+    public void startEvent() {
 
         ApplicationResources.wasInstanceSwitch = false;
         Instance pre = ApplicationResources.GAME.getCurrentInstance().getPreInstance();

@@ -24,7 +24,7 @@ class EventSystem implements EngineCommandSystem {
      I need to create subclasses? for each unique event type.
 
      I could also create a constructor that take a Command / InstanceEvent
-     as a parameter. Than I could use the saved instance in the handle method.
+     as a parameter. Then I could use the saved instance in the handle method.
      */
     @Override
     public void execute() {
@@ -36,7 +36,7 @@ class EventSystem implements EngineCommandSystem {
             event = currentInstance.getEventById(this.event.ID);
             event.startEvent();
         } catch (EventIdNotPresentException e) {
-            
+
             System.out.println(e.getLocalizedMessage());
         }
     }

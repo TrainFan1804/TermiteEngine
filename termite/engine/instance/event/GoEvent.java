@@ -26,7 +26,7 @@ public final class GoEvent extends InstanceEvent {
     }
 
     @Override
-    public final void startEvent() {
+    public void startEvent() {
     
         // get current instance?
         // get the neighbor

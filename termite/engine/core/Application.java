@@ -7,8 +7,6 @@ import engine.core.services.CommandDelegationService;
 import engine.core.subsystems.EngineCommandSystem;
 import engine.instance.Message;
 
-import java.util.Scanner;
-
 /**
  * @author                              o.le
  * @version                             1.0
@@ -16,15 +14,19 @@ import java.util.Scanner;
  */
 public class Application {
 
-    private Scanner scanner;
     private CommandDecodeService decodeService;
     private CommandDelegationService delegationService;
 
+    private InputService in;
+    private OutputService out;
+
     public Application(Game game) {
 
-        this.scanner = new Scanner(System.in);
         this.decodeService = new CommandDecodeService();
         this.delegationService = new CommandDelegationService();
+
+        this.in = new InputService();
+        this.out = new OutputService();
 
         /*
          * I don't like the idea of a static class that provide the resources
@@ -37,48 +39,40 @@ public class Application {
     public void start() {
 
         String input;
-        Command command = null;
+        Command command;
         Message instanceMessage;
-        
+
         while (true) {
-    
+
+            command = null;
+
             // I don't like this
             if (!ApplicationResources.wasInstanceSwitch) {
 
                 instanceMessage = ApplicationResources.GAME.getCurrentInstance()
                                                             .display();
-                System.out.println(instanceMessage);
+                this.out.printMessage(instanceMessage);
                 ApplicationResources.wasInstanceSwitch = true;
             }
 
             do {
                 
-                input = this.startInputService();
+                input = this.in.read();
 
                 try {
     
                     command = this.startDecodeService(input);
                 } catch (UnknownCommandException e) {
-                    
-                    System.out.println(e.getLocalizedMessage());
+
+                    this.out.printError(e);
                 }
             } while (command == null);     
             
             EngineCommandSystem system = this.startDelegationService(command);
             system.execute();
-            command = null; // don't delete because than it doesn't work as expected
         }
     }
     
-    /*
-     * TODO
-     * This can be in a input class or something like that
-     */
-    private String startInputService() {
-        
-        return this.scanner.next();
-    }
-
     private Command startDecodeService(String input) throws UnknownCommandException {
     
         return this.decodeService.commandDecode(input);

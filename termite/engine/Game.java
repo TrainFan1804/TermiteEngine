@@ -31,7 +31,7 @@ public class Game {
 
             if (instance == null) throw new IllegalArgumentException("Instance can't be null!");
 
-            if (this.instances.isEmpty()) currentInstance = instance;
+            if (this.instances.isEmpty()) Game.this.currentInstance = instance;
 
             this.instances.put(instance.ID_INSTANCE, instance);
         }

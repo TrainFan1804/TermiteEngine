@@ -35,15 +35,8 @@ public class Instance {
                 throw new InstanceEventAlreadyPresentException();
             }
 
-            // TODO can this be done better?
-            if (event instanceof LeaveEvent
-                    && preInstance == null) {
-
-                throw new NoValidNeighborException();
-            }
-
-            if (event instanceof GoEvent
-                    && nextInstance == null) {
+            if ((event instanceof LeaveEvent && Instance.this.preInstance == null)
+                    || (event instanceof GoEvent && Instance.this.nextInstance == null)) {
 
                 throw new NoValidNeighborException();
             }
