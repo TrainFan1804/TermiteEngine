@@ -1,14 +1,25 @@
 package termite.instance.event;
 
 /**
+ * When you want to create a search event create an object of this type and give it
+ * the {@link termite.instance.Instance}. See {@link termite.instance.event.ISearch}
+ * for more information.
+ *
  * @author                              o.le
  * @version                             1.0
  * @since                               0.18
  */
-public class SearchEvent extends InstanceEvent {
+public final class SearchEvent extends InstanceEvent {
 
     private ISearch search;
 
+    /**
+     * Create a new search event with the behavior of the given
+     * {@link termite.instance.event.ISearch}.
+     *
+     * @param search                    The wanted search behavior that should
+     *                                  be executed when stating the search event.
+     */
     public SearchEvent(ISearch search) {
 
         super(InstanceEventType.SEARCH_EVENT);

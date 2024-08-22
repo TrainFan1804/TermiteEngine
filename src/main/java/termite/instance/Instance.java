@@ -1,6 +1,12 @@
 package termite.instance;
 
+import termite.instance.event.GoEvent;
 import termite.instance.event.InstanceEvent;
+import termite.instance.event.InstanceEventType;
+import termite.instance.event.LeaveEvent;
+import termite.instance.exceptions.EventIdNotPresentException;
+import termite.instance.exceptions.InstanceEventAlreadyPresentException;
+import termite.instance.exceptions.NoValidNeighborException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +18,7 @@ import java.util.Map;
  */
 public class Instance {
 
-    private static class InstanceEventHandler {
+    private class InstanceEventHandler {
 
         private Map<Integer, InstanceEvent> events;
 
@@ -26,8 +32,21 @@ public class Instance {
             if (event == null) throw new IllegalArgumentException("Event can't be null");
 
             if (this.events.containsKey(event.getEventTypeId())) {
-                
+
                 throw new InstanceEventAlreadyPresentException();
+            }
+
+            // TODO can this be done better?
+            if (event instanceof LeaveEvent
+                    && preInstance == null) {
+
+                throw new NoValidNeighborException();
+            }
+
+            if (event instanceof GoEvent
+                    && nextInstance == null) {
+
+                throw new NoValidNeighborException();
             }
 
             this.events.put(event.getEventTypeId(), event);

@@ -1,12 +1,11 @@
 package termite.instance.event;
 
-import termite.instance.EventIdNotPresentException;
-
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.20
- * @deprecated                          Is replaced by {@link EventIdNotPresentException}
+ * @deprecated                          Is replaced by
+ *                                      {@link termite.instance.exceptions.EventIdNotPresentException}
  */
 @Deprecated(since = "0.30")
 class NullEvent extends InstanceEvent {

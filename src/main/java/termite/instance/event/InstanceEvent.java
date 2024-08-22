@@ -1,6 +1,20 @@
 package termite.instance.event;
 
 /**
+ * This is an abstract class that define different events that can be happened in
+ * a {@link termite.instance.Instance}. To add an event to an instance use on of
+ * the subtypes of this type and add it to the instance with
+ * {@link termite.instance.Instance#addEvent(InstanceEvent)}.
+ * <p>
+ *     The {@link termite.instance.event.InstanceEventType} will be automatically
+ *     be set by on of the subtype.
+ * </p>
+ * <p>
+ *     When you want to add the same event type more than one time an
+ *     {@link termite.instance.exceptions.InstanceEventAlreadyPresentException}
+ *     will be thrown.
+ * </p>
+ *
  * @author                              o.le
  * @version                             1.0
  * @since                               0.17
@@ -14,10 +28,18 @@ public abstract class InstanceEvent {
         this.eventType = eventType;
     }
 
-    public int getEventTypeId() {
+    /**
+     * Get the id of the saved {@link termite.instance.event.InstanceEventType}.
+     *
+     * @return                          The id of the saved InstanceEventType.
+     */
+    public final int getEventTypeId() {
         
         return this.eventType.ID;
     }
 
+    /**
+     * Start the event.
+     */
     public abstract void startEvent();
 }

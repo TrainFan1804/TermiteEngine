@@ -1,7 +1,7 @@
 package termite.core.subsystems;
 
 import termite.core.ApplicationResources;
-import termite.instance.EventIdNotPresentException;
+import termite.instance.exceptions.EventIdNotPresentException;
 import termite.instance.Instance;
 import termite.instance.event.InstanceEvent;
 import termite.instance.event.InstanceEventType;
