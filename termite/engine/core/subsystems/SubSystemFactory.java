@@ -24,7 +24,7 @@ public final class SubSystemFactory {
         this.MAPPER = new CommandInstanceEventMapper();
     }
 
-    public EngineCommandSystem getSystem(Command command) {
+    public EngineSubsystem getSystem(Command command) {
         
         return switch(command) {
             

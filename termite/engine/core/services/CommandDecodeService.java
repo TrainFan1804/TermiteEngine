@@ -4,6 +4,8 @@ import engine.core.Command;
 import engine.core.exceptions.UnknownCommandException;
 
 /**
+ * This service will decode a String to a {@link Command}.
+ * 
  * @author                              o.le
  * @version                             1.0
  * @since                               0.28

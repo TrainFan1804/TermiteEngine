@@ -11,7 +11,7 @@ import engine.core.ApplicationResources;
  * @version                             1.0
  * @since                               0.22
  */
-class EventSystem implements EngineCommandSystem {
+class EventSystem implements EngineSubsystem {
 
     private InstanceEventType event;
 

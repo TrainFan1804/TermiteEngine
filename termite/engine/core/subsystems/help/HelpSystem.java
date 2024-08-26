@@ -1,14 +1,14 @@
 package engine.core.subsystems.help;
 
 import engine.core.Command;
-import engine.core.subsystems.EngineCommandSystem;
+import engine.core.subsystems.EngineSubsystem;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               0.22
  */
-class HelpSystem implements EngineCommandSystem {
+class HelpSystem implements EngineSubsystem {
 
     private static final String msg;
     

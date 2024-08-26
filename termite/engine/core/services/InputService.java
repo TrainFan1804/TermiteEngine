@@ -1,4 +1,4 @@
-package engine.core;
+package engine.core.services;
 
 import java.util.Scanner;
 

@@ -1,11 +1,14 @@
 package engine.core;
 
+import engine.core.services.InputService;
+import engine.core.services.OutputService;
 import engine.Game;
 import engine.core.exceptions.UnknownCommandException;
 import engine.core.services.CommandDecodeService;
-import engine.core.services.CommandDelegationService;
-import engine.core.subsystems.EngineCommandSystem;
+import engine.core.services.CommandDeterminationService;
+import engine.core.services.SystemDelegationService;
 import engine.instance.Message;
+import engine.core.subsystems.EngineSubsystem;
 
 /**
  * @author                              o.le
@@ -15,7 +18,8 @@ import engine.instance.Message;
 public class Application {
 
     private CommandDecodeService decodeService;
-    private CommandDelegationService delegationService;
+    private CommandDeterminationService determineService;
+    private SystemDelegationService delegationService;
 
     private InputService in;
     private OutputService out;
@@ -23,7 +27,8 @@ public class Application {
     public Application(Game game) {
 
         this.decodeService = new CommandDecodeService();
-        this.delegationService = new CommandDelegationService();
+        this.determineService = new CommandDeterminationService();
+	this.delegationService = new SystemDelegationService();
 
         this.in = new InputService();
         this.out = new OutputService();
@@ -68,9 +73,10 @@ public class Application {
                 }
             } while (command == null);     
             
-            EngineCommandSystem system = this.delegationService
-                                                .determineDelegation(command);
-            system.execute();
+            EngineSubsystem system = this.determineService
+                                                .determineEngineSubsystem(command);
+
+	    this.delegationService.delegate(system);
         }
     }
 }

@@ -5,7 +5,7 @@ package engine.core.subsystems;
  * @version                             1.0
  * @since                               0.22
  */
-public interface EngineCommandSystem {
+public interface EngineSubsystem {
 
     void execute();
 }
