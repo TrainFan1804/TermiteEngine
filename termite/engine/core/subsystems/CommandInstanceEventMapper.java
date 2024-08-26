@@ -24,7 +24,7 @@ final class CommandInstanceEventMapper {
             case USE -> InstanceEventType.USE_EVENT;
             case GO -> InstanceEventType.GO_EVENT;
             case LEAVE -> InstanceEventType.LEAVE_EVENT;
-            default -> throw new IllegalArgumentException();  // shouldn't even happen
+            default -> throw new AssertionError("This shouldn't be happen!");
         };
     }
 }

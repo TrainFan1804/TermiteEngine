@@ -44,7 +44,7 @@ public class Application {
 
         while (true) {
 
-            command = null;
+            command = null; // make sure the command is cleared each iteration
 
             // I don't like this
             if (!ApplicationResources.wasInstanceSwitch) {
@@ -61,25 +61,16 @@ public class Application {
 
                 try {
     
-                    command = this.startDecodeService(input);
+                    command = this.decodeService.commandDecode(input);
                 } catch (UnknownCommandException e) {
 
                     this.out.printError(e);
                 }
             } while (command == null);     
             
-            EngineCommandSystem system = this.startDelegationService(command);
+            EngineCommandSystem system = this.delegationService
+                                                .determineDelegation(command);
             system.execute();
         }
-    }
-    
-    private Command startDecodeService(String input) throws UnknownCommandException {
-    
-        return this.decodeService.commandDecode(input);
-    }
-    
-    private EngineCommandSystem startDelegationService(Command command) {
-        
-        return this.delegationService.determineDelegation(command);
     }
 }

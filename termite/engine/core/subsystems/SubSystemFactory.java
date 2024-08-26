@@ -7,7 +7,7 @@ import engine.core.Command;
  * @version                             1.0
  * @since                               0.31
  */
-public class SubSystemFactory {
+public final class SubSystemFactory {
 
     private static final SubSystemFactory FACTORY = new SubSystemFactory();
 
@@ -31,7 +31,7 @@ public class SubSystemFactory {
             // case INV -> new NullSystem();
             // case MAP -> new NullSystem();
             default -> new EventSystem(this.MAPPER
-            .mapCommandToInstanceEventType(command));
+                                        .mapCommandToInstanceEventType(command));
         };
     }
 }

@@ -18,7 +18,7 @@ import engine.instance.Message;
  */
 public class OutputService {
 
-    private String format;
+    private final String format;
 
     public OutputService() { this.format = ""; }
 

@@ -7,6 +7,10 @@
     <groupId>de.o.le</groupId>
     <artifactId>termiteengine</artifactId>
     <version>0.36</version>
+    
+    <build>
+        <sourceDirectory>termite/</sourceDirectory>
+    </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
