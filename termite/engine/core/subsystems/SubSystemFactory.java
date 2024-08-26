@@ -1,6 +1,10 @@
 package engine.core.subsystems;
 
 import engine.core.Command;
+import engine.core.subsystems.exit.EXSFacade;
+import engine.core.subsystems.help.HSFacade;
+import engine.core.subsystems.load.LSFacade;
+import engine.core.subsystems.save.SSFacade;
 
 /**
  * @author                              o.le
@@ -24,10 +28,10 @@ public final class SubSystemFactory {
         
         return switch(command) {
             
-            case SAVE -> new SaveSystem();
-            case LOAD -> new LoadSystem();
-            case EXIT -> new ExitSystem();
-            case HELP -> new HelpSystem();
+            case SAVE -> SSFacade.getSystem(); 
+            case LOAD -> LSFacade.getSystem();
+            case EXIT -> EXSFacade.getSystem();
+            case HELP -> HSFacade.getSystem();
             // case INV -> new NullSystem();
             // case MAP -> new NullSystem();
             default -> new EventSystem(this.MAPPER
