@@ -1,4 +1,4 @@
-package engine.core.subsystems.save;
+package engine.core.subsystems.utils;
 
 import java.io.File;
 
@@ -7,14 +7,14 @@ import java.io.File;
  * @version 							1.0
  * @since								0.40
  */
-class FileConnection {
+public class FileConnection {
 	
 	private File file; 
 
-	FileConnection(String path) {
+	public FileConnection(String path) {
 
 		this.file = new File(path);
 	}
 
-	File getConnection() { return this.file; }
+	public File getConnection() { return this.file; }
 }
