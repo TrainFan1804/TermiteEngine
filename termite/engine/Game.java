@@ -58,6 +58,8 @@ public class Game {
 
     public Instance getCurrentInstance() { return this.currentInstance; }
 
+	public int getCurrentInstanceId() { return this.currentInstance.ID_INSTANCE; }
+
     public void setCurrentInstance(int id) { this.currentInstance = this.manager.getInstanceById(id); }
 
     public void addInstance(Instance instance) { this.manager.addInstance(instance); }

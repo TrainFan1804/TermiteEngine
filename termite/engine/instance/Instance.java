@@ -67,6 +67,8 @@ public class Instance {
         this.instanceMessage = new Message("You enter: " + this);
     }
 
+	public int getID() { return this.ID_INSTANCE; }
+
     public Instance getNextInstance() { return this.nextInstance; }
 
     public void setNextInstance(Instance nexInstance) { this.nextInstance = nexInstance; }
@@ -75,6 +77,8 @@ public class Instance {
 
     public void setPreInstance(Instance preInstance) { this.preInstance = preInstance; }
 
+   public void setMessage(Message msg) { this.instanceMessage = msg; } 
+    
     public void addEvent(InstanceEvent event) { this.eventHandler.addEvent(event); }
     
     public InstanceEvent getEventById(int id) throws EventIdNotPresentException {  
@@ -83,6 +87,4 @@ public class Instance {
     }
     
     public Message display() { return this.instanceMessage; }
-    
-    public void setMessage(String msg) { this.instanceMessage = new Message(msg); }
 }

@@ -2,12 +2,7 @@ package engine.core.subsystems.save;
 
 import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
-import engine.instance.Instance;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author                              o.le
@@ -16,27 +11,26 @@ import java.util.logging.Logger;
  */
 class SaveSystem implements EngineSubsystem {
 
+	private FileConnection connection;
+
     @Override
     public void execute() {
 
-		Instance i = ApplicationResources.GAME.getCurrentInstance();
+		this.connection = this.createConnection();
 
-		File file = new File("savefile.txt");
-		FileWriter writer = null;
-		try {
+		try (SaveWriter writer = this.createWriter()) {
 
-			writer = new FileWriter(file);
-			writer.write("Test");
+			int id = ApplicationResources.GAME.getCurrentInstanceId();
+			writer.writeIdToFile(id);
 		} catch (IOException e) {
 
-			e.printStackTrace();
-		}
-		try {
-			writer.close();
-		} catch (IOException ex) {
-			Logger.getLogger(SaveSystem.class.getName()).log(Level.SEVERE, null, ex);
+			System.out.println(e.getLocalizedMessage());
 		}
 
-        System.out.println("Save game..");
+        System.out.println("Game saved succefully");
     }
+
+	private FileConnection createConnection() { return  new FileConnection("savefile.txt"); }
+
+	private SaveWriter createWriter() throws IOException { return new SaveWriter(this.connection); }
 }

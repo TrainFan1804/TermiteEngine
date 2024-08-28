@@ -10,25 +10,22 @@ import engine.core.subsystems.EngineSubsystem;
  */
 class HelpSystem implements EngineSubsystem {
 
-    private static final String msg;
+    private static final String MSG;
     
     static {
         
         StringBuilder sb = new StringBuilder();
     
         sb.append("Available commands:\n");
-	Command[] allCommand = Command.values();
-	for (Command c : allCommand) {
+		Command[] allCommand = Command.values();
+		for (Command c : allCommand) {
 
-	    sb.append(c.toString())
-		.append("\n");
-	}
-        msg = sb.toString();
+	   		sb.append(c.toString())
+				.append("\n");
+		}
+        MSG = sb.toString();
     }
     
     @Override
-    public void execute() {
-
-        System.out.println(msg);
-    }
+    public void execute() { System.out.println(MSG); }
 }
