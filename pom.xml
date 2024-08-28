@@ -6,7 +6,11 @@
 
     <groupId>de.o.le</groupId>
     <artifactId>termiteengine</artifactId>
-    <version>0.11</version>
+    <version>0.41</version>
+    
+    <build>
+        <sourceDirectory>termite/</sourceDirectory>
+    </build>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
