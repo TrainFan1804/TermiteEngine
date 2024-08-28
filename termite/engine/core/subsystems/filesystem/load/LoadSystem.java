@@ -1,8 +1,8 @@
-package engine.core.subsystems.load;
+package engine.core.subsystems.filesystem.load;
 
 import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
-import engine.core.subsystems.utils.FileConnection;
+import engine.core.subsystems.filesystem.utils.FileConnection;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

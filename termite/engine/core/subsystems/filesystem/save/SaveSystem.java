@@ -1,9 +1,12 @@
-package engine.core.subsystems.save;
+package engine.core.subsystems.filesystem.save;
 
-import engine.core.subsystems.utils.FileConnection;
+import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
+import engine.core.subsystems.filesystem.utils.SaveGame;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author                              o.le
@@ -21,8 +24,8 @@ class SaveSystem implements EngineSubsystem {
 
 		try (SaveWriter writer = this.createWriter()) {
 
-			int id = ApplicationResources.GAME.getCurrentInstanceId();
-			writer.writeIdToFile(id);
+			SaveGame save = SaveGame.generateSaveGame();
+			writer.writeIdToFile(save);
 		} catch (IOException e) {
 
 			System.out.println(e.getLocalizedMessage());
@@ -31,7 +34,7 @@ class SaveSystem implements EngineSubsystem {
         System.out.println("Game saved succefully");
     }
 
-	private FileConnection createConnection() { return  new FileConnection("savefile.txt"); }
-
+	private FileConnection createConnection() { return  new FileConnection("custom string"); }
+	
 	private SaveWriter createWriter() throws IOException { return new SaveWriter(this.connection); }
 }
