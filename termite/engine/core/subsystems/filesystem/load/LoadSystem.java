@@ -1,8 +1,11 @@
 package engine.core.subsystems.filesystem.load;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
 import engine.core.subsystems.filesystem.utils.FileConnection;
+import engine.core.subsystems.filesystem.utils.SaveGame;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -13,18 +16,18 @@ import java.io.IOException;
  */
 class LoadSystem implements EngineSubsystem {
 
-	private FileConnection connection;
-
     @Override
     public void execute() {
 
-		this.connection = this.createConnection();
+		FileConnection connection = new FileConnection("test");
+		ObjectMapper mapper = new JsonMapper();
 
-		try (LoadReader reader = new LoadReader(this.connection)) {
+		try {
 			
-			int id = reader.readFromFile();
-			System.out.println(id);
-			ApplicationResources.GAME.setCurrentInstance(id);
+			System.out.println("hier bin ich");
+			SaveGame save = mapper.readValue(connection.getConnection(), SaveGame.class);
+			System.out.println(save.getInstanceId());
+			// ApplicationResources.GAME.setCurrentInstance(id);
 		} catch (FileNotFoundException ex) {
 
 			System.out.println("File doesn't exist!");
@@ -34,11 +37,10 @@ class LoadSystem implements EngineSubsystem {
 		}
 
         System.out.println("Game load succefully"); // also print new current instance
+
 		/*
 			This is the f* reason why I don't like this static class..
 		*/
-		ApplicationResources.wasInstanceSwitch = false;
+		 // ApplicationResources.wasInstanceSwitch = false;
     }
-
-	private FileConnection createConnection() { return new FileConnection("savefile.txt"); }
 }

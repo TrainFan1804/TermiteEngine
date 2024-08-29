@@ -1,5 +1,6 @@
 package engine.core.subsystems.filesystem.utils;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import engine.core.ApplicationResources;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,16 +19,16 @@ public class SaveGame {
 
 	public static SaveGame generateSaveGame() { return new SaveGame(); }
 
-	private final int instanceID;
-	private final Date dateStamp;
+	private final int instanceId;
+	private final Date date;
 	
 	private SaveGame() {
 
-		this.instanceID = ApplicationResources.GAME.getCurrentInstanceId();
-		this.dateStamp = new Date();
+		this.instanceId = ApplicationResources.GAME.getCurrentInstanceId();
+		this.date = new Date();
 	}
 	
-	public int getInstanceId() { return this.instanceID; }
+	public int getInstanceId() { return this.instanceId; }
 
-	public String getFormatDate() { return FORMAT.format(this.dateStamp); }
+	public String getFormatDate() { return FORMAT.format(this.date); }
 }

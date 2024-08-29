@@ -9,11 +9,14 @@ import java.io.File;
  */
 public class FileConnection {
 	
+	private static final String EXTENSION = ".json";
+
 	private File file; 
 
 	public FileConnection(String path) {
 
-		this.file = new File(path);
+		
+		this.file = new File(path + EXTENSION);
 	}
 
 	public File getConnection() { return this.file; }
