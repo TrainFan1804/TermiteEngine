@@ -16,15 +16,21 @@ import java.util.Scanner;
  */
 public class InputService {
 
-    private final Scanner in;
+    private final Scanner IN;
 
     public InputService() {
 
-        this.in = new Scanner(System.in);
+        this.IN = new Scanner(System.in);
     }
 
+	/**
+	 * This method is used to read from the terminal.
+	 * 
+	 * @return 							When the user press {@code ENTER} this
+	 * 									method will return an empty string.
+	 */
     public String read() {
 
-        return this.in.next();
+        return this.IN.nextLine(); 
     }
 }

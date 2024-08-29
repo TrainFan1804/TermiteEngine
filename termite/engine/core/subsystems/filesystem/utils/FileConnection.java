@@ -13,7 +13,7 @@ public class FileConnection {
 
 	private File file; 
 
-	public FileConnection(String path) {
+	public FileConnection(String path) { 
 
 		
 		this.file = new File(path + EXTENSION);

@@ -27,6 +27,11 @@ public class OutputService {
         this.format = format.strip() + " ";
     }
 
+	public void printString(String str) {
+
+		this.printWithFormat(str);
+	}
+
     public void printMessage(Message msg) {
 
         this.printWithFormat(msg.toString());

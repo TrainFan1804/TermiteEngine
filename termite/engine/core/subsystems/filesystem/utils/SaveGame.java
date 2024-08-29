@@ -1,8 +1,7 @@
 package engine.core.subsystems.filesystem.utils;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import engine.core.ApplicationResources;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -15,20 +14,19 @@ import java.util.Date;
  */
 public class SaveGame {
 
-	private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-mm-dd_hh-mm-ss");
-
 	public static SaveGame generateSaveGame() { return new SaveGame(); }
 
 	private final int instanceId;
-	private final Date date;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-mm-dd_HH:mm:ss")
+	private final Date dateStamp;
 	
 	private SaveGame() {
 
 		this.instanceId = ApplicationResources.GAME.getCurrentInstanceId();
-		this.date = new Date();
+		this.dateStamp = new Date();
 	}
 	
 	public int getInstanceId() { return this.instanceId; }
 
-	public String getFormatDate() { return FORMAT.format(this.date); }
+	public Date getDateStamp() { return this.dateStamp; }
 }

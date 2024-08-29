@@ -1,7 +1,5 @@
 package engine.core;
 
-import engine.core.services.InputService;
-import engine.core.services.OutputService;
 import engine.Game;
 import engine.core.exceptions.UnknownCommandException;
 import engine.core.services.CommandDecodeService;
@@ -21,17 +19,11 @@ public class Application {
     private CommandDeterminationService determineService;
     private SystemDelegationService delegationService;
 
-    private InputService in;
-    private OutputService out;
-
     public Application(Game game) {
 
         this.decodeService = new CommandDecodeService();
         this.determineService = new CommandDeterminationService();
-	this.delegationService = new SystemDelegationService();
-
-        this.in = new InputService();
-        this.out = new OutputService();
+		this.delegationService = new SystemDelegationService();
 
         /*
          * I don't like the idea of a static class that provide the resources
@@ -43,35 +35,21 @@ public class Application {
 
     public void start() {
 
-        String input;
         Command command;
         Message instanceMessage;
 
         while (true) {
-
-            command = null; // make sure the command is cleared each iteration
 
             // I don't like this
             if (!ApplicationResources.wasInstanceSwitch) {
 
                 instanceMessage = ApplicationResources.GAME.getCurrentInstance()
                                                             .display();
-                this.out.printMessage(instanceMessage);
+                ApplicationResources.OUT.printMessage(instanceMessage);
                 ApplicationResources.wasInstanceSwitch = true;
             }
 
-            do {
-                
-                input = this.in.read();
-
-                try {
-    
-                    command = this.decodeService.commandDecode(input);
-                } catch (UnknownCommandException e) {
-
-                    this.out.printError(e);
-                }
-            } while (command == null);     
+			command = this.inputCommandLoop();
             
             EngineSubsystem system = this.determineService
                                                 .determineEngineSubsystem(command);
@@ -79,4 +57,26 @@ public class Application {
 	    this.delegationService.delegate(system);
         }
     }
+
+	private Command inputCommandLoop() {
+
+		Command command = null;
+		String input;
+
+		do {
+
+			input = ApplicationResources.IN.read();
+			if (input.isEmpty()) continue;
+
+			try {
+
+				command = this.decodeService.commandDecode(input);
+			} catch(UnknownCommandException e) {
+
+				ApplicationResources.OUT.printError(e);
+			}
+		} while(command == null);
+
+		return command;
+	} 
 }

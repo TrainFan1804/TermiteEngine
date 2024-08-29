@@ -5,9 +5,12 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
 import engine.core.subsystems.filesystem.utils.FileConnection;
+import engine.core.subsystems.filesystem.utils.SaveFileAlreadyExistException;
 import engine.core.subsystems.filesystem.utils.SaveGame;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author                              o.le
@@ -19,18 +22,17 @@ class LoadSystem implements EngineSubsystem {
     @Override
     public void execute() {
 
-		FileConnection connection = new FileConnection("test");
+		// adding input for custom load
+		FileConnection connection = null;
+
+		connection = new FileConnection("test");
+
 		ObjectMapper mapper = new JsonMapper();
 
 		try {
 			
-			System.out.println("hier bin ich");
 			SaveGame save = mapper.readValue(connection.getConnection(), SaveGame.class);
-			System.out.println(save.getInstanceId());
-			// ApplicationResources.GAME.setCurrentInstance(id);
-		} catch (FileNotFoundException ex) {
-
-			System.out.println("File doesn't exist!");
+			ApplicationResources.GAME.setCurrentInstance(save.getInstanceId());
 		} catch (IOException ex) {
 
 			System.out.println(ex.getLocalizedMessage());
@@ -41,6 +43,6 @@ class LoadSystem implements EngineSubsystem {
 		/*
 			This is the f* reason why I don't like this static class..
 		*/
-		 // ApplicationResources.wasInstanceSwitch = false;
+		 ApplicationResources.wasInstanceSwitch = false;
     }
 }
