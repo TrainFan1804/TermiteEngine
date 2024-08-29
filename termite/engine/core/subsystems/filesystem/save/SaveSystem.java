@@ -3,34 +3,66 @@ package engine.core.subsystems.filesystem.save;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import engine.core.ApplicationResources;
-import engine.core.services.InputService;
 import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.subsystems.EngineSubsystem;
-import engine.core.subsystems.filesystem.utils.SaveFileAlreadyExistException;
+import engine.core.subsystems.filesystem.utils.NoOverrideException;
 import engine.core.subsystems.filesystem.utils.SaveGame;
-import java.io.FileNotFoundException;
+import engine.instance.Message;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
+ * TODO more classes?
+ * 
  * @author                              o.le
  * @version                             1.0
  * @since                               0.22
  */
 class SaveSystem implements EngineSubsystem {
 
+	private static final Message ASK_MSG;
+	private static final Message SUC_MSG;
+
+	static {
+
+		ASK_MSG = new Message("Name of the save game? Press enter to create with default name");
+		SUC_MSG = new Message("Game saced successfully");
+	}
+
     @Override
     public void execute() {
 
-		// adding input for name of the file 
-		ApplicationResources.OUT.printString("Name of the save game?");
-		String saveGameFileName = ApplicationResources.IN.read();
-		if (saveGameFileName.isEmpty()) saveGameFileName = "default";
 
-		FileConnection connection = new FileConnection(saveGameFileName);
+		String fileName = this.askForFileName();
+		FileConnection connection = new FileConnection(fileName);
 
 		// check here if file already exists and ask the user if he want to override it
+		try {
+
+			this.genSaveFile(connection);
+		} catch (NoOverrideException e) {
+
+			ApplicationResources.OUT.printError(e);
+			return; 
+		}
+
+		ApplicationResources.OUT.printMessage(SUC_MSG);
+    }
+
+	private String askForFileName() {
+
+		ApplicationResources.OUT.printMessage(ASK_MSG);
+		String fileName = ApplicationResources.IN.read();
+		if (fileName.isEmpty()) fileName = "default";
+		
+		return fileName; 
+	}
+
+	private void genSaveFile(FileConnection con) throws NoOverrideException {
+
+		if (con.getConnection().exists()) {
+
+			this.askForOverride();
+		}
 
 		ObjectMapper mapper = new JsonMapper();
 
@@ -38,12 +70,26 @@ class SaveSystem implements EngineSubsystem {
 
 			SaveGame save = SaveGame.generateSaveGame();
 			mapper.writerWithDefaultPrettyPrinter()
-					.writeValue(connection.getConnection(), save);
+					.writeValue(con.getConnection(), save);
 		} catch (IOException e) {
 
-			System.out.println(e.getLocalizedMessage());
+			ApplicationResources.OUT.printError(e);
 		}
+	}
 
-        System.out.println("Game saved succefully");
-    }
+	private void askForOverride() throws NoOverrideException {
+
+		System.out.println("Do you want to override this file? (Y/N)");
+
+		String input;
+		do {
+
+			input = ApplicationResources.IN.read().toUpperCase();
+
+			if (input.equals("Y")) return;
+
+			if (input.equals("N")) throw new NoOverrideException(); 
+
+		} while(true);
+	}
 }

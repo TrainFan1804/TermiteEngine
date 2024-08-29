@@ -6,7 +6,7 @@
 
     <groupId>de.o.le</groupId>
     <artifactId>termiteengine</artifactId>
-    <version>0.46</version>
+    <version>0.47</version>
     
     <build>
         <sourceDirectory>termite/</sourceDirectory>

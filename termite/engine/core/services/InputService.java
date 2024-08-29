@@ -31,6 +31,6 @@ public class InputService {
 	 */
     public String read() {
 
-        return this.IN.nextLine(); 
+        return this.IN.nextLine();
     }
 }
