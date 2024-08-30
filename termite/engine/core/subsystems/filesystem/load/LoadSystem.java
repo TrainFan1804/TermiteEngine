@@ -5,12 +5,8 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
 import engine.core.subsystems.filesystem.utils.FileConnection;
-import engine.core.subsystems.filesystem.utils.SaveFileAlreadyExistException;
 import engine.core.subsystems.filesystem.utils.SaveGame;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * @author                              o.le
@@ -22,10 +18,11 @@ class LoadSystem implements EngineSubsystem {
     @Override
     public void execute() {
 
+		// print all save games
+		this.printAllGames();
 		// adding input for custom load
-		FileConnection connection = null;
-
-		connection = new FileConnection("test");
+		String fileName =this.askForFileName();
+		FileConnection connection = new FileConnection("test");
 
 		ObjectMapper mapper = new JsonMapper();
 
@@ -45,4 +42,15 @@ class LoadSystem implements EngineSubsystem {
 		*/
 		 ApplicationResources.wasInstanceSwitch = false;
     }
+
+	public void printAllGames() {
+
+
+	}
+
+	private String askForFileName() {
+
+		ApplicationResources.OUT.printMessage();
+		return null;
+	}
 }

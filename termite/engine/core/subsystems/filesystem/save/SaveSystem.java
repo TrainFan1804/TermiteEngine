@@ -21,10 +21,11 @@ class SaveSystem implements EngineSubsystem {
 
 	private static final Message ASK_MSG;
 	private static final Message SUC_MSG;
+	private static final Message OVR_MSG;
 
 	static {
-
 		ASK_MSG = new Message("Name of the save game? Press enter to create with default name");
+		OVR_MSG = new Message("Do you want to override this file? (Y/N)");
 		SUC_MSG = new Message("Game saced successfully");
 	}
 
@@ -59,10 +60,7 @@ class SaveSystem implements EngineSubsystem {
 
 	private void genSaveFile(FileConnection con) throws NoOverrideException {
 
-		if (con.getConnection().exists()) {
-
-			this.askForOverride();
-		}
+		if (con.getConnection().exists()) this.askForOverride();
 
 		ObjectMapper mapper = new JsonMapper();
 
@@ -79,7 +77,7 @@ class SaveSystem implements EngineSubsystem {
 
 	private void askForOverride() throws NoOverrideException {
 
-		System.out.println("Do you want to override this file? (Y/N)");
+		ApplicationResources.OUT.printMessage(OVR_MSG);
 
 		String input;
 		do {
