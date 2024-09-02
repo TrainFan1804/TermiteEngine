@@ -18,9 +18,11 @@ import java.io.IOException;
 class LoadSystem implements EngineSubsystem {
 
 	private static final Message ASK_MSG;
+	private static final Message SUC_MSG;
 
 	static {
 		ASK_MSG = new Message("What file do you want to load?");
+		SUC_MSG = new Message("Game loaded successfully");
 	}
 
     @Override
@@ -36,12 +38,13 @@ class LoadSystem implements EngineSubsystem {
 			
 			SaveGame save = mapper.readValue(connection.getConnection(), SaveGame.class);
 			ApplicationResources.GAME.setCurrentInstance(save.getInstanceId());
-		} catch (IOException ex) {
+		} catch (IOException e) {
 
-			System.out.println(ex.getLocalizedMessage());
+			ApplicationResources.OUT.printError(e);
+			return;
 		}
 
-        System.out.println("Game load succefully"); // also print new current instance
+		ApplicationResources.OUT.printMessage(SUC_MSG);
 
 		/*
 			This is the f* reason why I don't like this static class..
@@ -65,7 +68,7 @@ class LoadSystem implements EngineSubsystem {
 
 		for (File file : files) {
 
-			System.out.println(file.getName());
+			ApplicationResources.OUT.printString(file.getName());
 		}
 	}
 }
