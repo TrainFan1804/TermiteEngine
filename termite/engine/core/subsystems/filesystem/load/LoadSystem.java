@@ -6,6 +6,8 @@ import engine.core.ApplicationResources;
 import engine.core.subsystems.EngineSubsystem;
 import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.subsystems.filesystem.utils.SaveGame;
+import engine.instance.Message;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -15,14 +17,18 @@ import java.io.IOException;
  */
 class LoadSystem implements EngineSubsystem {
 
+	private static final Message ASK_MSG;
+
+	static {
+		ASK_MSG = new Message("What file do you want to load?");
+	}
+
     @Override
     public void execute() {
 
-		// print all save games
-		this.printAllGames();
 		// adding input for custom load
 		String fileName =this.askForFileName();
-		FileConnection connection = new FileConnection("test");
+		FileConnection connection = new FileConnection(fileName);
 
 		ObjectMapper mapper = new JsonMapper();
 
@@ -43,14 +49,23 @@ class LoadSystem implements EngineSubsystem {
 		 ApplicationResources.wasInstanceSwitch = false;
     }
 
-	public void printAllGames() {
-
-
-	}
-
 	private String askForFileName() {
 
-		ApplicationResources.OUT.printMessage();
-		return null;
+		this.printAllGames();
+		ApplicationResources.OUT.printMessage(ASK_MSG);
+		String input = ApplicationResources.IN.read();
+		return input;
+	}
+
+	private void printAllGames() {
+
+		File fold = new File("./");
+		File[] files = fold.listFiles((dir, name) 
+									-> name.toLowerCase().endsWith(".json"));
+
+		for (File file : files) {
+
+			System.out.println(file.getName());
+		}
 	}
 }
