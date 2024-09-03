@@ -1,4 +1,4 @@
-package engine.core.services;
+package engine.core.services.output;
 
 import engine.instance.Message;
 
@@ -18,13 +18,23 @@ import engine.instance.Message;
  */
 public class OutputService {
 
+
+	public static final JsonPathHolder RES_PATH = new JsonPathHolder("default.json");
+
     private final String format;
 
-    public OutputService() { this.format = ""; }
+	private final MessageDisk disk;
+
+    public OutputService() { 
+
+		this.format = ""; 
+		this.disk = MessageDisk.getMessageDisk();
+	} 
 
     public OutputService(String format) {
 
         this.format = format.strip() + " ";
+		this.disk = MessageDisk.getMessageDisk();
     }
 
 	public void printString(String str) {
@@ -36,6 +46,11 @@ public class OutputService {
 
         this.printWithFormat(msg.toString());
     }
+
+	public void printMessage(MessageType type) {
+
+		this.printMessage(MessageDisk.getMessageDisk().getMessage(type));
+	}
 
     public void printError(Exception e) {
 

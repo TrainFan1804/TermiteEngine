@@ -10,7 +10,7 @@ import engine.core.subsystems.EngineSubsystem;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.17
  */
 public class Application {
@@ -30,7 +30,7 @@ public class Application {
          * The only resources are the instances and also just one class use these
          * resources anyway (The EventSystem class)
          */
-        ApplicationResources.initResources(game);
+		ApplicationResources.setGame(game);
     }
 
     public void start() {
