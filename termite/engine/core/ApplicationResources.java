@@ -24,7 +24,7 @@ public class ApplicationResources {
 
 	public static final void setCustomMessages(String path) {
 	
-		OUT.RES_PATH.setPath(path);
+		OutputService.RES_PATH.setPath(path);
 		// open file, read file, put content into MessageDisk.java
 	}
 
