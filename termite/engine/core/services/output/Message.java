@@ -1,4 +1,4 @@
-package engine.instance;
+package engine.core.services.output;
 
 /**
  * A message is a data holder class that holds the message that should be displayed

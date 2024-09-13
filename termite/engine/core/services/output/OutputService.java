@@ -1,7 +1,5 @@
 package engine.core.services.output;
 
-import engine.instance.Message;
-
 /**
  * This is the output service. This class is used when something is printed to
  * the terminal.
@@ -18,23 +16,16 @@ import engine.instance.Message;
  */
 public class OutputService {
 
-
-	public static final JsonPathHolder RES_PATH = new JsonPathHolder("default.json");
-
     private final String format;
-
-	private final MessageDisk disk;
 
     public OutputService() { 
 
 		this.format = ""; 
-		this.disk = MessageDisk.getMessageDisk();
 	} 
 
     public OutputService(String format) {
 
         this.format = format.strip() + " ";
-		this.disk = MessageDisk.getMessageDisk();
     }
 
 	public void printString(String str) {
@@ -49,7 +40,7 @@ public class OutputService {
 
 	public void printMessage(MessageType type) {
 
-		this.printMessage(MessageDisk.getMessageDisk().getMessage(type));
+		this.printMessage(MessageContainer.DISK.getMessage(type));
 	}
 
     public void printError(Exception e) {

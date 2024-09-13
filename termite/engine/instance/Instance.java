@@ -1,5 +1,6 @@
 package engine.instance;
 
+import engine.core.services.output.Message;
 import engine.instance.event.GoEvent;
 import engine.instance.event.InstanceEvent;
 import engine.instance.event.LeaveEvent;

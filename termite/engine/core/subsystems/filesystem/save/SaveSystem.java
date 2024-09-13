@@ -7,27 +7,18 @@ import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.subsystems.EngineSubsystem;
 import engine.core.subsystems.filesystem.utils.NoOverrideException;
 import engine.core.subsystems.filesystem.utils.SaveGame;
-import engine.instance.Message;
+import engine.core.services.output.Message;
+import engine.core.services.output.MessageType;
 import java.io.IOException;
 
 /**
  * TODO more classes?
  * 
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.22
  */
 class SaveSystem implements EngineSubsystem {
-
-	private static final Message ASK_MSG;
-	private static final Message SUC_MSG;
-	private static final Message OVR_MSG;
-
-	static {
-		ASK_MSG = new Message("Name of the save game? Press enter to create with default name");
-		OVR_MSG = new Message("Do you want to override this file? (Y/N)");
-		SUC_MSG = new Message("Game saced successfully");
-	}
 
     @Override
     public void execute() {
@@ -46,12 +37,12 @@ class SaveSystem implements EngineSubsystem {
 			return; 
 		}
 
-		ApplicationResources.OUT.printMessage(SUC_MSG);
+		ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_SUC);
     }
 
 	private String askForFileName() {
 
-		ApplicationResources.OUT.printMessage(ASK_MSG);
+		ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_ASK_FILE);
 		String fileName = ApplicationResources.IN.read();
 		if (fileName.isEmpty()) fileName = "default";
 		
@@ -77,7 +68,7 @@ class SaveSystem implements EngineSubsystem {
 
 	private void askForOverride() throws NoOverrideException {
 
-		ApplicationResources.OUT.printMessage(OVR_MSG);
+		ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_OVR_FILE);
 
 		String input;
 		do {

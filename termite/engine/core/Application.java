@@ -5,7 +5,7 @@ import engine.core.exceptions.UnknownCommandException;
 import engine.core.services.CommandDecodeService;
 import engine.core.services.CommandDeterminationService;
 import engine.core.services.SystemDelegationService;
-import engine.instance.Message;
+import engine.core.services.output.Message;
 import engine.core.subsystems.EngineSubsystem;
 
 /**
@@ -31,6 +31,7 @@ public class Application {
          * resources anyway (The EventSystem class)
          */
 		ApplicationResources.setGame(game);
+		ApplicationResources.initOutputContent();
     }
 
     public void start() {
