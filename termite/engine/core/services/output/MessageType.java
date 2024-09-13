@@ -9,6 +9,7 @@ public enum MessageType {
 	
 	MSG_SAVE_ASK_FILE,
 	MSG_SAVE_OVR_FILE,
+	MSG_SAVE_NO_OVR_FILE,
 	MSG_SAVE_SUC,
 
 	MSG_LOAD_ASK_FILE,

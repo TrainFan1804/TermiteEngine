@@ -7,7 +7,7 @@ import engine.core.services.output.OutputService;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.21
  */
 public class ApplicationResources {
@@ -20,19 +20,19 @@ public class ApplicationResources {
 
 	private static String pathToOutputContent = "resources/engine/default.json";
 
-	public static final void setGame(Game game) {
+	public static final void changeOutputContentPath(String path) {
+
+		pathToOutputContent = path;
+	}
+
+	static final void setGame(Game game) {
 
 		GAME = game;
 	}
 
-	public static final void initOutputContent() {
+	static final void initOutputContent() {
 
 		OuputContentHandler.init(pathToOutputContent);
-	}
-
-	public static final void changeOutputContentPath(String path) {
-
-		pathToOutputContent = path;
 	}
 
     private ApplicationResources() { }

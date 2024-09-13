@@ -8,7 +8,7 @@ package engine.core.services.output;
  * a pre-defined message.
  *
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.17
  */
 public class Message {
