@@ -10,7 +10,7 @@ import java.io.IOException;
 
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.2.0
  */
 class LoadFileLoader {
@@ -20,11 +20,6 @@ class LoadFileLoader {
 	LoadFileLoader() {
 		
 		this.mapper = new JsonMapper();
-	}
-
-	SaveGame readDataFromFile(FileConnection con) throws IOException {
-		
-		return mapper.readValue(con.getConnection(), SaveGame.class);
 	}
 
 	void load(FileConnection con) {
