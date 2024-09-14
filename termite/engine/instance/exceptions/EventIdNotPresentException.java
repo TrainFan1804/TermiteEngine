@@ -15,10 +15,4 @@ import engine.instance.Instance;
  * @version                             1.0
  * @since                               0.30
  */
-public class EventIdNotPresentException extends Exception {
-
-    /**
-     * Throw a new EventIdNotPresentException.
-     */
-    public EventIdNotPresentException() { super("Event is not supported in this instance"); }
-}
+public class EventIdNotPresentException extends Exception { }

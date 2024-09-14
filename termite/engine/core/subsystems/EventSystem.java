@@ -5,6 +5,7 @@ import engine.instance.event.InstanceEvent;
 import engine.instance.event.InstanceEventType;
 import engine.instance.exceptions.EventIdNotPresentException;
 import engine.core.ApplicationResources;
+import engine.core.services.output.MessageType;
 
 /**
  * @author                              o.le
@@ -37,7 +38,7 @@ class EventSystem implements EngineSubsystem {
             event.startEvent();
         } catch (EventIdNotPresentException e) {
 
-			ApplicationResources.OUT.printError(e);
+			ApplicationResources.OUT.printMessage(MessageType.MSG_EVENT_ID_NOT_PRESENT);
         }
     }
 }
