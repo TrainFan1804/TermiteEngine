@@ -14,15 +14,10 @@ import engine.core.subsystems.EngineSubsystem;
  */
 public class CommandDeterminationService {
 
-    private final SubSystemFactory systemFactory;
-
-    public CommandDeterminationService() {
-
-        this.systemFactory = SubSystemFactory.getFactory(); 
-    }
+    private final SubSystemFactory FACTORY = SubSystemFactory.getFactory();
 
     public EngineSubsystem determineEngineSubsystem(Command command) {
 
-        return this.systemFactory.getSystem(command);
+        return this.FACTORY.getSystem(command);
     }
 }

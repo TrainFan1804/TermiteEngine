@@ -10,5 +10,6 @@
 	"MSG_EXIT" : "Close game",
 	"MSG_HELP" : "Available Commands:\n1. Save\n2. Load\n3. Exit\n4. Help\n5. Talk\n6. Search\n7. Use\n8. Go\n9. Leave",
 
-	"MSG_WRONG_INPUT" : "Wrong input! Try again"
+	"MSG_WRONG_INPUT" : "Wrong input! Try again",
+	"MSG_UNKNOWN_COMMAND" : "Unknown command"
 }

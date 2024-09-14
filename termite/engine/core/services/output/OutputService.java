@@ -16,16 +16,16 @@ package engine.core.services.output;
  */
 public class OutputService {
 
-    private final String format;
+    private final String FORMAT;
 
     public OutputService() { 
 
-		this.format = ""; 
+		this.FORMAT = ""; 
 	} 
 
     public OutputService(String format) {
 
-        this.format = format.strip() + " ";
+        this.FORMAT = format.strip() + " ";
     }
 
 	public void printString(String str) {
@@ -50,6 +50,6 @@ public class OutputService {
 
     private void printWithFormat(String msg) {
 
-        System.out.println(this.format + msg);
+        System.out.println(this.FORMAT + msg);
     }
 }

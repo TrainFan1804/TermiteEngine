@@ -13,7 +13,7 @@ import engine.instance.Instance;
  */
 public final class SearchEvent extends InstanceEvent {
 
-    private ISearch search;
+    private final ISearch search;
 
     /**
      * Create a new search event with the behavior of the given

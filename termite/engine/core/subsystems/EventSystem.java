@@ -13,11 +13,11 @@ import engine.core.ApplicationResources;
  */
 class EventSystem implements EngineSubsystem {
 
-    private InstanceEventType event;
+    private final InstanceEventType eventType;
 
     EventSystem(InstanceEventType event) {
 
-        this.event = event;
+        this.eventType = event;
     }
 
     /*
@@ -33,11 +33,11 @@ class EventSystem implements EngineSubsystem {
         InstanceEvent event;
 
         try {
-            event = currentInstance.getEventById(this.event.ID);
+            event = currentInstance.getEventById(this.eventType.ID);
             event.startEvent();
         } catch (EventIdNotPresentException e) {
 
-            System.out.println(e.getLocalizedMessage());
+			ApplicationResources.OUT.printError(e);
         }
     }
 }

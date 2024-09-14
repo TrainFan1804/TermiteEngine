@@ -13,7 +13,7 @@ import engine.instance.Instance;
  */
 public final class TalkEvent extends InstanceEvent {
 
-    private ITalk talk;
+    private final ITalk talk;
 
     /**
      * Create a new talk event with the behavior of the given

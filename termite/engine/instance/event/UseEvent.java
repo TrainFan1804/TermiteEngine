@@ -13,7 +13,7 @@ import engine.instance.Instance;
  */
 public final class UseEvent extends InstanceEvent {
 
-    private IUse use;
+    private final IUse use;
 
     /**
      * Create a new use event with the behavior of the given

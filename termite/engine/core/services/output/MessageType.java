@@ -19,4 +19,5 @@ public enum MessageType {
 	MSG_HELP,
 
 	MSG_WRONG_INPUT,
+	MSG_UNKNOWN_COMMAND,
 }

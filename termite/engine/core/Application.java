@@ -1,7 +1,6 @@
 package engine.core;
 
 import engine.Game;
-import engine.core.exceptions.UnknownCommandException;
 import engine.core.services.CommandDecodeService;
 import engine.core.services.CommandDeterminationService;
 import engine.core.services.SystemDelegationService;
@@ -15,9 +14,9 @@ import engine.core.subsystems.EngineSubsystem;
  */
 public class Application {
 
-    private CommandDecodeService decodeService;
-    private CommandDeterminationService determineService;
-    private SystemDelegationService delegationService;
+    private final CommandDecodeService decodeService;
+    private final CommandDeterminationService determineService;
+    private final SystemDelegationService delegationService;
 
     public Application(Game game) {
 
@@ -69,13 +68,8 @@ public class Application {
 			input = ApplicationResources.IN.read();
 			if (input.isEmpty()) continue;
 
-			try {
+			command = this.decodeService.commandDecode(input);
 
-				command = this.decodeService.commandDecode(input);
-			} catch(UnknownCommandException e) {
-
-				ApplicationResources.OUT.printError(e);
-			}
 		} while(command == null);
 
 		return command;

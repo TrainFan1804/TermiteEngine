@@ -9,7 +9,7 @@ import engine.instance.exceptions.EventIdNotPresentException;
  * @deprecated                          Is replaced by
  *                                      {@link EventIdNotPresentException}
  */
-@Deprecated(since = "0.30")
+@Deprecated(since = "0.30", forRemoval = true)
 class NullEvent extends InstanceEvent {
 
     public NullEvent() {
