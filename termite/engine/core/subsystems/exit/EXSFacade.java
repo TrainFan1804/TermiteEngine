@@ -2,10 +2,10 @@ package engine.core.subsystems.exit;
 
 /**
  * @author 				o.le
- * @version 				1.0
+ * @version 				2.0
  * @since 				0.37
  */
-public class EXSFacade {
+public final class EXSFacade {
 	
 	private static final ExitSystem system = new ExitSystem();
 

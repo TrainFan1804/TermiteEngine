@@ -2,10 +2,10 @@ package engine.core.subsystems.filesystem.load;
 
 /**
  * @author 				o.le
- * @version 				1.0
+ * @version 				2.0
  * @since				0.37
  */
-public class LSFacade {
+public final class LSFacade {
 	
 	private static final LoadSystem system = new LoadSystem();
 	

@@ -9,12 +9,12 @@ import java.util.Map;
  * can be used by the engine.
  * 
  * @author o.le
- * @version 1.1
+ * @version 1.2
  * @since 1.1.0
  */
 class MessageContentConverter {
 
-	public Map<MessageType, Message> convert(Map<String, String> map) {
+	Map<MessageType, Message> convert(Map<String, String> map) {
 
 		Map<MessageType, Message> formatMap = new HashMap<>();
 		for (Map.Entry<String, String> entry : map.entrySet()) {

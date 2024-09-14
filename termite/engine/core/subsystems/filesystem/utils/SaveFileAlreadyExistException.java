@@ -5,6 +5,7 @@ package engine.core.subsystems.filesystem.utils;
  * @version								1.0
  * @since								0.45
  */
+@Deprecated(since = "1.1.1", forRemoval = true)
 public class SaveFileAlreadyExistException extends Exception {
 
 	public SaveFileAlreadyExistException() {

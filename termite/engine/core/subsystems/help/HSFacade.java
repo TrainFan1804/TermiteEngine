@@ -2,10 +2,10 @@ package engine.core.subsystems.help;
 
 /**
  * @author				o.le
- * @version 				1.0
+ * @version 				2.0
  * @since 				0.37
  */
-public class HSFacade {
+public final class HSFacade {
 	
 	private static final HelpSystem system = new HelpSystem();
 

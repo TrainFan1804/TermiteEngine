@@ -13,12 +13,12 @@ import java.util.Map;
  * custom messages that should be printed out from the engine.
  * 
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.1.0
  */
 class MessageContentReader {
 	
-	public Map<String, String> read(String path) {
+	Map<String, String> read(String path) {
 
 		ObjectMapper mapper = new JsonMapper();
 		Map<String, String> content = null;

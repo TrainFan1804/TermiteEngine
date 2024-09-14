@@ -3,13 +3,11 @@ package engine.core.subsystems.filesystem.utils;
 import java.io.File;
 
 /**
- * @deprecated will be removed in a further version
- * 
  * @author 								o.le
  * @version 							1.0
  * @since								0.40
  */
-@Deprecated(since = "1.1.0")
+@Deprecated(since = "1.1.0", forRemoval = false)
 public class FileConnection {
 	
 	private static final String EXTENSION = ".json";
