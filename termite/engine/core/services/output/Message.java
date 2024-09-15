@@ -13,7 +13,7 @@ package engine.core.services.output;
  */
 public class Message {
 
-    private String message;
+    private final String message;
 
     public Message(String message) {
 
