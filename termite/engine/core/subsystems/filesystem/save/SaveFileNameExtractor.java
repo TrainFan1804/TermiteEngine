@@ -5,9 +5,10 @@ import engine.core.services.output.MessageType;
 
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.1.1
  */
+@Deprecated
 class SaveFileNameExtractor {
 
 	String extractFileName() throws ExitSaveMenuException {

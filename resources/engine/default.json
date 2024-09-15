@@ -1,11 +1,12 @@
 {
-	"MSG_SAVE_ASK_FILE"	: "Name of the save game? (Close with exit and enter for default name)",
+	"MSG_SAVE_ASK_FILE"	: "Name of the save game? (Enter exit to close and press enter for default name)",
 	"MSG_SAVE_OVR_FILE" : "Do you want to override this file? (Y/N)",
 	"MSG_SAVE_SUC" : "Game saved successfully!",
 	"MSG_SAVE_CANCEL" : "Save process was cancled",
 	
-	"MSG_LOAD_ASK_FILE" : "What file do you want to load?",
+	"MSG_LOAD_ASK_FILE" : "What file do you want to load? (Enter exit to close and press enter to load default)",
 	"MSG_LOAD_SUC" : "Game loaded successfully!",
+	"MSG_LOAD_CANCEL" : "Load process was cancled",
 
 	"MSG_EXIT" : "Close game",
 	"MSG_HELP" : "Available Commands:\n1. Save\n2. Load\n3. Exit\n4. Help\n5. Talk\n6. Search\n7. Use\n8. Go\n9. Leave",

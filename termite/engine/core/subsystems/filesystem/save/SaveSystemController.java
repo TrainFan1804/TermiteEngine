@@ -2,11 +2,13 @@ package engine.core.subsystems.filesystem.save;
 
 import engine.core.ApplicationResources;
 import engine.core.services.output.MessageType;
+import engine.core.subsystems.filesystem.utils.ExitFileMenuException;
 import engine.core.subsystems.filesystem.utils.FileConnection;
+import engine.core.subsystems.filesystem.utils.FileNameExtractor;
 
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.1.1
  */
 class SaveSystemController {
@@ -15,8 +17,8 @@ class SaveSystemController {
 		
 		try {
 
-			SaveFileNameExtractor extractor = new SaveFileNameExtractor();
-			String fileName = extractor.extractFileName();
+			FileNameExtractor extractor = new FileNameExtractor();
+			String fileName = extractor.extractFileName(MessageType.MSG_SAVE_ASK_FILE);
 
 			FileConnection con = new FileConnection(fileName);
 			if (con.getConnection().exists()) this.requestOverride();
@@ -24,13 +26,13 @@ class SaveSystemController {
 			SaveFileGenerator fileGenerator = new SaveFileGenerator();
 			fileGenerator.generateSaveFile(new FileConnection(fileName));
 
-		} catch (ExitSaveMenuException e) {
+		} catch (ExitFileMenuException e) {
 
 			ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_CANCEL);
 		}
 	}
 
-	private void requestOverride() throws ExitSaveMenuException {
+	private void requestOverride() throws ExitFileMenuException {
 
 		ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_OVR_FILE);
 
@@ -39,7 +41,7 @@ class SaveSystemController {
 
 			input = ApplicationResources.IN.read().toUpperCase();
 
-			if (input.equals("N")) throw new ExitSaveMenuException(); 
+			if (input.equals("N")) throw new ExitFileMenuException(); 
 
 			ApplicationResources.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
 		} while(!input.equals("Y"));

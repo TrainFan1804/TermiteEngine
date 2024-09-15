@@ -8,6 +8,7 @@ import engine.core.services.output.MessageType;
  * @version 1.0
  * @since 1.2.0
  */
+@Deprecated
 class LoadFileNameExtractor {
 
 	String askForFileName() {

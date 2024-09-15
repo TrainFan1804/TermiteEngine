@@ -14,6 +14,7 @@ public enum MessageType {
 
 	MSG_LOAD_ASK_FILE,
 	MSG_LOAD_SUC,
+	MSG_LOAD_CANCEL,
 
 	MSG_EXIT,
 	MSG_HELP,

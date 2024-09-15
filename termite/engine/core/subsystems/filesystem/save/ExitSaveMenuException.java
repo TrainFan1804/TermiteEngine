@@ -5,4 +5,5 @@ package engine.core.subsystems.filesystem.save;
  * @version 1.0
  * @since 1.1.1
  */
+@Deprecated(since = "1.2.3", forRemoval = true)
 class ExitSaveMenuException extends Exception { }
