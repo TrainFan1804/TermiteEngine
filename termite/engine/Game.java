@@ -1,6 +1,7 @@
 package engine;
 
 import engine.instance.Instance;
+import engine.instance.exceptions.DuplicateInstanceIdException;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -13,9 +14,9 @@ public class Game {
 
     private class GameInstanceManager {
 
-        private Map<Integer, Instance> instances;
+        private final Map<Integer, Instance> instances;
 
-        public GameInstanceManager() {
+        private GameInstanceManager() {
 
             this.instances = new HashMap<>();
         }
@@ -27,16 +28,19 @@ public class Game {
          * 
          * @param instance                  The new instance.
          */
-        public void addInstance(Instance instance) {
+        private void addInstance(Instance instance) {
 
             if (instance == null) throw new IllegalArgumentException("Instance can't be null!");
 
             if (this.instances.isEmpty()) Game.this.currentInstance = instance;
 
+			int id = instance.ID_INSTANCE;
+			if (this.instances.containsKey(id)) throw new DuplicateInstanceIdException(id);
+
             this.instances.put(instance.ID_INSTANCE, instance);
         }
 
-        public Instance getInstanceById(int id) {
+        private Instance getInstanceById(int id) {
 
             if (!this.instances.containsKey(id)) {
                 
@@ -47,7 +51,7 @@ public class Game {
         }
     }
 
-    private GameInstanceManager manager;
+    private final GameInstanceManager manager;
 
     private Instance currentInstance;
 

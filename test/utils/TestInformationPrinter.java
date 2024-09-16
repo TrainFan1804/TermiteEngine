@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.2.4
  */
 public class TestInformationPrinter implements BeforeEachCallback {
@@ -22,9 +22,14 @@ public class TestInformationPrinter implements BeforeEachCallback {
 
 			System.out.println("Current test: " + method.getName());
 			System.out.println("Tested class: " + info.testedClass());
-			System.out.println("Tested method: " 
-								+ info.testedClass() 
-								+ "." + info.testedMethod());
+
+			for (String methodName : info.testedMethod()) {
+
+				System.out.println("Tested method: "
+									+ info.testedClass()
+									+ "."
+									+ methodName);
+			}
 			System.out.println("Expected behavior: " + info.behavior());
 			System.out.println("Is static: " + info.isStatic());
 

@@ -24,7 +24,7 @@ import engine.instance.exceptions.InstanceEventAlreadyPresentException;
  */
 public abstract class InstanceEvent {
 
-    private InstanceEventType eventType;
+    private final InstanceEventType eventType;
 
     protected InstanceEvent(InstanceEventType eventType) {
 
@@ -36,10 +36,7 @@ public abstract class InstanceEvent {
      *
      * @return                          The id of the saved InstanceEventType.
      */
-    public final int getEventTypeId() {
-        
-        return this.eventType.ID;
-    }
+    public final int getEventTypeId() { return this.eventType.ID; }
 
     /**
      * Start the event.
