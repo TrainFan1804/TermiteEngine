@@ -56,18 +56,30 @@ public class Instance {
     public final int ID_INSTANCE;
     
     private Message instanceMessage;
-    private InstanceEventHandler eventHandler;
+    private final InstanceEventHandler eventHandler;
 
     private Instance nextInstance;
     private Instance preInstance;
+
+	public Instance() {
+
+		this(InstanceIdCounter.ENTITY.getIdCount());
+	}
 
     public Instance(int id) {
 
         this.ID_INSTANCE = id;
         this.eventHandler = new InstanceEventHandler();
+
+		// TODO this need to be variable via JSON!
         this.instanceMessage = new Message("You enter: " + this);
     }
 
+	/**
+	 * Don't use this. You should get the id via the public field
+	 * {@link Instance#ID_INSTANCE}
+	 */
+	@Deprecated(since = "1.2.6")
 	public int getID() { return this.ID_INSTANCE; }
 
     public Instance getNextInstance() { return this.nextInstance; }
@@ -78,7 +90,12 @@ public class Instance {
 
     public void setPreInstance(Instance preInstance) { this.preInstance = preInstance; }
 
-   public void setMessage(Message msg) { this.instanceMessage = msg; } 
+	/**
+	 * @deprecated The saved message shouldn't be changed anymore. After removing
+	 * the filed will go final!
+	 */
+	@Deprecated(since = "1.2.6")
+   	public void setMessage(Message msg) { this.instanceMessage = msg; } 
     
     public void addEvent(InstanceEvent event) { this.eventHandler.addEvent(event); }
     
