@@ -14,13 +14,14 @@ public class TestInformationPrinter implements BeforeEachCallback {
 
 	@Override
 	public void beforeEach(ExtensionContext context) throws Exception {
+                Class className = context.getRequiredTestClass();
 		Method method = context.getRequiredTestMethod();
 
 		if (method.isAnnotationPresent(TestInformation.class)) {
 
 			TestInformation info = method.getAnnotation(TestInformation.class);
 
-			System.out.println("Current test: " + method.getName());
+			System.out.println("Current test: " + className.getName() + "." + method.getName() + "()");
 			System.out.println("Tested class: " + info.testedClass());
 
 			for (String methodName : info.testedMethod()) {
