@@ -15,6 +15,8 @@ class SaveSystemController {
 
 	void init() {
 		
+		// I could extract some methods e.g. one for file name asking,
+		// one for connection etc. but I don't want to do this
 		try {
 
 			FileNameExtractor extractor = new FileNameExtractor();

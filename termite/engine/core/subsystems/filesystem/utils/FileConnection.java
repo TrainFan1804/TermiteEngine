@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  * @author 								o.le
- * @version 							1.0
+ * @version 							1.1
  * @since								0.40
  */
 @Deprecated(since = "1.1.0", forRemoval = false)
@@ -21,4 +21,9 @@ public class FileConnection {
 	}
 
 	public File getConnection() { return this.file; }
+
+	public boolean fileExists() {
+
+		return this.file.exists();
+	}
 }

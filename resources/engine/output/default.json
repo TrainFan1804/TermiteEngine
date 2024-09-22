@@ -5,6 +5,7 @@
 	"MSG_SAVE_CANCEL" : "Save process was cancled",
 	
 	"MSG_LOAD_ASK_FILE" : "What file do you want to load? (Enter exit to close and press enter to load default)",
+	"MSG_LOAD_FILE_NOT_FOUNT" : "Filename not found! Pls try again.",
 	"MSG_LOAD_SUC" : "Game loaded successfully!",
 	"MSG_LOAD_CANCEL" : "Load process was cancled",
 

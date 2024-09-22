@@ -18,7 +18,7 @@ public class ApplicationResources {
 
     public static boolean wasInstanceSwitch = false;
 
-	private static String pathToOutputContent = "resources/engine/default.json";
+	private static String pathToOutputContent = "resources/engine/output/default.json";
 
 	public static final void changeOutputContentPath(String path) {
 

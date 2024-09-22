@@ -20,7 +20,7 @@ public class MessageTest {
 						testedMethod = "toString()", 
 						behavior = "Returned string should be equal the entered"
 									+ "arument from the constructor")
-	public void message_toString_containsConstructorParam() {
+	public void messageContainsConstructorString() {
 
 		final String TEST_STRING = "This is a test message";
 
