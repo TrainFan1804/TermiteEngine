@@ -5,4 +5,4 @@ package engine.core.subsystems.filesystem.utils;
  * @version 1.0
  * @since 1.2.3
  */
-public class ExitFileMenuException extends Exception { }
+public final class ExitFileMenuException extends Exception { }

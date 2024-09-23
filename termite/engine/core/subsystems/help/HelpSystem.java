@@ -9,7 +9,7 @@ import engine.core.subsystems.EngineSubsystem;
  * @version                             1.1
  * @since                               0.22
  */
-class HelpSystem implements EngineSubsystem {
+final class HelpSystem implements EngineSubsystem {
 
     @Override
     public void execute() { ApplicationResources.OUT.printMessage(MessageType.MSG_HELP); }

@@ -3,42 +3,29 @@ package engine.core.subsystems;
 import engine.instance.Instance;
 import engine.instance.event.InstanceEvent;
 import engine.instance.event.InstanceEventType;
-import engine.instance.exceptions.EventIdNotPresentException;
 import engine.core.ApplicationResources;
-import engine.core.services.output.MessageType;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.22
  */
 class EventSystem implements EngineSubsystem {
 
-    private final InstanceEventType eventType;
+    	private final InstanceEventType eventType;
 
-    EventSystem(InstanceEventType event) {
+    	EventSystem(InstanceEventType event) {
 
-        this.eventType = event;
-    }
+        	this.eventType = event;
+    	}
 
-    /*
-     I need to create subclasses? for each unique event type.
+    	@Override
+    	public void execute() {
 
-     I could also create a constructor that take a Command / InstanceEvent
-     as a parameter. Then I could use the saved instance in the handle method.
-     */
-    @Override
-    public void execute() {
+        	Instance currentInstance = ApplicationResources.GAME.getCurrentInstance();
+        	InstanceEvent event;
 
-        Instance currentInstance = ApplicationResources.GAME.getCurrentInstance();
-        InstanceEvent event;
-
-        try {
-            event = currentInstance.getEventById(this.eventType.ID);
-            event.startEvent();
-        } catch (EventIdNotPresentException e) {
-
-			ApplicationResources.OUT.printMessage(MessageType.MSG_EVENT_ID_NOT_PRESENT);
-        }
-    }
+           	event = currentInstance.getEventById(this.eventType.ID);
+            	event.startEvent();
+   	}
 }

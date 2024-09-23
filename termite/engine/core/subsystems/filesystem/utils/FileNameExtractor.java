@@ -8,7 +8,7 @@ import engine.core.services.output.MessageType;
  * @version 1.0
  * @since 1.2.3
  */
-public class FileNameExtractor {
+public final class FileNameExtractor {
 
 	public String extractFileName(MessageType msgType) throws ExitFileMenuException {
 		

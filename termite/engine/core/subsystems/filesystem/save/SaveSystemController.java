@@ -11,7 +11,7 @@ import engine.core.subsystems.filesystem.utils.FileNameExtractor;
  * @version 1.1
  * @since 1.1.1
  */
-class SaveSystemController {
+final class SaveSystemController {
 
 	void init() {
 		

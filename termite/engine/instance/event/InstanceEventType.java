@@ -7,16 +7,17 @@ import engine.instance.Instance;
  * inside an {@link Instance}.
  *
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.17
  */
 public enum InstanceEventType {
 
-    TALK_EVENT(0),
-    SEARCH_EVENT(1),
-    USE_EVENT(2),
-    GO_EVENT(3),
-    LEAVE_EVENT(4);
+	NULL_EVENT(-1),
+    	TALK_EVENT(0),
+    	SEARCH_EVENT(1),
+    	USE_EVENT(2),
+    	GO_EVENT(3),
+    	LEAVE_EVENT(4);
 
     public final int ID;
 

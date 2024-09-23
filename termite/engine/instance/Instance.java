@@ -4,7 +4,7 @@ import engine.core.services.output.Message;
 import engine.instance.event.GoEvent;
 import engine.instance.event.InstanceEvent;
 import engine.instance.event.LeaveEvent;
-import engine.instance.exceptions.EventIdNotPresentException;
+import engine.instance.event.NullEvent;
 import engine.instance.exceptions.InstanceEventAlreadyPresentException;
 import engine.instance.exceptions.NoValidNeighborException;
 
@@ -13,53 +13,51 @@ import java.util.Map;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.17
  */
 public class Instance {
 
-    private class InstanceEventHandler {
+    	private class InstanceEventHandler {
 
-        private Map<Integer, InstanceEvent> events;
+        	private Map<Integer, InstanceEvent> events;
 
-        public InstanceEventHandler() {
+        	public InstanceEventHandler() {
 
-            this.events = new HashMap<>();
-        }
+            		this.events = new HashMap<>();
+        	}
 
-        public void addEvent(InstanceEvent event) {
+        	public void addEvent(InstanceEvent event) {
 
-            if (event == null) throw new IllegalArgumentException("Event can't be null");
+            		if (event == null) throw new IllegalArgumentException("Event can't be null");
 
-            if (this.events.containsKey(event.getEventTypeId())) {
+            		if (this.events.containsKey(event.getEventTypeId())) {
 
-                throw new InstanceEventAlreadyPresentException();
-            }
+                		throw new InstanceEventAlreadyPresentException();
+            		}
 
-            if ((event instanceof LeaveEvent && Instance.this.preInstance == null)
-                    || (event instanceof GoEvent && Instance.this.nextInstance == null)) {
+            		if ((event instanceof LeaveEvent && Instance.this.preInstance == null)
+                    		|| (event instanceof GoEvent && Instance.this.nextInstance == null)) {
 
-                throw new NoValidNeighborException();
-            }
+                		throw new NoValidNeighborException();
+            		}
 
-            this.events.put(event.getEventTypeId(), event);
-        }
+            		this.events.put(event.getEventTypeId(), event);
+        	}
 
-        public InstanceEvent getEventById(int id) throws EventIdNotPresentException {
+		public InstanceEvent getEventById(int id) { 
+		
+			return this.events.getOrDefault(id, new NullEvent());
+        	}
+    	}
 
-            if (!this.events.containsKey(id)) throw new EventIdNotPresentException(); // return new NullEvent();
-
-            return this.events.get(id);
-        }
-    }
-
-    public final int ID_INSTANCE;
+    	public final int ID_INSTANCE;
     
-    private Message instanceMessage;
-    private final InstanceEventHandler eventHandler;
+    	private Message instanceMessage;
+    	private final InstanceEventHandler eventHandler;
 
-    private Instance nextInstance;
-    private Instance preInstance;
+    	private Instance nextInstance;
+    	private Instance preInstance;
 
 	public Instance() {
 
@@ -94,12 +92,12 @@ public class Instance {
 	 * @deprecated The saved message shouldn't be changed anymore. After removing
 	 * the filed will go final!
 	 */
-	@Deprecated(since = "1.2.6")
+	@Deprecated(since = "1.2.6", forRemoval = true)
    	public void setMessage(Message msg) { this.instanceMessage = msg; } 
     
     public void addEvent(InstanceEvent event) { this.eventHandler.addEvent(event); }
     
-    public InstanceEvent getEventById(int id) throws EventIdNotPresentException {  
+    public InstanceEvent getEventById(int id) {
         
         return this.eventHandler.getEventById(id); 
     }

@@ -12,7 +12,7 @@ import java.util.Date;
  * @version 							1.0
  * @since								0.42
  */
-public class SaveGame {
+public final class SaveGame {
 
 	public static SaveGame generateSaveGame() { return new SaveGame(); }
 

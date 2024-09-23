@@ -11,9 +11,12 @@ import engine.instance.event.UseEvent;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.17
+ * 
+ * @deprecated A example will be created in a new repo.
  */
+@Deprecated(forRemoval = true)
 public class Example {
 
     public static void main(String[] args) {

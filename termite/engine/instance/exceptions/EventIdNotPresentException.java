@@ -1,6 +1,7 @@
 package engine.instance.exceptions;
 
 import engine.core.Command;
+import engine.instance.event.NullEvent;
 import engine.instance.Instance;
 
 /**
@@ -14,5 +15,8 @@ import engine.instance.Instance;
  * @author                              o.le
  * @version                             1.0
  * @since                               0.30
+ * 
+ * @deprecated Replaced by {@link NullEvent}
  */
+@Deprecated(since = "1.2,8", forRemoval = true)
 public class EventIdNotPresentException extends Exception { }
