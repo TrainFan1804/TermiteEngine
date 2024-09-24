@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import engine.core.ApplicationResources;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author o.le
@@ -37,17 +38,33 @@ public class InstanceNPC {
 
 	public void startDialog() {
 
-		// dialogue can be read from file
 		// TODO now I need to implement right output and input handling
-		for (var v :dialogue.getDialogueTree()) {
 
-			System.out.println("id: " + v.getDialogueId());
-			System.out.println("npc line: " + v.getNpcLine());
-			for (var j : v.getPlayerLine()) {
+		/*
+			First prototype. This works perfectly when the user
+			would enter always the corrent input
+		*/
+		List<DialogueNode> tree = this.dialogue.getDialogueTree();
+		DialogueNode current = tree.getFirst();
+		do {
 
-				System.out.println("player line: " + j.getPlayerText());
-				System.out.println("next line: " + j.getNextNpcLine());
+			ApplicationResources.OUT.printString(current.getNpcLine());
+			ApplicationResources.OUT.printString("Choose you line: ");
+
+			List<PlayerResponse> playerResponse = current.getPlayerLine();
+			for(PlayerResponse responses : playerResponse) {
+
+				ApplicationResources.OUT.printString(responses.getPlayerText());
 			}
-		}
+
+			String choice = ApplicationResources.IN.read();
+			int iChoice = Integer.parseInt(choice);
+			System.out.println("iChoice: " + iChoice);
+			int pChoice = playerResponse.get(iChoice).getNextNpcLine() - 1;
+			if (pChoice < 0) break;
+			current = tree.get(pChoice);
+			System.out.println();
+
+		} while(current != null);
 	}
 }
