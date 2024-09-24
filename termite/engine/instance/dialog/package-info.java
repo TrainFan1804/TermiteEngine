@@ -6,5 +6,7 @@
  * lazy af.
  * <p>
  * I defeated the lazy bear and made the field public..
+ * <p>
+ * I need to find better names for the JSON variables!
  */
 package engine.instance.dialog;

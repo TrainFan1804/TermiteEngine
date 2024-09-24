@@ -11,8 +11,8 @@ package engine.core.services.output;
  * </p>
  *
  * @author                              o.le
- * @version                             1.0
- * @since                               0.36
+ * @version                             1.1
+ 1 @since                               0.36
  */
 public class OutputService {
 
@@ -31,6 +31,14 @@ public class OutputService {
 
        		this.FORMAT = format.strip() + " ";
     	}
+
+	/**
+	 * Will just print a new line.
+	 */
+	public void printNewLine() {
+
+		System.out.println();
+	}
 
     	/**
 	 * Use this when you want to print a normal string with you defined format.

@@ -1,5 +1,8 @@
 package engine.core.services;
 
+import engine.core.ApplicationResources;
+import engine.core.services.output.MessageType;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -11,7 +14,7 @@ import java.util.Scanner;
  * </p>
  *
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               0.36
  */
 public class InputService {
@@ -33,4 +36,34 @@ public class InputService {
 
         	return this.IN.nextLine();
     	}
+
+	/**
+	 * This method is used to read a integer from the terminal.
+	 * 
+	 * @return 			Will listen to the terminal as long as
+	 * 				the user has not entered a valid type.
+	 */
+	public int readInt() {
+
+		int input = 0;
+		boolean isValid = false;
+
+		do {
+
+			try {
+
+				input = this.IN.nextInt();
+				isValid = true;
+			} catch(InputMismatchException ex) {
+
+				ApplicationResources.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
+				this.IN.next();	// clear invalid input from stream
+						// or user can't enter anything
+						// in the terminal anymore
+			}
+		} while(!isValid);
+
+		System.out.println("\n\n" + input);
+		return input;
+	}
 }

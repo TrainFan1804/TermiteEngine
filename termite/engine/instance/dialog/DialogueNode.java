@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * @author o.le
- * @versin 2.0
- * @since 1.3.0-pre
+ * @version 2.0
+ * @since 1.3.0-1
  */
 final class DialogueNode {
 

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author o.le
  * @version 1.0
- * @since 1.3.0-pre
+ * @since 1.3.0-1
  */
 public class InstanceNPC {
 
@@ -68,18 +68,28 @@ public class InstanceNPC {
 			}
 
 			/*
-				Make this is an int read an catch exception that is
-				thrown when enter something wrong and print error
-				message and then ask again
+				TODO Here must be a loop that will read input
+				as long as the input is not valid (below 0 or
+				higher than the size of playerResponse)
 			 */
+			int inputChoice = 0;
+			inputChoice = ApplicationResources.IN.readInt() - 1;
 
-			String choice = ApplicationResources.IN.read();
-			int iChoice = Integer.parseInt(choice);
-			int pChoice = playerResponse.get(iChoice - 1).nextNpcLine - 1;
-			if (pChoice < 0) break;
-			current = tree.get(pChoice);
+			// will always print the npc line. Should print wrong input or so
+			// see big comment a few line above
+			if (inputChoice < 0 
+				|| inputChoice >= playerResponse.size())
+					continue;
+
+			int nextNpcLineId = playerResponse.get(inputChoice).nextNpcLine - 1;
+			/* 
+				nextNpcLineId is -1 when nextNpcLine is set with 
+				null in the JSON. null represent the last dialog
+				line!
+			 */
+			if (nextNpcLineId <= 0) break;
+			current = tree.get(nextNpcLineId);
 			System.out.println();
-
 		} while(current != null);
 
 		// TODO print out current instance?
