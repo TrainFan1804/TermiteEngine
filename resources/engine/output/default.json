@@ -12,6 +12,8 @@
 	"MSG_EXIT" : "Close game",
 	"MSG_HELP" : "Available Commands:\n1. Save\n2. Load\n3. Exit\n4. Help\n5. Talk\n6. Search\n7. Use\n8. Go\n9. Leave",
 
+	"MSG_TALK_RESPONSE_CHOICE" : "What do you want to answer?",
+
 	"MSG_WRONG_INPUT" : "Wrong input! Try again",
 	"MSG_UNKNOWN_COMMAND" : "Unknown command",
 	"MSG_EVENT_ID_NOT_PRESENT" : "Event is not supported in this instance"

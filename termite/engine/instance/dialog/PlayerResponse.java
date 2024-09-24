@@ -7,6 +7,6 @@ package engine.instance.dialog;
  */
 final class PlayerResponse {
 	
-	public String PLAYER_TEXT;
-	public int NEXT_NPC_LINE;
+	public String playerText;
+	public int nextNpcLine;
 }

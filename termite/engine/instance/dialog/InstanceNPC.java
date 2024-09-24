@@ -2,6 +2,7 @@ package engine.instance.dialog;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import engine.core.ApplicationResources;
+import engine.core.services.output.MessageType;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -49,27 +50,38 @@ public class InstanceNPC {
 			First prototype. This works perfectly when the user
 			would enter always the corrent input
 		*/
-		List<DialogueNode> tree = this.dialogue.DIALOGUE_TREE;
+		List<DialogueNode> tree = this.dialogue.dialogueTree;
 		DialogueNode current = tree.getFirst();
 		do {
 
-			ApplicationResources.OUT.printString(current.NPC_LINE);
-			ApplicationResources.OUT.printString("Choose you line: ");
+			ApplicationResources.OUT.printString(current.npcLine);
+			ApplicationResources.OUT.printMessage(MessageType.MSG_TALK_RESPONSE_CHOICE);
 
-			List<PlayerResponse> playerResponse = current.PLAYER_LINE;
-			for(PlayerResponse responses : playerResponse) {
+			List<PlayerResponse> playerResponse = current.playerLine;
+			for (int responseCount = 0; 
+				responseCount < playerResponse.size(); 
+				responseCount++) {
 
-				ApplicationResources.OUT.printString(responses.PLAYER_TEXT);
+				ApplicationResources.OUT.printString((responseCount + 1) 
+									+ ": "
+									+ playerResponse.get(responseCount).playerText);
 			}
+
+			/*
+				Make this is an int read an catch exception that is
+				thrown when enter something wrong and print error
+				message and then ask again
+			 */
 
 			String choice = ApplicationResources.IN.read();
 			int iChoice = Integer.parseInt(choice);
-			System.out.println("iChoice: " + iChoice);
-			int pChoice = playerResponse.get(iChoice).NEXT_NPC_LINE - 1;
+			int pChoice = playerResponse.get(iChoice - 1).nextNpcLine - 1;
 			if (pChoice < 0) break;
 			current = tree.get(pChoice);
 			System.out.println();
 
 		} while(current != null);
+
+		// TODO print out current instance?
 	}
 }

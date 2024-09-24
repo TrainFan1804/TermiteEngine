@@ -8,8 +8,8 @@ import java.util.List;
  * @since 1.3.0-pre
  */
 final class DialogueNode {
-	
-	public int DIALOGUE_ID;
-	public String NPC_LINE;
-	public List<PlayerResponse> PLAYER_LINE;
+
+	public int dialogueId;
+	public String npcLine;
+	public List<PlayerResponse> playerLine;
 }

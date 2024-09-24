@@ -20,6 +20,8 @@ public enum MessageType {
 	MSG_EXIT,
 	MSG_HELP,
 
+	MSG_TALK_RESPONSE_CHOICE,
+
 	// error messages during runtime
 	MSG_WRONG_INPUT,
 	MSG_UNKNOWN_COMMAND,
