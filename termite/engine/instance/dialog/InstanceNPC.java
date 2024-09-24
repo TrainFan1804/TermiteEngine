@@ -18,6 +18,10 @@ public class InstanceNPC {
 
 	private Dialogue dialogue;
 
+	/*
+		This isn't good because the path could be incorrect, the json
+		could be in a wrong format
+	*/
 	public InstanceNPC(String name, String pathToJson) {
 
 		this.NAME = name;
@@ -44,23 +48,23 @@ public class InstanceNPC {
 			First prototype. This works perfectly when the user
 			would enter always the corrent input
 		*/
-		List<DialogueNode> tree = this.dialogue.getDialogueTree();
+		List<DialogueNode> tree = this.dialogue.dialogueTree; //getDialogueTree();
 		DialogueNode current = tree.getFirst();
 		do {
 
-			ApplicationResources.OUT.printString(current.getNpcLine());
+			ApplicationResources.OUT.printString(current.npcLine);
 			ApplicationResources.OUT.printString("Choose you line: ");
 
-			List<PlayerResponse> playerResponse = current.getPlayerLine();
+			List<PlayerResponse> playerResponse = current.playerLine;
 			for(PlayerResponse responses : playerResponse) {
 
-				ApplicationResources.OUT.printString(responses.getPlayerText());
+				ApplicationResources.OUT.printString(responses.playerText);
 			}
 
 			String choice = ApplicationResources.IN.read();
 			int iChoice = Integer.parseInt(choice);
 			System.out.println("iChoice: " + iChoice);
-			int pChoice = playerResponse.get(iChoice).getNextNpcLine() - 1;
+			int pChoice = playerResponse.get(iChoice).nextNpcLine - 1;
 			if (pChoice < 0) break;
 			current = tree.get(pChoice);
 			System.out.println();
