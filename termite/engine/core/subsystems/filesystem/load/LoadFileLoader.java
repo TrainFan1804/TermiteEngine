@@ -30,9 +30,9 @@ class LoadFileLoader {
 			ApplicationResources.GAME.setCurrentInstance(save.getInstanceId());
 			ApplicationResources.OUT.printMessage(MessageType.MSG_LOAD_SUC);
 			ApplicationResources.wasInstanceSwitch = false;
-		} catch (IOException e) {
+		} catch (IOException ex) {
 
-			ApplicationResources.OUT.printError(e);
+			ApplicationResources.OUT.printError(ex);
 		}
 	}
 }
