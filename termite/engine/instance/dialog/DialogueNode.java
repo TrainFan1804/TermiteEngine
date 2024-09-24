@@ -9,7 +9,7 @@ import java.util.List;
  */
 final class DialogueNode {
 	
-	public int dialogueId;
-	public String npcLine;
-	public List<PlayerResponse> playerLine;
+	public int DIALOGUE_ID;
+	public String NPC_LINE;
+	public List<PlayerResponse> PLAYER_LINE;
 }

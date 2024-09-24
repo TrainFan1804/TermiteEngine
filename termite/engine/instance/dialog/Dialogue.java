@@ -9,5 +9,5 @@ import java.util.List;
  */
 final class Dialogue {
 
-	public List<DialogueNode> dialogueTree;
+	public List<DialogueNode> DIALOGUE_TREE;
 }
