@@ -1,7 +1,6 @@
 package engine.instance.dialog;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import engine.core.ApplicationResources;
 import java.io.File;
 import java.io.IOException;
