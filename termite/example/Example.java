@@ -1,7 +1,7 @@
 package example;
 
-import engine.Game;
-import engine.core.Application;
+import engine.api.Game;
+import engine.api.Application;
 import engine.instance.Instance;
 import engine.instance.dialog.InstanceNPC;
 import engine.instance.event.GoEvent;

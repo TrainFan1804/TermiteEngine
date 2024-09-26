@@ -1,6 +1,6 @@
 package engine.core;
 
-import engine.Game;
+import engine.api.Game;
 import engine.core.services.InputService;
 import engine.core.services.output.OuputContentHandler;
 import engine.core.services.output.OutputService;
@@ -10,27 +10,27 @@ import engine.core.services.output.OutputService;
  * @version 1.0
  * @since 1.3.1
  */
-public class ApplicationResourcesSingleton {
+public class EngineResources {
 
 	/**
 	 * When using the resources just one-two times you can use this method
-	 * directly. Other wise use {@link ApplicationResourcesSingleton#getInstance()}
+	 * directly. Other wise use {@link EngineResources#getInstance()}
 	 * and create a field in your class.
 	 */
-	public static ApplicationResourcesSingleton INSTANCE;
+	public static EngineResources INSTANCE;
 
 	private static String pathToOutputContent = "resources/engine/output/default.json";
 
-	public static final ApplicationResourcesSingleton getInstance() {
+	public static final EngineResources getInstance() {
 
 		return INSTANCE;
 	}
 
-	static final ApplicationResourcesSingleton createInstance(Game game) {
+	public static final EngineResources createInstance(Game game) {
 
 		if (INSTANCE == null) {
 
-			INSTANCE = new ApplicationResourcesSingleton(game);
+			INSTANCE = new EngineResources(game);
 		}
 
 		return INSTANCE;
@@ -46,7 +46,7 @@ public class ApplicationResourcesSingleton {
 	public final OutputService OUT;
 	private final GameInstanceSwitchTracker tracker;
 
-	private ApplicationResourcesSingleton(Game game) {
+	private EngineResources(Game game) {
 
 		this.IN = new InputService();
 		this.OUT = new OutputService();
@@ -57,12 +57,27 @@ public class ApplicationResourcesSingleton {
 		this.initOutputContent();
 	}
 
+	/**
+	 * This method is called to track if the current instance in {@link Game}
+	 * changed. Don't use this because that could lead to unexpected behavior.
+	 * <p>
+	 * This is just used internally.
+	 *
+	 * @param changed 	Enter {@code true} if the instance was changed. Enter
+	 * 			Enter {@code false} to set set to default.	
+	 */
 	public void setInstanceSwitch(boolean changed) {
 
 		this.tracker.toggle(changed);
 	}
 
-	boolean wasInstanceSwitch() {
+	/**
+	 * Will check if the current instance in {@link Game} was changed.
+	 * Will also reset the status that was set with {@link EngineResources#setInstanceSwitch(boolean)}.
+	 * 
+	 * @return {@code true} if the instance was changed else {@code false}
+	 */
+	public boolean wasInstanceSwitch() {
 
 		boolean temp = this.tracker.wasChanged();
 		if (temp) {

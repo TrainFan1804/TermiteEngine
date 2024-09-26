@@ -1,7 +1,7 @@
 package engine.instance.dialog;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.core.services.output.MessageType;
 import java.io.File;
 import java.io.IOException;
@@ -40,13 +40,13 @@ public class InstanceNPC {
 			this.dialogue = objectMapper.readValue(new File(this.JSON_PATH), Dialogue.class);
 		} catch (IOException ex) {
 
-			ApplicationResourcesSingleton.INSTANCE.OUT.printError(ex);
+			EngineResources.INSTANCE.OUT.printError(ex);
 		}	
 	}
 
 	public void startDialog() {
 
-		final ApplicationResourcesSingleton RES = ApplicationResourcesSingleton.getInstance();
+		final EngineResources RES = EngineResources.getInstance();
 
 		List<DialogueNode> tree = this.dialogue.dialogueTree;
 		DialogueNode current = tree.getFirst();

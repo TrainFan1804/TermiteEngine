@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.save;
 
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.core.services.output.MessageType;
 import engine.core.subsystems.filesystem.utils.ExitFileMenuException;
 import engine.core.subsystems.filesystem.utils.FileConnection;
@@ -13,11 +13,11 @@ import engine.core.subsystems.filesystem.utils.FileNameExtractor;
  */
 final class SaveSystemController {
 
-	private final ApplicationResourcesSingleton RES;
+	private final EngineResources RES;
 
 	SaveSystemController() {
 
-		this.RES = ApplicationResourcesSingleton.getInstance();
+		this.RES = EngineResources.getInstance();
 	}
 
 	void init() {

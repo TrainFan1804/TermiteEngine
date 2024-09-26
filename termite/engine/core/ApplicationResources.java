@@ -1,6 +1,6 @@
 package engine.core;
 
-import engine.Game;
+import engine.api.Game;
 import engine.core.services.InputService;
 import engine.core.services.output.OuputContentHandler;
 import engine.core.services.output.OutputService;

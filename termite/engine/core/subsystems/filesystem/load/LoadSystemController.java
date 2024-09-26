@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.load;
 
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.core.services.output.MessageType;
 import engine.core.subsystems.filesystem.utils.ExitFileMenuException;
 import engine.core.subsystems.filesystem.utils.FileConnection;
@@ -30,7 +30,7 @@ class LoadSystemController {
 				// TODO this must be do better!
 				if (!con.fileExists()) {
 
-					ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_FILE_NOT_FOUNT);
+					EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_FILE_NOT_FOUNT);
 				}
 
 			} while(!con.fileExists());
@@ -39,7 +39,7 @@ class LoadSystemController {
 			loader.load(con);
 		} catch (ExitFileMenuException e) {
 
-			ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_CANCEL);
+			EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_CANCEL);
 		}
 	}
 

@@ -2,7 +2,7 @@ package engine.core.subsystems.filesystem.load;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.core.services.output.MessageType;
 import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.subsystems.filesystem.utils.SaveGame;
@@ -15,12 +15,12 @@ import java.io.IOException;
  */
 class LoadFileLoader {
 
-	private final ApplicationResourcesSingleton RES;
+	private final EngineResources RES;
 	private final ObjectMapper mapper;
 	
 	LoadFileLoader() {
 		
-		this.RES = ApplicationResourcesSingleton.getInstance();
+		this.RES = EngineResources.getInstance();
 		this.mapper = new JsonMapper();
 	}
 

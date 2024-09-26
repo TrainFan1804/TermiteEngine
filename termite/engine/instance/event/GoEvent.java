@@ -1,7 +1,7 @@
 package engine.instance.event;
 
 import engine.instance.exceptions.NoValidNeighborException;
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.instance.Instance;
 
 /**
@@ -28,7 +28,7 @@ public final class GoEvent extends InstanceEvent {
     @Override
     public void startEvent() {
     
-	    final ApplicationResourcesSingleton RES = ApplicationResourcesSingleton.getInstance();
+	    final EngineResources RES = EngineResources.getInstance();
         // get current instance?
         // get the neighbor
         // set current instance to neighbor?

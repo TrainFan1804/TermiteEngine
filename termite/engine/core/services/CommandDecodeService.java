@@ -1,6 +1,6 @@
 package engine.core.services;
 
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.core.Command;
 import engine.core.services.output.MessageType;
 
@@ -28,7 +28,7 @@ public class CommandDecodeService {
             return Command.valueOf(commandInput);
         } catch (IllegalArgumentException e) {
  
-			ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
+			EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
 			return null; // bad, really bad...
         }
     }

@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.17
  */
 public class Instance {
@@ -53,7 +53,7 @@ public class Instance {
 
     	public final int ID_INSTANCE;
     
-    	private Message instanceMessage;
+    	private final Message instanceMessage;
     	private final InstanceEventHandler eventHandler;
 
     	private Instance nextInstance;
@@ -88,13 +88,6 @@ public class Instance {
 
     public void setPreInstance(Instance preInstance) { this.preInstance = preInstance; }
 
-	/**
-	 * @deprecated The saved message shouldn't be changed anymore. After removing
-	 * the filed will go final!
-	 */
-	@Deprecated(since = "1.2.6", forRemoval = true)
-   	public void setMessage(Message msg) { this.instanceMessage = msg; } 
-    
     public void addEvent(InstanceEvent event) { this.eventHandler.addEvent(event); }
     
     public InstanceEvent getEventById(int id) {

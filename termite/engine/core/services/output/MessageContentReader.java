@@ -2,7 +2,7 @@ package engine.core.services.output;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ class MessageContentReader {
 			content = mapper.readValue(new File(path), HashMap.class);
 		} catch (IOException e) {
 			
-			ApplicationResourcesSingleton.INSTANCE.OUT.printError(e);
+			EngineResources.INSTANCE.OUT.printError(e);
 		}
 		
 		return content;

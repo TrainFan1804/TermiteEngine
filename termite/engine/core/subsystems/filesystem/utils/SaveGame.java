@@ -1,7 +1,7 @@
 package engine.core.subsystems.filesystem.utils;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import java.util.Date;
 
 /**
@@ -22,7 +22,7 @@ public final class SaveGame {
 	
 	private SaveGame() {
 
-		this.instanceId = ApplicationResourcesSingleton.INSTANCE.GAME.getCurrentInstanceId();
+		this.instanceId = EngineResources.INSTANCE.GAME.getCurrentInstanceId();
 		this.dateStamp = new Date();
 	}
 	

@@ -2,7 +2,7 @@ package engine.core.subsystems.filesystem.save;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import engine.core.ApplicationResourcesSingleton;
+import engine.core.EngineResources;
 import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.subsystems.filesystem.utils.SaveGame;
 import java.io.IOException;
@@ -25,7 +25,7 @@ class SaveFileGenerator {
 					.writeValue(con.getConnection(), save);
 		} catch (IOException e) {
 
-			ApplicationResourcesSingleton.INSTANCE.OUT.printError(e);
+			EngineResources.INSTANCE.OUT.printError(e);
 		}
 	}
 }
