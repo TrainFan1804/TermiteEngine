@@ -44,12 +44,6 @@ public class InstanceNPC {
 
 	public void startDialog() {
 
-		// TODO now I need to implement right output and input handling
-
-		/*
-			First prototype. This works perfectly when the user
-			would enter always the corrent input
-		*/
 		List<DialogueNode> tree = this.dialogue.dialogueTree;
 		DialogueNode current = tree.getFirst();
 		do {
@@ -67,19 +61,8 @@ public class InstanceNPC {
 									+ playerResponse.get(responseCount).playerText);
 			}
 
-			/*
-				TODO Here must be a loop that will read input
-				as long as the input is not valid (below 0 or
-				higher than the size of playerResponse)
-			 */
 			int inputChoice = 0;
-			inputChoice = ApplicationResources.IN.readInt() - 1;
-
-			// will always print the npc line. Should print wrong input or so
-			// see big comment a few line above
-			if (inputChoice < 0 
-				|| inputChoice >= playerResponse.size())
-					continue;
+			inputChoice = ApplicationResources.IN.readInt(0, playerResponse.size()) - 1;
 
 			int nextNpcLineId = playerResponse.get(inputChoice).nextNpcLine - 1;
 			/* 
@@ -89,9 +72,7 @@ public class InstanceNPC {
 			 */
 			if (nextNpcLineId <= 0) break;
 			current = tree.get(nextNpcLineId);
-			System.out.println();
+			ApplicationResources.OUT.printNewLine();
 		} while(current != null);
-
-		// TODO print out current instance?
 	}
 }

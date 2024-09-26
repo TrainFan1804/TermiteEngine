@@ -14,7 +14,7 @@ import java.util.Scanner;
  * </p>
  *
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.36
  */
 public class InputService {
@@ -45,6 +45,21 @@ public class InputService {
 	 */
 	public int readInt() {
 
+		return this.readInt(Integer.MIN_VALUE, Integer.MAX_VALUE);
+	}
+
+	/**
+	 * This will read a integer from the terminal with checking of the entered
+	 * integer is between {@code lowBound} and {@code upBound}. Only when the
+	 * integer are between both arguments the input will be returned!
+	 * 
+	 * @param lowBound 	The lower bound that is valid (Not included).
+	 * 			E.g. lowBound = 5 and input = 5 will <b>not</b>
+	 * 			returned!
+	 * @param upBound	The upper bound of a valid input. See {@code lowBound}.
+	 */
+	public int readInt(int lowBound, int upBound) {
+
 		int input = 0;
 		boolean isValid = false;
 
@@ -52,18 +67,20 @@ public class InputService {
 
 			try {
 
-				input = this.IN.nextInt();
+				String str = this.read();
+				input = Integer.parseInt(str);
+
+				if (input <= lowBound
+					|| input > upBound)
+						throw new InputMismatchException();
+
 				isValid = true;
-			} catch(InputMismatchException ex) {
+			} catch(NumberFormatException | InputMismatchException ex) {
 
 				ApplicationResources.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
-				this.IN.next();	// clear invalid input from stream
-						// or user can't enter anything
-						// in the terminal anymore
 			}
 		} while(!isValid);
 
-		System.out.println("\n\n" + input);
 		return input;
 	}
 }
