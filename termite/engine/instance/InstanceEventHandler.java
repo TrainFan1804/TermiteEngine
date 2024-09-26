@@ -16,6 +16,7 @@ import java.util.Map;
  * @version 1.0
  * @since 1.4.0-2
  */
+@Deprecated(since = "1.4.0-3", forRemoval = true)
 class InstanceEventHandler {
 
 	private final Instance MASTER;
