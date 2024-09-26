@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.load;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 
 /**
@@ -13,8 +13,8 @@ class LoadFileNameExtractor {
 
 	String askForFileName() {
 
-		ApplicationResources.OUT.printMessage(MessageType.MSG_LOAD_ASK_FILE);
-		String input = ApplicationResources.IN.read();
+		ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_ASK_FILE);
+		String input = ApplicationResourcesSingleton.INSTANCE.IN.read();
 		return input;
 	}
 }

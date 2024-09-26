@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.save;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 
 /**
@@ -13,8 +13,8 @@ class SaveFileNameExtractor {
 
 	String extractFileName() throws ExitSaveMenuException {
 
-		ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_ASK_FILE);
-		String fileName = ApplicationResources.IN.read();
+		ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_SAVE_ASK_FILE);
+		String fileName = ApplicationResourcesSingleton.INSTANCE.IN.read();
 
 		if (fileName.toUpperCase().equals("EXIT")) throw new ExitSaveMenuException();
 

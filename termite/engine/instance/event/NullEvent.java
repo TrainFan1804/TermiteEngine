@@ -1,6 +1,6 @@
 package engine.instance.event;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 
 /**
@@ -21,6 +21,6 @@ public final class NullEvent extends InstanceEvent {
     	@Override
     	public void startEvent() { 
 	    
-	    	ApplicationResources.OUT.printMessage(MessageType.MSG_EVENT_ID_NOT_PRESENT); 
+	    	ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_EVENT_ID_NOT_PRESENT); 
     	}
 }

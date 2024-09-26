@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.save;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 import engine.core.subsystems.filesystem.utils.ExitFileMenuException;
 import engine.core.subsystems.filesystem.utils.FileConnection;
@@ -12,6 +12,13 @@ import engine.core.subsystems.filesystem.utils.FileNameExtractor;
  * @since 1.1.1
  */
 final class SaveSystemController {
+
+	private final ApplicationResourcesSingleton RES;
+
+	SaveSystemController() {
+
+		this.RES = ApplicationResourcesSingleton.getInstance();
+	}
 
 	void init() {
 		
@@ -30,22 +37,24 @@ final class SaveSystemController {
 
 		} catch (ExitFileMenuException e) {
 
-			ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_CANCEL);
+			this.RES.OUT.printMessage(MessageType.MSG_SAVE_CANCEL);
 		}
 	}
 
 	private void requestOverride() throws ExitFileMenuException {
 
-		ApplicationResources.OUT.printMessage(MessageType.MSG_SAVE_OVR_FILE);
+		this.RES.OUT.printMessage(MessageType.MSG_SAVE_OVR_FILE);
 
 		String input;
 		do {
 
-			input = ApplicationResources.IN.read().toUpperCase();
+			input = this.RES.IN.read().toUpperCase();
 
 			if (input.equals("N")) throw new ExitFileMenuException(); 
 
-			ApplicationResources.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
+			// move this line because this will also be printed when
+			// entered "Y"
+			this.RES.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
 		} while(!input.equals("Y"));
 	}
 }

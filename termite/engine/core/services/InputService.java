@@ -1,6 +1,6 @@
 package engine.core.services;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -77,7 +77,7 @@ public class InputService {
 				isValid = true;
 			} catch(NumberFormatException | InputMismatchException ex) {
 
-				ApplicationResources.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
+				ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
 			}
 		} while(!isValid);
 

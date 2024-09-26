@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.utils;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 
 /**
@@ -12,8 +12,8 @@ public final class FileNameExtractor {
 
 	public String extractFileName(MessageType msgType) throws ExitFileMenuException {
 		
-		ApplicationResources.OUT.printMessage(msgType);
-		String fileName = ApplicationResources.IN.read();
+		ApplicationResourcesSingleton.INSTANCE.OUT.printMessage(msgType);
+		String fileName = ApplicationResourcesSingleton.INSTANCE.IN.read();
 
 		if (fileName.toUpperCase().equals("EXIT")) throw new ExitFileMenuException();
 

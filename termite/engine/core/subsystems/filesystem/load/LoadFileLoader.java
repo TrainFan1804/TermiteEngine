@@ -2,7 +2,7 @@ package engine.core.subsystems.filesystem.load;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 import engine.core.subsystems.filesystem.utils.FileConnection;
 import engine.core.subsystems.filesystem.utils.SaveGame;
@@ -15,10 +15,12 @@ import java.io.IOException;
  */
 class LoadFileLoader {
 
+	private final ApplicationResourcesSingleton RES;
 	private final ObjectMapper mapper;
 	
 	LoadFileLoader() {
 		
+		this.RES = ApplicationResourcesSingleton.getInstance();
 		this.mapper = new JsonMapper();
 	}
 
@@ -27,12 +29,11 @@ class LoadFileLoader {
 		try {
 
 			SaveGame save = this.mapper.readValue(con.getConnection(), SaveGame.class);
-			ApplicationResources.GAME.setCurrentInstance(save.getInstanceId());
-			ApplicationResources.OUT.printMessage(MessageType.MSG_LOAD_SUC);
-			ApplicationResources.wasInstanceSwitch = false;
+			this.RES.GAME.setCurrentInstance(save.getInstanceId());
+			this.RES.OUT.printMessage(MessageType.MSG_LOAD_SUC);
 		} catch (IOException ex) {
 
-			ApplicationResources.OUT.printError(ex);
+			this.RES.OUT.printError(ex);
 		}
 	}
 }

@@ -9,11 +9,12 @@ import engine.core.subsystems.EngineSubsystem;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               0.17
  */
 public class Application {
 
+	private final ApplicationResourcesSingleton RES;
     private final CommandDecodeService decodeService;
     private final CommandDeterminationService determineService;
     private final SystemDelegationService delegationService;
@@ -24,39 +25,35 @@ public class Application {
         this.determineService = new CommandDeterminationService();
 		this.delegationService = new SystemDelegationService();
 
-        /*
-         * I don't like the idea of a static class that provide the resources
-         * The only resources are the instances and also just one class use these
-         * resources anyway (The EventSystem class)
-         */
-		ApplicationResources.setGame(game);
-		ApplicationResources.initOutputContent();
+	this.RES = ApplicationResourcesSingleton.createInstance(game);
     }
 
-    public void start() {
+    	public void start() {
 
-        Command command;
-        Message instanceMessage;
+       		Command command;
+        	Message instanceMessage;
 
-        while (true) {
+        	while (true) {
 
-            // I don't like this
-            if (!ApplicationResources.wasInstanceSwitch) {
+			/*
+			When starting the game there should be printed the message
+			from the first instance
+			*/
+            		if (this.RES.wasInstanceSwitch()) {
 
-                instanceMessage = ApplicationResources.GAME.getCurrentInstance()
-                                                            .display();
-                ApplicationResources.OUT.printMessage(instanceMessage);
-                ApplicationResources.wasInstanceSwitch = true;
-            }
+                		instanceMessage = this.RES.GAME.getCurrentInstance()
+                                                            	.display();
+                		this.RES.OUT.printMessage(instanceMessage);
+            		}
 
 			command = this.inputCommandLoop();
             
-            EngineSubsystem system = this.determineService
+            		EngineSubsystem system = this.determineService
                                                 .determineEngineSubsystem(command);
 
-	    this.delegationService.delegate(system);
-        }
-    }
+	    		this.delegationService.delegate(system);
+        	}
+    	}
 
 	private Command inputCommandLoop() {
 
@@ -65,7 +62,7 @@ public class Application {
 
 		do {
 
-			input = ApplicationResources.IN.read();
+			input = this.RES.IN.read();
 			if (input.isEmpty()) continue;
 
 			command = this.decodeService.commandDecode(input);

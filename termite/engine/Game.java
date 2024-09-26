@@ -1,5 +1,6 @@
 package engine;
 
+import engine.core.ApplicationResourcesSingleton;
 import engine.instance.Instance;
 import engine.instance.exceptions.DuplicateInstanceIdException;
 import java.util.Map;
@@ -64,7 +65,11 @@ public class Game {
 
 	public int getCurrentInstanceId() { return this.currentInstance.ID_INSTANCE; }
 
-    public void setCurrentInstance(int id) { this.currentInstance = this.manager.getInstanceById(id); }
+    public void setCurrentInstance(int id) { 
+	    
+	    this.currentInstance = this.manager.getInstanceById(id); 
+	    ApplicationResourcesSingleton.INSTANCE.setInstanceSwitch(true);
+    }
 
     public void addInstance(Instance instance) { this.manager.addInstance(instance); }
 

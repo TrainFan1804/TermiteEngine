@@ -1,13 +1,15 @@
 package engine.instance.dialog;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.core.services.output.MessageType;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 /**
+ * TODO implement some oop
+ * 
  * @author o.le
  * @version 1.0
  * @since 1.3.0-1
@@ -38,31 +40,33 @@ public class InstanceNPC {
 			this.dialogue = objectMapper.readValue(new File(this.JSON_PATH), Dialogue.class);
 		} catch (IOException ex) {
 
-			ApplicationResources.OUT.printError(ex);
+			ApplicationResourcesSingleton.INSTANCE.OUT.printError(ex);
 		}	
 	}
 
 	public void startDialog() {
 
+		final ApplicationResourcesSingleton RES = ApplicationResourcesSingleton.getInstance();
+
 		List<DialogueNode> tree = this.dialogue.dialogueTree;
 		DialogueNode current = tree.getFirst();
 		do {
 
-			ApplicationResources.OUT.printString(current.npcLine);
-			ApplicationResources.OUT.printMessage(MessageType.MSG_TALK_RESPONSE_CHOICE);
+			RES.OUT.printString(current.npcLine);
+			RES.OUT.printMessage(MessageType.MSG_TALK_RESPONSE_CHOICE);
 
 			List<PlayerResponse> playerResponse = current.playerLine;
 			for (int responseCount = 0; 
 				responseCount < playerResponse.size(); 
 				responseCount++) {
 
-				ApplicationResources.OUT.printString((responseCount + 1) 
+				RES.OUT.printString((responseCount + 1) 
 									+ ": "
 									+ playerResponse.get(responseCount).playerText);
 			}
 
 			int inputChoice = 0;
-			inputChoice = ApplicationResources.IN.readInt(0, playerResponse.size()) - 1;
+			inputChoice = RES.IN.readInt(0, playerResponse.size()) - 1;
 
 			int nextNpcLineId = playerResponse.get(inputChoice).nextNpcLine - 1;
 			/* 
@@ -72,7 +76,7 @@ public class InstanceNPC {
 			 */
 			if (nextNpcLineId <= 0) break;
 			current = tree.get(nextNpcLineId);
-			ApplicationResources.OUT.printNewLine();
+			RES.OUT.printNewLine();
 		} while(current != null);
 	}
 }

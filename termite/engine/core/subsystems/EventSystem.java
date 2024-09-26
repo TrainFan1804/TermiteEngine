@@ -3,7 +3,7 @@ package engine.core.subsystems;
 import engine.instance.Instance;
 import engine.instance.event.InstanceEvent;
 import engine.instance.event.InstanceEventType;
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 
 /**
  * @author                              o.le
@@ -22,7 +22,7 @@ class EventSystem implements EngineSubsystem {
     	@Override
     	public void execute() {
 
-        	Instance currentInstance = ApplicationResources.GAME.getCurrentInstance();
+        	Instance currentInstance = ApplicationResourcesSingleton.INSTANCE.GAME.getCurrentInstance();
         	InstanceEvent event;
 
            	event = currentInstance.getEventById(this.eventType.ID);

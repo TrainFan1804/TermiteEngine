@@ -1,6 +1,6 @@
 package engine.core.subsystems.filesystem.load;
 
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import java.io.File;
 
 /**
@@ -20,7 +20,7 @@ class GameFilePrinter {
 
 		for (File file : folderContent) {
 
-			ApplicationResources.OUT.printString(file.getName());
+			ApplicationResourcesSingleton.INSTANCE.OUT.printString(file.getName());
 		}
 	}
 }

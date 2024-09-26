@@ -1,7 +1,7 @@
 package engine.instance.event;
 
 import engine.instance.exceptions.NoValidNeighborException;
-import engine.core.ApplicationResources;
+import engine.core.ApplicationResourcesSingleton;
 import engine.instance.Instance;
 
 /**
@@ -28,8 +28,8 @@ public final class LeaveEvent extends InstanceEvent {
     @Override
     public void startEvent() {
 
-        ApplicationResources.wasInstanceSwitch = false;
-        Instance pre = ApplicationResources.GAME.getCurrentInstance().getPreInstance();
-        ApplicationResources.GAME.setCurrentInstance(pre.ID_INSTANCE);
+	    final ApplicationResourcesSingleton RES = ApplicationResourcesSingleton.getInstance();
+        Instance pre = RES.GAME.getCurrentInstance().getPreInstance();
+        RES.GAME.setCurrentInstance(pre.ID_INSTANCE);
     }
 }
