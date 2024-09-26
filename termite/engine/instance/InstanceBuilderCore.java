@@ -62,12 +62,19 @@ public class InstanceBuilderCore {
 		return this;
 	}
 
+	/**
+	 * TODO this work as expected because you cant add a next instance without
+	 * creating the next instance first!
+	 */
 	public InstanceBuilderCore withNext(Instance next) {
 
 		this.next = next;
 		return this;
 	}
 
+	/**
+	 * See comment on withNext(Instance)
+	 */
 	public InstanceBuilderCore withPrev(Instance prev) {
 
 		this.prev = prev;
