@@ -1,6 +1,6 @@
 package engine.core;
 
-import engine.api.Game;
+import engine.GameCore;
 import engine.core.services.InputService;
 import engine.core.services.output.OuputContentHandler;
 import engine.core.services.output.OutputService;
@@ -26,7 +26,7 @@ public class EngineResources {
 		return INSTANCE;
 	}
 
-	public static final EngineResources createInstance(Game game) {
+	static final EngineResources createInstance(GameCore game) {
 
 		if (INSTANCE == null) {
 
@@ -41,12 +41,12 @@ public class EngineResources {
 		pathToOutputContent = path;
 	}
 
-	public final Game GAME;
+	public final GameCore GAME;
 	public final InputService IN;
 	public final OutputService OUT;
 	private final GameInstanceSwitchTracker tracker;
 
-	private EngineResources(Game game) {
+	private EngineResources(GameCore game) {
 
 		this.IN = new InputService();
 		this.OUT = new OutputService();
@@ -58,7 +58,7 @@ public class EngineResources {
 	}
 
 	/**
-	 * This method is called to track if the current instance in {@link Game}
+	 * This method is called to track if the current instance in {@link GameCore}
 	 * changed. Don't use this because that could lead to unexpected behavior.
 	 * <p>
 	 * This is just used internally.
@@ -72,12 +72,12 @@ public class EngineResources {
 	}
 
 	/**
-	 * Will check if the current instance in {@link Game} was changed.
+	 * Will check if the current instance in {@link GameCore} was changed.
 	 * Will also reset the status that was set with {@link EngineResources#setInstanceSwitch(boolean)}.
 	 * 
 	 * @return {@code true} if the instance was changed else {@code false}
 	 */
-	public boolean wasInstanceSwitch() {
+	boolean wasInstanceSwitch() {
 
 		boolean temp = this.tracker.wasChanged();
 		if (temp) {

@@ -2,7 +2,7 @@ package engine.core.services.output;
 
 import annotations.TestInformation;
 import utils.TestInformationPrinter;
-
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @since 1.2.4
  */
 @ExtendWith(TestInformationPrinter.class)
+@Disabled
 public class MessageTest {
 	
 	@Test

@@ -1,15 +1,7 @@
 package engine.instance;
 
 import engine.core.services.output.Message;
-import engine.instance.event.GoEvent;
 import engine.instance.event.InstanceEvent;
-import engine.instance.event.LeaveEvent;
-import engine.instance.event.NullEvent;
-import engine.instance.exceptions.InstanceEventAlreadyPresentException;
-import engine.instance.exceptions.NoValidNeighborException;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author                              o.le
@@ -17,39 +9,6 @@ import java.util.Map;
  * @since                               0.17
  */
 public class Instance {
-
-    	private class InstanceEventHandler {
-
-        	private Map<Integer, InstanceEvent> events;
-
-        	public InstanceEventHandler() {
-
-            		this.events = new HashMap<>();
-        	}
-
-        	public void addEvent(InstanceEvent event) {
-
-            		if (event == null) throw new IllegalArgumentException("Event can't be null");
-
-            		if (this.events.containsKey(event.getEventTypeId())) {
-
-                		throw new InstanceEventAlreadyPresentException();
-            		}
-
-            		if ((event instanceof LeaveEvent && Instance.this.preInstance == null)
-                    		|| (event instanceof GoEvent && Instance.this.nextInstance == null)) {
-
-                		throw new NoValidNeighborException();
-            		}
-
-            		this.events.put(event.getEventTypeId(), event);
-        	}
-
-		public InstanceEvent getEventById(int id) { 
-		
-			return this.events.getOrDefault(id, new NullEvent());
-        	}
-    	}
 
     	public final int ID_INSTANCE;
     
@@ -59,15 +18,10 @@ public class Instance {
     	private Instance nextInstance;
     	private Instance preInstance;
 
-	public Instance() {
-
-		this(InstanceIdCounter.ENTITY.getIdCount());
-	}
-
     public Instance(int id) {
 
         this.ID_INSTANCE = id;
-        this.eventHandler = new InstanceEventHandler();
+        this.eventHandler = new InstanceEventHandler(this);
 
 		// TODO this need to be variable via JSON!
         this.instanceMessage = new Message("You enter: " + this);
@@ -82,10 +36,17 @@ public class Instance {
 
     public Instance getNextInstance() { return this.nextInstance; }
 
+    /**
+     * TODO should handle some error like put the same instance, nextinstance 
+     * already exists and so on.
+     */
     public void setNextInstance(Instance nexInstance) { this.nextInstance = nexInstance; }
 
     public Instance getPreInstance() { return this.preInstance; }
 
+    /**
+     * TODO see setNextInstance(Instance).
+     */
     public void setPreInstance(Instance preInstance) { this.preInstance = preInstance; }
 
     public void addEvent(InstanceEvent event) { this.eventHandler.addEvent(event); }

@@ -1,7 +1,6 @@
-package engine.api;
+package engine.core;
 
-import engine.core.Command;
-import engine.core.EngineResources;
+import engine.GameCore;
 import engine.core.services.CommandDecodeService;
 import engine.core.services.CommandDeterminationService;
 import engine.core.services.SystemDelegationService;
@@ -13,14 +12,14 @@ import engine.core.subsystems.EngineSubsystem;
  * @version                             1.2
  * @since                               0.17
  */
-public class Application {
+public class ApplicationCore {
 
 	private final EngineResources RES;
     	private final CommandDecodeService decodeService;
     	private final CommandDeterminationService determineService;
     	private final SystemDelegationService delegationService;
 
-    	public Application(Game game) {
+    	public ApplicationCore(GameCore game) {
 
         	this.decodeService = new CommandDecodeService();
         	this.determineService = new CommandDeterminationService();
