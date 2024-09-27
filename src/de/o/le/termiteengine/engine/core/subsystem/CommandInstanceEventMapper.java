@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine.core.subsystem;
 
 import de.o.le.termiteengine.engine.core.Command;
-import de.o.le.termiteengine.internal.instance.event.InstanceEventType;
+import de.o.le.termiteengine.engine.instance.event.InstanceEventType;
 
 /**
  * @author                              o.le

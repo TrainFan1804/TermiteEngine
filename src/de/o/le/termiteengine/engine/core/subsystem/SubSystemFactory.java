@@ -1,10 +1,10 @@
 package de.o.le.termiteengine.engine.core.subsystem;
 
 import de.o.le.termiteengine.engine.core.Command;
-import de.o.le.termiteengine.internal.core.subsystem.exit.EXSFacade;
-import de.o.le.termiteengine.internal.core.subsystem.help.HSFacade;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.load.LSFacade;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.save.SSFacade;
+import de.o.le.termiteengine.engine.core.subsystem.exit.EXSFacade;
+import de.o.le.termiteengine.engine.core.subsystem.help.HSFacade;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.load.LSFacade;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.save.SSFacade;
 
 /**
  * @author                              o.le

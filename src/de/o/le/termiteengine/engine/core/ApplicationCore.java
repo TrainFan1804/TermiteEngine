@@ -1,11 +1,11 @@
 package de.o.le.termiteengine.engine.core;
 
 import de.o.le.termiteengine.engine.GameCore;
-import de.o.le.termiteengine.internal.core.service.CommandDecodeService;
-import de.o.le.termiteengine.internal.core.service.CommandDeterminationService;
-import de.o.le.termiteengine.internal.core.service.SystemDelegationService;
-import de.o.le.termiteengine.internal.core.service.output.Message;
-import de.o.le.termiteengine.internal.core.subsystem.EngineSubsystem;
+import de.o.le.termiteengine.engine.core.service.CommandDecodeService;
+import de.o.le.termiteengine.engine.core.service.CommandDeterminationService;
+import de.o.le.termiteengine.engine.core.service.SystemDelegationService;
+import de.o.le.termiteengine.engine.core.service.output.Message;
+import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
  * @author                              o.le

@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.api;
 
-import de.o.le.termiteengine.internal.core.ApplicationCore;
+import de.o.le.termiteengine.engine.core.ApplicationCore;
 
 /**
  * @author o.le

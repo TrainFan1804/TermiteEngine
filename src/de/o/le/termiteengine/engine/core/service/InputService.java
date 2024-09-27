@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine.core.service;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
-import de.o.le.termiteengine.internal.core.service.output.MessageType;
+import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

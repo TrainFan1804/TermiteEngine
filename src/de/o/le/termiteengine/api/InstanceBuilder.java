@@ -1,9 +1,9 @@
 package de.o.le.termiteengine.api;
 
-import de.o.le.termiteengine.internal.core.service.output.Message;
-import de.o.le.termiteengine.internal.instance.InstanceCore;
-import de.o.le.termiteengine.internal.instance.InstanceBuilderCore;
-import de.o.le.termiteengine.internal.instance.event.InstanceEvent;
+import de.o.le.termiteengine.engine.core.service.output.Message;
+import de.o.le.termiteengine.engine.instance.InstanceCore;
+import de.o.le.termiteengine.engine.instance.InstanceBuilderCore;
+import de.o.le.termiteengine.engine.instance.event.InstanceEvent;
 
 /**
  * @author o.le

@@ -3,8 +3,8 @@ package de.o.le.termiteengine.engine.core.subsystem.filesystem.save;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import de.o.le.termiteengine.engine.core.EngineResources;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.util.FileConnection;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.util.SaveGame;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileConnection;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.SaveGame;
 import java.io.IOException;
 
 /**

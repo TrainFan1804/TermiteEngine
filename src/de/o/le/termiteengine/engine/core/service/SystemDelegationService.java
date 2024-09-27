@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.service;
 
-import de.o.le.termiteengine.internal.core.subsystem.EngineSubsystem;
+import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
  * @author 				o.le

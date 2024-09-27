@@ -1,16 +1,16 @@
 package de.o.le.termiteengine.api;
 
-import de.o.le.termiteengine.internal.instance.dialogue.InstanceNPC;
-import de.o.le.termiteengine.internal.instance.event.GoEvent;
-import de.o.le.termiteengine.internal.instance.event.ISearch;
-import de.o.le.termiteengine.internal.instance.event.ITalk;
-import de.o.le.termiteengine.internal.instance.event.IUse;
-import de.o.le.termiteengine.internal.instance.event.InstanceEvent;
-import de.o.le.termiteengine.internal.instance.event.LeaveEvent;
-import de.o.le.termiteengine.internal.instance.event.NPCTalkEvent;
-import de.o.le.termiteengine.internal.instance.event.SearchEvent;
-import de.o.le.termiteengine.internal.instance.event.TalkEvent;
-import de.o.le.termiteengine.internal.instance.event.UseEvent;
+import de.o.le.termiteengine.engine.instance.dialogue.InstanceNPC;
+import de.o.le.termiteengine.engine.instance.event.GoEvent;
+import de.o.le.termiteengine.engine.instance.event.ISearch;
+import de.o.le.termiteengine.engine.instance.event.ITalk;
+import de.o.le.termiteengine.engine.instance.event.IUse;
+import de.o.le.termiteengine.engine.instance.event.InstanceEvent;
+import de.o.le.termiteengine.engine.instance.event.LeaveEvent;
+import de.o.le.termiteengine.engine.instance.event.NPCTalkEvent;
+import de.o.le.termiteengine.engine.instance.event.SearchEvent;
+import de.o.le.termiteengine.engine.instance.event.TalkEvent;
+import de.o.le.termiteengine.engine.instance.event.UseEvent;
 
 /**
  * To add a event to a {@link Instance} you can use this factory class to create

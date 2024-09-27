@@ -1,11 +1,11 @@
 package de.o.le.termiteengine.engine.instance;
 
 import de.o.le.termiteengine.engine.core.service.output.Message;
-import de.o.le.termiteengine.internal.instance.event.GoEvent;
-import de.o.le.termiteengine.internal.instance.event.InstanceEvent;
-import de.o.le.termiteengine.internal.instance.event.LeaveEvent;
-import de.o.le.termiteengine.internal.instance.exception.InstanceEventAlreadyPresentException;
-import de.o.le.termiteengine.internal.instance.exception.NoValidNeighborException;
+import de.o.le.termiteengine.engine.instance.event.GoEvent;
+import de.o.le.termiteengine.engine.instance.event.InstanceEvent;
+import de.o.le.termiteengine.engine.instance.event.LeaveEvent;
+import de.o.le.termiteengine.engine.instance.exception.InstanceEventAlreadyPresentException;
+import de.o.le.termiteengine.engine.instance.exception.NoValidNeighborException;
 import java.util.HashMap;
 import java.util.Map;
 

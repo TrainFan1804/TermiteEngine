@@ -1,16 +1,16 @@
 package example;
 
-import api.Application;
-import api.EventFactory;
-import api.Game;
-import api.Instance;
-import api.InstanceBuilder;
-import engine.core.services.output.Message;
-import engine.instance.dialog.InstanceNPC;
-import engine.instance.event.ITalk;
-import engine.instance.event.IUse;
-import engine.instance.event.NPCTalkEvent;
-import engine.instance.event.SearchEvent;
+import de.o.le.termiteengine.api.Application;
+import de.o.le.termiteengine.api.EventFactory;
+import de.o.le.termiteengine.api.Game;
+import de.o.le.termiteengine.api.Instance;
+import de.o.le.termiteengine.api.InstanceBuilder;
+import de.o.le.termiteengine.engine.core.service.output.Message;
+import de.o.le.termiteengine.engine.instance.dialogue.InstanceNPC;
+import de.o.le.termiteengine.engine.instance.event.ITalk;
+import de.o.le.termiteengine.engine.instance.event.IUse;
+import de.o.le.termiteengine.engine.instance.event.NPCTalkEvent;
+import de.o.le.termiteengine.engine.instance.event.SearchEvent;
 
 /**
  * @author                              o.le

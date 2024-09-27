@@ -1,8 +1,8 @@
 package de.o.le.termiteengine.engine.core.service;
 
 import de.o.le.termiteengine.engine.core.Command;
-import de.o.le.termiteengine.internal.core.subsystem.SubSystemFactory;
-import de.o.le.termiteengine.internal.core.subsystem.EngineSubsystem;
+import de.o.le.termiteengine.engine.core.subsystem.SubSystemFactory;
+import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
  * This service will determine what {@link EngineSubsystem} will handle the

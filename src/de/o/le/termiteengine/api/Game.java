@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.api;
 
-import de.o.le.termiteengine.internal.GameCore;
+import de.o.le.termiteengine.engine.GameCore;
 
 /**
  * This class represent your game. 

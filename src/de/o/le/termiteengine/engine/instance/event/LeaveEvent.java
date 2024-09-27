@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine.instance.event;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
-import de.o.le.termiteengine.internal.instance.exception.NoValidNeighborException;
+import de.o.le.termiteengine.engine.instance.exception.NoValidNeighborException;
 import de.o.le.termiteengine.engine.instance.InstanceCore;
 
 /**

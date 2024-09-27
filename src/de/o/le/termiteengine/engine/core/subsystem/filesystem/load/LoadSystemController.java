@@ -2,9 +2,9 @@ package de.o.le.termiteengine.engine.core.subsystem.filesystem.load;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.util.ExitFileMenuException;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.util.FileConnection;
-import de.o.le.termiteengine.internal.core.subsystem.filesystem.util.FileNameExtractor;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.ExitFileMenuException;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileConnection;
+import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileNameExtractor;
 
 /**
  * @author o.le

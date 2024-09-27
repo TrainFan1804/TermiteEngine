@@ -2,7 +2,7 @@ package de.o.le.termiteengine.engine.core.service;
 
 import de.o.le.termiteengine.engine.core.Command;
 import de.o.le.termiteengine.engine.core.EngineResources;
-import de.o.le.termiteengine.internal.core.service.output.MessageType;
+import de.o.le.termiteengine.engine.core.service.output.MessageType;
 
 /**
  * This service will decode a String to a {@link Command}.

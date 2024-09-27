@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine;
 
-import de.o.le.termiteengine.internal.instance.InstanceCore;
-import de.o.le.termiteengine.internal.instance.exception.DuplicateInstanceIdException;
+import de.o.le.termiteengine.engine.instance.InstanceCore;
+import de.o.le.termiteengine.engine.instance.exception.DuplicateInstanceIdException;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,7 +1,8 @@
 package de.o.le.termiteengine.engine;
 
-import de.o.le.termiteengine.internal.core.EngineResources;
-import de.o.le.termiteengine.internal.instance.InstanceCore;
+import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.instance.InstanceCore;
 
 /**
  * This class represent the core of the game.

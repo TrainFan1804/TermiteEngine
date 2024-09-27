@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine.instance.event;
 
 import de.o.le.termiteengine.engine.instance.InstanceCore;
-import de.o.le.termiteengine.internal.instance.exception.InstanceEventAlreadyPresentException;
+import de.o.le.termiteengine.engine.instance.exception.InstanceEventAlreadyPresentException;
 
 /**
  * This is an abstract class that define different events that can be happened in
