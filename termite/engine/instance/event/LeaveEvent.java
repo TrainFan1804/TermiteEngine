@@ -2,14 +2,14 @@ package engine.instance.event;
 
 import engine.instance.exceptions.NoValidNeighborException;
 import engine.core.EngineResources;
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 
 /**
  * When you want to create a leave event create an object of this type and give it
- * the {@link Instance}.
+ * the {@link InstanceCore}.
  * <p>
  *      When adding a leave event be sure you also added a neighbor to the Instance
- *      with {@link Instance#setNextInstance(Instance)}! Otherwise
+ *      with {@link InstanceCore#setNextInstance(Instance)}! Otherwise
  *      an {@link NoValidNeighborException} will be
  *      thrown.
  * </p>
@@ -29,7 +29,7 @@ public final class LeaveEvent extends InstanceEvent {
     public void startEvent() {
 
 	    final EngineResources RES = EngineResources.getInstance();
-        Instance pre = RES.GAME.getCurrentInstance().getPreInstance();
+        InstanceCore pre = RES.GAME.getCurrentInstance().getPreInstance();
         RES.GAME.setCurrentInstance(pre.ID_INSTANCE);
     }
 }

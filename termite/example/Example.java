@@ -2,11 +2,9 @@ package example;
 
 import api.Application;
 import api.Game;
+import api.Instance;
 import api.InstanceBuilder;
-import engine.instance.Instance;
 import engine.instance.dialog.InstanceNPC;
-import engine.instance.event.GoEvent;
-import engine.instance.event.LeaveEvent;
 import engine.instance.event.NPCTalkEvent;
 import engine.instance.event.SearchEvent;
 import engine.instance.event.TalkEvent;
@@ -34,37 +32,17 @@ public class Example {
 
 		Instance second = builder
 				.withId(1)
-				.withEvent(new TalkEvent(() -> System.out.println("Talk..")))
-				.withEvent(new UseEvent(() -> System.out.println("Use..")))
+				.withEvent(new NPCTalkEvent(new InstanceNPC("John", "./npctemplate.json")))
+				.withEvent(new SearchEvent(() -> System.out.println("Search..")))
 				.build();
+
+		first.setNext(second);
+		second.setPre(first);
 
 		Game game = new Game();
 		game.addInstance(first);
 		game.addInstance(second);
 		Application app = new Application(game);
 		app.start();
-				
-        Instance firstInstance = new Instance(0);
-        firstInstance.addEvent(new TalkEvent(() -> System.out.println("Talk..")));
-        firstInstance.addEvent(new UseEvent(() -> System.out.println("Use..")));
-
-        Instance secondInstance = new Instance(1);
-        secondInstance.addEvent(new SearchEvent(() -> System.out.println("Search..")));
-        InstanceNPC npc = new InstanceNPC("John", "./npctemplate.json"); // just for testing
-	secondInstance.addEvent(new NPCTalkEvent(npc));
-
-        firstInstance.setNextInstance(secondInstance);
-        secondInstance.setPreInstance(firstInstance);
-        
-        firstInstance.addEvent(new GoEvent());
-        secondInstance.addEvent(new LeaveEvent());
-
-        //Game game = new Game();
-        //game.addInstance(firstInstance);
-        //game.addInstance(secondInstance);
-
-        //Application application = new Application(game);
-
-        //application.start();
     }
 }

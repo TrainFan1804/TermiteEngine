@@ -1,12 +1,12 @@
 package engine.instance.exceptions;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 import engine.instance.event.InstanceEventType;
 
 /**
  * This exception is thrown when want to add a
  * {@link InstanceEventType} that is already added in the
- * {@link Instance}.
+ * {@link InstanceCore}.
  *
  * @author                              o.le
  * @version                             1.0

@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This builder is used to build your custom instances for the game,
+ * This builder is used to build custom instances for the game. The developer
+ * don't see this class and just use the public API to interact with this builder.
+ * This class contains the logic of the instance build process.
  * 
  * @author o.le
  * @version 1.0
@@ -21,8 +23,8 @@ public class InstanceBuilderCore {
 	int id;
 	Message msg;
 
-	Instance next;
-	Instance prev;
+	InstanceCore next;
+	InstanceCore pre;
 
 	Map<Integer, InstanceEvent> events;
 
@@ -52,7 +54,7 @@ public class InstanceBuilderCore {
                 	throw new InstanceEventAlreadyPresentException();
             	}
 
-            	if ((event instanceof LeaveEvent && this.prev == null)
+            	if ((event instanceof LeaveEvent && this.pre == null)
                    	|| (event instanceof GoEvent && this.next == null)) {
 
                 	throw new NoValidNeighborException();
@@ -62,33 +64,26 @@ public class InstanceBuilderCore {
 		return this;
 	}
 
-	/**
-	 * TODO this work as expected because you cant add a next instance without
-	 * creating the next instance first!
-	 */
-	public InstanceBuilderCore withNext(Instance next) {
+	public InstanceBuilderCore withNext(InstanceCore next) {
 
 		this.next = next;
 		return this;
 	}
 
-	/**
-	 * See comment on withNext(Instance)
-	 */
-	public InstanceBuilderCore withPrev(Instance prev) {
+	public InstanceBuilderCore withPrev(InstanceCore pre) {
 
-		this.prev = prev;
+		this.pre = pre;
 		return this;
 	}
 
-	public Instance build() {
+	public InstanceCore build() {
 
-		Instance instance = new Instance(this);
+		InstanceCore instance = new InstanceCore(this);
 
 		this.id = 0;
 		this.msg = null;
 		this.next = null;
-		this.prev = null;
+		this.pre = null;
 		this.events = new HashMap<>();
 
 		return instance;

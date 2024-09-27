@@ -1,7 +1,6 @@
 package api;
 
 import engine.GameCore;
-import engine.instance.Instance;
 
 /**
  * This class represent your game. 
@@ -21,7 +20,7 @@ public class Game {
 
 	public void addInstance(Instance newInstance) {
 
-		this.CORE.addInstance(newInstance);
+		this.CORE.addInstance(newInstance.getCore());
 	}
 
 	GameCore getCore() { return this.CORE; }

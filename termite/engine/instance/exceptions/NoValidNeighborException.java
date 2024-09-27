@@ -1,6 +1,6 @@
 package engine.instance.exceptions;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 import engine.instance.event.GoEvent;
 import engine.instance.event.LeaveEvent;
 
@@ -8,8 +8,8 @@ import engine.instance.event.LeaveEvent;
  * This exception will be thrown when you want to add a
  * {@link GoEvent} or {@link LeaveEvent}
  * without adding a neighbor instance with
- * {@link Instance#setNextInstance(Instance)} or
- * {@link Instance#setPreInstance(Instance)}.
+ * {@link InstanceCore#setNextInstance(Instance)} or
+ * {@link InstanceCore#setPreInstance(Instance)}.
  *
  * @author                              o.le
  * @version                             1.0

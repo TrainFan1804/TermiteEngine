@@ -1,10 +1,10 @@
 package engine.instance.event;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 
 /**
  * When you want to create a use event create an object of this type and give it
- * the {@link Instance}. See {@link IUse}
+ * the {@link InstanceCore}. See {@link IUse}
  * for more information.
  *
  * @author                              o.le

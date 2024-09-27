@@ -1,10 +1,10 @@
 package engine.instance.event;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 
 /**
  * This enum define the different event types that can be created and be used
- * inside an {@link Instance}.
+ * inside an {@link InstanceCore}.
  *
  * @author                              o.le
  * @version                             1.1

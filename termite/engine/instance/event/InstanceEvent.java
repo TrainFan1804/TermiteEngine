@@ -1,13 +1,13 @@
 package engine.instance.event;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 import engine.instance.exceptions.InstanceEventAlreadyPresentException;
 
 /**
  * This is an abstract class that define different events that can be happened in
- * a {@link Instance}. To add an event to an instance use on of
+ * a {@link InstanceCore}. To add an event to an instance use on of
  * the subtypes of this type and add it to the instance with
- * {@link Instance#addEvent(InstanceEvent)}.
+ * {@link InstanceCore#addEvent(InstanceEvent)}.
  * <p>
  *     The {@link InstanceEventType} will be automatically
  *     be set by on of the subtype.

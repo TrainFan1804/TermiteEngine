@@ -1,10 +1,10 @@
 package engine.instance.event;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 
 /**
  * When you want to create a talk event create an object of this type and give it
- * the {@link Instance}. See {@link ITalk}
+ * the {@link InstanceCore}. See {@link ITalk}
  * for more information.
  *
  * @author                              o.le

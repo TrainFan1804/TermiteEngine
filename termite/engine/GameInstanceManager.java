@@ -1,6 +1,6 @@
 package engine;
 
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 import engine.instance.exceptions.DuplicateInstanceIdException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.Map;
 class GameInstanceManager {
 
 	private final GameCore MASTER;
-	private final Map<Integer, Instance> INSTANCES;
+	private final Map<Integer, InstanceCore> INSTANCES;
 
 	GameInstanceManager(GameCore game) {
 
@@ -31,7 +31,7 @@ class GameInstanceManager {
 	 *
 	 * @param instance The new instance.
 	 */
-	void addInstance(Instance instance) {
+	void addInstance(InstanceCore instance) {
 
 		if (instance == null) {
 			throw new IllegalArgumentException("Instance can't be null!");
@@ -49,7 +49,7 @@ class GameInstanceManager {
 		this.INSTANCES.put(instance.ID_INSTANCE, instance);
 	}
 
-	Instance getInstanceById(int id) {
+	InstanceCore getInstanceById(int id) {
 
 		if (!this.INSTANCES.containsKey(id)) {
 

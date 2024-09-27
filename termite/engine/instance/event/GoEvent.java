@@ -2,14 +2,14 @@ package engine.instance.event;
 
 import engine.instance.exceptions.NoValidNeighborException;
 import engine.core.EngineResources;
-import engine.instance.Instance;
+import engine.instance.InstanceCore;
 
 /**
  * When you want to create a go event create an object of this type and give it
- * the {@link Instance}.
+ * the {@link InstanceCore}.
  * <p>
  *      When adding a go event be sure you also added a neighbor to the Instance
- *      with {@link Instance#setPreInstance(Instance)}! Otherwise
+ *      with {@link InstanceCore#setPreInstance(Instance)}! Otherwise
  *      an {@link NoValidNeighborException} will be
  *      thrown.
  * </p>
@@ -32,7 +32,7 @@ public final class GoEvent extends InstanceEvent {
         // get current instance?
         // get the neighbor
         // set current instance to neighbor?
-        Instance next = RES.GAME.getCurrentInstance().getNextInstance();
+        InstanceCore next = RES.GAME.getCurrentInstance().getNextInstance();
         RES.GAME.setCurrentInstance(next.ID_INSTANCE);
     }
 }
