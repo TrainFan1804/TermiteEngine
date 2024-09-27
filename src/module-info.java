@@ -3,5 +3,5 @@ module Termiteengine {
 	requires com.fasterxml.jackson.annotation;
 	requires com.fasterxml.jackson.core;
 
-	exports api;
+	exports de.o.le.termiteengine.api;
 }

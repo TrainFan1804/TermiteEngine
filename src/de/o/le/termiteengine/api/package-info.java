@@ -3,4 +3,4 @@
  * creating your own game. Most of the classes in this package contains minimal
  * logic and just interact with the core packaged of the engine.
  */
-package api;
+package de.o.le.termiteengine.api;

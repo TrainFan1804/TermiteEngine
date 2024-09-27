@@ -1,6 +1,6 @@
-package api;
+package de.o.le.termiteengine.api;
 
-import engine.instance.InstanceCore;
+import de.o.le.termiteengine.internal.instance.InstanceCore;
 
 /**
  * @author o.le

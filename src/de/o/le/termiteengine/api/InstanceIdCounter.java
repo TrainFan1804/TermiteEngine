@@ -1,4 +1,4 @@
-package api;
+package de.o.le.termiteengine.api;
 
 /**
  * @author o.le
