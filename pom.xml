@@ -9,7 +9,7 @@
     	<version>1.4.0-pre</version>
     
     	<build>
-        	<sourceDirectory>termite/</sourceDirectory>
+        	<sourceDirectory>src/</sourceDirectory>
 		<testSourceDirectory>test/</testSourceDirectory>
 		<resources>
 			<resource>
