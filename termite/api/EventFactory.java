@@ -13,6 +13,9 @@ import engine.instance.event.TalkEvent;
 import engine.instance.event.UseEvent;
 
 /**
+ * To add a event to a {@link Instance} you can use this factory class to create
+ * all events easily. 
+ * <p>
  * TODO I am not really happy how this class look like at the moment. I need to
  * find a way to satisfy my desire!
  * 
@@ -22,7 +25,7 @@ import engine.instance.event.UseEvent;
  */
 public class EventFactory {
 
-	public final EventFactory FACTORY = new EventFactory();
+	public static final EventFactory FACTORY = new EventFactory();
 
 	public InstanceEvent create(ITalk talk) { return new TalkEvent(talk); }
 
