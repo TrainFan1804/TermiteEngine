@@ -1,6 +1,5 @@
 package de.o.le.termiteengine.engine.core;
 
-import de.o.le.termiteengine.engine.GameCore;
 import de.o.le.termiteengine.engine.core.service.CommandDecodeService;
 import de.o.le.termiteengine.engine.core.service.CommandDeterminationService;
 import de.o.le.termiteengine.engine.core.service.SystemDelegationService;

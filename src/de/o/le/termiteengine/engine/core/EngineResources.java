@@ -1,6 +1,5 @@
 package de.o.le.termiteengine.engine.core;
 
-import de.o.le.termiteengine.engine.GameCore;
 import de.o.le.termiteengine.engine.core.service.InputService;
 import de.o.le.termiteengine.engine.core.service.output.OuputContentHandler;
 import de.o.le.termiteengine.engine.core.service.output.OutputService;

@@ -46,7 +46,7 @@ public class InstanceCore {
      * TODO should handle some error like put the same instance, nextinstance 
      * already exists and so on.
      */
-    public void setNextInstance(InstanceCore nexInstance) { 
+    public void setNextInstance(InstanceCore nextInstance) { 
 
 	    InstanceEvent event = new GoEvent();
 	// this is so bad haha..
@@ -55,7 +55,7 @@ public class InstanceCore {
         	throw new InstanceEventAlreadyPresentException();
        	}
 
-	this.nextInstance = nexInstance; 
+	this.nextInstance = nextInstance; 
 	this.events.put(event.getEventTypeId(), event);
     }
 
