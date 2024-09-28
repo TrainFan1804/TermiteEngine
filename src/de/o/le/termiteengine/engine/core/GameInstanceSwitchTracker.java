@@ -14,7 +14,9 @@ class GameInstanceSwitchTracker {
 
 	GameInstanceSwitchTracker() {
 
-		this.changed = false;
+		this.changed = true;	// set true on init because when starting
+					// the game instance message should be
+					// printed
 	}
 
 	void toggle(boolean changed) { this.changed = changed; }

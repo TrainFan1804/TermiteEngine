@@ -34,10 +34,6 @@ public class ApplicationCore {
 
         	while (true) {
 
-			/*
-			When starting the game there should be printed the message
-			from the first instance
-			*/
             		if (this.RES.wasInstanceSwitch()) {
 
                 		instanceMessage = this.RES.GAME.getCurrentInstance()
