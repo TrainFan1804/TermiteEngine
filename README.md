@@ -1,20 +1,35 @@
-# Introduction
+# Termiteengine
 
-The **TermiteEngine** is a java engine for the development for textadventure games.
-The **TermiteEngine** provide some tools to create the game of your dreams.
+With the help of the **TermiteEngine** you can create text based adventure games that can be played on the termminal.
 
-# Features
+## Features
 
-You don't need much classes to create your own game with the help of this engine.
+- Simple and fast creation process
+- Support for JSON to define your own NPC's
+- Customzable game messages
+- Easy error handling
 
-The package termite/example contains a very small example that represent the
-most basic features of a game that can be created with this engine.
+## Usage/Examples
 
-# How to use
+There are just a few steps you need to take to create your own game! \
+Here is a simplified list of things you need to do:
 
-You just need a few classes to create a simple textadventure game.
+1. Create your own instance\
+2. Create a custom event and add those to the created instance
+3. Add the instance to your game
+4. Run the game
 
-1. Create a object of the Instance class. You need to enter a **id** into the constructor.
-2. You can add different **Event** objects into the instance with instanceObject.addEvent(InstanceEvent).
-3. After setting up all instances you must create a **Game** object and add all instances to the Game.
-4. Adding the game object to an **Application** object and call the start method.
+## Demo
+
+You can find a example game in the projects repo.
+
+## Roadmap
+
+This is just a list of a few ideas that will definitely implemented in the future. 
+
+- Improve the public API because right now it a mess
+
+- Adding XML support for custom messages and NPC
+- Adding more pre defined events and instances
+- Adding more option for custombility
+- Adding support for a GUI so the user don't need to play in the native terminal
