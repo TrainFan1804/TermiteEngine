@@ -2,39 +2,68 @@ package utils;
 
 import annotations.TestInformation;
 import java.lang.reflect.Method;
+import java.util.Optional;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.TestWatcher;
 
 /**
  * @author o.le
- * @version 1.1
+ * @version 1.4
  * @since 1.2.4
  */
-public class TestInformationPrinter implements BeforeEachCallback {
+public final class TestInformationPrinter implements BeforeEachCallback, TestWatcher {
 
 	@Override
 	public void beforeEach(ExtensionContext context) throws Exception {
-                Class className = context.getRequiredTestClass();
-		Method method = context.getRequiredTestMethod();
 
-		if (method.isAnnotationPresent(TestInformation.class)) {
+                final Class<?> testClass = context.getRequiredTestClass();
+		final Method testMethod = context.getRequiredTestMethod();
 
-			TestInformation info = method.getAnnotation(TestInformation.class);
+		if (testMethod.isAnnotationPresent(TestInformation.class)) {
 
-			System.out.println("Current test: " + className.getName() + "." + method.getName() + "()");
-			System.out.println("Tested class: " + info.testedClass());
+			final TestInformation info = testMethod.getAnnotation(TestInformation.class);
+			final String methodFullName = String.format("%s.%s()", 
+								testClass.getName(), 
+								testMethod.getName());
 
-			for (String methodName : info.testedMethod()) {
-
-				System.out.println("Tested method: "
-									+ info.testedClass()
-									+ "."
-									+ methodName);
-			}
+			System.out.println("Current test: " + methodFullName);
+			System.out.println("Target: " + info.target());
 			System.out.println("Expected behavior: " + info.behavior());
 			System.out.println("Is static: " + info.isStatic());
-
-			System.out.println("----------------------------------------");
+			System.out.println();
 		}
+	}
+
+	@Override
+	public void testFailed(ExtensionContext context, Throwable cause) {
+
+		final Class<?> className = context.getRequiredTestClass();
+		final Method method = context.getRequiredTestMethod();
+		System.out.println("Something went wrong in test " + className.getName() 
+				+ "." + method.getName() +  " while running");
+		System.out.println("Cause: " + cause.getLocalizedMessage());
+		System.out.println("----------------------------------------");
+	}
+
+	@Override
+	public void testSuccessful(ExtensionContext context) {
+
+		final Class<?> className = context.getRequiredTestClass();
+		final Method method = context.getRequiredTestMethod();
+		System.out.println("Test " + className.getName() 
+				+ "." + method.getName() +  " run successfully");
+		System.out.println("----------------------------------------");
+	}
+
+	@Override
+	public void testDisabled(ExtensionContext context, Optional<String> reason) {
+
+		final Class<?> className = context.getRequiredTestClass();
+		final Method method = context.getRequiredTestMethod();
+		System.out.println("Test " + className.getName() 
+				+ "." + method.getName() +  " was disabled because: "
+					+ reason.stream().toArray()[0]);
+		System.out.println("----------------------------------------");
 	}
 }
