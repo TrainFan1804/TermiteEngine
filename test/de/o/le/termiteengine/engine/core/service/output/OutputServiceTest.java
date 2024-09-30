@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
  
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.4.2
  */
 @ExtendWith(TestInformationPrinter.class)
@@ -30,7 +30,7 @@ public class OutputServiceTest {
 	}
 
 	@BeforeEach
-	public void setUpStream() {
+	public void setUp() {
 
 		this.ORIGIN_STREAM = System.out;
 		this.outStream = new ByteArrayOutputStream();
@@ -38,7 +38,7 @@ public class OutputServiceTest {
 	}
 
 	@AfterEach
-	public void restoreOriginStream() {
+	public void tearDown() {
 
 		System.setOut(ORIGIN_STREAM);
 	}
@@ -69,6 +69,12 @@ public class OutputServiceTest {
 				behavior = "Service will print the entered message")
 	@Test
 	public void testPrintMessage_Message() {
+
+		final Message TEST_MSG = new Message("This is a test message");
+
+		this.OUT.printMessage(TEST_MSG);
+
+		assertEquals(TEST_MSG.toString() + "\n", this.outStream.toString());
 	}
 
 	@TestInformation(target = "OutputService.printMessage(MessageType)",
