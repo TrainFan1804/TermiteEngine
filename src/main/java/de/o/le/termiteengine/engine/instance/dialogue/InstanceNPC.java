@@ -3,9 +3,16 @@ package de.o.le.termiteengine.engine.instance.dialogue;
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.filesystem.JsonLoader;
+import de.o.le.termiteengine.engine.filesystem.JsonValidater;
+import de.o.le.termiteengine.engine.util.ResourceLoader;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * TODO implement some oop
@@ -16,8 +23,11 @@ import java.util.List;
  */
 public class InstanceNPC {
 
+	private static final File SCHEME = ResourceLoader.loadRes(InstanceNPC.class, "dialogueSchema.json");
+
 	private final String NAME;
 	private final String JSON_PATH;
+	private final File DIALOGUE_FILE;
 
 	private Dialogue dialogue;
 
@@ -30,6 +40,20 @@ public class InstanceNPC {
 
 		this.NAME = name;
 		this.JSON_PATH = pathToJson;
+
+		final File temp = new File(pathToJson);
+		if (!this.validJson(temp)) throw new RuntimeException();
+
+		this.DIALOGUE_FILE = temp;
+	}
+
+	private boolean validJson(File validatedFile) {
+
+		final JsonValidater val = new JsonValidater();
+
+		if (val.isValidJson(validatedFile, SCHEME)) return true;
+
+		return false;
 	}
 
 	/*
@@ -38,7 +62,7 @@ public class InstanceNPC {
 	*/
 	public void loadDialogue() {
 
-		JsonLoader loader = new JsonLoader();
+		final JsonLoader loader = new JsonLoader();
 		try {
 
 			this.dialogue = loader.loadFileValue(new File(this.JSON_PATH), Dialogue.class);

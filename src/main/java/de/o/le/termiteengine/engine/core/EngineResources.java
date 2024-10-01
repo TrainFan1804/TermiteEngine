@@ -94,6 +94,7 @@ public class EngineResources {
 
 	private void initOutputContent() {
 
+		// TODO call jsonvalidator here for custom output
 		OuputContentHandler.init(pathToOutputContent);
 	}
 }
