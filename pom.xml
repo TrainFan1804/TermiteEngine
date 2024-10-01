@@ -6,7 +6,7 @@
 
     	<groupId>de.o.le</groupId>
     	<artifactId>termiteengine</artifactId>
-    	<version>1.4.4</version>
+    	<version>1.4.5</version>
     
     	<build>
         	<sourceDirectory>src/</sourceDirectory>
@@ -55,6 +55,21 @@
     			<groupId>com.fasterxml.jackson.core</groupId>
     			<artifactId>jackson-annotations</artifactId>
     			<version>2.17.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.networknt</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>1.5.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.ethlo.time</groupId>
+					<artifactId>itu</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.dataformat</groupId>
+					<artifactId>jackson-dataformat-yaml</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
     	</dependencies>
 

@@ -34,7 +34,7 @@ public final class NPCTalkEvent extends InstanceEvent {
 		// make sure the dialog is only load once!
 		if (!this.wasLoad) {
 
-			this.npc.loadDialog();
+			this.npc.loadDialogue();
 		 	this.wasLoad = true;
 		}
 

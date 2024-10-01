@@ -1,8 +1,8 @@
 package de.o.le.termiteengine.engine.instance.dialogue;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
+import de.o.le.termiteengine.engine.filesystem.JsonLoader;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * TODO implement some oop
  * 
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.3.0-1
  */
 public class InstanceNPC {
@@ -36,15 +36,15 @@ public class InstanceNPC {
 		This method is called during runtime. That's fine but the JSON
 		should be checked during compile time.
 	*/
-	public void loadDialog() {
+	public void loadDialogue() {
 
-		ObjectMapper objectMapper = new ObjectMapper();
+		JsonLoader loader = new JsonLoader();
 		try {
 
-			this.dialogue = objectMapper.readValue(new File(this.JSON_PATH), Dialogue.class);
-		} catch (IOException ex) {
+			this.dialogue = loader.loadFileValue(new File(this.JSON_PATH), Dialogue.class);
+		} catch (IOException e) {
 
-			EngineResources.INSTANCE.OUT.printError(ex);
+			EngineResources.INSTANCE.OUT.printError(e);
 		}	
 	}
 
