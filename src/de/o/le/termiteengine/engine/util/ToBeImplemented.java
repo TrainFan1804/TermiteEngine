@@ -6,6 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * This annotation is used when a method / type signature is already existing but
+ * must still be implemented right.
+ * 
  * @author o.le
  * @version 1.0
  * @since 1.4.4
