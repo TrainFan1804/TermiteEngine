@@ -32,6 +32,10 @@ public class InstanceNPC {
 		this.JSON_PATH = pathToJson;
 	}
 
+	/*
+		This method is called during runtime. That's fine but the JSON
+		should be checked during compile time.
+	*/
 	public void loadDialog() {
 
 		ObjectMapper objectMapper = new ObjectMapper();
