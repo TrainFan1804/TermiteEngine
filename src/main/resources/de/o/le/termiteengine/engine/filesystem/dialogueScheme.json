@@ -1,0 +1,50 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"type": "object",
+	"properties": {
+		"dialogueTree": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"dialogueId": {
+						"type": "integer",
+						"minimum": 1
+					},
+					"npcLine": {
+						"type": "string"
+					},
+					"playerLine": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"playerText": {
+									"type": "string"
+								},
+								"nextNpcLine": {
+									"type": [
+										"integer",
+										"null"
+									]
+								}
+							},
+							"required": [
+								"playerText",
+								"nextNpcLine"
+							]
+						}
+					}
+				},
+				"required": [
+					"dialogueId",
+					"npcLine",
+					"playerLine"
+				]
+			}
+		}
+	},
+	"required": [
+		"dialogueTree"
+	]
+}

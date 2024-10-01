@@ -3,6 +3,7 @@ package de.o.le.termiteengine.engine.core;
 import de.o.le.termiteengine.engine.core.service.InputService;
 import de.o.le.termiteengine.engine.core.service.output.OuputContentHandler;
 import de.o.le.termiteengine.engine.core.service.output.OutputService;
+import de.o.le.termiteengine.engine.util.ToBeImplemented;
 
 /**
  * @author o.le
@@ -18,7 +19,11 @@ public class EngineResources {
 	 */
 	public static EngineResources INSTANCE;
 
-	private static String pathToOutputContent = "resources/engine/output/default.json";
+	@ToBeImplemented(message = "Should find a way to use the new ResourceLoader"
+		+ " but first I need to find a way that the path will be converted"
+		+ " to an InputStream")
+	private static String pathToOutputContent = "src/main/resources/de/o/le/termiteengine/engine/core/default.json";
+	 // private static String pathToOutputContent = ResourceLoader.loadRes(EngineResources.class, "default.json");
 
 	public static final EngineResources getInstance() {
 
