@@ -16,7 +16,11 @@ public class EngineResources {
 	 * When using the resources just one-two times you can use this method
 	 * directly. Other wise use {@link EngineResources#getInstance()}
 	 * and create a field in your class.
+	 * <p>
+	 * @deprecated Will be made private in a future version so use
+	 * {@link EngineResources#getInstance()} instead!
 	 */
+	@Deprecated
 	public static EngineResources INSTANCE;
 
 	@ToBeImplemented(message = "Should find a way to use the new ResourceLoader"

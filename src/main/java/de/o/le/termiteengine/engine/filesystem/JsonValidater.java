@@ -34,48 +34,21 @@ public class JsonValidater {
 
 
 	    		final JsonSchema jsonSchema = factory.getSchema(schema.toURI());
-		    	//InstanceNPC.class.getResourceAsStream("dialogueSchema.json"));
 
 	    		final JsonNode jsonNode = mapper.readTree(testedFile);
-		    	//TestProj.class.getResourceAsStream("npctemplate.json"));
 
 	    		final Set<ValidationMessage> errors = jsonSchema.validate(jsonNode);
 
 			if (!errors.isEmpty()) {
 
-				errors.stream().forEach((t) -> {
-		    			System.out.println(t.toString());
-	    			});
+				ErrorLogger.getInstance().log(errors);
 
 				// why must maven throw so many error messages?
 				System.exit(1);
 			}
-
-			/*
-			// load schema
-			JsonNode schemaNode = mapper.readTree(testedFile);
-			JsonSchemaFactory schemaFactory;
-			schemaFactory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V7); // here is a warning.. Why?
-			com.networknt.schema.JsonSchema jsonSchema = schemaFactory.getSchema(schemaNode);
-
-			// load file that should be validate
-			JsonNode jsonNode = mapper.readTree(schema);
-
-			// validation
-			Set<ValidationMessage> validationMessages = jsonSchema.validate(jsonNode);
-			// this is always true but I don't know why
-			if (validationMessages.isEmpty()) {
-				System.out.println("JSON is valid");
-				return true;
-			} else {
-				System.out.println("JSON is not valid");
-				validationMessages.forEach(message -> System.out.println(message.getMessage()));
-				return false;
-			}
-			*/
 		} catch (IOException e) {
 
-			EngineResources.INSTANCE.OUT.printError(e);
+			EngineResources.getInstance().OUT.printError(e);
 		}
 	}
 }
