@@ -7,12 +7,7 @@ import de.o.le.termiteengine.engine.filesystem.JsonValidater;
 import de.o.le.termiteengine.engine.util.ResourceLoader;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * TODO implement some oop
@@ -26,7 +21,6 @@ public class InstanceNPC {
 	private static final File SCHEME = ResourceLoader.loadRes(InstanceNPC.class, "dialogueSchema.json");
 
 	private final String NAME;
-	private final String JSON_PATH;
 	private final File DIALOGUE_FILE;
 
 	private Dialogue dialogue;
@@ -39,33 +33,20 @@ public class InstanceNPC {
 	public InstanceNPC(String name, String pathToJson) {
 
 		this.NAME = name;
-		this.JSON_PATH = pathToJson;
 
+		final JsonValidater val = new JsonValidater();
 		final File temp = new File(pathToJson);
-		if (!this.validJson(temp)) throw new RuntimeException();
+		val.validateJson(temp, SCHEME);
 
 		this.DIALOGUE_FILE = temp;
 	}
 
-	private boolean validJson(File validatedFile) {
-
-		final JsonValidater val = new JsonValidater();
-
-		if (val.isValidJson(validatedFile, SCHEME)) return true;
-
-		return false;
-	}
-
-	/*
-		This method is called during runtime. That's fine but the JSON
-		should be checked during compile time.
-	*/
 	public void loadDialogue() {
 
 		final JsonLoader loader = new JsonLoader();
 		try {
 
-			this.dialogue = loader.loadFileValue(new File(this.JSON_PATH), Dialogue.class);
+			this.dialogue = loader.loadFileValue(this.DIALOGUE_FILE, Dialogue.class);
 		} catch (IOException e) {
 
 			EngineResources.INSTANCE.OUT.printError(e);

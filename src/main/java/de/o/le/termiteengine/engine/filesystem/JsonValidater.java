@@ -2,26 +2,56 @@ package de.o.le.termiteengine.engine.filesystem;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersion;
 import com.networknt.schema.ValidationMessage;
+import de.o.le.termiteengine.engine.core.EngineResources;
 import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.4.5
  */
 public class JsonValidater {
 
-	public boolean isValidJson(File testedFile, File schema) {
+	/**
+	 * Will validate if a json file matches the given schema.
+	 * 
+	 * @param testedFile The file that is tested.
+	 * @param schema The schema that the file should match.
+	 */
+	public void validateJson(File testedFile, File schema) {
 		
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
 
+			final JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
+
+
+	    		final JsonSchema jsonSchema = factory.getSchema(schema.toURI());
+		    	//InstanceNPC.class.getResourceAsStream("dialogueSchema.json"));
+
+	    		final JsonNode jsonNode = mapper.readTree(testedFile);
+		    	//TestProj.class.getResourceAsStream("npctemplate.json"));
+
+	    		final Set<ValidationMessage> errors = jsonSchema.validate(jsonNode);
+
+			if (!errors.isEmpty()) {
+
+				errors.stream().forEach((t) -> {
+		    			System.out.println(t.toString());
+	    			});
+
+				// why must maven throw so many error messages?
+				System.exit(1);
+			}
+
+			/*
 			// load schema
 			JsonNode schemaNode = mapper.readTree(testedFile);
 			JsonSchemaFactory schemaFactory;
@@ -42,41 +72,10 @@ public class JsonValidater {
 				validationMessages.forEach(message -> System.out.println(message.getMessage()));
 				return false;
 			}
+			*/
 		} catch (IOException e) {
-			e.printStackTrace();
-		}
 
-		return true;
-	}
-
-	/*
-		This was generated with chatGPT
-	*/
-	public void foo() {
-
-		ObjectMapper mapper = new ObjectMapper();
-
-		try {
-
-			// load schema
-			JsonNode schemaNode = mapper.readTree(new File("src/main/resources/de/o/le/termiteengine/engine/filesystem/dialogueSchema.json"));
-			JsonSchemaFactory schemaFactory;
-			schemaFactory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
-			com.networknt.schema.JsonSchema jsonSchema = schemaFactory.getSchema(schemaNode);
-
-			// load file that should be validate
-			JsonNode jsonNode = mapper.readTree(new File("npctemplate.json"));
-
-			// validation
-			Set<ValidationMessage> validationMessages = jsonSchema.validate(jsonNode);
-			if (validationMessages.isEmpty()) {
-				System.out.println("JSON is valid");
-			} else {
-				System.out.println("JSON is not valid");
-				validationMessages.forEach(message -> System.out.println(message.getMessage()));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
+			EngineResources.INSTANCE.OUT.printError(e);
 		}
 	}
 }
