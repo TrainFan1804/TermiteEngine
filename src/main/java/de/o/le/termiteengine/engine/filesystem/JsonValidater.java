@@ -9,11 +9,13 @@ import com.networknt.schema.ValidationMessage;
 import de.o.le.termiteengine.engine.core.EngineResources;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Set;
 
 /**
  * @author o.le
- * @version 1.1
+ * @version 1.2
  * @since 1.4.5
  */
 public class JsonValidater {
@@ -30,8 +32,7 @@ public class JsonValidater {
 
 		try {
 
-			final JsonSchemaFactory factory = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
-
+			final JsonSchemaFactory factory = this.createFactory();
 
 	    		final JsonSchema jsonSchema = factory.getSchema(schema.toURI());
 
@@ -50,5 +51,40 @@ public class JsonValidater {
 
 			EngineResources.getInstance().OUT.printError(e);
 		}
+	}
+
+	/**
+	 * Each time the validator is getting the JsonSchemeFactory a annoying
+	 * error message is displayed. To deactivate the message the PrintStream
+	 * is delegate to a dummy stream.
+	 * <p>
+	 * This is bad but there is no simpler workaround because I can't fix the
+	 * issue in any other way.
+	 * 
+	 * @return The JsonSchemeFactory for the validator.
+	 */
+	private JsonSchemaFactory createFactory() {
+
+		final PrintStream ERROR = System.err;
+		final JsonSchemaFactory FACTORY; 
+
+		try {
+
+			// This is the dummy print stream
+			final PrintStream DUMMY = new PrintStream(new OutputStream() {
+				@Override
+				public void write(int i) { }
+			});
+
+			System.setErr(DUMMY);
+
+			// This method call cause the error printing
+			FACTORY = JsonSchemaFactory.getInstance(SpecVersion.VersionFlag.V4);
+		} finally {
+
+			System.setErr(ERROR);
+		}
+
+		return FACTORY;
 	}
 }

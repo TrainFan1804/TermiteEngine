@@ -25,11 +25,6 @@ public class InstanceNPC {
 
 	private Dialogue dialogue;
 
-	/*
-		This isn't good because the path could be incorrect, the json
-		could be in a wrong format. This would throw a runtime exception
-		and this isn't very good
-	*/
 	public InstanceNPC(String name, String pathToJson) {
 
 		this.NAME = name;
