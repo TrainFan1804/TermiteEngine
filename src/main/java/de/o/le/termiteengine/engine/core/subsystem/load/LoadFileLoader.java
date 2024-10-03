@@ -2,7 +2,7 @@ package de.o.le.termiteengine.engine.core.subsystem.load;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
-import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.SaveGame;
+import de.o.le.termiteengine.engine.core.subsystem.util.SaveGame;
 import de.o.le.termiteengine.engine.filesystem.JsonLoadHandler;
 import java.io.File;
 import java.io.IOException;

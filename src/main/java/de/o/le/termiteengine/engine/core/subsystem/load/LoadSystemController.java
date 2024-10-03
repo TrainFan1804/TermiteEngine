@@ -2,8 +2,8 @@ package de.o.le.termiteengine.engine.core.subsystem.load;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
-import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.ExitFileMenuException;
-import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileNameExtractor;
+import de.o.le.termiteengine.engine.core.subsystem.util.ExitFileMenuException;
+import de.o.le.termiteengine.engine.core.subsystem.util.FileNameExtractor;
 import java.io.File;
 
 /**
