@@ -1,5 +1,7 @@
 package de.o.le.termiteengine.engine.core.service.output;
 
+import de.o.le.termiteengine.engine.util.ToBeImplemented;
+
 /**
  * This is the output service. This class is used when something is printed to
  * the terminal.
@@ -27,6 +29,7 @@ public class OutputService {
 		this.FORMAT = ""; 
 	} 
 
+	@ToBeImplemented
     	public OutputService(String format) {
 
        		this.FORMAT = format.strip() + " ";

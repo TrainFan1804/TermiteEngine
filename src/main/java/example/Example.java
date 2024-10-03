@@ -1,6 +1,7 @@
 package example;
 
 import de.o.le.termiteengine.api.Application;
+import de.o.le.termiteengine.api.EngineOutput;
 import de.o.le.termiteengine.api.EventFactory;
 import de.o.le.termiteengine.api.Game;
 import de.o.le.termiteengine.api.Instance;
@@ -30,10 +31,11 @@ public class Example {
 		Instance first = builder
 				.withId(0)
 				.withEvent(factory.create((ITalk) () -> {
-					System.out.println("Talk..");
+					EngineOutput.out("Talk..");
+					
 				}))
 				.withEvent(factory.create((IUse) () -> {
-					System.out.println("Use..");
+					EngineOutput.out("Use..");
 				}))
 				.build();
 
@@ -41,7 +43,7 @@ public class Example {
 				.withId(1)
 				.withMessage(new Message("This is a custom message!"))
 				.withEvent(new NPCTalkEvent(new InstanceNPC("John", "./npctemplate.json")))
-				.withEvent(new SearchEvent(() -> System.out.println("Search..")))
+				.withEvent(new SearchEvent(() -> EngineOutput.out("Search..")))
 				.build();
 
 		first.setNext(second);

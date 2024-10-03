@@ -10,10 +10,13 @@ import java.lang.annotation.Target;
  * must still be implemented right.
  * 
  * @author o.le
- * @version 1.1
+ * @version 1.2
  * @since 1.4.4
  */
-@Target({ElementType.METHOD, ElementType.TYPE, ElementType.FIELD})
+@Target({ElementType.METHOD,
+	ElementType.TYPE,
+	ElementType.FIELD,
+	ElementType.CONSTRUCTOR})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ToBeImplemented {
 
