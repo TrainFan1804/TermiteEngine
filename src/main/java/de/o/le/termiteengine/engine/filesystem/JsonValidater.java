@@ -14,6 +14,8 @@ import java.io.PrintStream;
 import java.util.Set;
 
 /**
+ * This class will check if a JSON file match a specific JSON schema.
+ * 
  * @author o.le
  * @version 1.2
  * @since 1.4.5

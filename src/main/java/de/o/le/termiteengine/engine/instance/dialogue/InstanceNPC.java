@@ -2,7 +2,7 @@ package de.o.le.termiteengine.engine.instance.dialogue;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
-import de.o.le.termiteengine.engine.filesystem.JsonLoader;
+import de.o.le.termiteengine.engine.filesystem.JsonLoadHandler;
 import de.o.le.termiteengine.engine.filesystem.JsonValidater;
 import de.o.le.termiteengine.engine.util.ResourceLoader;
 import java.io.File;
@@ -38,7 +38,7 @@ public class InstanceNPC {
 
 	public void loadDialogue() {
 
-		final JsonLoader loader = new JsonLoader();
+		final JsonLoadHandler loader = new JsonLoadHandler();
 		try {
 
 			this.dialogue = loader.loadFileValue(this.DIALOGUE_FILE, Dialogue.class);

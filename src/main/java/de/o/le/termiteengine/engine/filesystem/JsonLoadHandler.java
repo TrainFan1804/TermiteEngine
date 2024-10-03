@@ -12,11 +12,11 @@ import java.io.IOException;
  * @version 1.0
  * @since 1.4.5
  */
-public class JsonLoader {
+public class JsonLoadHandler {
 
 	private final ObjectMapper MAPPER;
 
-	public JsonLoader() {
+	public JsonLoadHandler() {
 
 		this.MAPPER = new JsonMapper();
 	}
