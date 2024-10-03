@@ -1,10 +1,10 @@
-package de.o.le.termiteengine.engine.core.subsystem.filesystem.load;
+package de.o.le.termiteengine.engine.core.subsystem.load;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.ExitFileMenuException;
-import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileConnection;
 import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileNameExtractor;
+import java.io.File;
 
 /**
  * @author o.le
@@ -21,22 +21,22 @@ class LoadSystemController {
 			printer.printName();
 
 			// TODO add here loop aslong as it the input is valid or user enter "EXIT"
-			FileConnection con;
+			File file;
 			do {
 				
 				String fileName = this.askForFile();
 
-				con = new FileConnection(fileName);
+				file = new File(fileName + ".json");
 				// TODO this must be do better!
-				if (!con.fileExists()) {
+				if (!file.exists()) {
 
 					EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_FILE_NOT_FOUNT);
 				}
 
-			} while(!con.fileExists());
+			} while(!file.exists());
 
 			LoadFileLoader loader = new LoadFileLoader();
-			loader.load(con);
+			loader.load(file);
 		} catch (ExitFileMenuException e) {
 
 			EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_CANCEL);

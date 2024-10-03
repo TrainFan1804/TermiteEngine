@@ -1,20 +1,20 @@
-package de.o.le.termiteengine.engine.core.subsystem.filesystem.save;
+package de.o.le.termiteengine.engine.core.subsystem.save;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import de.o.le.termiteengine.engine.core.EngineResources;
-import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileConnection;
 import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.SaveGame;
+import java.io.File;
 import java.io.IOException;
 
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.1.1
  */
 class SaveFileGenerator {
 
-	void generateSaveFile(FileConnection con) {
+	void generateSaveFile(File file) {
 		
 		ObjectMapper mapper = new JsonMapper();
 
@@ -22,10 +22,10 @@ class SaveFileGenerator {
 			
 			SaveGame save = SaveGame.generateSaveGame();
 			mapper.writerWithDefaultPrettyPrinter()
-					.writeValue(con.getConnection(), save);
+					.writeValue(file, save);
 		} catch (IOException e) {
 
-			EngineResources.INSTANCE.OUT.printError(e);
+			EngineResources.getInstance().OUT.printError(e);
 		}
 	}
 }

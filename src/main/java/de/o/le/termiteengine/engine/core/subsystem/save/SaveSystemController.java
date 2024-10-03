@@ -1,14 +1,14 @@
-package de.o.le.termiteengine.engine.core.subsystem.filesystem.save;
+package de.o.le.termiteengine.engine.core.subsystem.save;
 
 import de.o.le.termiteengine.engine.core.EngineResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.ExitFileMenuException;
-import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileConnection;
 import de.o.le.termiteengine.engine.core.subsystem.filesystem.util.FileNameExtractor;
+import java.io.File;
 
 /**
  * @author o.le
- * @version 1.1
+ * @version 1.2
  * @since 1.1.1
  */
 final class SaveSystemController {
@@ -20,6 +20,9 @@ final class SaveSystemController {
 		this.RES = EngineResources.getInstance();
 	}
 
+	/*
+	TODO this is bad very very bad..
+	*/
 	void init() {
 		
 		// I could extract some methods e.g. one for file name asking,
@@ -29,11 +32,11 @@ final class SaveSystemController {
 			FileNameExtractor extractor = new FileNameExtractor();
 			String fileName = extractor.extractFileName(MessageType.MSG_SAVE_ASK_FILE);
 
-			FileConnection con = new FileConnection(fileName);
-			if (con.getConnection().exists()) this.requestOverride();
+			File file = new File(fileName + ".json");
+			if (file.exists()) this.requestOverride();
 
 			SaveFileGenerator fileGenerator = new SaveFileGenerator();
-			fileGenerator.generateSaveFile(new FileConnection(fileName));
+			fileGenerator.generateSaveFile(file);
 
 		} catch (ExitFileMenuException e) {
 

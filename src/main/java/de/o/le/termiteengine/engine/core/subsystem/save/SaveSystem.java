@@ -1,18 +1,18 @@
-package de.o.le.termiteengine.engine.core.subsystem.filesystem.load;
+package de.o.le.termiteengine.engine.core.subsystem.save;
 
 import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
  * @author                              o.le
- * @version                             2.0
+ * @version                             1.2
  * @since                               0.22
  */
-class LoadSystem implements EngineSubsystem {
+class SaveSystem implements EngineSubsystem {
 
     @Override
     public void execute() {
 
-		LoadSystemController controller = new LoadSystemController();
+		SaveSystemController controller = new SaveSystemController();
 		controller.init();
     }
 }

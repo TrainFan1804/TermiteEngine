@@ -1,4 +1,4 @@
-package de.o.le.termiteengine.engine.core.subsystem.filesystem.load;
+package de.o.le.termiteengine.engine.core.subsystem.load;
 
 /**
  * @author 				o.le
