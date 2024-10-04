@@ -13,6 +13,9 @@ import de.o.le.termiteengine.engine.core.service.output.MessageType;
  */
 public final class NullEvent extends InstanceEvent {
 
+	/**
+	 * Create a new NullEvent instance. This is just a dummy for the engine.
+	 */
     	public NullEvent() {
 
         	super(InstanceEventType.NULL_EVENT);

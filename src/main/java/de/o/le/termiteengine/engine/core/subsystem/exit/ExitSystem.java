@@ -6,6 +6,9 @@ import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 
 /**
+ * The exit subsystem will handle the exit of the game. Will also print a exit
+ * message.
+ * 
  * @author                              o.le
  * @version                             1.0
  * @since                               0.22

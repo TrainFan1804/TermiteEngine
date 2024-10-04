@@ -1,6 +1,9 @@
 package de.o.le.termiteengine.engine.instance.dialogue;
 
 /**
+ * A player response contains the text the player is saying and a id to the next
+ * {@link DialogueNode}.
+ * 
  * @author o.le
  * @version 2.0
  * @since 1.3.0-1

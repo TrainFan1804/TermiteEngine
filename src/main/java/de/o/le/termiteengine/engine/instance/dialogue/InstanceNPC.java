@@ -6,11 +6,16 @@ import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.filesystem.JsonLoadHandler;
 import de.o.le.termiteengine.engine.filesystem.JsonValidater;
 import de.o.le.termiteengine.engine.filesystem.ResourceLoader;
+import de.o.le.termiteengine.engine.instance.event.NPCTalkEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 /**
+ * A InstanceNPC is something that can be inside of a {@link NPCTalkEvent}. The
+ * ncp contains a dialogue that can help you to create simple dialogues with json
+ * files that follow a specific schema.
+ * <p>
  * TODO implement some oop
  * 
  * @author o.le
@@ -26,6 +31,12 @@ public class InstanceNPC {
 
 	private Dialogue dialogue;
 
+	/**
+	 * Create a new InstanceNPC instance.
+	 * 
+	 * @param name The name of the npc. Currently not used.
+	 * @param pathToJson The path to the json that contains the dialogue.
+	 */
 	public InstanceNPC(String name, String pathToJson) {
 
 		this.NAME = name;
@@ -37,6 +48,12 @@ public class InstanceNPC {
 		this.DIALOGUE_FILE = temp;
 	}
 
+	/**
+	 * Load the dialogue from the file that is saved in the npc instance.
+	 * <p>
+	 * Will only be executed once after enter a instance with the 
+	 * {@link NPCTalkEvent}.
+	 */
 	public void loadDialogue() {
 
 		final JsonLoadHandler loader = new JsonLoadHandler();
@@ -49,6 +66,9 @@ public class InstanceNPC {
 		}	
 	}
 
+	/**
+	 * Start the dialogue with the npc.
+	 */
 	public void startDialog() {
 
 		final EngineOutputResource RES = EngineOutputResource.getInstance();

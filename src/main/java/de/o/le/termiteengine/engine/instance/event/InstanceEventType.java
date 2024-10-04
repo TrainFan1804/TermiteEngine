@@ -19,10 +19,10 @@ public enum InstanceEventType {
     	GO_EVENT(3),
     	LEAVE_EVENT(4);
 
-    public final int ID;
+    	public final int ID;
 
-    InstanceEventType(int id) {
+    	InstanceEventType(int id) {
 
-        this.ID = id;
-    }
+        	this.ID = id;
+    	}
 }

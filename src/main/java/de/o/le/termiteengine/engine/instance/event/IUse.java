@@ -10,9 +10,9 @@ package de.o.le.termiteengine.engine.instance.event;
  */
 public interface IUse {
 
-    /**
-     * Define here your special use behavior. This method will be executed
-     * automatically.
-     */
-    void use();
+    	/**
+     	 * Define here your special use behavior. This method will be executed
+     	 * automatically.
+     	 */
+    	void use();
 }

@@ -10,9 +10,9 @@ package de.o.le.termiteengine.engine.instance.event;
  */
 public interface ITalk {
 
-    /**
-     * Define here your special talk behavior. This method will be executed
-     * automatically.
-     */
-    void talk();
+    	/**
+     	 * Define here your special talk behavior. This method will be executed
+     	 * automatically.
+     	 */
+    	void talk();
 }

@@ -20,16 +20,23 @@ import de.o.le.termiteengine.engine.instance.InstanceCore;
  */
 public final class LeaveEvent extends InstanceEvent {
 
-    public LeaveEvent() {
+	/**
+	 * Create a new LeaveEvent that will be executed when the player enter
+	 * leave into the terminal.
+	 * <p>
+	 * You don't need to do anything but add this event to your instance that
+	 * should support this event. Everything will be handled by this event.
+	 */
+    	public LeaveEvent() {
 
-        super(InstanceEventType.LEAVE_EVENT);
-    }
+        	super(InstanceEventType.LEAVE_EVENT);
+    	}
 
-    @Override
-    public void startEvent() {
+    	@Override
+    	public void startEvent() {
 
-	    final EngineSystemResources RES = EngineSystemResources.getInstance();
-        InstanceCore pre = RES.GAME.getCurrentInstance().getPreInstance();
-        RES.GAME.setCurrentInstance(pre.ID_INSTANCE);
+	    	final EngineSystemResources RES = EngineSystemResources.getInstance();
+        	InstanceCore pre = RES.GAME.getCurrentInstance().getPreInstance();
+        	RES.GAME.setCurrentInstance(pre.ID_INSTANCE);
     }
 }

@@ -13,21 +13,21 @@ import de.o.le.termiteengine.engine.instance.InstanceCore;
  */
 public final class UseEvent extends InstanceEvent {
 
-    private final IUse use;
+    	private final IUse use;
 
-    /**
-     * Create a new use event with the behavior of the given
-     * {@link IUse}.
-     *
-     * @param use                       The wanted use behavior that should
-     *                                  be executed when stating the use event.
-     */
-    public UseEvent(IUse use) {
+    	/**
+     	 * Create a new use event with the behavior of the given
+     	 * {@link IUse}.
+     	 *
+     	 * @param use                       The wanted use behavior that should
+     	 *                                  be executed when stating the use event.
+     	 */
+    	public UseEvent(IUse use) {
 
-        super(InstanceEventType.USE_EVENT);
-        this.use = use;
-    }
+        	super(InstanceEventType.USE_EVENT);
+        	this.use = use;
+    	}
 
-    @Override
-    public void startEvent() { this.use.use(); }
+    	@Override
+    	public void startEvent() { this.use.use(); }
 }

@@ -21,6 +21,13 @@ public final class NPCTalkEvent extends InstanceEvent {
 	private final InstanceNPC npc;
 	private boolean wasLoad;
 
+	/**
+	 * Create a new NPCTalkEvent instance.
+	 * <p>
+	 * Add support for multiple npc's.
+	 * 
+	 * @param npc The npc that is contained in the event.
+	 */
 	public NPCTalkEvent(InstanceNPC npc) {
 
 		super(InstanceEventType.TALK_EVENT);

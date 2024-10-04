@@ -8,6 +8,9 @@ import de.o.le.termiteengine.engine.core.subsystem.util.FileNameExtractor;
 import java.io.File;
 
 /**
+ * This class is a controller to control the save routine. Will handle exceptions,
+ * save order, etc.
+ * 
  * @author o.le
  * @version 1.2
  * @since 1.1.1
@@ -16,6 +19,9 @@ final class SaveSystemController {
 
 	private final EngineOutputResource RES;
 
+	/**
+	 * Create a SaveSystemController.
+	 */
 	SaveSystemController() {
 
 		this.RES = EngineOutputResource.getInstance();
@@ -24,6 +30,9 @@ final class SaveSystemController {
 	/*
 	TODO this is bad very very bad..
 	*/
+	/**
+	 * Initialize the controller. 
+	 */
 	void init() {
 		
 		// I could extract some methods e.g. one for file name asking,
@@ -45,6 +54,12 @@ final class SaveSystemController {
 		}
 	}
 
+	/**
+	 * When a file with the entered name already exist ask the user if he
+	 * want to override the file.
+	 * 
+	 * @throws ExitFileMenuException Will end the save routine.
+	 */
 	private void requestOverride() throws ExitFileMenuException {
 
 		this.RES.OUT.printMessage(MessageType.MSG_SAVE_OVR_FILE);

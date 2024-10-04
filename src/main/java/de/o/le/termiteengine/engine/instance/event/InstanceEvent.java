@@ -24,22 +24,28 @@ import de.o.le.termiteengine.engine.instance.exception.InstanceEventAlreadyPrese
  */
 public abstract class InstanceEvent {
 
-    private final InstanceEventType eventType;
+    	private final InstanceEventType eventType;
 
-    protected InstanceEvent(InstanceEventType eventType) {
+    	/**
+     	 * Create a InstanceEvent instance.
+     	 * 
+     	 * @param eventType The type of the created InstanceEvent. Important for the
+     	 * engine.
+     	 */
+    	protected InstanceEvent(InstanceEventType eventType) {
 
-        this.eventType = eventType;
-    }
+        	this.eventType = eventType;
+    	}
 
-    /**
-     * Get the id of the saved {@link InstanceEventType}.
-     *
-     * @return                          The id of the saved InstanceEventType.
-     */
-    public final int getEventTypeId() { return this.eventType.ID; }
+    	/**
+     	 * Get the id of the saved {@link InstanceEventType}.
+     	 *
+     	 * @return                          The id of the saved InstanceEventType.
+     	 */
+    	public final int getEventTypeId() { return this.eventType.ID; }
 
-    /**
-     * Start the event.
-     */
-    public abstract void startEvent();
+    	/**
+     	 * Start the event.
+     	 */
+    	public abstract void startEvent();
 }

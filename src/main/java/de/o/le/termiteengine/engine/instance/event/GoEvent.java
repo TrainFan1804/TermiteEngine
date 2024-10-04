@@ -20,19 +20,27 @@ import de.o.le.termiteengine.engine.instance.InstanceCore;
  */
 public final class GoEvent extends InstanceEvent {
 
-    public GoEvent() {
+	
+	/**
+	 * Create a new GoEvent that will be executed when the player enter
+	 * go into the terminal.
+	 * <p>
+	 * You don't need to do anything but add this event to your instance that
+	 * should support this event. Everything will be handled by this event.
+	 */
+    	public GoEvent() {
 
-        super(InstanceEventType.GO_EVENT);
-    }
+        	super(InstanceEventType.GO_EVENT);
+    	}
 
-    @Override
-    public void startEvent() {
+    	@Override
+    	public void startEvent() {
     
-	    final EngineSystemResources RES = EngineSystemResources.getInstance();
-        // get current instance?
-        // get the neighbor
-        // set current instance to neighbor?
-        InstanceCore next = RES.GAME.getCurrentInstance().getNextInstance();
-        RES.GAME.setCurrentInstance(next.ID_INSTANCE);
-    }
+	    	final EngineSystemResources RES = EngineSystemResources.getInstance();
+        	// get current instance?
+        	// get the neighbor
+        	// set current instance to neighbor?
+        	InstanceCore next = RES.GAME.getCurrentInstance().getNextInstance();
+        	RES.GAME.setCurrentInstance(next.ID_INSTANCE);
+    	}
 }

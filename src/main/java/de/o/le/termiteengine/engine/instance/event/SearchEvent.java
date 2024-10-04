@@ -13,21 +13,21 @@ import de.o.le.termiteengine.engine.instance.InstanceCore;
  */
 public final class SearchEvent extends InstanceEvent {
 
-    private final ISearch search;
+    	private final ISearch search;
 
-    /**
-     * Create a new search event with the behavior of the given
-     * {@link ISearch}.
-     *
-     * @param search                    The wanted search behavior that should
-     *                                  be executed when stating the search event.
-     */
-    public SearchEvent(ISearch search) {
+    	/**
+     	 * Create a new search event with the behavior of the given
+     	 * {@link ISearch}.
+     	 *
+     	 * @param search                    The wanted search behavior that should
+     	 *                                  be executed when stating the search event.
+     	 */
+    	public SearchEvent(ISearch search) {
 
-        super(InstanceEventType.SEARCH_EVENT);
-        this.search = search;
-    }
+        	super(InstanceEventType.SEARCH_EVENT);
+        	this.search = search;
+    	}
 
-    @Override
-    public void startEvent() { this.search.search(); }
+    	@Override
+    	public void startEvent() { this.search.search(); }
 }

@@ -7,12 +7,18 @@ import de.o.le.termiteengine.engine.core.subsystem.util.FileNameExtractor;
 import java.io.File;
 
 /**
+ * This class is a controller to control the load routine. Will handle exceptions,
+ * load order, etc.
+ * 
  * @author o.le
  * @version 1.3
  * @since 1.2.0
  */
 class LoadSystemController {
 
+	/**
+	 * Initialize the controller. 
+	 */
 	void init() {
 
 		try {
@@ -43,6 +49,11 @@ class LoadSystemController {
 		}
 	}
 
+	/**
+	 * Ask the player what file he want to load.
+	 * 
+	 * @throws ExitFileMenuException Will end the load routine.
+	 */
 	private String askForFile() throws ExitFileMenuException {
 
 		FileNameExtractor extractor = new FileNameExtractor();

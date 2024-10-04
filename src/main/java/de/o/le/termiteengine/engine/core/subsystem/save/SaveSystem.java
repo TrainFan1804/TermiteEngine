@@ -3,6 +3,8 @@ package de.o.le.termiteengine.engine.core.subsystem.save;
 import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
+ * The save system will handle the save routine of the games state. 
+ * 
  * @author                              o.le
  * @version                             1.2
  * @since                               0.22

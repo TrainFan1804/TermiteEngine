@@ -9,6 +9,9 @@ import de.o.le.termiteengine.engine.instance.exception.InstanceEventAlreadyPrese
 import java.util.Map;
 
 /**
+ * This is the InstanceCore. A instance is something the player is inside. A
+ * instance can have events that will be executed when the player enter a command.
+ * 
  * @author                              o.le
  * @version                             1.4
  * @since                               0.17

@@ -9,15 +9,20 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * This class will load a save file.
+ * 
  * @author o.le
  * @version 1.3
  * @since 1.2.0
  */
 class LoadFileLoader {
 
-	LoadFileLoader() { }
-		
-
+	/**
+	 * Load the given save file and reorganize the game so the player can
+	 * play further his game.
+	 * 
+	 * @param file The save file that is loaded.
+	 */
 	void load(File file) {
 
 		JsonLoadHandler loader = new JsonLoadHandler();

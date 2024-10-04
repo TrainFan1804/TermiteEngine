@@ -10,9 +10,9 @@ package de.o.le.termiteengine.engine.instance.event;
  */
 public interface ISearch {
 
-    /**
-     * Define here your special search behavior. This method will be executed
-     * automatically.
-     */
-    void search();
+    	/**
+     	 * Define here your special search behavior. This method will be executed
+      	 * automatically.
+     	 */
+    	void search();
 }
