@@ -1,6 +1,7 @@
 package de.o.le.termiteengine.engine.core.subsystem.util;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineInputResource;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 
 /**
@@ -12,8 +13,8 @@ public final class FileNameExtractor {
 
 	public String extractFileName(MessageType msgType) throws ExitFileMenuException {
 		
-		EngineResources.INSTANCE.OUT.printMessage(msgType);
-		String fileName = EngineResources.INSTANCE.IN.read();
+		EngineOutputResource.getInstance().OUT.printMessage(msgType);
+		String fileName = EngineInputResource.getInstance().IN.read();
 
 		if (fileName.toUpperCase().equals("EXIT")) throw new ExitFileMenuException();
 

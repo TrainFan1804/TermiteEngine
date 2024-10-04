@@ -1,10 +1,11 @@
 package de.o.le.termiteengine.engine.instance.dialogue;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineInputResource;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.filesystem.JsonLoadHandler;
 import de.o.le.termiteengine.engine.filesystem.JsonValidater;
-import de.o.le.termiteengine.engine.util.ResourceLoader;
+import de.o.le.termiteengine.engine.filesystem.ResourceLoader;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -44,13 +45,13 @@ public class InstanceNPC {
 			this.dialogue = loader.loadFileValue(this.DIALOGUE_FILE, Dialogue.class);
 		} catch (IOException e) {
 
-			EngineResources.INSTANCE.OUT.printError(e);
+			EngineOutputResource.getInstance().OUT.printError(e);
 		}	
 	}
 
 	public void startDialog() {
 
-		final EngineResources RES = EngineResources.getInstance();
+		final EngineOutputResource RES = EngineOutputResource.getInstance();
 
 		List<DialogueNode> tree = this.dialogue.dialogueTree;
 		DialogueNode current = tree.getFirst();
@@ -70,7 +71,7 @@ public class InstanceNPC {
 			}
 
 			int inputChoice = 0;
-			inputChoice = RES.IN.readInt(0, playerResponse.size()) - 1;
+			inputChoice = EngineInputResource.getInstance().IN.readInt(0, playerResponse.size()) - 1;
 
 			int nextNpcLineId = playerResponse.get(inputChoice).nextNpcLine - 1;
 			/* 

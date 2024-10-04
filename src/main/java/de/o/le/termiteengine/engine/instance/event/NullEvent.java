@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.instance.event;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 
 /**
@@ -21,6 +21,6 @@ public final class NullEvent extends InstanceEvent {
     	@Override
     	public void startEvent() { 
 	    
-	    	EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_EVENT_ID_NOT_PRESENT); 
+	    	EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_EVENT_ID_NOT_PRESENT); 
     	}
 }

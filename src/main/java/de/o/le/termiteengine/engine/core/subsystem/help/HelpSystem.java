@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.subsystem.help;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
@@ -12,5 +12,5 @@ import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 final class HelpSystem implements EngineSubsystem {
 
     @Override
-    public void execute() { EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_HELP); }
+    public void execute() { EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_HELP); }
 }

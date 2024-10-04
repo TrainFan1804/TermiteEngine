@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.subsystem.exit;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
@@ -15,7 +15,7 @@ class ExitSystem implements EngineSubsystem {
     @Override
     public void execute() {
 
-		   EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_EXIT);
+	EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_EXIT);
         System.exit(0);
     }
 }

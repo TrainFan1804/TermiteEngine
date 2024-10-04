@@ -1,6 +1,7 @@
 package de.o.le.termiteengine.engine.core.subsystem.load;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
+import de.o.le.termiteengine.engine.core.EngineSystemResources;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.util.SaveGame;
 import de.o.le.termiteengine.engine.filesystem.JsonLoadHandler;
@@ -14,12 +15,8 @@ import java.io.IOException;
  */
 class LoadFileLoader {
 
-	private final EngineResources RES;
-	
-	LoadFileLoader() {
+	LoadFileLoader() { }
 		
-		this.RES = EngineResources.getInstance();
-	}
 
 	void load(File file) {
 
@@ -27,11 +24,11 @@ class LoadFileLoader {
 		try {
 
 			SaveGame save = loader.loadFileValue(file, SaveGame.class);
-			this.RES.GAME.setCurrentInstance(save.getInstanceId());
-			this.RES.OUT.printMessage(MessageType.MSG_LOAD_SUC);
+			EngineSystemResources.getInstance().GAME.setCurrentInstance(save.getInstanceId());
+			EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_LOAD_SUC);
 		} catch (IOException e) {
 
-			this.RES.OUT.printError(e);
+			EngineOutputResource.getInstance().OUT.printError(e);
 		}
 	}
 }

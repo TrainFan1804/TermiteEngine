@@ -8,12 +8,16 @@ import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               0.17
  */
 public class ApplicationCore {
 
-	private final EngineResources RES;
+	/*
+	Instead of saving three different service I create a interface EngineService
+	and just save one "currentService" and just rotate it each time a service
+	do his job. (Just a draft)
+	 */
     	private final CommandDecodeService decodeService;
     	private final CommandDeterminationService determineService;
     	private final SystemDelegationService delegationService;
@@ -24,7 +28,7 @@ public class ApplicationCore {
         	this.determineService = new CommandDeterminationService();
 		this.delegationService = new SystemDelegationService();
 
-		this.RES = EngineResources.createInstance(game);
+		EngineSystemResources.createInstance(game);
     	}
 
     	public void start() {
@@ -34,11 +38,12 @@ public class ApplicationCore {
 
         	while (true) {
 
-            		if (this.RES.wasInstanceSwitch()) {
+            		if (EngineSystemResources.getInstance().wasInstanceSwitch()) {
 
-                		instanceMessage = this.RES.GAME.getCurrentInstance()
-                                                            	.display();
-                		this.RES.OUT.printMessage(instanceMessage);
+                		instanceMessage = EngineSystemResources.getInstance()
+							.GAME.getCurrentInstance()
+                                                        .display();
+                		EngineOutputResource.getInstance().OUT.printMessage(instanceMessage);
             		}
 
 			command = this.inputCommandLoop();
@@ -57,7 +62,7 @@ public class ApplicationCore {
 
 		do {
 
-			input = this.RES.IN.read();
+			input = EngineInputResource.getInstance().IN.read();
 			if (input.isEmpty()) continue;
 
 			command = this.decodeService.commandDecode(input);

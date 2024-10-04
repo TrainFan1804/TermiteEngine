@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.filesystem;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.logging.FileHandler;
@@ -45,7 +45,7 @@ class ErrorLogger {
 			handler.close();
 		} catch (IOException e) {
 
-			EngineResources.getInstance().OUT.printError(e);
+			EngineOutputResource.getInstance().OUT.printError(e);
 		}
 	}
 }

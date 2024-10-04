@@ -37,7 +37,7 @@ public final class GameCore {
     	public void setCurrentInstance(int id) { 
 	    
 	    	this.currentInstance = this.getInstanceById(id); 
-	    	EngineResources.INSTANCE.setInstanceSwitch(true);
+	    	EngineSystemResources.INSTANCE.setInstanceSwitch(true);
     	}
 
 	/**

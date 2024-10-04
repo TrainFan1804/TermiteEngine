@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.subsystem.load;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.util.ExitFileMenuException;
 import de.o.le.termiteengine.engine.core.subsystem.util.FileNameExtractor;
@@ -30,7 +30,7 @@ class LoadSystemController {
 				// TODO this must be do better!
 				if (!file.exists()) {
 
-					EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_FILE_NOT_FOUNT);
+					EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_LOAD_FILE_NOT_FOUNT);
 				}
 
 			} while(!file.exists());
@@ -39,7 +39,7 @@ class LoadSystemController {
 			loader.load(file);
 		} catch (ExitFileMenuException e) {
 
-			EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_LOAD_CANCEL);
+			EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_LOAD_CANCEL);
 		}
 	}
 

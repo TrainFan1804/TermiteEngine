@@ -2,7 +2,7 @@ package de.o.le.termiteengine.engine.core.service.output;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ class MessageContentReader {
 			content = mapper.readValue(new File(path), HashMap.class);
 		} catch (IOException e) {
 			
-			EngineResources.INSTANCE.OUT.printError(e);
+			EngineOutputResource.getInstance().OUT.printError(e);
 		}
 		
 		return content;

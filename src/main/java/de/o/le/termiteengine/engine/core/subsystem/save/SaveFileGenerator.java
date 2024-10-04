@@ -2,7 +2,7 @@ package de.o.le.termiteengine.engine.core.subsystem.save;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.subsystem.util.SaveGame;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ class SaveFileGenerator {
 					.writeValue(file, save);
 		} catch (IOException e) {
 
-			EngineResources.getInstance().OUT.printError(e);
+			EngineOutputResource.getInstance().OUT.printError(e);
 		}
 	}
 }

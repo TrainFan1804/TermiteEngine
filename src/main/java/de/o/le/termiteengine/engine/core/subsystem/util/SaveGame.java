@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine.core.subsystem.util;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineSystemResources;
 import java.util.Date;
 
 /**
@@ -22,7 +22,7 @@ public final class SaveGame {
 	
 	private SaveGame() {
 
-		this.instanceId = EngineResources.INSTANCE.GAME.getCurrentInstanceId();
+		this.instanceId = EngineSystemResources.INSTANCE.GAME.getCurrentInstanceId();
 		this.dateStamp = new Date();
 	}
 	

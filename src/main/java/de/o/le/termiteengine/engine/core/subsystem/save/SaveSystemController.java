@@ -1,6 +1,7 @@
 package de.o.le.termiteengine.engine.core.subsystem.save;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineInputResource;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import de.o.le.termiteengine.engine.core.subsystem.util.ExitFileMenuException;
 import de.o.le.termiteengine.engine.core.subsystem.util.FileNameExtractor;
@@ -13,11 +14,11 @@ import java.io.File;
  */
 final class SaveSystemController {
 
-	private final EngineResources RES;
+	private final EngineOutputResource RES;
 
 	SaveSystemController() {
 
-		this.RES = EngineResources.getInstance();
+		this.RES = EngineOutputResource.getInstance();
 	}
 
 	/*
@@ -51,7 +52,7 @@ final class SaveSystemController {
 		String input;
 		do {
 
-			input = this.RES.IN.read().toUpperCase();
+			input = EngineInputResource.getInstance().IN.read().toUpperCase();
 
 			if (input.equals("N")) throw new ExitFileMenuException(); 
 

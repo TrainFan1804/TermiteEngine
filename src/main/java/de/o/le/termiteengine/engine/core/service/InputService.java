@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.service;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -77,7 +77,7 @@ public class InputService {
 				isValid = true;
 			} catch(NumberFormatException | InputMismatchException ex) {
 
-				EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_WRONG_INPUT);
+				EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_WRONG_INPUT);
 			}
 		} while(!isValid);
 

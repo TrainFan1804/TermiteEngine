@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.instance.event;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineSystemResources;
 import de.o.le.termiteengine.engine.instance.exception.NoValidNeighborException;
 import de.o.le.termiteengine.engine.instance.InstanceCore;
 
@@ -28,7 +28,7 @@ public final class LeaveEvent extends InstanceEvent {
     @Override
     public void startEvent() {
 
-	    final EngineResources RES = EngineResources.getInstance();
+	    final EngineSystemResources RES = EngineSystemResources.getInstance();
         InstanceCore pre = RES.GAME.getCurrentInstance().getPreInstance();
         RES.GAME.setCurrentInstance(pre.ID_INSTANCE);
     }

@@ -1,7 +1,7 @@
 package de.o.le.termiteengine.engine.core.service;
 
 import de.o.le.termiteengine.engine.core.Command;
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import de.o.le.termiteengine.engine.core.service.output.MessageType;
 
 /**
@@ -28,7 +28,7 @@ public class CommandDecodeService {
             return Command.valueOf(commandInput);
         } catch (IllegalArgumentException e) {
  
-			EngineResources.INSTANCE.OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
+			EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
 			return null; // bad, really bad...
         }
     }

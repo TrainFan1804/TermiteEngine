@@ -1,4 +1,4 @@
-package de.o.le.termiteengine.engine.util;
+package de.o.le.termiteengine.engine.filesystem;
 
 import java.io.File;
 import java.net.URISyntaxException;

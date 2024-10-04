@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.subsystem;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineSystemResources;
 import de.o.le.termiteengine.engine.instance.InstanceCore;
 import de.o.le.termiteengine.engine.instance.event.InstanceEvent;
 import de.o.le.termiteengine.engine.instance.event.InstanceEventType;
@@ -22,7 +22,7 @@ class EventSystem implements EngineSubsystem {
     	@Override
     	public void execute() {
 
-        	InstanceCore currentInstance = EngineResources.INSTANCE.GAME.getCurrentInstance();
+        	InstanceCore currentInstance = EngineSystemResources.INSTANCE.GAME.getCurrentInstance();
         	InstanceEvent event;
 
            	event = currentInstance.getEventById(this.eventType.ID);

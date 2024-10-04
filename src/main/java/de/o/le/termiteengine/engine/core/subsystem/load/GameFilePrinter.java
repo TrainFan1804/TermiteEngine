@@ -1,6 +1,6 @@
 package de.o.le.termiteengine.engine.core.subsystem.load;
 
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import java.io.File;
 
 /**
@@ -20,7 +20,7 @@ class GameFilePrinter {
 
 		for (File file : folderContent) {
 
-			EngineResources.INSTANCE.OUT.printString(file.getName());
+			EngineOutputResource.getInstance().OUT.printString(file.getName());
 		}
 	}
 }

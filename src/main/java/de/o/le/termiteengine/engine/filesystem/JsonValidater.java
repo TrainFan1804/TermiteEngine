@@ -6,7 +6,7 @@ import com.networknt.schema.JsonSchema;
 import com.networknt.schema.JsonSchemaFactory;
 import com.networknt.schema.SpecVersion;
 import com.networknt.schema.ValidationMessage;
-import de.o.le.termiteengine.engine.core.EngineResources;
+import de.o.le.termiteengine.engine.core.EngineOutputResource;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -51,7 +51,7 @@ public class JsonValidater {
 			}
 		} catch (IOException e) {
 
-			EngineResources.getInstance().OUT.printError(e);
+			EngineOutputResource.getInstance().OUT.printError(e);
 		}
 	}
 
