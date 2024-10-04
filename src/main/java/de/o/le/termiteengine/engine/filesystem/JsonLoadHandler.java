@@ -16,6 +16,9 @@ public class JsonLoadHandler {
 
 	private final ObjectMapper MAPPER;
 
+	/**
+	 * Create a JsonLoadHandler instance.
+	 */
 	public JsonLoadHandler() {
 
 		this.MAPPER = new JsonMapper();

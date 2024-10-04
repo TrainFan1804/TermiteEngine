@@ -6,7 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class represent the core of the game.
+ * This class represent the core of the game. Contains all the logic of the
+ * game itself like Instance management, etc.
  * 
  * @author                              o.le
  * @version                             1.2
@@ -17,13 +18,27 @@ public final class GameCore {
 	InstanceCore currentInstance;
     	private final Map<Integer, InstanceCore> manager;
 
+	/**
+	 * Create a GameCore instance.
+	 */
     	public GameCore() {
 
         	this.manager = new HashMap<>();
     	}
 
+	/**
+	 * Get the instance the player is currently in.
+	 * 
+	 * @return The current instance.
+	 */
     	public InstanceCore getCurrentInstance() { return this.currentInstance; }
 
+	/**
+	 * To get easy access to the id of the current instance you can use this
+	 * instance.
+	 * 
+	 * @return The id of the current instance.
+	 */
 	public int getCurrentInstanceId() { return this.currentInstance.ID_INSTANCE; }
 
 	/**
@@ -63,6 +78,13 @@ public final class GameCore {
 		this.manager.put(id, instance); 
 	}
 
+	/**
+	 * Get a instance by a given id.
+	 * 
+	 * @param id The id of the wanted instance.
+	 * @return The instance that is associated with the given id. Will throw
+	 * an exception when enter a id that isn't in the game.
+	 */
     	public InstanceCore getInstanceById(int id) { 
 
 		if (!this.manager.containsKey(id))

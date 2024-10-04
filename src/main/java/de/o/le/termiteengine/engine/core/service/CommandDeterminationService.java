@@ -7,6 +7,9 @@ import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 /**
  * This service will determine what {@link EngineSubsystem} will handle the
  * the given {@link Command}.
+ * <p>
+ * A Subsystem is <b>NOT</b> a service! To see what the definition of a subsystem
+ * is see the package-info.java in the subsytem package.
  * 
  * @author                              o.le
  * @version                             1.0
@@ -14,10 +17,16 @@ import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
  */
 public class CommandDeterminationService {
 
-    private final SubSystemFactory FACTORY = SubSystemFactory.getFactory();
+    	private final SubSystemFactory FACTORY = SubSystemFactory.getFactory();
 
-    public EngineSubsystem determineEngineSubsystem(Command command) {
+    	/**
+     	* Will determine what subsystem will handle the given command.
+     	* 
+     	* @param command The command that should be handled by a subsystem.
+     	* @return The subsystem that will handle the command.
+     	*/
+    	public EngineSubsystem determineEngineSubsystem(Command command) {
 
-        return this.FACTORY.getSystem(command);
-    }
+        	return this.FACTORY.getSystem(command);
+   	}
 }

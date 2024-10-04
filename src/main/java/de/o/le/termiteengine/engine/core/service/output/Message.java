@@ -13,13 +13,18 @@ package de.o.le.termiteengine.engine.core.service.output;
  */
 public class Message {
 
-    private final String message;
+	private final String message;
 
-    public Message(String message) {
+	/**
+	 * Create a message instance.
+	 * 
+	 * @param message The message that is contained.
+	 */
+    	public Message(String message) {
 
-        this.message = message;
-    }
+        	this.message = message;
+    	}
 
-    @Override
-    public String toString() { return this.message; }
+    	@Override
+    	public String toString() { return this.message; }
 }

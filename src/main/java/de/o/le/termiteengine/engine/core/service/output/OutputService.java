@@ -24,11 +24,20 @@ public class OutputService {
 		TODO need to find a way to let the output be start with the format
 		that was defined by the developer
 	*/
+	/**
+	 * Create a OutputService instance without any format.
+	 */
     	public OutputService() { 
 
-		this.FORMAT = ""; 
+		this.FORMAT = "";
 	} 
 
+	/**
+	 * Create a OutputService instance with a given format. The format will
+	 * be shown on the beginning of each new started line.
+	 * 
+	 * @param format The format of the output.
+	 */
 	@ToBeImplemented
     	public OutputService(String format) {
 

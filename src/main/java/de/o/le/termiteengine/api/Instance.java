@@ -15,6 +15,12 @@ public class Instance {
 
 	private final InstanceCore CORE;
 
+	/**
+	 * Build the instance from the given core. Is used internally from the
+	 * {@link InstanceBuilder}.
+	 * 
+	 * @param core The core of the instance.
+	 */
 	Instance(InstanceCore core) {
 
 		this.CORE = core;
@@ -42,5 +48,10 @@ public class Instance {
 		this.CORE.setPreInstance(pre.getCore());
 	}
 
+	/**
+	 * Because this class is just a api class I need to access the 'real'
+	 * instance via this method. This is just used internally in the api package.
+	 * @return 
+	 */
 	InstanceCore getCore() { return this.CORE; }
 }

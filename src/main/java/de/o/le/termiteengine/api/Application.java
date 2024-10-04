@@ -14,6 +14,11 @@ public class Application {
 
 	private final ApplicationCore CORE;
 
+	/**
+	 * Create you runnable application. You need to define your game first.
+	 * 
+	 * @param game The game that should be run by the application.
+	 */
 	public Application(Game game) {
 
 		this.CORE = new ApplicationCore(game.getCore());

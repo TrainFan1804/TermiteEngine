@@ -14,6 +14,15 @@ import java.util.Map;
  */
 class MessageContentConverter {
 
+	/**
+	 * Will map the returned map from {@link MessageContentReader#read(java.io.File) } to a new
+	 * map that map the given map correctly for easy use.
+	 * <p>
+	 * I could merge the two methods but I don't know yet.
+	 * 
+	 * @param map The mapped values from the loaded output file.
+	 * @return A map with better type convention.
+	 */
 	Map<MessageType, Message> convert(Map<String, String> map) {
 
 		Map<MessageType, Message> formatMap = new HashMap<>();

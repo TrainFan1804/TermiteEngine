@@ -15,6 +15,10 @@ import java.util.Map;
  */
 public class InstanceCore {
 
+	/**
+	 * The id of the instance. Is public because it's easier to access this
+	 * final field.
+	 */
     	public final int ID_INSTANCE;
     
     	private final Message instanceMessage;
@@ -23,6 +27,11 @@ public class InstanceCore {
     	private InstanceCore nextInstance;
     	private InstanceCore preInstance;
 
+	/**
+	 * Create a new InstanceCore instance with a builder.
+	 * 
+	 * @param builder The builder that will build the instance.
+	 */
 	InstanceCore(InstanceBuilderCore builder) {
 
 		this.ID_INSTANCE = builder.id;
@@ -40,48 +49,79 @@ public class InstanceCore {
 		this.events = builder.events;
 	}
 
-    public InstanceCore getNextInstance() { return this.nextInstance; }
+	/**
+	 * Get the next instance of the instance.
+	 * 
+	 * @return The next instance.
+	 */
+    	public InstanceCore getNextInstance() { return this.nextInstance; }
 
-    /**
-     * TODO should handle some error like put the same instance, nextinstance 
-     * already exists and so on.
-     */
-    public void setNextInstance(InstanceCore nextInstance) { 
+    	/*
+     	* TODO should handle some error like put the same instance, nextinstance 
+     	* already exists and so on.
+     	*/
+	/**
+	 * Will set the next instance.
+	 * 
+	 * @param nextInstance The new next instance.
+	 */
+    	public void setNextInstance(InstanceCore nextInstance) { 
 
-	    InstanceEvent event = new GoEvent();
-	// this is so bad haha..
-	if (this.events.containsKey(event.getEventTypeId())) {
+	    	InstanceEvent event = new GoEvent();
+		// this is so bad haha..
+		if (this.events.containsKey(event.getEventTypeId())) {
 
-        	throw new InstanceEventAlreadyPresentException();
-       	}
+        		throw new InstanceEventAlreadyPresentException();
+       		}
 
-	this.nextInstance = nextInstance; 
-	this.events.put(event.getEventTypeId(), event);
-    }
+		this.nextInstance = nextInstance; 
+		this.events.put(event.getEventTypeId(), event);
+    	}
 
+	/**
+	 * Get the previous instance of the instance.
+	 * 
+	 * @return The previous instance.
+	 */
+    	public InstanceCore getPreInstance() { return this.preInstance; }
 
-    public InstanceCore getPreInstance() { return this.preInstance; }
-
-    /**
-     * TODO see setNextInstance(Instance).
-     */
-    public void setPreInstance(InstanceCore preInstance) { 
+    	/*
+     	* TODO see setNextInstance(Instance).
+     	*/
+	/**
+	 * Will set the previous instance.
+	 * 
+	 * @param preInstance The new previous instance.
+	 */
+    	public void setPreInstance(InstanceCore preInstance) { 
 	    
-	    InstanceEvent event = new LeaveEvent();
-	// this is so bad haha..
-	if (this.events.containsKey(event.getEventTypeId())) {
+	    	InstanceEvent event = new LeaveEvent();
+		// this is so bad haha..
+		if (this.events.containsKey(event.getEventTypeId())) {
 
-        	throw new InstanceEventAlreadyPresentException();
-       	}
+        		throw new InstanceEventAlreadyPresentException();
+       		}
 
-	    this.preInstance = preInstance; 
-	    this.events.put(event.getEventTypeId(), event);
-    }
+	    	this.preInstance = preInstance; 
+	    	this.events.put(event.getEventTypeId(), event);
+    	}
     
-    public InstanceEvent getEventById(int id) {
+	/**
+	 * Will return the event by a given id.
+	 * 
+	 * @param id The id of the event that should be returned.
+	 * @return The event that is belong to the id. When there is no event with
+	 * the id a {@link NullEvent} will be returned.
+	 */
+    	public InstanceEvent getEventById(int id) {
         
-        return this.events.getOrDefault(id, new NullEvent());
-    }
+        	return this.events.getOrDefault(id, new NullEvent());
+    	}
     
-    public Message display() { return this.instanceMessage; }
+	/**
+	 * Get the saved instance message.
+	 * 
+	 * @return The saved instance msssage.
+	 */
+    	public Message display() { return this.instanceMessage; }
 }

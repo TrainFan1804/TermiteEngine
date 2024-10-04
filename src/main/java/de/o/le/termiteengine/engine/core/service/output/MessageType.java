@@ -1,6 +1,8 @@
 package de.o.le.termiteengine.engine.core.service.output;
 
 /**
+ * This enum contains all messages that are printed by the engine.
+ * 
  * @author o.le
  * @version 1.1
  * @since 1.1.0

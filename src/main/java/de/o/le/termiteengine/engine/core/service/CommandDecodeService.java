@@ -14,22 +14,24 @@ import de.o.le.termiteengine.engine.core.service.output.MessageType;
 public class CommandDecodeService {
 
 	/**
+	 * Decode the string and return the matching command.
+	 * 
 	 * @param commandInput The input from the user that should me mapped to a
 	 * {@link Command}.
 	 * @return The mapped command. Will return {@code null} if the given argument
 	 * was invalid.
 	 */
-    public Command commandDecode(String commandInput) {
+    	public Command commandDecode(String commandInput) {
 
-        try {
+        	try {
 
-            commandInput = commandInput.toUpperCase();
-            // decode input to commands
-            return Command.valueOf(commandInput);
-        } catch (IllegalArgumentException e) {
+            		commandInput = commandInput.toUpperCase();
+            		// decode input to commands
+            		return Command.valueOf(commandInput);
+        	} catch (IllegalArgumentException e) {
  
 			EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
 			return null; // bad, really bad...
-        }
-    }
+        	}
+    	}
 }

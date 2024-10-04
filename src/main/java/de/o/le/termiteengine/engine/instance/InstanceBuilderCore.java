@@ -28,23 +28,44 @@ public class InstanceBuilderCore {
 
 	Map<Integer, InstanceEvent> events;
 
+	/**
+	 * Create a InstanceBuilderCore instance.
+	 */
 	public InstanceBuilderCore() {
 
 		this.events = new HashMap<>();
 	}
 
+	/**
+	 * Set the id of the created InstanceCore.
+	 * 
+	 * @param id The id that is set.
+	 * @return The builder.
+	 */
 	public InstanceBuilderCore withId(int id) {
 
 		this.id = id;
 		return this;
 	}
 
+	/**
+	 * Set the message of the created InstanceCore.
+	 * 
+	 * @param msg The message that is set.
+	 * @return The builder.
+	 */
 	public InstanceBuilderCore withMessage(Message msg) {
 
 		this.msg = msg;
 		return this;
 	}
 
+	/**
+	 * Set one event of the created InstanceCore. You can add multiple events.
+	 * 
+	 * @param event The event that is set.
+	 * @return The builder.
+	 */
 	public InstanceBuilderCore withEvent(InstanceEvent event) {
 
 		if (event == null) throw new IllegalArgumentException("Event can't be null");
@@ -64,18 +85,37 @@ public class InstanceBuilderCore {
 		return this;
 	}
 
+	/**
+	 * Set the next instance of the created InstanceCore.
+	 * 
+	 * @param next The next instance that is set.
+	 * @return The builder.
+	 */
 	public InstanceBuilderCore withNext(InstanceCore next) {
 
 		this.next = next;
 		return this;
 	}
 
+	/**
+	 * Set the previous of the created InstanceCore.
+	 * 
+	 * @param pre The previous instance that is set.
+	 * @return The builder.
+	 */
 	public InstanceBuilderCore withPrev(InstanceCore pre) {
 
 		this.pre = pre;
 		return this;
 	}
 
+	/**
+	 * Will build the instance core with the setted attributes. Will clear
+	 * the inner state of the builder too so you can use your builder
+	 * multiple times.
+	 * 
+	 * @return The new InstanceCore.
+	 */
 	public InstanceCore build() {
 
 		InstanceCore instance = new InstanceCore(this);

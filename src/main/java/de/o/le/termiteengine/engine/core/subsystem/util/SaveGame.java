@@ -14,6 +14,11 @@ import java.util.Date;
  */
 public final class SaveGame {
 
+	/**
+	 * Create a new save game.
+	 * 
+	 * @return The new save game. Contains instanceId and time stamp.
+	 */
 	public static SaveGame generateSaveGame() { return new SaveGame(); }
 
 	private final int instanceId;

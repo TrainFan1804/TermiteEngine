@@ -19,15 +19,29 @@ class ErrorLogger {
 
 	private static final ErrorLogger INSTANCE = new ErrorLogger();
 
+	/**
+	 * This class is designed as a singleton.
+	 * 
+	 * @return The ErrorLogger instance.
+	 */
 	static ErrorLogger getInstance() { return INSTANCE; }
 
 	private final Logger LOGGER;
 
+	/**
+	 * Private constructor.
+	 */
 	private ErrorLogger() {
 
 		this.LOGGER = Logger.getLogger(ErrorLogger.class.getName());
 	}
 
+	/**
+	 * Log the content of the given collection to a log file. This should
+	 * be used when logging <b>error</b> messages.
+	 * 
+	 * @param errorCollection The collection that is logged.
+	 */
 	void log(Collection<?> errorCollection) {
 
 		try {

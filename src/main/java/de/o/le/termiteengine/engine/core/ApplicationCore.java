@@ -7,6 +7,9 @@ import de.o.le.termiteengine.engine.core.service.output.Message;
 import de.o.le.termiteengine.engine.core.subsystem.EngineSubsystem;
 
 /**
+ * This is the application core. This class contains the main logic of the engine.
+ * Will handle the sequence of the events during the game is played.
+ * 
  * @author                              o.le
  * @version                             1.3
  * @since                               0.17
@@ -22,6 +25,11 @@ public class ApplicationCore {
     	private final CommandDeterminationService determineService;
     	private final SystemDelegationService delegationService;
 
+	/**
+	 * Create the core of the application.
+	 * 
+	 * @param game The game that is run by the application. 
+	 */
     	public ApplicationCore(GameCore game) {
 
         	this.decodeService = new CommandDecodeService();
@@ -31,6 +39,9 @@ public class ApplicationCore {
 		EngineSystemResources.createInstance(game);
     	}
 
+	/**
+	 * Will start the game.
+	 */
     	public void start() {
 
        		Command command;
@@ -55,6 +66,12 @@ public class ApplicationCore {
         	}
     	}
 
+	/**
+	 * Ask the player for a command to enter. Will also map the input to a
+	 * {@link Command} directly.
+	 * 
+	 * @return The mapped command the player entered.
+	 */
 	private Command inputCommandLoop() {
 
 		Command command = null;
