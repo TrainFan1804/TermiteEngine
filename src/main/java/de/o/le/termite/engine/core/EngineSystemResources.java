@@ -86,7 +86,7 @@ public class EngineSystemResources {
 	 */
 	public void setInstanceSwitch(boolean changed) {
 
-		this.tracker.toggle(changed);
+		this.tracker.setChanged(changed);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class EngineSystemResources {
 	 */
 	boolean wasInstanceSwitch() {
 
-		boolean temp = this.tracker.wasChanged();
+		boolean temp = this.tracker.getChanged();
 		if (temp) {
 
 			this.setInstanceSwitch(false);

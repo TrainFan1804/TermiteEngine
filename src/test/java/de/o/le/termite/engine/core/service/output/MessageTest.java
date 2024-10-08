@@ -1,20 +1,22 @@
 package de.o.le.termite.engine.core.service.output;
 
+import annotations.TestClassInformation;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestInformationPrinter;
-import annotations.TestInformation;
+import annotations.TestMethodInformation;
  
 /**
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.4.2
  */
+@TestClassInformation(targetClass = Message.class)
 @ExtendWith(TestInformationPrinter.class)
 public class MessageTest {
 
-	@TestInformation(target = "Message.toString()",
+	@TestMethodInformation(targetMethod = "toString()",
 				behavior = "Returned string should be equal the "
 					+ "argument pass in the constructor")
 	@Test

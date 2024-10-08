@@ -7,14 +7,12 @@ import java.lang.annotation.Target;
 
 /**
  * @author o.le
- * @version 1.2
- * @since 1.2.4
+ * @version 1.0
+ * @since 1.4.8
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
-public @interface TestInformation {
-
-	String target();
-	String behavior();
-	boolean isStatic() default false;
+@Target(ElementType.TYPE)
+public @interface TestClassInformation {
+	
+	Class<?> targetClass();
 }

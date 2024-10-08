@@ -1,6 +1,6 @@
 package de.o.le.termite.engine.core.service.output;
 
-import annotations.TestInformation;
+import annotations.TestClassInformation;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.AfterEach;
@@ -10,12 +10,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import utils.TestInformationPrinter;
 import org.junit.jupiter.api.extension.ExtendWith;
+import annotations.TestMethodInformation;
  
 /**
  * @author o.le
  * @version 1.1
  * @since 1.4.2
  */
+@TestClassInformation(targetClass = OutputService.class)
 @ExtendWith(TestInformationPrinter.class)
 public class OutputServiceTest {
 
@@ -43,7 +45,7 @@ public class OutputServiceTest {
 		System.setOut(ORIGIN_STREAM);
 	}
 
-	@TestInformation(target = "OutputService.printNewLine()",
+	@TestMethodInformation(targetMethod = "printNewLine()",
 				behavior = "Service will print a empty line")
 	@Test
 	public void testPrintNewLine() {
@@ -53,7 +55,7 @@ public class OutputServiceTest {
 		assertTrue(this.outStream.toByteArray().length == 1);
 	}
 
-	@TestInformation(target = "OutputService.printString(String)",
+	@TestMethodInformation(targetMethod = "printString(String)",
 				behavior = "Service will print the entered string")
 	@Test
 	public void testPrintString() {
@@ -65,7 +67,7 @@ public class OutputServiceTest {
 		assertEquals(TEST_STRING + "\n", this.outStream.toString());
 	}
 
-	@TestInformation(target = "OutputService.printMessage(Message)",
+	@TestMethodInformation(targetMethod = "printMessage(Message)",
 				behavior = "Service will print the entered message")
 	@Test
 	public void testPrintMessage_Message() {
@@ -77,7 +79,7 @@ public class OutputServiceTest {
 		assertEquals(TEST_MSG.toString() + "\n", this.outStream.toString());
 	}
 
-	@TestInformation(target = "OutputService.printMessage(MessageType)",
+	@TestMethodInformation(targetMethod = "printMessage(MessageType)",
 				behavior = "Service will print the message that "
 					+ "was set for the custom outputs")
 	@Test
@@ -85,7 +87,7 @@ public class OutputServiceTest {
 		+ " available after game compilation")
 	public void testPrintCustomMessages() { }
 
-	@TestInformation(target = "OutputService.printError(Exception)",
+	@TestMethodInformation(targetMethod = "printError(Exception)",
 				behavior = "Service will print the message from "
 					+ " the exception")
 	@Test

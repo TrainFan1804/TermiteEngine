@@ -1,11 +1,11 @@
 package de.o.le.termite.engine.instance;
 
+import annotations.TestClassInformation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestInformationPrinter;
-import annotations.TestInformation;
 import de.o.le.termite.engine.core.service.output.Message;
 import de.o.le.termite.engine.instance.event.GoEvent;
 import de.o.le.termite.engine.instance.event.InstanceEvent;
@@ -14,12 +14,14 @@ import de.o.le.termite.engine.instance.event.TalkEvent;
 import de.o.le.termite.engine.instance.exception.InstanceEventAlreadyPresentException;
 import de.o.le.termite.engine.instance.exception.NoValidNeighborException;
 import org.junit.jupiter.api.Disabled;
+import annotations.TestMethodInformation;
  
 /**
  * @author o.le
  * @version 1.0
  * @since 1.4.3
  */
+@TestClassInformation(targetClass = InstanceBuilderCore.class)
 @ExtendWith(TestInformationPrinter.class)
 public class InstanceBuilderCoreTest {
 
@@ -31,7 +33,7 @@ public class InstanceBuilderCoreTest {
 	    	this.builder = new InstanceBuilderCore();
     	}
 
-	@TestInformation(target = "InstanceBuilderCore.build()",
+	@TestMethodInformation(targetMethod = "build()",
 				behavior = "When building a instance without "
 					+ "using any of it's method return "
 					+ "instance with default values")
@@ -47,7 +49,7 @@ public class InstanceBuilderCoreTest {
 		assertInstanceOf(NullEvent.class, TEST_INS.getEventById(0));
     	}
 
-	@TestInformation(target = "InstanceBuilderCore.withId(int)",
+	@TestMethodInformation(targetMethod = "withId(int)",
 				behavior = "Builder will set instance id properly")
 	@Test
 	public void testWithId() {
@@ -60,7 +62,7 @@ public class InstanceBuilderCoreTest {
 		assertEquals(TEST_ID, TEST_INS.ID_INSTANCE);
 	}
 
-	@TestInformation(target = "InstanceBuilderCore.withMessage(Message)",
+	@TestMethodInformation(targetMethod = "withMessage(Message)",
 				behavior = "Builder will set message properly")
 	@Test
 	public void testWithMessage() {
@@ -74,7 +76,7 @@ public class InstanceBuilderCoreTest {
 		assertEquals(TEST_MSG, TEST_INS.display());
 	}
 
-	@TestInformation(target = "InstanceBuilderCore.withEvent(InstanceEvent)",
+	@TestMethodInformation(targetMethod = "withEvent(InstanceEvent)",
 				behavior = "Builder will set event properly")
 	@Test
 	public void testWithEvent() {
@@ -90,7 +92,7 @@ public class InstanceBuilderCoreTest {
 		assertEquals(TEST_EVENT, TEST_INS.getEventById(TEST_EVENT_ID));
 	}
 	
-	@TestInformation(target = "InstanceBuilderCore.withEvent(InstanceEvent)",
+	@TestMethodInformation(targetMethod = "withEvent(InstanceEvent)",
 				behavior = "Builder will throw an exception when "
 					+ "adding the same event type multiple times")
 	@Test
@@ -104,7 +106,7 @@ public class InstanceBuilderCoreTest {
 						this.builder.withEvent(TEST_EVENT));
 	}
 
-	@TestInformation(target = "InstanceBuilderCore.withEvent(InstanceEvent)",
+	@TestMethodInformation(targetMethod = "withEvent(InstanceEvent)",
 				behavior = "Builder will throw an exception when "
 					+ "adding a move event without setting "
 					+ "a neighbor")
@@ -117,7 +119,7 @@ public class InstanceBuilderCoreTest {
 						this.builder.withEvent(TEST_EVENT));
 	}
 
-	@TestInformation(target = "InstanceBuilderCore.withNext(InstanceCore)",
+	@TestMethodInformation(targetMethod = "withNext(InstanceCore)",
 				behavior = "Builder will set next instance properly")
 	@Test
 	@Disabled(value = "See issue #2 on the github page")
@@ -132,7 +134,7 @@ public class InstanceBuilderCoreTest {
 		assertEquals(NULL_INS, TEST_INS.getNextInstance());
 	}
 
-	@TestInformation(target = "InstanceBuilderCore.withPrev(InstanceCore)",
+	@TestMethodInformation(targetMethod = "withPrev(InstanceCore)",
 				behavior = "Builder will set pre instance properly")	
 	@Test
 	@Disabled(value = "See issue #2 on the github page")

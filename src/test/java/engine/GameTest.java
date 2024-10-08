@@ -1,6 +1,5 @@
 package engine;
 
-import annotations.TestInformation;
 // import engine.instance.InstanceCore;
 //import engine.instance.exceptions.DuplicateInstanceIdException;
 import org.junit.jupiter.api.Test;
@@ -8,6 +7,7 @@ import org.junit.jupiter.api.Disabled;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import utils.TestInformationPrinter;
+import annotations.TestMethodInformation;
 
 /**
  * @author o.le

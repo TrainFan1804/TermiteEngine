@@ -28,14 +28,14 @@ class GameInstanceSwitchTracker {
 	/**
 	 * Will set the state of the inner value to the given argument.
 	 * 
-	 * @param changed New value of the innser state.
+	 * @param changed New value of the inner state.
 	 */
-	void toggle(boolean changed) { this.changed = changed; }
+	void setChanged(boolean changed) { this.changed = changed; }
 
 	/**
 	 * Get the value of the inner value.
 	 * 
 	 * @return The value of the inner value.
 	 */
-	boolean wasChanged() { return this.changed; }
+	boolean getChanged() { return this.changed; }
 }

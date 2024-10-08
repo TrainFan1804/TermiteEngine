@@ -1,15 +1,16 @@
 package utils;
 
-import annotations.TestInformation;
+import annotations.TestClassInformation;
 import java.lang.reflect.Method;
 import java.util.Optional;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
+import annotations.TestMethodInformation;
 
 /**
  * @author o.le
- * @version 1.4
+ * @version 1.5
  * @since 1.2.4
  */
 public final class TestInformationPrinter implements BeforeEachCallback, TestWatcher {
@@ -18,19 +19,23 @@ public final class TestInformationPrinter implements BeforeEachCallback, TestWat
 	public void beforeEach(ExtensionContext context) throws Exception {
 
                 final Class<?> testClass = context.getRequiredTestClass();
+		
+		if (testClass.isAnnotationPresent(TestClassInformation.class)) {
+
+			final TestClassInformation info = testClass.getAnnotation(TestClassInformation.class);
+
+			System.out.println("Target Class: " + info.targetClass());
+		}
+
 		final Method testMethod = context.getRequiredTestMethod();
 
-		if (testMethod.isAnnotationPresent(TestInformation.class)) {
+		if (testMethod.isAnnotationPresent(TestMethodInformation.class)) {
 
-			final TestInformation info = testMethod.getAnnotation(TestInformation.class);
-			final String methodFullName = String.format("%s.%s()", 
-								testClass.getName(), 
-								testMethod.getName());
+			final TestMethodInformation info = testMethod.getAnnotation(TestMethodInformation.class);
 
-			System.out.println("Current test: " + methodFullName);
-			System.out.println("Target: " + info.target());
+			System.out.println("Target Method: " + info.targetMethod());
 			System.out.println("Expected behavior: " + info.behavior());
-			System.out.println("Is static: " + info.isStatic());
+			if (info.isStatic()) System.out.println("Is static");
 			System.out.println();
 		}
 	}
