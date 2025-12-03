@@ -9,6 +9,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * @author                              o.le
+ * @version                             1.0
+ * @since                               25.12.3
+ */
 public class Termite extends Application {
 
     @Override

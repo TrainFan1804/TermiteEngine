@@ -19,7 +19,9 @@ import java.util.Set;
  * @author o.le
  * @version 1.2
  * @since 1.4.5
+ * @deprecated	Deprecated since 25.12.3 because of the file handling rework.
  */
+@Deprecated(since = "25.12.3")
 public class JsonValidater {
 
 	/**

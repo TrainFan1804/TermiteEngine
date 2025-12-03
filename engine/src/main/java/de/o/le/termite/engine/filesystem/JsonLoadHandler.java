@@ -1,7 +1,10 @@
 package de.o.le.termite.engine.filesystem;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -9,7 +12,7 @@ import java.io.IOException;
  * This class will load a Json file and map it to a given type.
  * 
  * @author o.le
- * @version 1.0
+ * @version 1.1
  * @since 1.4.5
  */
 public class JsonLoadHandler {
@@ -22,6 +25,7 @@ public class JsonLoadHandler {
 	public JsonLoadHandler() {
 
 		this.MAPPER = new JsonMapper();
+        this.MAPPER.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
 	}
 
 	/**

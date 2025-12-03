@@ -3,14 +3,21 @@ package de.o.le.termite;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import de.o.le.termite.data.Player;
 import de.o.le.termite.data.Room;
 
+import de.o.le.termite.engine.filesystem.JsonLoadHandler;
 import javafx.application.Application;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * @author                              o.le
+ * @version                             1.0
+ * @since                               25.12.3
+ */
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -19,22 +26,19 @@ public class Main {
     }
 
     static void test() throws IOException {
-        File f = new File(new File(System.getProperty("user.dir")).getParentFile(), "game/default/data/rooms/default.json");
+        File f = DataLoader.loadFile("game/default/data/rooms/default.json");
         System.out.println(f.getAbsolutePath());
-        if (!f.exists()) {
-            System.out.println("Datei existiert nicht!");
-            return;
-        }
 
-        String json = Files.readString(f.toPath());
-        System.out.println(json);
-
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-        Room room = mapper.readValue(json, Room.class);
+        JsonLoadHandler handler = new JsonLoadHandler();
+        Room room = handler.loadFileValue(f, Room.class);
 
         System.out.println(room.getName());
+
+        f = DataLoader.loadFile("game/default/player.json");
+        System.out.println(f.getAbsolutePath());
+
+        handler = new JsonLoadHandler();
+        Player p = handler.loadFileValue(f, Player.class);
+        System.out.println(p.name);
     }
-
-
 }
