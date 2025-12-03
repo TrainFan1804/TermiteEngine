@@ -25,6 +25,21 @@
 					<mainClass>de.o.le.termite.Main</mainClass>
 				</configuration>
 			</plugin>
+			<plugin>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>de.o.le.termite.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -78,28 +93,11 @@
 			<artifactId>json-schema-validator</artifactId>
 			<version>1.5.2</version>
 		</dependency>
-
 		<!-- Required by the validator -->
 		<dependency>
 			<groupId>com.ethlo.time</groupId>
 			<artifactId>itu</artifactId>
 			<version>1.10.2</version>
 		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>com.networknt</groupId>-->
-<!--			<artifactId>json-schema-validator</artifactId>-->
-<!--			<version>1.5.2</version>-->
-<!--			<exclusions>-->
-<!--				<exclusion>-->
-<!--					<groupId>com.ethlo.time</groupId>-->
-<!--					<artifactId>itu</artifactId>-->
-<!--				</exclusion>-->
-<!--				<exclusion>-->
-<!--					<groupId>com.fasterxml.jackson.dataformat</groupId>-->
-<!--					<artifactId>jackson-dataformat-yaml</artifactId>-->
-<!--				</exclusion>-->
-<!--			</exclusions>-->
-<!--		</dependency>-->
 	</dependencies>
 </project>
