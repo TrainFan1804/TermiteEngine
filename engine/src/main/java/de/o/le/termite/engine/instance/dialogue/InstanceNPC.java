@@ -74,7 +74,7 @@ public class InstanceNPC {
 		final EngineOutputResource RES = EngineOutputResource.getInstance();
 
 		List<DialogueNode> tree = this.dialogue.dialogueTree;
-		DialogueNode current = tree.getFirst();
+		DialogueNode current = null; //tree.getFirst();
 		do {
 
 			RES.OUT.printString(current.npcLine);
