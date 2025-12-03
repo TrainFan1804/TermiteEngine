@@ -1,0 +1,22 @@
+{
+  "info" : {
+    "name" : "default room",
+    "description" : "This is the default room",
+    "image" : "default.png"
+  },
+  "actions" : {
+    "exit" : {
+      "north" : {
+        "required" : "default",
+        "target" : "room",
+        "failure" : "Can't open door."
+      }
+    },
+    "look" : {
+      "table" : {
+        "item" : "default",
+        "message" : "found a key"
+      }
+    }
+  }
+}
