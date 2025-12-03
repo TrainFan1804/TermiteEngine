@@ -2,75 +2,104 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    	<modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    	<groupId>de.o.le</groupId>
-    	<artifactId>termiteengine</artifactId>
-    	<version>1.4.8</version>
-    
-    	<build>
-        	<sourceDirectory>src/main/java</sourceDirectory>
+	<groupId>de.o.le</groupId>
+	<artifactId>termiteengine</artifactId>
+	<version>1.4.8</version>
+
+	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
-    	</build>
+		<plugins>
+			<plugin>
+				<groupId>org.openjfx</groupId>
+				<artifactId>javafx-maven-plugin</artifactId>
+				<version>0.0.8</version>
+				<configuration>
+					<mainClass>de.o.le.termite.Main</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-    	<properties>
-        	<maven.compiler.source>21</maven.compiler.source>
-        	<maven.compiler.target>21</maven.compiler.target>
-    	</properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	</properties>
 
-    	<dependencies>
+	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
-    			<groupId>org.junit.jupiter</groupId>
-    			<artifactId>junit-jupiter-api</artifactId>
-    			<version>5.11.0</version>
-    			<scope>test</scope>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>5.11.0</version>
+				<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
 		<dependency>
-    			<groupId>org.junit.jupiter</groupId>
-    			<artifactId>junit-jupiter-engine</artifactId>
-    			<version>5.11.0</version>
-    			<scope>test</scope>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>5.11.0</version>
+				<scope>test</scope>
 		</dependency>
-        	<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
-        	<dependency>
-            		<groupId>com.fasterxml.jackson.core</groupId>
-            		<artifactId>jackson-databind</artifactId>
-            		<version>2.17.1</version>
-        	</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>2.17.1</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
 		<dependency>
-    			<groupId>com.fasterxml.jackson.core</groupId>
-    			<artifactId>jackson-core</artifactId>
-    			<version>2.17.1</version>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>2.17.1</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
 		<dependency>
-    			<groupId>com.fasterxml.jackson.core</groupId>
-    			<artifactId>jackson-annotations</artifactId>
-    			<version>2.17.1</version>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.17.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.openjfx</groupId>
+			<artifactId>javafx-controls</artifactId>
+			<version>21.0.6</version>
+		</dependency>
+		<!-- JSON Schema Validator -->
 		<dependency>
 			<groupId>com.networknt</groupId>
 			<artifactId>json-schema-validator</artifactId>
 			<version>1.5.2</version>
-			<exclusions>
-				<exclusion>
-					<groupId>com.ethlo.time</groupId>
-					<artifactId>itu</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.fasterxml.jackson.dataformat</groupId>
-					<artifactId>jackson-dataformat-yaml</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
-    	</dependencies>
 
+		<!-- Required by the validator -->
+		<dependency>
+			<groupId>com.ethlo.time</groupId>
+			<artifactId>itu</artifactId>
+			<version>1.10.2</version>
+		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.networknt</groupId>-->
+<!--			<artifactId>json-schema-validator</artifactId>-->
+<!--			<version>1.5.2</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>com.ethlo.time</groupId>-->
+<!--					<artifactId>itu</artifactId>-->
+<!--				</exclusion>-->
+<!--				<exclusion>-->
+<!--					<groupId>com.fasterxml.jackson.dataformat</groupId>-->
+<!--					<artifactId>jackson-dataformat-yaml</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+	</dependencies>
 </project>

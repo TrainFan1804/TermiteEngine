@@ -1,7 +1,10 @@
-package de.o.le.termite;
+package de.o.le.termite.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Room {
+class RoomInfo {
+    String name;
+    String description;
+    String image;
 }
