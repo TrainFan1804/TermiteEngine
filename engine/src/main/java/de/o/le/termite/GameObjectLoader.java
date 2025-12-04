@@ -11,11 +11,11 @@ import java.nio.file.Paths;
  * @version                             1.0
  * @since                               25.12.3
  */
-public class DataLoader {
+public class GameObjectLoader {
 
     private final Path GAME_DIR;
 
-    public DataLoader(String gameDir) throws FileNotFoundException {
+    public GameObjectLoader(String gameDir) throws FileNotFoundException {
         // this look very scary...
         String path = System.getProperty("user.dir") + "/../" + gameDir;
         this.GAME_DIR = Paths.get(path);
@@ -33,7 +33,7 @@ public class DataLoader {
      */
     public File loadFile(Path fileName) throws FileNotFoundException {
 
-        String path = GAME_DIR + "/" + fileName;
+        String path = GAME_DIR + "/" + fileName + ".json";
         File f = new File(path);
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + path + "' doesn't exists.");

@@ -1,6 +1,6 @@
 package de.o.le.termite;
 
-import de.o.le.termite.data.Player;
+import de.o.le.termite.data.GameObject;
 import de.o.le.termite.data.Room;
 import de.o.le.termite.engine.filesystem.JsonLoadHandler;
 
@@ -23,12 +23,14 @@ public class Main {
     }
 
     static void test() throws IOException {
-        var d = new DataLoader("game/default");
-        File f = d.loadFile(Path.of("data/rooms/default.json"));
-        System.out.println(f.getAbsolutePath());
-
-        JsonLoadHandler handler = new JsonLoadHandler();
-        Room room = handler.loadFileValue(f, Room.class);
+//        var d = new GameObjectLoader("game/default");
+//        File f = d.loadFile(Path.of("data/rooms/default.json"));
+//        System.out.println(f.getAbsolutePath());
+//
+//        JsonLoadHandler handler = new JsonLoadHandler();
+//        Room room = handler.loadFileValue(f, Room.class);
+        GameObjectManager manager = new GameObjectManager();
+        Room room = manager.getData("room", "default");
 
         System.out.println(room.getName());
 
