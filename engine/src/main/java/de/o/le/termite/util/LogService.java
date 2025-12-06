@@ -1,4 +1,4 @@
-package de.o.le.termite.engine.util;
+package de.o.le.termite.util;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;

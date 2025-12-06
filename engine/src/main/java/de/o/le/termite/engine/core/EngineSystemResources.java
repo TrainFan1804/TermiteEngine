@@ -1,6 +1,6 @@
 package de.o.le.termite.engine.core;
 
-import de.o.le.termite.engine.util.ToBeImplemented;
+import de.o.le.termite.util.ToBeImplemented;
 
 /**
  * This class contains some important fields / methods that are used in the entire

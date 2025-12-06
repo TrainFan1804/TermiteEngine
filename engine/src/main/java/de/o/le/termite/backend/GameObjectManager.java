@@ -1,4 +1,4 @@
-package de.o.le.termite;
+package de.o.le.termite.backend;
 
 import de.o.le.termite.data.GameObject;
 import de.o.le.termite.engine.filesystem.JsonLoadHandler;
@@ -10,22 +10,21 @@ import java.nio.file.Path;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.4
  */
 public class GameObjectManager {
     private GameObjectLoader loader;
     private JsonLoadHandler jsonHandler;
 
-    public GameObjectManager() throws FileNotFoundException {
-        loader = new GameObjectLoader("game/default");
+    public GameObjectManager(String gameDir) throws FileNotFoundException {
+        loader = new GameObjectLoader(gameDir);
         jsonHandler = new JsonLoadHandler();
     }
 
     public <T> T getData(GameObject type, String data) {
 
         Path path = type.getPath().resolve(data);
-
         try {
             File dataFile = loader.loadFile(path);
             return jsonHandler.loadFileValue(dataFile, type.getType());

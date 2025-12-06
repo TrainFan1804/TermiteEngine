@@ -1,4 +1,4 @@
-package de.o.le.termite.engine.util;
+package de.o.le.termite.util;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

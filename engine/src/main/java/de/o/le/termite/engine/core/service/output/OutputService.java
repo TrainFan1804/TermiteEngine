@@ -1,6 +1,6 @@
 package de.o.le.termite.engine.core.service.output;
 
-import de.o.le.termite.engine.util.ToBeImplemented;
+import de.o.le.termite.util.ToBeImplemented;
 
 /**
  * This is the output service. This class is used when something is printed to

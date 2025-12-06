@@ -1,7 +1,7 @@
 package de.o.le.termite.engine.core;
 
 import de.o.le.termite.engine.core.service.InputService;
-import de.o.le.termite.engine.util.ToBeImplemented;
+import de.o.le.termite.util.ToBeImplemented;
 
 /**
  * You can use this class directly to ask the player for input on the terminal.

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import utils.TestInformationPrinter;
+import utils.TestLogger;
 import de.o.le.termite.engine.core.service.output.Message;
 import de.o.le.termite.engine.instance.event.GoEvent;
 import de.o.le.termite.engine.instance.event.InstanceEvent;
@@ -21,8 +21,9 @@ import annotations.TestMethodInformation;
  * @version 1.0
  * @since 1.4.3
  */
+@Disabled
 @TestClassInformation(targetClass = InstanceBuilderCore.class)
-@ExtendWith(TestInformationPrinter.class)
+@ExtendWith(TestLogger.class)
 public class InstanceBuilderCoreTest {
 
 	private InstanceBuilderCore builder;

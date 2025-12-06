@@ -1,17 +1,19 @@
-package de.o.le.termite.engine;
+package de.o.le.termite.util;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Formatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+// Source - https://stackoverflow.com/a
+// Posted by Manuel Moser, modified by community. See post 'Timeline' for change history
+// Retrieved 2025-12-06, License - CC BY-SA 4.0
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
+/**
+ * Source - https://stackoverflow.com/a
+ * Posted by Manuel Moser, modified by community. See post 'Timeline' for change history
+ * Retrieved 2025-12-06, License - CC BY-SA 4.0
+ */
 class LogFormatter extends Formatter
 {
     // ANSI escape code
@@ -38,6 +40,8 @@ class LogFormatter extends Formatter
             case "WARNING": color = ANSI_YELLOW; break;
             case "SEVERE": color = ANSI_RED; break;
         }
+        // This example will print date/time, class, and log level in yellow,
+        // followed by the log message and it's parameters in white .
         StringBuilder builder = new StringBuilder();
         builder.append(color);
 
@@ -46,7 +50,7 @@ class LogFormatter extends Formatter
         builder.append("]");
 
         builder.append(" [");
-        builder.append(record.getSourceClassName());
+        builder.append(record.getLoggerName());
         builder.append("]");
 
         builder.append(" [");
@@ -77,27 +81,5 @@ class LogFormatter extends Formatter
         SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date resultdate = new Date(millisecs);
         return date_format.format(resultdate);
-    }
-}
-
-public class LogTest {
-
-    private static Logger LOGGER = Logger.getLogger("InfoLogging");
-
-    @Test
-    public void testOne() {
-
-        LOGGER.setUseParentHandlers(false);
-        ConsoleHandler handler = new ConsoleHandler();
-
-        Formatter formatter = new LogFormatter();
-        handler.setFormatter(formatter);
-
-        LOGGER.addHandler(handler);
-
-        LOGGER.info("Helloc");
-        LOGGER.warning("Warnung");
-        LOGGER.finer("asdad");
-        LOGGER.log(Level.SEVERE, "dd");
     }
 }

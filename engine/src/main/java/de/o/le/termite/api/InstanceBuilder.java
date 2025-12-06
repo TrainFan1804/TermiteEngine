@@ -4,7 +4,7 @@ import de.o.le.termite.engine.core.service.output.Message;
 import de.o.le.termite.engine.instance.InstanceCore;
 import de.o.le.termite.engine.instance.InstanceBuilderCore;
 import de.o.le.termite.engine.instance.event.InstanceEvent;
-import de.o.le.termite.engine.util.ToBeImplemented;
+import de.o.le.termite.util.ToBeImplemented;
 
 /**
  * This builder class will help you define your own {@link Instance} easily.

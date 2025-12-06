@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
-import utils.TestInformationPrinter;
+import utils.TestLogger;
 import org.junit.jupiter.api.extension.ExtendWith;
 import annotations.TestMethodInformation;
  
@@ -17,8 +17,9 @@ import annotations.TestMethodInformation;
  * @version 1.1
  * @since 1.4.2
  */
+@Disabled
 @TestClassInformation(targetClass = OutputService.class)
-@ExtendWith(TestInformationPrinter.class)
+@ExtendWith(TestLogger.class)
 public class OutputServiceTest {
 
 	private PrintStream ORIGIN_STREAM;

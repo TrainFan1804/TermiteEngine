@@ -13,7 +13,8 @@ import annotations.TestMethodInformation;
  * @version 1.5
  * @since 1.2.4
  */
-public final class TestInformationPrinter implements BeforeEachCallback, TestWatcher {
+@Deprecated
+public final class TestLogger implements BeforeEachCallback, TestWatcher {
 
 	@Override
 	public void beforeEach(ExtensionContext context) throws Exception {

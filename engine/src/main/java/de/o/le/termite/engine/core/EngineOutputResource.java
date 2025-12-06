@@ -2,7 +2,7 @@ package de.o.le.termite.engine.core;
 
 import de.o.le.termite.engine.core.service.output.OuputContentHandler;
 import de.o.le.termite.engine.core.service.output.OutputService;
-import de.o.le.termite.engine.util.ToBeImplemented;
+import de.o.le.termite.util.ToBeImplemented;
 import java.io.File;
 
 /**

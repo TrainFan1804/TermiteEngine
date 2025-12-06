@@ -2,4 +2,4 @@
  * This package contains some utilities that are used in the engine but doesn't
  * belong to any functionality.
  */
-package de.o.le.termite.engine.util;
+package de.o.le.termite.util;

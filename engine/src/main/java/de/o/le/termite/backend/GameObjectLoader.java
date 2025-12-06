@@ -1,4 +1,4 @@
-package de.o.le.termite;
+package de.o.le.termite.backend;
 
 import java.io.File;
 import java.io.FileNotFoundException;

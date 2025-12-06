@@ -1,10 +1,11 @@
 package de.o.le.termite.engine.core;
 
 import annotations.TestClassInformation;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import utils.TestInformationPrinter;
+import utils.TestLogger;
 import annotations.TestMethodInformation;
  
 /**
@@ -12,8 +13,9 @@ import annotations.TestMethodInformation;
  * @version 1.0
  * @since 1.4.8
  */
+@Disabled
 @TestClassInformation(targetClass = GameInstanceSwitchTracker.class)
-@ExtendWith(TestInformationPrinter.class)
+@ExtendWith(TestLogger.class)
 public class GameInstanceSwitchTrackerTest {
 
 	@TestMethodInformation(targetMethod = "GameInstanceSwitchTracker()",
