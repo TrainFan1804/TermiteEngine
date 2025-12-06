@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Room {
 
-//    @JsonIgnoreProperties(ignoreUnknown = true)
     static class RoomInfo {
         String name;
         String description;

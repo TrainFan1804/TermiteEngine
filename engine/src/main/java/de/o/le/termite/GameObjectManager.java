@@ -1,16 +1,16 @@
 package de.o.le.termite;
 
 import de.o.le.termite.data.GameObject;
-import de.o.le.termite.data.Room;
 import de.o.le.termite.engine.filesystem.JsonLoadHandler;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               25.12.4
  */
 public class GameObjectManager {
@@ -22,23 +22,17 @@ public class GameObjectManager {
         jsonHandler = new JsonLoadHandler();
     }
 
-    public Room getData(String type, String data) {
+    public <T> T getData(GameObject type, String data) {
 
-        Class<?> path = GameObjectRegistry.getType(type);
+        Path path = type.getPath().resolve(data);
 
-        switch (type) {
-            case "ROOM" -> {
-                try {
-                    Path p = GameObjectRegistry.getTypePath(path);
-                    var v = loader.loadFile(p);
-                    return (Room) jsonHandler.loadFileValue(v, path);
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
+        try {
+            File dataFile = loader.loadFile(path);
+            return jsonHandler.loadFileValue(dataFile, type.getType());
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return null;
     }
 }
