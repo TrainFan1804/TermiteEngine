@@ -3,6 +3,7 @@ package de.o.le.termite.backend;
 import de.o.le.termite.Main;
 import de.o.le.termite.data.GameObject;
 import de.o.le.termite.data.Room;
+import de.o.le.termite.engine.core.Command;
 import de.o.le.termite.util.LogService;
 
 import java.io.IOException;
@@ -36,5 +37,10 @@ public class Engine {
     private void loadGame() {
         Room startRoom = manager.getData(GameObject.ROOM, "default");
         STATE.setCurrentRoom(startRoom);
+    }
+
+    public String processCommand(Command command) {
+
+        return command.toString();
     }
 }

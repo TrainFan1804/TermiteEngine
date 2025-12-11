@@ -10,6 +10,8 @@ package de.o.le.termite.engine.core;
  */
 public enum Command {
 
+    // TODO add null pattern command?
+
     SAVE,
     LOAD,
     EXIT,

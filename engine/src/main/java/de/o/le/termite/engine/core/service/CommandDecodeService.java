@@ -21,17 +21,15 @@ public class CommandDecodeService {
 	 * @return The mapped command. Will return {@code null} if the given argument
 	 * was invalid.
 	 */
-    	public Command commandDecode(String commandInput) {
+    public Command commandDecode(String commandInput) {
 
-        	try {
-
-            		commandInput = commandInput.toUpperCase();
-            		// decode input to commands
-            		return Command.valueOf(commandInput);
-        	} catch (IllegalArgumentException e) {
- 
-			EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
-			return null; // bad, really bad...
-        	}
-    	}
+        try {
+            commandInput = commandInput.toUpperCase();
+            // decode input to commands
+            return Command.valueOf(commandInput);
+        } catch (IllegalArgumentException e) {
+            EngineOutputResource.getInstance().OUT.printMessage(MessageType.MSG_UNKNOWN_COMMAND);
+            return null; // bad, really bad...
+        }
+    }
 }

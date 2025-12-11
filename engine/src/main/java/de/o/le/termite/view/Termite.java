@@ -16,23 +16,25 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.3
  */
 public class Termite extends Application {
 
     private static final LogService LOG = new LogService(Termite.class.getName());
 
-    private Engine engine;
+    private TermiteController controller;
+
+    private TextArea playArea;
 
     @Override
     public void init() throws Exception {
         List<String> args = getParameters().getRaw();
-        if (args.isEmpty()) {
-            this.engine = new Engine();
-        } else {
-            this.engine = new Engine(args.get(0));
+        Engine engine = new Engine();
+        if (!args.isEmpty()) {
+            engine = new Engine(args.getFirst());
         }
+        this.controller = new TermiteController(engine, this);
     }
 
     @Override
@@ -41,22 +43,31 @@ public class Termite extends Application {
 
         primaryStage.setTitle("Game");
 
-        TextArea area = new TextArea();
-        area.setEditable(false);
-        TextField input = new TextField();
-        Button btn = new Button();
-        btn.setText("Close");
-        btn.setOnAction(event -> {
+        playArea = new TextArea();
+        playArea.setEditable(false);
+        TextField commandInput = new TextField();
+
+        Button closeBtn = new Button();
+        closeBtn.setText("Close");
+        closeBtn.setOnAction(event -> {
             primaryStage.close();
             LOG.info("Close GUI");
         });
 
+        Button sendCommand = new Button("Turn");
+        sendCommand.setOnAction(e -> this.controller.handleCommand(commandInput.getText()));
+
         Pane root = new VBox();
-        root.getChildren().add(area);
-        root.getChildren().add(input);
-        root.getChildren().add(btn);
+        root.getChildren().add(playArea);
+        root.getChildren().add(commandInput);
+        root.getChildren().add(sendCommand);
+        root.getChildren().add(closeBtn);
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
+    }
+
+    public void updatePlayArea(String content) {
+        this.playArea.setText(content);
     }
 }
