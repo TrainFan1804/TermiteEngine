@@ -43,4 +43,6 @@ public class Engine {
 
         return command.toString();
     }
+
+    public GameState getGameState() { return this.STATE; }
 }

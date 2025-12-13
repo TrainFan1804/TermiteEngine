@@ -2,12 +2,12 @@ package de.o.le.termite.view;
 
 import de.o.le.termite.backend.Engine;
 import de.o.le.termite.util.LogService;
+import de.o.le.termite.view.components.ControlBar;
+import de.o.le.termite.view.components.PlayArea;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               25.12.3
  */
 public class Termite extends Application {
@@ -25,7 +25,8 @@ public class Termite extends Application {
 
     private TermiteController controller;
 
-    private TextArea playArea;
+    private PlayArea playArea;
+    private Label roomNameLabel;
 
     @Override
     public void init() throws Exception {
@@ -43,31 +44,27 @@ public class Termite extends Application {
 
         primaryStage.setTitle("Game");
 
-        playArea = new TextArea();
-        playArea.setEditable(false);
-        TextField commandInput = new TextField();
-
-        Button closeBtn = new Button();
-        closeBtn.setText("Close");
-        closeBtn.setOnAction(event -> {
-            primaryStage.close();
-            LOG.info("Close GUI");
-        });
+        this.roomNameLabel = new Label(this.controller.getCurrentRoomName());
+        this.playArea = new PlayArea();
 
         Button sendCommand = new Button("Turn");
-        sendCommand.setOnAction(e -> this.controller.handleCommand(commandInput.getText()));
+        sendCommand.setOnAction(
+                e -> this.controller.handleCommand(this.playArea.getInput())
+        );
 
         Pane root = new VBox();
-        root.getChildren().add(playArea);
-        root.getChildren().add(commandInput);
+        root.getChildren().add(this.roomNameLabel);
+        root.getChildren().add(this.playArea);
         root.getChildren().add(sendCommand);
-        root.getChildren().add(closeBtn);
+        root.getChildren().add(new ControlBar(e -> {
+            primaryStage.close();
+            LOG.info("Close GUI");
+        }));
+
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
     }
 
-    public void updatePlayArea(String content) {
-        this.playArea.setText(content);
-    }
+    public void updatePlayArea(String content) { this.playArea.updateAreaText(content); }
 }

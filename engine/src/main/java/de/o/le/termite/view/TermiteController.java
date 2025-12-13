@@ -34,4 +34,9 @@ public class TermiteController {
             this.view.updatePlayArea("Unknown command");
         }
     }
+
+    public String getCurrentRoomName() {
+
+        return this.engine.getGameState().getCurrentRoom().getName();
+    }
 }
