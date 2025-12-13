@@ -7,7 +7,10 @@ package de.o.le.termite.engine.core;
  * @author                              o.le
  * @version                             1.0
  * @since                               0.17
+ *
+ * @deprecated This was replaced by {@link de.o.le.termite.backend.commands.CommandType}
  */
+@Deprecated(since = "25-12-13")
 public enum Command {
 
     // TODO add null pattern command?

@@ -12,8 +12,12 @@ import java.nio.file.Path;
  * @author                              o.le
  * @version                             1.2
  * @since                               25.12.4
+ *
+ * @apiNote Instead of creating a new object of that class use the provided
+ * instance in {@link EngineContext}.
  */
 public class GameObjectManager {
+
     private GameObjectLoader loader;
     private JsonLoadHandler jsonHandler;
 
