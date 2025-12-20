@@ -1,5 +1,7 @@
 package de.o.le.termite.data;
 
+import de.o.le.termite.data.room.Room;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 

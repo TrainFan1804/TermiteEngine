@@ -1,6 +1,6 @@
 package de.o.le.termite.backend;
 
-import de.o.le.termite.data.Room;
+import de.o.le.termite.data.room.Room;
 
 /**
  * @author                              o.le
@@ -13,14 +13,14 @@ public class GameState {
 
     private static final GameState INSTANCE = new GameState();
 
+    private Room currentRoom;
+
     public static GameState getInstance() {
 
         return INSTANCE;
     }
 
     private GameState() { }
-
-    private Room currentRoom;
 
     public Room getCurrentRoom() { return currentRoom; }
 

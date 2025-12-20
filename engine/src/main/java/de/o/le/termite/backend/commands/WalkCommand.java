@@ -7,21 +7,20 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               25.12.13
  */
-public class LookCommand {
+public class WalkCommand {
 
-    public String look(List<String> args) {
+    public String walk(List<String> args) {
 
         if (args.isEmpty()) {
-            return "Nothing found";
+            return "You didn't decided where to walk yet.";
         }
 
         String a = args.getFirst();
         Room currentRoom = GameState.getInstance().getCurrentRoom();
-
-        // TODO implement item logic (later) and check for when item is unknown
-        return currentRoom.getLook(a).getMessage();
+        // TODO implement walking logic and check for when direction is unknown
+        return currentRoom.getExit(a).getTarget();
     }
 }

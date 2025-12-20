@@ -18,11 +18,11 @@ import java.nio.file.Path;
  */
 public class GameObjectManager {
 
-    private GameObjectLoader loader;
+    private GameFileLoader loader;
     private JsonLoadHandler jsonHandler;
 
     public GameObjectManager(String gameDir) throws FileNotFoundException {
-        loader = new GameObjectLoader(gameDir);
+        loader = new GameFileLoader(gameDir);
         jsonHandler = new JsonLoadHandler();
     }
 

@@ -26,6 +26,6 @@ public class TermiteController {
 
     public String getCurrentRoomName() {
 
-        return this.engine.getGameState().getCurrentRoom().getName();
+        return this.engine.getGameState().getCurrentRoom().getInfo().getName();
     }
 }

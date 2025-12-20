@@ -2,7 +2,7 @@ package de.o.le.termite.backend;
 
 import de.o.le.termite.data.GameObject;
 import de.o.le.termite.data.Player;
-import de.o.le.termite.data.Room;
+import de.o.le.termite.data.room.Room;
 
 import org.junit.jupiter.api.Test;
 
