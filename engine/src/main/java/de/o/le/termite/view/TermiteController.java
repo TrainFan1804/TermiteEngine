@@ -1,10 +1,12 @@
 package de.o.le.termite.view;
 
 import de.o.le.termite.backend.Engine;
+import de.o.le.termite.dto.CommandContext;
+import de.o.le.termite.dto.CommandResult;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.6
  */
 public class TermiteController {
@@ -18,14 +20,19 @@ public class TermiteController {
         this.view = view;
     }
 
-    public void handleCommand(String input) {
+    public void onGameStart() {
 
-        String ret = this.engine.processCommand(input);
-        this.view.updatePlayArea(ret);
+        CommandResult result = engine.loadGame();
+        view.showMessage(result.getMessage());
+        result.getContext().getRoom().ifPresent(view::showRoom);
     }
 
-    public String getCurrentRoomName() {
+    public void handleCommand(String input) {
 
-        return this.engine.getGameState().getCurrentRoom().getInfo().getName();
+        CommandResult result = this.engine.processCommand(input);
+        this.view.showMessage(result.getMessage());
+
+        CommandContext ctx = result.getContext();
+        ctx.getRoom().ifPresent(view::showRoom);
     }
 }

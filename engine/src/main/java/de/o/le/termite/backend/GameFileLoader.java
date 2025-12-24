@@ -9,6 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
+ * This class provide a simple interface to load any kind of game files into
+ * memory.
+ *
  * @author                              o.le
  * @version                             1.0
  * @since                               25.12.3

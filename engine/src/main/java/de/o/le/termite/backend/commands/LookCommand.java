@@ -1,27 +1,33 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.GameState;
-import de.o.le.termite.data.room.Room;
+import de.o.le.termite.backend.data.room.Room;
+import de.o.le.termite.backend.data.room.RoomLookAction;
+import de.o.le.termite.dto.CommandResult;
 
 import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               25.12.13
  */
 public class LookCommand {
 
-    public String look(List<String> args) {
+    public CommandResult look(List<String> args) {
 
         if (args.isEmpty()) {
-            return "Nothing found";
+            return CommandResult.failure("Nothing found.");
         }
 
         String a = args.getFirst();
         Room currentRoom = GameState.getInstance().getCurrentRoom();
 
-        // TODO implement item logic (later) and check for when item is unknown
-        return currentRoom.getLook(a).getMessage();
+        RoomLookAction action = currentRoom.getLook(a);
+        if (action == null) {
+            return CommandResult.failure("You can't look there!");
+        }
+        // TODO implement item logic (later)
+        return CommandResult.success(currentRoom.getLook(a).getMessage());
     }
 }

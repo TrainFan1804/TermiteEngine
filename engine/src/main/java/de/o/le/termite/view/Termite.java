@@ -1,6 +1,7 @@
 package de.o.le.termite.view;
 
 import de.o.le.termite.backend.Engine;
+import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.util.LogService;
 import de.o.le.termite.view.components.ControlBar;
 import de.o.le.termite.view.components.PlayArea;
@@ -16,7 +17,7 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.3
+ * @version                             1.4
  * @since                               25.12.3
  */
 public class Termite extends Application {
@@ -44,7 +45,7 @@ public class Termite extends Application {
 
         primaryStage.setTitle("Game");
 
-        this.roomNameLabel = new Label(this.controller.getCurrentRoomName());
+        this.roomNameLabel = new Label();
         this.playArea = new PlayArea();
 
         Button sendCommand = new Button("Turn");
@@ -64,7 +65,10 @@ public class Termite extends Application {
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
+        this.controller.onGameStart();
     }
 
-    public void updatePlayArea(String content) { this.playArea.updateAreaText(content); }
+    public void showMessage(String msg) { this.playArea.updateAreaText(msg); }
+
+    public void showRoom(Room room) { this.roomNameLabel.setText(room.getInfo().getName()); }
 }

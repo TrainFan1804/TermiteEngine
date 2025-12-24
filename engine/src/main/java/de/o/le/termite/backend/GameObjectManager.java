@@ -1,7 +1,7 @@
 package de.o.le.termite.backend;
 
-import de.o.le.termite.data.GameObject;
-import de.o.le.termite.engine.filesystem.JsonLoadHandler;
+import de.o.le.termite.backend.data.GameObject;
+import de.o.le.termite.backend.utils.JsonLoadHandler;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 /**
+ * This class provide an interface to handle game data objects easily.
+ *
  * @author                              o.le
  * @version                             1.2
  * @since                               25.12.4
