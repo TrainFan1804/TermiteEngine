@@ -62,7 +62,7 @@ public class Termite extends Application {
             LOG.info("Close GUI");
         }));
 
-        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
         this.controller.onGameStart();

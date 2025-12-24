@@ -30,6 +30,8 @@ public class GameState {
             LOG.info("Old room: '" + currentRoom.getInfo().getName()
                     + "', New room: '" + room.getInfo().getName() + "'"
             );
+        } else {
+            LOG.info("Load room '" + room.getInfo().getName() + "'");
         }
         currentRoom = room;
     }

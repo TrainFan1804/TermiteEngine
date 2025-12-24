@@ -13,14 +13,19 @@ import java.nio.file.Paths;
  * memory.
  *
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               25.12.3
+ * @implNote                            This file loader will buffer one file to
+ *  avoid loading the same file multiple times.
  */
 public class GameFileLoader {
 
     private static final LogService LOG = new LogService(GameFileLoader.class.getName());
 
     private final Path GAME_DIR;
+
+    private Path currentFilePath;
+    private File currentFile;
 
     /**
      * @param gameDir   The game dir is set <b>once</b> at the engines start up.
@@ -47,12 +52,22 @@ public class GameFileLoader {
      */
     public File loadFile(Path fileName) throws FileNotFoundException {
 
-        String path = GAME_DIR + "/" + fileName + ".json";
-        File f = new File(path);
+        Path path = Path.of(String.valueOf(GAME_DIR), fileName + ".json");
+
+        if (isCurrentFile(path)) {
+            return currentFile;
+        }
+
+        File f = path.toFile();
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + path + "' doesn't exists.");
         }
         LOG.info("Load file '" + fileName + "' successfully");
+        currentFile = f;
         return f;
+    }
+
+    private boolean isCurrentFile(Path fileName) {
+        return currentFile != null && currentFile.toPath().equals(fileName);
     }
 }

@@ -28,6 +28,15 @@ public class GameObjectManager {
         jsonHandler = new JsonLoadHandler();
     }
 
+    /**
+     * Load a game data object from a file. The file location will be automatically
+     * determined by the {@code type} param and the file name by the {@code data} param.
+     *
+     * @param type
+     * @param data
+     * @return
+     * @param <T>
+     */
     public <T> T getData(GameObject type, String data) {
 
         Path path = type.getPath().resolve(data);
