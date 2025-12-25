@@ -24,4 +24,6 @@ public class Room {
 
         return actions.getExit().get(exit);
     }
+
+    public RoomActions getActions() { return this.actions; }
 }

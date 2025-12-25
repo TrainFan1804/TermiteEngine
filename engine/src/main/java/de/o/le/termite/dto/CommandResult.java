@@ -1,7 +1,7 @@
 package de.o.le.termite.dto;
 
 /**
- * This DTO is used to transfer information about state changes after a executed command
+ * This DTO is used to transfer information about state changes after an executed command
  * from the backend to the frontend controller.
  *
  * @author                              o.le

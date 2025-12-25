@@ -9,6 +9,8 @@ import de.o.le.termite.view.components.PlayArea;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -62,7 +64,13 @@ public class Termite extends Application {
             LOG.info("Close GUI");
         }));
 
-        primaryStage.setScene(new Scene(root, 600, 500));
+        Scene scene = new Scene(root, 600, 500);
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.ENTER),
+                sendCommand::fire
+        );
+
+        primaryStage.setScene(scene);
         primaryStage.setAlwaysOnTop(true);
         primaryStage.show();
         this.controller.onGameStart();

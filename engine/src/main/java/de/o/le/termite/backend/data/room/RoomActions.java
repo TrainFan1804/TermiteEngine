@@ -1,20 +1,37 @@
 package de.o.le.termite.backend.data.room;
 
+import de.o.le.termite.dto.ActionDescription;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               25.12.20
  */
-class RoomActions {
+public class RoomActions {
 
-    private Map<String, RoomExitAction> exit;
-    private Map<String, RoomLookAction> look;
+    private Map<String, RoomExitAction> exit = new HashMap<>();
+    private Map<String, RoomLookAction> look = new HashMap<>();
 
     public RoomActions() {}
 
-    Map<String, RoomExitAction> getExit() { return this.exit; }
+    public Map<String, RoomExitAction> getExit() { return this.exit; }
 
-    Map<String, RoomLookAction> getLook() { return this.look; }
+    public Map<String, RoomLookAction> getLook() { return this.look; }
+
+    public List<ActionDescription> getActionNames() {
+
+        List<ActionDescription> actions = new ArrayList<>();
+        exit.keySet().forEach(key ->
+                actions.add(new ActionDescription(RoomActionType.EXIT, key))
+        );
+        look.keySet().forEach(key ->
+                actions.add(new ActionDescription(RoomActionType.LOOK, key))
+        );
+        return actions;
+    }
 }

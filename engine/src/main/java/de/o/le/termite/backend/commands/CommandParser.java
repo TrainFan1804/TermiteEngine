@@ -18,6 +18,7 @@ public class CommandParser {
         CommandType type = switch (tokens[0]) {
             case "walk" -> CommandType.WALK;
             case "look" -> CommandType.LOOK;
+            case "show" -> CommandType.SHOW;
             default -> null;
         };
 

@@ -1,10 +1,8 @@
 package de.o.le.termite.backend;
 
-import de.o.le.termite.backend.commands.CommandParser;
-import de.o.le.termite.backend.commands.LookCommand;
-import de.o.le.termite.backend.commands.ParsedCommand;
-import de.o.le.termite.backend.commands.WalkCommand;
+import de.o.le.termite.backend.commands.*;
 import de.o.le.termite.backend.data.GameObject;
+import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
@@ -38,7 +36,9 @@ public class Engine {
 
     public CommandResult loadGame() {
         LOG.info("Start game...");
-        Room startRoom = this.manager.getData(GameObject.ROOM, "default");
+        Player player = this.manager.getData(GameObject.PLAYER, "player");
+
+        Room startRoom = this.manager.getData(GameObject.ROOM, player.getRoom());
         GameState.getInstance().setCurrentRoom(startRoom);
 
         return CommandResult.success(startRoom.getInfo().getDescription(), new CommandContext().addRoom(startRoom));
@@ -54,6 +54,7 @@ public class Engine {
         switch (parsedCommand.type()) {
             case WALK: return new WalkCommand().walk(parsedCommand.args());
             case LOOK: return new LookCommand().look(parsedCommand.args());
+            case SHOW: return new ShowCommand().show();
         }
         return CommandResult.failure("If this message show up, the dev f*cked up"); // At least I guess it should...
     }

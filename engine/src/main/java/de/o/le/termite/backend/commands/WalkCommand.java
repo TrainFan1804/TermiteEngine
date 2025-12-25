@@ -37,6 +37,9 @@ public class WalkCommand {
 
         String target = action.getTarget();
         Room nextRoom = EngineContext.getInstance().gameObjectManager().getData(GameObject.ROOM, target);
+
+        // TODO check here for requirement to enter next room
+
         GameState.getInstance().setCurrentRoom(nextRoom);
         return CommandResult.success(nextRoom.getInfo().getDescription(), new CommandContext().addRoom(nextRoom));
     }

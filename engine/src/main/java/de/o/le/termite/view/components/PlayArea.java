@@ -26,5 +26,5 @@ public class PlayArea extends VBox {
 
     public String getInput() { return this.input.getText(); }
 
-    public void updateAreaText(String text) { this.area.setText(text); }
+    public void updateAreaText(String text) { this.area.appendText(text + "\n"); }
 }

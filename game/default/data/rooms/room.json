@@ -11,12 +11,6 @@
         "target" : "room",
         "failure" : "Can't open door."
       }
-    },
-    "look" : {
-      "table" : {
-        "item" : "default",
-        "message" : "found a key"
-      }
     }
   }
 }

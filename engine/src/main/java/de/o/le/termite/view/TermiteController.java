@@ -34,5 +34,10 @@ public class TermiteController {
 
         CommandContext ctx = result.getContext();
         ctx.getRoom().ifPresent(view::showRoom);
+        ctx.getDescription().ifPresent(list -> {
+            for (var desc : list) {
+                view.showMessage(desc.type() + ": " + desc.actionName());
+            }
+        });
     }
 }

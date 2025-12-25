@@ -24,7 +24,6 @@ public class GameFileLoader {
 
     private final Path GAME_DIR;
 
-    private Path currentFilePath;
     private File currentFile;
 
     /**
