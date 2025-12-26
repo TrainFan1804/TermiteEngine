@@ -1,6 +1,6 @@
 package de.o.le.termite.backend.data.room;
 
-import de.o.le.termite.dto.ActionDescription;
+import de.o.le.termite.dto.StringStringDescription;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,14 +23,14 @@ public class RoomActions {
 
     public Map<String, RoomLookAction> getLook() { return this.look; }
 
-    public List<ActionDescription> getActionNames() {
+    public List<StringStringDescription> getActionNames() {
 
-        List<ActionDescription> actions = new ArrayList<>();
+        List<StringStringDescription> actions = new ArrayList<>();
         exit.keySet().forEach(key ->
-                actions.add(new ActionDescription(RoomActionType.EXIT, key))
+                actions.add(new StringStringDescription(RoomActionType.EXIT.toString(), key))
         );
         look.keySet().forEach(key ->
-                actions.add(new ActionDescription(RoomActionType.LOOK, key))
+                actions.add(new StringStringDescription(RoomActionType.LOOK.toString(), key))
         );
         return actions;
     }

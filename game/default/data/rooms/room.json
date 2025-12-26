@@ -6,9 +6,9 @@
   },
   "actions" : {
     "exit" : {
-      "north" : {
+      "south" : {
         "required" : "default",
-        "target" : "room",
+        "target" : "default",
         "failure" : "Can't open door."
       }
     }

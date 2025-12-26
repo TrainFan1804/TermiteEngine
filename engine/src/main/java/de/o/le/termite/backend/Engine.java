@@ -2,6 +2,7 @@ package de.o.le.termite.backend;
 
 import de.o.le.termite.backend.commands.*;
 import de.o.le.termite.backend.data.GameObject;
+import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.dto.CommandContext;
@@ -29,6 +30,9 @@ public class Engine {
     public Engine(String startPath) throws IOException {
         LOG.info("Start engine");
 
+//        GameObjectManager gom = new GameObjectManager(startPath);
+
+
         EngineContext context = EngineContext.getInstance();
         context.init(startPath);
         this.manager = context.gameObjectManager();
@@ -36,10 +40,14 @@ public class Engine {
 
     public CommandResult loadGame() {
         LOG.info("Start game...");
-        Player player = this.manager.getData(GameObject.PLAYER, "player");
 
+        Player player = this.manager.getData(GameObject.PLAYER, "player");
+        Inventory inventory = this.manager.getData(GameObject.Inventory, "inventory");
         Room startRoom = this.manager.getData(GameObject.ROOM, player.getRoom());
+
         GameState.getInstance().setCurrentRoom(startRoom);
+        GameState.getInstance().setPlayer(player);
+        GameState.getInstance().setInventory(inventory);
 
         return CommandResult.success(startRoom.getInfo().getDescription(), new CommandContext().addRoom(startRoom));
     }
@@ -55,6 +63,7 @@ public class Engine {
             case WALK: return new WalkCommand().walk(parsedCommand.args());
             case LOOK: return new LookCommand().look(parsedCommand.args());
             case SHOW: return new ShowCommand().show();
+            case INV: return new InvCommand().inv();
         }
         return CommandResult.failure("If this message show up, the dev f*cked up"); // At least I guess it should...
     }

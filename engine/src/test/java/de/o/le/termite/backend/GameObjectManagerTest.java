@@ -2,6 +2,7 @@ package de.o.le.termite.backend;
 
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.Player;
+import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
 
 import org.junit.jupiter.api.Test;
@@ -34,6 +35,17 @@ class GameObjectManagerTest {
             GameObjectManager manager = new GameObjectManager("game/default");
             Object room = manager.getData(GameObject.PLAYER, "player");
             assertInstanceOf(Player.class, room);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void testManageItem() {
+        try {
+            GameObjectManager manager = new GameObjectManager("game/default");
+            Object room = manager.getData(GameObject.ITEM, "default");
+            assertInstanceOf(Item.class, room);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -8,5 +8,6 @@ package de.o.le.termite.backend.commands;
 public enum CommandType {
     WALK,
     LOOK,
-    SHOW
+    SHOW,
+    INV
 }

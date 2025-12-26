@@ -1,5 +1,6 @@
 package de.o.le.termite.backend.data;
 
+import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
 
 import java.nio.file.Path;
@@ -11,12 +12,14 @@ import java.nio.file.Paths;
  * path where different data objects are saved.
  *
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               25.12.4
  */
 public enum GameObject {
     ROOM(Room.class, "data/rooms"),
-    PLAYER(Player.class, "");
+    PLAYER(Player.class, "data/user"),
+    ITEM(Item.class, "data/items"),
+    Inventory(Inventory.class, "data/user");
 
     private final Class<?> type;
     private final Path path;
@@ -27,5 +30,6 @@ public enum GameObject {
     }
 
     public <T> Class<T> getType() { return (Class<T>) this.type; }
+
     public Path getPath() { return this.path; }
 }

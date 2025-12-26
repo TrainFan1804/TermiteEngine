@@ -1,6 +1,9 @@
 package de.o.le.termite.backend.commands;
 
+import de.o.le.termite.backend.EngineContext;
 import de.o.le.termite.backend.GameState;
+import de.o.le.termite.backend.data.GameObject;
+import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.data.room.RoomLookAction;
 import de.o.le.termite.dto.CommandResult;
@@ -27,7 +30,9 @@ public class LookCommand {
         if (action == null) {
             return CommandResult.failure("You can't look there!");
         }
-        // TODO implement item logic (later)
+        Item roomItem = EngineContext.getInstance().gameObjectManager().getData(GameObject.ITEM, action.getItem());
+        GameState.getInstance().addItemToInventory(roomItem);
+
         return CommandResult.success(currentRoom.getLook(a).getMessage());
     }
 }

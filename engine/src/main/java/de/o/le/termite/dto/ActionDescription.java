@@ -8,7 +8,10 @@ import de.o.le.termite.backend.data.room.RoomActionType;
  * @author                              o.le
  * @version                             1.0
  * @since                               25.12.25
+ * @deprecated                          Deprecated after {@link de.o.le.termite.dto.StringStringDescription} was
+ *      introduced.
  */
+@Deprecated(since = "25.12.26")
 public record ActionDescription(
         RoomActionType type,
         String actionName

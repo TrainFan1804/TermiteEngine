@@ -52,7 +52,10 @@ public class Termite extends Application {
 
         Button sendCommand = new Button("Turn");
         sendCommand.setOnAction(
-                e -> this.controller.handleCommand(this.playArea.getInput())
+                e -> {
+                    this.controller.handleCommand(this.playArea.getInput());
+                    this.playArea.clearInput();
+                }
         );
 
         Pane root = new VBox();

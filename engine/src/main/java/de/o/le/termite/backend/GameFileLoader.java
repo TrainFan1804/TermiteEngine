@@ -39,7 +39,7 @@ public class GameFileLoader {
         if (!Files.exists(GAME_DIR)) {
             throw new FileNotFoundException("Game path '" + gameDir + "' doesn't exist");
         }
-        LOG.info("Setup file loader with game path: '" + gameDir + "'");
+        LOG.config("Setup file loader with game path: '" + gameDir + "'");
     }
 
     /**
@@ -61,7 +61,7 @@ public class GameFileLoader {
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + path + "' doesn't exists.");
         }
-        LOG.info("Load file '" + fileName + "' successfully");
+        LOG.fine("Load file '" + fileName + "' successfully");
         currentFile = f;
         return f;
     }

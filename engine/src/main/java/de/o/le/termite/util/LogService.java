@@ -1,34 +1,52 @@
 package de.o.le.termite.util;
 
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Formatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import de.o.le.termite.backend.Engine;
+
+import java.util.logging.*;
 
 /**
  * Simple logger facade.
  *
  * @author                              o.le
- * @version                             1.0
+ * @version                             1.1
  * @since                               25.12.6
  */
 public class LogService {
 
+    private static boolean INITIALIZED = false;
     private static final ConsoleHandler CONSOLE_HANDLER = new ConsoleHandler();
+
+    public static void disableLogging() {
+
+        Logger l = LogManager.getLogManager().getLogger(Engine.class.getName());
+        l.severe("Loggin has been disabled globally! This option shouldn't be used.");
+        Level level = Level.OFF;
+        CONSOLE_HANDLER.setLevel(level);
+
+        // alle existierenden Logger aktualisieren
+        LogManager.getLogManager()
+                .getLoggerNames()
+                .asIterator()
+                .forEachRemaining(name -> {
+                    Logger logger = Logger.getLogger(name);
+                    logger.setLevel(level);
+                });
+    }
+
     private final Logger LOGGER;
 
     public LogService(String name) {
         this.LOGGER = Logger.getLogger(name);
         this.LOGGER.setUseParentHandlers(false);
 
-        // bit useless to set formatter and level each time a service
-        // is created but idc
-        Formatter formatter = new LogFormatter();
-        CONSOLE_HANDLER.setFormatter(formatter);
-        CONSOLE_HANDLER.setLevel(Level.ALL);
+        if (!INITIALIZED) {
+            Formatter formatter = new LogFormatter();
+            CONSOLE_HANDLER.setFormatter(formatter);
+            CONSOLE_HANDLER.setLevel(Level.ALL);
+            INITIALIZED = true;
+        }
 
         this.LOGGER.addHandler(CONSOLE_HANDLER);
-
         this.LOGGER.setLevel(Level.ALL);
     }
 
@@ -37,4 +55,8 @@ public class LogService {
     public void warning(String msg) { LOGGER.warning(msg); }
 
     public void error(String msg) { LOGGER.severe(msg); }
+
+    public void config(String msg) { LOGGER.config(msg); }
+
+    public void fine(String msg) { LOGGER.fine(msg); }
 }
