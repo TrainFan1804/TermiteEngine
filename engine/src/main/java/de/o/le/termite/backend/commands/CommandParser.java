@@ -19,8 +19,7 @@ public class CommandParser {
             case "walk" -> CommandType.WALK;
             case "look" -> CommandType.LOOK;
             case "show" -> CommandType.SHOW;
-            case "inv" -> CommandType.INV;
-            case "inventory" -> CommandType.INV;
+            case "inv", "inventory" -> CommandType.INV;
             default -> null;
         };
 

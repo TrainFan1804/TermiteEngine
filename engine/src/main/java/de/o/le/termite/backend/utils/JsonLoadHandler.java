@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * This class will load a Json file and map it to a given type.
+ * This class will load a Json formatted file and map it to a given type.
  * 
  * @author o.le
  * @version 1.1

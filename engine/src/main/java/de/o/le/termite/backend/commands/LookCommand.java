@@ -12,13 +12,13 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.13
  */
-public class LookCommand {
+public class LookCommand implements CommandHandler {
 
-    public CommandResult look(List<String> args) {
-
+    @Override
+    public CommandResult execute(List<String> args, EngineContext context, GameState state) {
         if (args.isEmpty()) {
             return CommandResult.failure("Nothing found.");
         }
@@ -30,7 +30,7 @@ public class LookCommand {
         if (action == null) {
             return CommandResult.failure("You can't look there!");
         }
-        Item roomItem = EngineContext.getInstance().gameObjectManager().getData(GameObject.ITEM, action.getItem());
+        Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, action.getItem());
         GameState.getInstance().addItemToInventory(roomItem);
 
         return CommandResult.success(currentRoom.getLook(a).getMessage());

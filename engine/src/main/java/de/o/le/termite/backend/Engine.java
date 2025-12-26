@@ -20,7 +20,7 @@ public class Engine {
 
     private static final LogService LOG = new LogService(Engine.class.getName());
 
-    private GameObjectManager manager;
+    private EngineContext context;
 
     public Engine() throws IOException {
         this("game/default");
@@ -30,20 +30,24 @@ public class Engine {
     public Engine(String startPath) throws IOException {
         LOG.info("Start engine");
 
-//        GameObjectManager gom = new GameObjectManager(startPath);
+        GameObjectManager gom = new GameObjectManager(startPath);
 
+        CommandRegistry cr = new CommandRegistry();
+        cr.register(CommandType.SHOW, new ShowCommand());
+        cr.register(CommandType.WALK, new WalkCommand());
+        cr.register(CommandType.LOOK, new LookCommand());
+        cr.register(CommandType.INV, new InvCommand());
 
-        EngineContext context = EngineContext.getInstance();
-        context.init(startPath);
-        this.manager = context.gameObjectManager();
+        this.context = new EngineContext(gom, cr);
     }
 
     public CommandResult loadGame() {
         LOG.info("Start game...");
 
-        Player player = this.manager.getData(GameObject.PLAYER, "player");
-        Inventory inventory = this.manager.getData(GameObject.Inventory, "inventory");
-        Room startRoom = this.manager.getData(GameObject.ROOM, player.getRoom());
+        GameObjectManager manager = this.context.gameObjectManager();
+        Player player = manager.getData(GameObject.PLAYER, "player");
+        Inventory inventory = manager.getData(GameObject.Inventory, "inventory");
+        Room startRoom = manager.getData(GameObject.ROOM, player.getRoom());
 
         GameState.getInstance().setCurrentRoom(startRoom);
         GameState.getInstance().setPlayer(player);
@@ -59,12 +63,9 @@ public class Engine {
 
         if (parsedCommand == null) { return CommandResult.failure("Unknown command"); }
 
-        switch (parsedCommand.type()) {
-            case WALK: return new WalkCommand().walk(parsedCommand.args());
-            case LOOK: return new LookCommand().look(parsedCommand.args());
-            case SHOW: return new ShowCommand().show();
-            case INV: return new InvCommand().inv();
-        }
-        return CommandResult.failure("If this message show up, the dev f*cked up"); // At least I guess it should...
+        CommandRegistry cr = this.context.commandRegistry();
+
+        CommandHandler ch = cr.get(parsedCommand.type());
+        return ch.execute(parsedCommand.args(), this.context, GameState.getInstance());
     }
 }
