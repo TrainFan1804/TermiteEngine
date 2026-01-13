@@ -1,5 +1,7 @@
-package de.o.le.termite.backend;
+package de.o.le.termite.backend.manager;
 
+import de.o.le.termite.backend.EngineContext;
+import de.o.le.termite.backend.GameFileLoader;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.utils.JsonLoadHandler;
 

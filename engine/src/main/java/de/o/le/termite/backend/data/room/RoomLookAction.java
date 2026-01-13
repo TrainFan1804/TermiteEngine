@@ -14,7 +14,7 @@ public class RoomLookAction {
     private String item;
     private String message;
     private boolean searched;
-    private String message_alt;
+    private String altMessage;
 
     public RoomLookAction() { }
 
@@ -26,7 +26,7 @@ public class RoomLookAction {
 
     public void setSearched(boolean searched) { this.searched = searched; }
 
-    public String getMessage_alt() {
-        return message_alt;
+    public String getAltMessage() {
+        return altMessage;
     }
 }

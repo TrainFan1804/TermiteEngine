@@ -5,6 +5,7 @@ import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.room.Room;
+import de.o.le.termite.backend.manager.GameObjectManager;
 import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
 import de.o.le.termite.util.LogService;
@@ -32,13 +33,7 @@ public class Engine {
 
         GameObjectManager gom = new GameObjectManager(startPath);
 
-        CommandRegistry cr = new CommandRegistry();
-        cr.register(CommandType.SHOW, new ShowCommand());
-        cr.register(CommandType.WALK, new WalkCommand());
-        cr.register(CommandType.LOOK, new LookCommand());
-        cr.register(CommandType.INV, new InvCommand());
-
-        this.context = new EngineContext(gom, cr);
+        this.context = new EngineContext(gom);
     }
 
     public CommandResult loadGame() {
@@ -49,6 +44,7 @@ public class Engine {
         Inventory inventory = manager.getData(GameObject.Inventory, "inventory");
         Room startRoom = manager.getData(GameObject.ROOM, player.getRoom());
 
+        // Why is GameState not saved in the context?
         GameState.getInstance().setCurrentRoom(startRoom);
         GameState.getInstance().setPlayer(player);
         GameState.getInstance().setInventory(inventory);
@@ -59,13 +55,7 @@ public class Engine {
     public CommandResult processCommand(String command) {
 
         CommandParser parser = new CommandParser();
-        ParsedCommand parsedCommand = parser.parse(command);
-
-        if (parsedCommand == null) { return CommandResult.failure("Unknown command"); }
-
-        CommandRegistry cr = this.context.commandRegistry();
-
-        CommandHandler ch = cr.get(parsedCommand.type());
-        return ch.execute(parsedCommand.args(), this.context, GameState.getInstance());
+        CommandHandler ch = parser.parse(command);
+        return ch.execute(this.context, GameState.getInstance());
     }
 }

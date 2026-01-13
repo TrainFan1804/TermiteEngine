@@ -5,6 +5,7 @@ import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
 
+import de.o.le.termite.backend.manager.GameObjectManager;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

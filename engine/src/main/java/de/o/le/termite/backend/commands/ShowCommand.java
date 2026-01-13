@@ -12,13 +12,13 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               25.12.25
  */
 public class ShowCommand implements CommandHandler {
 
     @Override
-    public CommandResult execute(List<String> args, EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context, GameState state) {
         Room currentRoom = GameState.getInstance().getCurrentRoom();
         RoomActions action = currentRoom.getActions();
         if (action == null) {

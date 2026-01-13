@@ -23,11 +23,10 @@ class CommandParserTest {
     @Test
     public void testParse() {
 
-        assertNull(this.parser.parse(""));
-        assertNull(this.parser.parse("unknown_command"));
+        assertInstanceOf(NullCommand.class, this.parser.parse(""));
+        assertInstanceOf(NullCommand.class, this.parser.parse("unknown_command"));
 
-        assertInstanceOf(ParsedCommand.class, this.parser.parse("walk"));
-        assertEquals(CommandType.WALK, this.parser.parse("walk").type());
-        assertEquals(CommandType.LOOK, this.parser.parse("look").type());
+        assertInstanceOf(WalkCommand.class, this.parser.parse("walk"));
+        assertInstanceOf(LookCommand.class, this.parser.parse("look"));
     }
 }

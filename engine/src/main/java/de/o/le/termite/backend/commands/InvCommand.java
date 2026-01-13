@@ -10,13 +10,13 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.26
  */
 public class InvCommand implements CommandHandler {
 
     @Override
-    public CommandResult execute(List<String> args, EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context, GameState state) {
         List<StringStringDescription> itemsAsDTO = GameState.getInstance().getAllItemsFromInventory();
         return CommandResult.success("Your inventory:",
                 new CommandContext().addInventoryDesc(itemsAsDTO)

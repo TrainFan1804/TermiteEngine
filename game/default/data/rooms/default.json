@@ -17,7 +17,7 @@
         "item" : "default",
         "message" : "found a key",
         "searched" : false,
-        "message_alt" : "I already looked at the table"
+        "altMessage" : "I already looked at the table"
       }
     }
   }

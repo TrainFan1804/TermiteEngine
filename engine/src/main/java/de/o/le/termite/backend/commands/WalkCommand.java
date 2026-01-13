@@ -16,13 +16,19 @@ import java.util.List;
  * current room will be updated.
  *
  * @author                              o.le
- * @version                             1.3
+ * @version                             1.4
  * @since                               25.12.13
  */
 public class WalkCommand implements CommandHandler {
 
+    private List<String> args;
+
+    public WalkCommand(List<String> args) {
+        this.args = args;
+    }
+
     @Override
-    public CommandResult execute(List<String> args, EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context, GameState state) {
         if (args.isEmpty()) {
             return CommandResult.failure("You didn't decided where to walk yet.");
         }
@@ -41,6 +47,9 @@ public class WalkCommand implements CommandHandler {
         // TODO check here for requirement to enter next room
 
         GameState.getInstance().setCurrentRoom(nextRoom);
+
+        // TODO save new room state permanently
+
         return CommandResult.success(nextRoom.getInfo().getDescription(), new CommandContext().addRoom(nextRoom));
     }
 }

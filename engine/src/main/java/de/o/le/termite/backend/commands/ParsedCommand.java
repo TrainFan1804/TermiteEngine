@@ -12,6 +12,7 @@ import java.util.List;
  * @version                             1.0
  * @since                               25.12.13
  */
+@Deprecated(since = "26.01.13", forRemoval = true)
 public record ParsedCommand(
         CommandType type,
         List<String> args

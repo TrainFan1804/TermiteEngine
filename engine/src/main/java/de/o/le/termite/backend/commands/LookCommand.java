@@ -12,13 +12,19 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.3
+ * @version                             1.4
  * @since                               25.12.13
  */
 public class LookCommand implements CommandHandler {
 
+    private List<String> args;
+
+    public LookCommand(List<String> args) {
+        this.args = args;
+    }
+
     @Override
-    public CommandResult execute(List<String> args, EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context, GameState state) {
         if (args.isEmpty()) {
             return CommandResult.failure("Nothing found.");
         }

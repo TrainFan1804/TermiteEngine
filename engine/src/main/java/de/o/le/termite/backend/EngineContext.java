@@ -1,6 +1,6 @@
 package de.o.le.termite.backend;
 
-import java.io.FileNotFoundException;
+import de.o.le.termite.backend.manager.GameObjectManager;
 
 /**
  * This class is containing different manager that are needed in the engine itself.
@@ -15,14 +15,10 @@ public class EngineContext {
     private static EngineContext INSTANCE;
 
     private GameObjectManager gom;
-    private CommandRegistry cr;
 
-    public EngineContext(GameObjectManager gom, CommandRegistry cr) {
+    public EngineContext(GameObjectManager gom) {
         this.gom = gom;
-        this.cr = cr;
     }
 
     public GameObjectManager gameObjectManager() { return this.gom; }
-
-    public CommandRegistry commandRegistry() { return this.cr; }
 }
