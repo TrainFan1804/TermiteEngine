@@ -30,6 +30,10 @@ public class TermiteController {
     public void handleCommand(String input) {
 
         CommandResult result = this.engine.processCommand(input);
+        if (!result.isSuccess()) {
+            this.view.showError(result.getMessage());
+            return;
+        }
         this.view.showMessage(result.getMessage());
 
         CommandContext ctx = result.getContext();

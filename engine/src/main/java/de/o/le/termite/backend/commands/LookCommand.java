@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.2
+ * @version                             1.3
  * @since                               25.12.13
  */
 public class LookCommand implements CommandHandler {
@@ -30,9 +30,13 @@ public class LookCommand implements CommandHandler {
         if (action == null) {
             return CommandResult.failure("You can't look there!");
         }
+        if (action.isSearched()) {
+            return CommandResult.success("You already searched this placed.");
+        }
+
         Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, action.getItem());
         GameState.getInstance().addItemToInventory(roomItem);
-
+        action.setSearched(true); // TODO persistent save in [item_name].json
         return CommandResult.success(currentRoom.getLook(a).getMessage());
     }
 }

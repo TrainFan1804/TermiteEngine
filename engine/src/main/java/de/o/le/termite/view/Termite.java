@@ -13,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -80,6 +81,8 @@ public class Termite extends Application {
     }
 
     public void showMessage(String msg) { this.playArea.updateAreaText(msg); }
+
+    public void showError(String msg) { this.playArea.updateAreaText(msg, Color.RED);}
 
     public void showRoom(Room room) { this.roomNameLabel.setText(room.getInfo().getName()); }
 }

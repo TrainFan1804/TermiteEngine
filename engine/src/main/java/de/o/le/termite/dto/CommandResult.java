@@ -37,7 +37,7 @@ public class CommandResult {
         this.context = context;
     }
 
-    public Type getType() { return this.type; }
+    public boolean isSuccess() { return this.type.ordinal() == Type.SUCCESS.ordinal(); }
 
     public String getMessage() { return this.message; }
 

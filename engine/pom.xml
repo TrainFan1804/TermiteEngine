@@ -6,7 +6,7 @@
 
 	<groupId>de.o.le</groupId>
 	<artifactId>termiteengine</artifactId>
-	<version>25.12.26</version>
+	<version>26.01.13</version>
 
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>

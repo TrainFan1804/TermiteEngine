@@ -1,8 +1,9 @@
 package de.o.le.termite.view.components;
 
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.TextFlow;
 
 /**
  * @author                              o.le
@@ -11,22 +12,26 @@ import javafx.scene.layout.VBox;
  */
 public class PlayArea extends VBox {
 
-    private TextArea area;
     private TextField input;
+    private GameArea game;
 
     public PlayArea() {
 
-        this.area = new TextArea();
-        this.area.setEditable(false);
-
         this.input = new TextField();
+        this.game = new GameArea();
 
-        getChildren().addAll(this.area, this.input);
+        getChildren().addAll(this.game, this.input);
     }
 
     public String getInput() { return this.input.getText(); }
 
-    public void updateAreaText(String text) { this.area.appendText(text + "\n"); }
+    public void updateAreaText(String text) {
+        this.updateAreaText(text, Color.BLACK);
+    }
+
+    public void updateAreaText(String text, Color textColor) {
+        this.game.addText(text, textColor);
+    }
 
     public void clearInput() { this.input.clear(); }
 }

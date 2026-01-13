@@ -15,7 +15,9 @@
     "look" : {
       "table" : {
         "item" : "default",
-        "message" : "found a key"
+        "message" : "found a key",
+        "searched" : false,
+        "message_alt" : "I already looked at the table"
       }
     }
   }
