@@ -36,13 +36,13 @@ public class LookCommand implements CommandHandler {
         if (action == null) {
             return CommandResult.failure("You can't look there!");
         }
-        if (action.isSearched()) {
-            return CommandResult.success("You already searched this placed.");
+        if (/*action.isSearched()*/false) {
+            return CommandResult.success(action.getAltMessage());
         }
 
         Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, action.getItem());
         GameState.getInstance().addItemToInventory(roomItem);
-        action.setSearched(true); // TODO persistent save in [item_name].json
+//        action.setSearched(true); // TODO persistent save in [item_name].json
         return CommandResult.success(currentRoom.getLook(a).getMessage());
     }
 }

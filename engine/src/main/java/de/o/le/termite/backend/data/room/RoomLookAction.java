@@ -6,14 +6,13 @@ package de.o.le.termite.backend.data.room;
  * might be necessary.
  *
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.20
  */
 public class RoomLookAction {
 
     private String item;
     private String message;
-    private boolean searched;
     private String altMessage;
 
     public RoomLookAction() { }
@@ -21,10 +20,6 @@ public class RoomLookAction {
     public String getItem() { return this.item; }
 
     public String getMessage() { return this.message; }
-
-    public boolean isSearched() { return searched; }
-
-    public void setSearched(boolean searched) { this.searched = searched; }
 
     public String getAltMessage() {
         return altMessage;

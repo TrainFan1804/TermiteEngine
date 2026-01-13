@@ -16,7 +16,6 @@
       "table" : {
         "item" : "default",
         "message" : "found a key",
-        "searched" : false,
         "altMessage" : "I already looked at the table"
       }
     }

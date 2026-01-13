@@ -12,8 +12,6 @@ import de.o.le.termite.backend.manager.GameObjectManager;
  */
 public class EngineContext {
 
-    private static EngineContext INSTANCE;
-
     private GameObjectManager gom;
 
     public EngineContext(GameObjectManager gom) {

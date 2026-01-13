@@ -1,9 +1,11 @@
 package de.o.le.termite.backend.manager;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.GameFileLoader;
+import de.o.le.termite.backend.GameFileHandler;
+import de.o.le.termite.backend.GameState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.utils.JsonLoadHandler;
+import de.o.le.termite.backend.utils.TimeUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,11 +24,11 @@ import java.nio.file.Path;
  */
 public class GameObjectManager {
 
-    private GameFileLoader loader;
+    private GameFileHandler loader;
     private JsonLoadHandler jsonHandler;
 
     public GameObjectManager(String gameDir) throws FileNotFoundException {
-        loader = new GameFileLoader(gameDir);
+        loader = new GameFileHandler(gameDir);
         jsonHandler = new JsonLoadHandler();
     }
 
@@ -43,10 +45,19 @@ public class GameObjectManager {
 
         Path path = type.getPath().resolve(data);
         try {
-            File dataFile = loader.loadFile(path);
-            return jsonHandler.loadFileValue(dataFile, type.getType());
-        } catch (FileNotFoundException e) {
+            File dataFile = loader.createFileHander(path);
+            return jsonHandler.loadFileValue(dataFile, type);
+        } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void setData(GameState state) {
+
+        Path path = Path.of(TimeUtils.getCurrentTimeStamp());
+        try {
+            File saveFile = loader.createFile(path);
+            // TODO write as JSON with JsonHandler
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
