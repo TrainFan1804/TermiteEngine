@@ -25,7 +25,7 @@ public class Inventory {
 
         List<String> list = new ArrayList<>();
         for (Item item : inventory) {
-            list.add(item.getInfo().getName());
+            list.add(item.getName());
         }
         return list;
     }

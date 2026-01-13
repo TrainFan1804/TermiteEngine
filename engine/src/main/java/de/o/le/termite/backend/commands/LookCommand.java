@@ -1,7 +1,7 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.GameState;
+import de.o.le.termite.backend.manager.GameState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
@@ -24,13 +24,14 @@ public class LookCommand implements CommandHandler {
     }
 
     @Override
-    public CommandResult execute(EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context) {
         if (args.isEmpty()) {
             return CommandResult.failure("Nothing found.");
         }
+        GameState gs = context.gameState();
 
         String a = args.getFirst();
-        Room currentRoom = GameState.getInstance().getCurrentRoom();
+        Room currentRoom = gs.getCurrentRoom();
 
         RoomLookAction action = currentRoom.getLook(a);
         if (action == null) {
@@ -41,7 +42,7 @@ public class LookCommand implements CommandHandler {
         }
 
         Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, action.getItem());
-        GameState.getInstance().addItemToInventory(roomItem);
+        gs.addItemToInventory(roomItem);
 //        action.setSearched(true); // TODO persistent save in [item_name].json
         return CommandResult.success(currentRoom.getLook(a).getMessage());
     }

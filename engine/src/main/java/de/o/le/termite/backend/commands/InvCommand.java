@@ -1,7 +1,6 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.GameState;
 import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
 import de.o.le.termite.dto.StringStringDescription;
@@ -16,8 +15,8 @@ import java.util.List;
 public class InvCommand implements CommandHandler {
 
     @Override
-    public CommandResult execute(EngineContext context, GameState state) {
-        List<StringStringDescription> itemsAsDTO = GameState.getInstance().getAllItemsFromInventory();
+    public CommandResult execute(EngineContext context) {
+        List<StringStringDescription> itemsAsDTO = context.gameState().getAllItemsFromInventory();
         return CommandResult.success("Your inventory:",
                 new CommandContext().addInventoryDesc(itemsAsDTO)
         );

@@ -1,7 +1,6 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.GameState;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.data.room.RoomActions;
 import de.o.le.termite.dto.CommandContext;
@@ -12,14 +11,14 @@ import java.util.List;
 
 /**
  * @author                              o.le
- * @version                             1.3
+ * @version                             1.4
  * @since                               25.12.25
  */
 public class ShowCommand implements CommandHandler {
 
     @Override
-    public CommandResult execute(EngineContext context, GameState state) {
-        Room currentRoom = GameState.getInstance().getCurrentRoom();
+    public CommandResult execute(EngineContext context) {
+        Room currentRoom = context.gameState().getCurrentRoom();
         RoomActions action = currentRoom.getActions();
         if (action == null) {
             return CommandResult.failure("Can this message even show up?");

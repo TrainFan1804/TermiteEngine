@@ -1,7 +1,7 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.GameState;
+import de.o.le.termite.backend.manager.GameState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.data.room.RoomExitAction;
@@ -16,7 +16,7 @@ import java.util.List;
  * current room will be updated.
  *
  * @author                              o.le
- * @version                             1.4
+ * @version                             1.5
  * @since                               25.12.13
  */
 public class WalkCommand implements CommandHandler {
@@ -28,13 +28,15 @@ public class WalkCommand implements CommandHandler {
     }
 
     @Override
-    public CommandResult execute(EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context) {
         if (args.isEmpty()) {
             return CommandResult.failure("You didn't decided where to walk yet.");
         }
 
+        GameState gs = context.gameState();
+
         String a = args.getFirst();
-        Room currentRoom = GameState.getInstance().getCurrentRoom();
+        Room currentRoom = gs.getCurrentRoom();
 
         RoomExitAction action = currentRoom.getExit(a);
         if (action == null) {
@@ -43,10 +45,11 @@ public class WalkCommand implements CommandHandler {
 
         String target = action.getTarget();
         Room nextRoom = context.gameObjectManager().getData(GameObject.ROOM, target);
+        System.out.println(nextRoom.getRoomId());
 
         // TODO check here for requirement to enter next room
 
-        GameState.getInstance().setCurrentRoom(nextRoom);
+        gs.setCurrentRoom(nextRoom);
 
         // TODO save new room state permanently
 

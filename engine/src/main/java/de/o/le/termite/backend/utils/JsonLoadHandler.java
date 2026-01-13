@@ -52,7 +52,7 @@ public class JsonLoadHandler {
 
         try {
             T t = this.MAPPER.readValue(file, go.getType());
-			LOG.fine("Game file '" + file + "' read and deserialized successfully");
+			LOG.filesystem("Game file '" + file + "' read and deserialized successfully");
 			return t;
         } catch (IOException e) {
 			LOG.error("Something went wrong: " + e);
@@ -64,7 +64,7 @@ public class JsonLoadHandler {
 
 		try {
 			this.MAPPER.writeValue(file, state);
-			LOG.fine("Game state successfully serialized into '" + file + "'");
+			LOG.filesystem("Game state successfully serialized into '" + file + "'");
 		} catch (IOException e) {
 			LOG.error("Something went wrong: " + e);
 			throw new RuntimeException();

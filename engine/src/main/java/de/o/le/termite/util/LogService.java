@@ -58,5 +58,7 @@ public class LogService {
 
     public void config(String msg) { LOGGER.config(msg); }
 
-    public void fine(String msg) { LOGGER.fine(msg); }
+    public void filesystem(String msg) { LOGGER.fine(msg); }
+
+    public void gameEvents(String msg) { LOGGER.finer(msg); }
 }

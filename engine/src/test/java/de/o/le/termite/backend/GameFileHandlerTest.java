@@ -1,6 +1,7 @@
 package de.o.le.termite.backend;
 
 import de.o.le.termite.TestSetting;
+import de.o.le.termite.backend.manager.GameFileHandler;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

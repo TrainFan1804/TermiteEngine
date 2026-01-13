@@ -1,4 +1,4 @@
-package de.o.le.termite.backend;
+package de.o.le.termite.backend.manager;
 
 import de.o.le.termite.util.LogService;
 
@@ -68,7 +68,7 @@ public class GameFileHandler {
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + path + "' doesn't exists.");
         }
-        LOG.fine("File handle for '" + fileName + "' created successfully");
+        LOG.filesystem("File handle for '" + fileName + "' created successfully");
         currentFile = f;
         return f;
     }
@@ -93,7 +93,7 @@ public class GameFileHandler {
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + fullPath + "' doesn't exists.");
         }
-        LOG.fine("File handle for '" + fileName + "' created successfully.");
+        LOG.filesystem("File handle for '" + fileName + "' created successfully.");
         return f;
     }
 }

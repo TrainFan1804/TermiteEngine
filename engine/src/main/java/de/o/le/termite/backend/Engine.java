@@ -6,6 +6,7 @@ import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.manager.GameObjectManager;
+import de.o.le.termite.backend.manager.GameState;
 import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
 import de.o.le.termite.util.LogService;
@@ -32,22 +33,23 @@ public class Engine {
         LOG.info("Start engine");
 
         GameObjectManager gom = new GameObjectManager(startPath);
+        GameState gs = new GameState();
 
-        this.context = new EngineContext(gom);
+        this.context = new EngineContext(gom, gs);
     }
 
     public CommandResult loadGame() {
         LOG.info("Start game...");
 
-        GameObjectManager manager = this.context.gameObjectManager();
-        Player player = manager.getData(GameObject.PLAYER, "player");
-        Inventory inventory = manager.getData(GameObject.INVENTORY, "inventory");
-        Room startRoom = manager.getData(GameObject.ROOM, player.getStartRoom());
+        GameObjectManager gom = this.context.gameObjectManager();
+        Player player = gom.getData(GameObject.PLAYER, "player");
+        Inventory inventory = gom.getData(GameObject.INVENTORY, "inventory");
+        Room startRoom = gom.getData(GameObject.ROOM, player.getStartRoom());
 
-        // TODO Why is GameState not saved in the context?
-        GameState.getInstance().setCurrentRoom(startRoom);
-        GameState.getInstance().setPlayer(player);
-        GameState.getInstance().setInventory(inventory);
+        GameState gs = this.context.gameState();
+        gs.setCurrentRoom(startRoom);
+        gs.setPlayer(player);
+        gs.setInventory(inventory);
 
         return CommandResult.success(startRoom.getInfo().getDescription(), new CommandContext().addRoom(startRoom));
     }
@@ -56,6 +58,6 @@ public class Engine {
 
         CommandParser parser = new CommandParser();
         CommandHandler ch = parser.parse(command);
-        return ch.execute(this.context, GameState.getInstance());
+        return ch.execute(this.context);
     }
 }

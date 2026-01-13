@@ -1,7 +1,6 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.GameState;
 import de.o.le.termite.dto.CommandResult;
 
 /**
@@ -9,13 +8,13 @@ import de.o.le.termite.dto.CommandResult;
  * is entered by the user.
  *
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.26
  */
 public class NullCommand implements CommandHandler {
 
     @Override
-    public CommandResult execute(EngineContext context, GameState state) {
+    public CommandResult execute(EngineContext context) {
         return CommandResult.failure("Unknown command");
     }
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * @author                              o.le
- * @version                             1.1
+ * @version                             1.2
  * @since                               25.12.20
  */
 public class RoomActions {
@@ -19,9 +19,9 @@ public class RoomActions {
 
     public RoomActions() {}
 
-    public Map<String, RoomExitAction> getExit() { return this.exit; }
+    public RoomExitAction getExit(String exit) { return this.exit.get(exit); }
 
-    public Map<String, RoomLookAction> getLook() { return this.look; }
+    public RoomLookAction getLook(String look) { return this.look.get(look); }
 
     public List<StringStringDescription> getActionNames() {
 

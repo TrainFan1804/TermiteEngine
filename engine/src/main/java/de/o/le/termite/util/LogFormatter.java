@@ -33,14 +33,15 @@ class LogFormatter extends Formatter
     // format is called for every console log message
     @Override
     public String format(LogRecord record) {
-        String color = ANSI_BLACK;
-        switch (record.getLevel().getName()) {
-            case "INFO": color = ANSI_GREEN; break;
-            case "WARNING": color = ANSI_YELLOW; break;
-            case "SEVERE": color = ANSI_RED; break;
-            case "CONFIG": color = ANSI_BLUE; break;
-            case "FINE": color = ANSI_PURPLE; break;
-        }
+        String color = switch (record.getLevel().getName()) {
+            case "INFO" -> ANSI_GREEN;
+            case "WARNING" -> ANSI_YELLOW;
+            case "SEVERE" -> ANSI_RED;
+            case "CONFIG" -> ANSI_BLUE;
+            case "FINE" -> ANSI_PURPLE;
+            case "FINER" -> ANSI_CYAN;
+            default -> ANSI_BLACK;
+        };
         // This example will print date/time, class, and log level in yellow,
         // followed by the log message and it's parameters in white .
         StringBuilder builder = new StringBuilder();
