@@ -1,4 +1,4 @@
 {
   "name" : "John",
-  "room" : "default"
+  "startRoom" : "default"
 }

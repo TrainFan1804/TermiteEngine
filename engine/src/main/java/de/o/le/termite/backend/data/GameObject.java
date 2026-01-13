@@ -19,7 +19,7 @@ public enum GameObject {
     ROOM(Room.class, "data/rooms"),
     PLAYER(Player.class, "data/user"),
     ITEM(Item.class, "data/items"),
-    Inventory(Inventory.class, "data/user");
+    INVENTORY(Inventory.class, "data/user");
 
     private final Class<?> type;
     private final Path path;

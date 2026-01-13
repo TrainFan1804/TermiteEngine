@@ -7,7 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * @version                             1.0
  * @since                               25.12.26
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Item {
 
     private ItemInfo info;

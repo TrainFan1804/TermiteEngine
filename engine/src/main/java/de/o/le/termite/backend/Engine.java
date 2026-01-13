@@ -41,10 +41,10 @@ public class Engine {
 
         GameObjectManager manager = this.context.gameObjectManager();
         Player player = manager.getData(GameObject.PLAYER, "player");
-        Inventory inventory = manager.getData(GameObject.Inventory, "inventory");
-        Room startRoom = manager.getData(GameObject.ROOM, player.getRoom());
+        Inventory inventory = manager.getData(GameObject.INVENTORY, "inventory");
+        Room startRoom = manager.getData(GameObject.ROOM, player.getStartRoom());
 
-        // Why is GameState not saved in the context?
+        // TODO Why is GameState not saved in the context?
         GameState.getInstance().setCurrentRoom(startRoom);
         GameState.getInstance().setPlayer(player);
         GameState.getInstance().setInventory(inventory);

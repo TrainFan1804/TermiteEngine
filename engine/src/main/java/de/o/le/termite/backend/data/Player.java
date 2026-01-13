@@ -1,20 +1,23 @@
 package de.o.le.termite.backend.data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author                              o.le
  * @version                             1.0
  * @since                               25.12.3
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Player {
+
+    @JsonProperty(required = true)
     private String name;
-    private String room;
+
+    @JsonProperty(required = true)
+    private String startRoom;
 
     public Player() { }
 
     public String getName() { return this.name; }
 
-    public String getRoom() { return this.room; }
+    public String getStartRoom() { return this.startRoom; }
 }

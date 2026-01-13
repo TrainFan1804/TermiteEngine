@@ -42,7 +42,7 @@ public class GameFileHandler {
             throw new FileNotFoundException("Game path '" + gameDir + "' doesn't exist");
         }
         this.SAVE_DIR = Paths.get(this.GAME_DIR + "/save");
-        LOG.config("Setup file loader with game path: '" + gameDir + "'");
+        LOG.config("Setup file handler with game path: '" + gameDir + "'");
     }
 
     /**
@@ -68,7 +68,7 @@ public class GameFileHandler {
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + path + "' doesn't exists.");
         }
-        LOG.fine("Load file '" + fileName + "' successfully");
+        LOG.fine("File handle for '" + fileName + "' created successfully");
         currentFile = f;
         return f;
     }
@@ -93,7 +93,7 @@ public class GameFileHandler {
         if (!f.exists()) {
             throw new FileNotFoundException("File '" + fullPath + "' doesn't exists.");
         }
-        LOG.fine("File '" + fileName + "' created successfully.");
+        LOG.fine("File handle for '" + fileName + "' created successfully.");
         return f;
     }
 }

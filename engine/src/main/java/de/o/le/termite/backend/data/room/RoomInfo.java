@@ -1,5 +1,7 @@
 package de.o.le.termite.backend.data.room;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * This is a wrapper for the room model's info data.
  *
@@ -9,8 +11,12 @@ package de.o.le.termite.backend.data.room;
  */
 public class RoomInfo {
 
+    @JsonProperty(required = true)
     private String name;
+
+    @JsonProperty(required = true)
     private String description;
+
     private String image;
 
     public RoomInfo() { }

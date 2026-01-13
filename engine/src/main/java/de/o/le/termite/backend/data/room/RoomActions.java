@@ -27,10 +27,10 @@ public class RoomActions {
 
         List<StringStringDescription> actions = new ArrayList<>();
         exit.keySet().forEach(key ->
-                actions.add(new StringStringDescription(RoomActionType.EXIT.toString(), key))
+                actions.add(new StringStringDescription("EXIT", key))
         );
         look.keySet().forEach(key ->
-                actions.add(new StringStringDescription(RoomActionType.LOOK.toString(), key))
+                actions.add(new StringStringDescription("LOOK", key))
         );
         return actions;
     }

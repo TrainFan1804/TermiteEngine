@@ -2,7 +2,7 @@ package de.o.le.termite.backend.manager;
 
 import de.o.le.termite.backend.EngineContext;
 import de.o.le.termite.backend.GameFileHandler;
-import de.o.le.termite.backend.GameState;
+import de.o.le.termite.backend.SaveState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.utils.JsonLoadHandler;
 import de.o.le.termite.backend.utils.TimeUtils;
@@ -52,12 +52,12 @@ public class GameObjectManager {
         }
     }
 
-    public void setData(GameState state) {
+    public void setData(SaveState state) {
 
         Path path = Path.of(TimeUtils.getCurrentTimeStamp());
         try {
             File saveFile = loader.createFile(path);
-            // TODO write as JSON with JsonHandler
+            this.jsonHandler.saveFileValue(saveFile, state);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
