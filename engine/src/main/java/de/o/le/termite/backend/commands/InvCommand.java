@@ -2,10 +2,11 @@ package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
 import de.o.le.termite.backend.data.Inventory;
-import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
-import de.o.le.termite.dto.ItemDTO;
-import de.o.le.termite.dto.mapper.InventoryMapper;
+import de.o.le.termite.dto.trans.TransContext;
+import de.o.le.termite.dto.trans.TransInventoryContext;
+import de.o.le.termite.dto.types.ItemDTO;
+import de.o.le.termite.dto.types.mapper.InventoryMapper;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public class InvCommand implements CommandHandler {
     public CommandResult execute(EngineContext context) {
         Inventory inv = context.gameState().getInventory();
         List<ItemDTO> itemsAsDTO = InventoryMapper.asDisplayList(inv);
-        return CommandResult.success("Your inventory:",
-                new CommandContext().addInventoryDTO(itemsAsDTO)
-        );
+
+        TransContext ctx = new TransInventoryContext(itemsAsDTO);
+        return CommandResult.success("Your inventory:", ctx);
     }
 }

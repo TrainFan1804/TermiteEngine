@@ -4,7 +4,7 @@ import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.data.room.RoomActions;
 import de.o.le.termite.backend.data.room.RoomExitAction;
 import de.o.le.termite.backend.data.room.RoomLookAction;
-import de.o.le.termite.dto.RoomActionsDTO;
+import de.o.le.termite.dto.types.RoomActionsDTO;
 
 import java.util.ArrayList;
 import java.util.List;

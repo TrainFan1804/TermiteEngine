@@ -1,4 +1,4 @@
-package de.o.le.termite.dto;
+package de.o.le.termite.dto.types;
 
 /**
  * This DTO represent both the class

@@ -1,8 +1,10 @@
-package de.o.le.termite.dto;
+package de.o.le.termite.dto.types;
+
+import de.o.le.termite.dto.types.mapper.ItemMapper;
 
 /**
  * This DTO represent the {@link de.o.le.termite.backend.data.item.Item} data object.
- * Use {@link de.o.le.termite.dto.mapper.ItemMapper} for object creation.
+ * Use {@link ItemMapper} for object creation.
  *
  * @author                              o.le
  * @version                             1.0

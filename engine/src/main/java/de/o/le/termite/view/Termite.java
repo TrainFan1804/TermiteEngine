@@ -85,4 +85,6 @@ public class Termite extends Application {
     public void showError(String msg) { this.playArea.updateAreaText(msg, Color.RED);}
 
     public void showRoom(Room room) { this.roomNameLabel.setText(room.getName()); }
+
+    public void showRoom(String roomName) { this.roomNameLabel.setText(roomName); }
 }

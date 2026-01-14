@@ -1,11 +1,15 @@
 package de.o.le.termite.dto;
 
+import de.o.le.termite.dto.trans.TransContext;
+
+import org.jetbrains.annotations.Nullable;
+
 /**
  * This DTO is used to transfer information about state changes after an executed command
  * from the backend to the frontend controller.
  *
  * @author                              o.le
- * @version                             1.0
+ * @version                             2.0
  * @since                               25.12.24
  */
 public class CommandResult {
@@ -16,30 +20,32 @@ public class CommandResult {
     }
 
     public static CommandResult success(String msg) {
-        return success(msg, new CommandContext());
+        return success(msg, null);
     }
 
-    public static CommandResult success(String msg, CommandContext context) {
-        return new CommandResult(Type.SUCCESS, msg, context);
+    public static CommandResult success(String msg, TransContext ctx) {
+        return new CommandResult(Type.SUCCESS, msg, ctx);
     }
 
     public static CommandResult failure(String msg) {
-        return new CommandResult(Type.FAILURE, msg, new CommandContext());
+        return new CommandResult(Type.FAILURE, msg, null);
     }
 
     private Type type;
     private String message;
-    private CommandContext context;
 
-    public CommandResult(Type type, String message, CommandContext context) {
+    private TransContext ctx;
+
+    public CommandResult(Type type, String message, @Nullable TransContext ctx) {
         this.type = type;
         this.message = message;
-        this.context = context;
+        this.ctx = ctx;
     }
 
     public boolean isSuccess() { return this.type.ordinal() == Type.SUCCESS.ordinal(); }
 
     public String getMessage() { return this.message; }
 
-    public CommandContext getContext() { return this.context; }
+    @Nullable
+    public TransContext getCtx() { return this.ctx; }
 }

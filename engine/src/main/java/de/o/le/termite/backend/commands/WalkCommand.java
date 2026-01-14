@@ -4,9 +4,10 @@ import de.o.le.termite.backend.EngineContext;
 import de.o.le.termite.backend.manager.state.GameState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.room.Room;
-import de.o.le.termite.backend.data.room.RoomExitAction;
-import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
+import de.o.le.termite.dto.trans.TransContext;
+import de.o.le.termite.dto.trans.TransRoomContext;
+import de.o.le.termite.dto.types.mapper.RoomMapper;
 
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class WalkCommand implements CommandHandler {
 
         // TODO save new room state permanently
 
-        return CommandResult.success(nextRoom.getDescription(), new CommandContext().addRoom(nextRoom));
+        TransContext ctx = new TransRoomContext(RoomMapper.from(nextRoom));
+        return CommandResult.success(nextRoom.getDescription(), ctx);
     }
 }

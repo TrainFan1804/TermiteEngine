@@ -1,8 +1,8 @@
-package de.o.le.termite.dto.mapper;
+package de.o.le.termite.dto.types.mapper;
 
 import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.item.Item;
-import de.o.le.termite.dto.ItemDTO;
+import de.o.le.termite.dto.types.ItemDTO;
 
 import java.util.ArrayList;
 import java.util.List;

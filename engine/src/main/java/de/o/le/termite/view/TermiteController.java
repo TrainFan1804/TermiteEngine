@@ -1,8 +1,8 @@
 package de.o.le.termite.view;
 
 import de.o.le.termite.backend.Engine;
-import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
+import de.o.le.termite.dto.trans.TransContext;
 
 /**
  * @author                              o.le
@@ -13,18 +13,20 @@ public class TermiteController {
 
     private Engine engine;
     private Termite view;
+    private ViewTransContextVisitor visitor;
 
     public TermiteController(Engine engine, Termite view) {
 
         this.engine = engine;
         this.view = view;
+        this.visitor = new ViewTransContextVisitor(this.view);
     }
 
     public void onGameStart() {
 
         CommandResult result = engine.loadGame();
         view.showMessage(result.getMessage());
-        result.getContext().getRoom().ifPresent(view::showRoom);
+        result.getCtx().accept(this.visitor);
     }
 
     public void handleCommand(String input) {
@@ -36,17 +38,10 @@ public class TermiteController {
         }
         this.view.showMessage(result.getMessage());
 
-        CommandContext ctx = result.getContext();
-        ctx.getRoom().ifPresent(view::showRoom);
-        ctx.getActionDescription().ifPresent(list -> {
-            for (var desc : list) {
-                view.showMessage(desc.toString());
-            }
-        });
-        ctx.getInventoryDesc().ifPresent(list -> {
-            for (var desc : list) {
-                view.showMessage(desc.toString());
-            }
-        });
+        TransContext t = result.getCtx();
+        // TODO this is ugly?
+        if (t != null) {
+            t.accept(this.visitor);
+        }
     }
 }

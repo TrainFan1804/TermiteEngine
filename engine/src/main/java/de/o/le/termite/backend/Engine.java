@@ -7,8 +7,10 @@ import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.manager.GameObjectManager;
 import de.o.le.termite.backend.manager.state.GameState;
-import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
+import de.o.le.termite.dto.trans.TransContext;
+import de.o.le.termite.dto.trans.TransRoomContext;
+import de.o.le.termite.dto.types.mapper.RoomMapper;
 import de.o.le.termite.util.LogService;
 
 import java.io.IOException;
@@ -51,7 +53,8 @@ public class Engine {
         gs.setPlayer(player);
         gs.setInventory(inventory);
 
-        return CommandResult.success(startRoom.getDescription(), new CommandContext().addRoom(startRoom));
+        TransContext ctx = new TransRoomContext(RoomMapper.from(startRoom));
+        return CommandResult.success(startRoom.getDescription(), ctx);
     }
 
     public CommandResult processCommand(String command) {

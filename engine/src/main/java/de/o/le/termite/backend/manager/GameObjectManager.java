@@ -21,6 +21,8 @@ import java.nio.file.Path;
  *
  * @apiNote Instead of creating a new object of that class use the provided
  * instance in {@link EngineContext}.
+ *
+ * TODO this class could benefit from a file cache buffer
  */
 public class GameObjectManager {
 
