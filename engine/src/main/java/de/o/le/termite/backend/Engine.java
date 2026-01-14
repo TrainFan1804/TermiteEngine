@@ -51,7 +51,7 @@ public class Engine {
         gs.setPlayer(player);
         gs.setInventory(inventory);
 
-        return CommandResult.success(startRoom.getInfo().getDescription(), new CommandContext().addRoom(startRoom));
+        return CommandResult.success(startRoom.getDescription(), new CommandContext().addRoom(startRoom));
     }
 
     public CommandResult processCommand(String command) {

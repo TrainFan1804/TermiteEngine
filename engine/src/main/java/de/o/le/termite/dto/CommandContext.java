@@ -9,25 +9,25 @@ import java.util.Optional;
  * This builder class provide additional context for {@link CommandResult}.
  *
  * @author                              o.le
- * @version                             1.2
+ * @version                             2.0
  * @since                               25.12.24
  */
 public class CommandContext {
 
     private Room room;
-    private List<StringStringDescription> actionDescription;
-    private List<StringStringDescription> inventoryDescription;
+    private List<RoomActionsDTO> actionDescription;
+    private List<ItemDTO> inventoryDTO;
 
     public Optional<Room> getRoom() {
         return Optional.ofNullable(room);
     }
 
-    public Optional<List<StringStringDescription>> getActionDescription() {
+    public Optional<List<RoomActionsDTO>> getActionDescription() {
         return Optional.ofNullable(actionDescription);
     }
 
-    public Optional<List<StringStringDescription>> getInventoryDesc() {
-        return Optional.ofNullable(inventoryDescription);
+    public Optional<List<ItemDTO>> getInventoryDesc() {
+        return Optional.ofNullable(inventoryDTO);
     }
 
     public CommandContext addRoom(Room room){
@@ -35,13 +35,13 @@ public class CommandContext {
         return this;
     }
 
-    public CommandContext addActionDescription(List<StringStringDescription> desc) {
+    public CommandContext addActionDescription(List<RoomActionsDTO> desc) {
         this.actionDescription = desc;
         return this;
     }
 
-    public CommandContext addInventoryDesc(List<StringStringDescription> desc) {
-        this.inventoryDescription = desc;
+    public CommandContext addInventoryDTO(List<ItemDTO> dto) {
+        this.inventoryDTO = dto;
         return this;
     }
 }

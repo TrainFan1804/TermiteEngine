@@ -4,11 +4,7 @@ import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
-import de.o.le.termite.dto.StringStringDescription;
 import de.o.le.termite.util.LogService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class is containing and managing the state of the game. For example saving
@@ -51,22 +47,13 @@ public class GameState {
     public void setCurrentRoom(Room room) {
 
         if (currentRoom != null) {
-            LOG.gameEvents("Old room: '" + currentRoom.getInfo().getName()
-                    + "', New room: '" + room.getInfo().getName() + "'"
+            LOG.gameEvents("Old room: '" + currentRoom.getName()
+                    + "', New room: '" + room.getName() + "'"
             );
         } else {
-            LOG.info("Load room '" + room.getInfo().getName() + "'");
+            LOG.info("Load room '" + room.getName() + "'");
         }
         currentRoom = room;
-    }
-
-    public List<StringStringDescription> getAllItemsFromInventory() {
-
-        List<StringStringDescription> itemsAsDTO = new ArrayList<>();
-        for (Item item : this.inventory.getInventory()) {
-            itemsAsDTO.add(new StringStringDescription(item.getName(), item.getDescription()));
-        }
-        return itemsAsDTO;
     }
 
     public void addItemToInventory(Item item) {

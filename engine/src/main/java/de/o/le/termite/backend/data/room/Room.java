@@ -6,7 +6,7 @@ import de.o.le.termite.backend.utils.annotations.InjectId;
 
 /**
  * @author                              o.le
- * @version                             1.3
+ * @version                             1.5
  * @since                               25.12.3
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -21,11 +21,43 @@ public class Room {
 
     public String getRoomId() { return this.roomId; }
 
-    public RoomInfo getInfo() { return this.info; }
+    public String getName() { return this.info.getName(); }
 
-    public RoomLookAction getLook(String look) { return actions.getLook(look); }
+    public String getDescription() { return this.info.getDescription(); }
 
-    public RoomExitAction getExit(String exit) { return actions.getExit(exit); }
+    public String getImage() { return this.info.getImage(); }
+
+    public String getExitTarget(String exit) {
+        RoomExitAction action = this.actions.getExit(exit);
+        if (action == null) {
+            return null;
+        }
+        return action.getTargetRoomId();
+    }
+
+    public String getLookAltMessage(String look) {
+        RoomLookAction action = this.actions.getLook(look);
+        if (action == null) {
+            return null;
+        }
+        return action.getAltMessage();
+    }
+
+    public String getLookMessage(String look) {
+        RoomLookAction action = this.actions.getLook(look);
+        if (action == null) {
+            return null;
+        }
+        return action.getMessage();
+    }
+
+    public String getLookItemId(String look) {
+        RoomLookAction action = this.actions.getLook(look);
+        if (action == null) {
+            return null;
+        }
+        return action.getItemId();
+    }
 
     public RoomActions getActions() { return this.actions; }
 }

@@ -1,5 +1,7 @@
 package de.o.le.termite.backend.manager.state;
 
+import de.o.le.termite.backend.data.services.InventoryService;
+
 /**
  * Static Class to map {@link GameState} to {@link SaveState}
  * <p>
@@ -18,7 +20,7 @@ public class SaveStateMapper {
     public static SaveState from(GameState gs) {
         return new SaveState(
                 gs.getCurrentRoom().getRoomId(),
-                gs.getInventory().asStringList()
+                InventoryService.asStringList(gs.getInventory())
         );
     }
 }

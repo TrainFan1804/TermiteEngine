@@ -38,14 +38,11 @@ public class WalkCommand implements CommandHandler {
         String a = args.getFirst();
         Room currentRoom = gs.getCurrentRoom();
 
-        RoomExitAction action = currentRoom.getExit(a);
-        if (action == null) {
+        String target = currentRoom.getExitTarget(a);
+        if (target== null) {
             return CommandResult.failure("You can't go that way!");
         }
-
-        String target = action.getTargetRoomId();
         Room nextRoom = context.gameObjectManager().getData(GameObject.ROOM, target);
-        System.out.println(nextRoom.getRoomId());
 
         // TODO check here for requirement to enter next room
 
@@ -53,6 +50,6 @@ public class WalkCommand implements CommandHandler {
 
         // TODO save new room state permanently
 
-        return CommandResult.success(nextRoom.getInfo().getDescription(), new CommandContext().addRoom(nextRoom));
+        return CommandResult.success(nextRoom.getDescription(), new CommandContext().addRoom(nextRoom));
     }
 }
