@@ -7,14 +7,14 @@
   "actions" : {
     "exit" : {
       "north" : {
-        "required" : "default",
-        "target" : "room",
-        "failure" : "Can't open door."
+        "requiredItemId" : "default",
+        "targetRoomId" : "room",
+        "failureMessage" : "Can't open door."
       }
     },
     "look" : {
       "table" : {
-        "item" : "default",
+        "itemId" : "default",
         "message" : "found a key",
         "altMessage" : "I already looked at the table"
       }

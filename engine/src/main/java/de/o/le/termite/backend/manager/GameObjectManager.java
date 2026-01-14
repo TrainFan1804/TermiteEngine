@@ -1,8 +1,8 @@
 package de.o.le.termite.backend.manager;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.SaveState;
 import de.o.le.termite.backend.data.GameObject;
+import de.o.le.termite.backend.manager.state.SaveState;
 import de.o.le.termite.backend.utils.IdInjector;
 import de.o.le.termite.backend.utils.JsonLoadHandler;
 import de.o.le.termite.backend.utils.TimeUtils;
@@ -47,7 +47,6 @@ public class GameObjectManager {
         try {
             File dataFile = loader.createFileHander(path);
             T t = jsonHandler.loadFileValue(dataFile, type);
-
             IdInjector.inject(t, path);
             return t;
         } catch (IOException e) {

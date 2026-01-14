@@ -1,7 +1,7 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.manager.GameState;
+import de.o.le.termite.backend.manager.state.GameState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.data.room.RoomExitAction;
@@ -43,7 +43,7 @@ public class WalkCommand implements CommandHandler {
             return CommandResult.failure("You can't go that way!");
         }
 
-        String target = action.getTarget();
+        String target = action.getTargetRoomId();
         Room nextRoom = context.gameObjectManager().getData(GameObject.ROOM, target);
         System.out.println(nextRoom.getRoomId());
 

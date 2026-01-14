@@ -7,9 +7,9 @@
   "actions" : {
     "exit" : {
       "south" : {
-        "required" : "default",
-        "target" : "default",
-        "failure" : "Can't open door."
+        "requiredItemId" : "default",
+        "targetRoomId" : "default",
+        "failureMessage" : "Can't open door."
       }
     }
   }

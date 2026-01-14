@@ -1,6 +1,6 @@
 package de.o.le.termite.backend.utils;
 
-import de.o.le.termite.backend.SaveState;
+import de.o.le.termite.backend.manager.state.SaveState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.util.LogService;
 

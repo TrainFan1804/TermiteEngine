@@ -1,7 +1,9 @@
 package de.o.le.termite.backend;
 
 import de.o.le.termite.backend.manager.GameObjectManager;
-import de.o.le.termite.backend.manager.GameState;
+import de.o.le.termite.backend.manager.state.GameState;
+import de.o.le.termite.backend.manager.state.SaveState;
+import de.o.le.termite.backend.manager.state.SaveStateMapper;
 
 /**
  * This class is containing different manager that are needed in the engine itself.
@@ -17,7 +19,7 @@ import de.o.le.termite.backend.manager.GameState;
  * to the manager.
  *
  * @author                              o.le
- * @version                             2.0
+ * @version                             2.1
  * @since                               25.12.13
  */
 public class EngineContext {
@@ -33,4 +35,6 @@ public class EngineContext {
     public GameObjectManager gameObjectManager() { return this.gom; }
 
     public GameState gameState() { return this.gs; }
+
+    public SaveState saveState() { return SaveStateMapper.from(this.gs); }
 }

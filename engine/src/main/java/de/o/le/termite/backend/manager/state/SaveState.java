@@ -1,4 +1,4 @@
-package de.o.le.termite.backend;
+package de.o.le.termite.backend.manager.state;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -12,16 +12,16 @@ import java.util.List;
 public class SaveState {
 
     @JsonProperty
-    private String currentRoom;
+    private String currentRoomId;
 
     @JsonProperty
     private List<String> inventory;
 
     public SaveState() { }
 
-    public SaveState(String currentRoomName, List<String> inventory) {
+    public SaveState(String currentRoomId, List<String> inventory) {
 
-        this.currentRoom = currentRoomName;
+        this.currentRoomId = currentRoomId;
         this.inventory = inventory;
     }
 }

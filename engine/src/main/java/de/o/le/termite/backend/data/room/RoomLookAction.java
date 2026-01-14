@@ -11,13 +11,13 @@ package de.o.le.termite.backend.data.room;
  */
 public class RoomLookAction {
 
-    private String item;
+    private String itemId;
     private String message;
     private String altMessage;
 
     public RoomLookAction() { }
 
-    public String getItem() { return this.item; }
+    public String getItemId() { return this.itemId; }
 
     public String getMessage() { return this.message; }
 

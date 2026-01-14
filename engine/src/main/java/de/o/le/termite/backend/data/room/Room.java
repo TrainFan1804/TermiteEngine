@@ -21,8 +21,6 @@ public class Room {
 
     public String getRoomId() { return this.roomId; }
 
-    public void setRoomId(String roomId) { this.roomId = roomId; }
-
     public RoomInfo getInfo() { return this.info; }
 
     public RoomLookAction getLook(String look) { return actions.getLook(look); }

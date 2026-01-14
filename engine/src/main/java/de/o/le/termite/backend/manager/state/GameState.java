@@ -1,9 +1,8 @@
-package de.o.le.termite.backend.manager;
+package de.o.le.termite.backend.manager.state;
 
 import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.item.Item;
-import de.o.le.termite.backend.data.item.ItemInfo;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.dto.StringStringDescription;
 import de.o.le.termite.util.LogService;
@@ -30,14 +29,23 @@ public class GameState {
     public Room getCurrentRoom() { return currentRoom; }
 
     public void setPlayer(Player player) {
-        if (this.player == null) {
-            this.player = player;
-            LOG.config("Player set: '" + player.getName() + "'");
+        if (this.player != null) {
+            throw new IllegalStateException("Player already set!");
         }
+        this.player = player;
+        LOG.config("Player set: '" + player.getName() + "'");
+    }
+
+    public Inventory getInventory() {
+        return inventory;
     }
 
     public void setInventory(Inventory inventory) {
-        if (this.inventory == null) { this.inventory = inventory; }
+        if (this.inventory != null) {
+            throw new IllegalStateException("Inventory already set!");
+        }
+        this.inventory = inventory;
+        LOG.config("Inventory set");
     }
 
     public void setCurrentRoom(Room room) {

@@ -1,7 +1,7 @@
 package de.o.le.termite.backend.commands;
 
 import de.o.le.termite.backend.EngineContext;
-import de.o.le.termite.backend.manager.GameState;
+import de.o.le.termite.backend.manager.state.GameState;
 import de.o.le.termite.backend.data.GameObject;
 import de.o.le.termite.backend.data.item.Item;
 import de.o.le.termite.backend.data.room.Room;
@@ -41,7 +41,7 @@ public class LookCommand implements CommandHandler {
             return CommandResult.success(action.getAltMessage());
         }
 
-        Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, action.getItem());
+        Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, action.getItemId());
         gs.addItemToInventory(roomItem);
 //        action.setSearched(true); // TODO persistent save in [item_name].json
         return CommandResult.success(currentRoom.getLook(a).getMessage());

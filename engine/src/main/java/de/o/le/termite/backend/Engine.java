@@ -6,7 +6,7 @@ import de.o.le.termite.backend.data.Inventory;
 import de.o.le.termite.backend.data.Player;
 import de.o.le.termite.backend.data.room.Room;
 import de.o.le.termite.backend.manager.GameObjectManager;
-import de.o.le.termite.backend.manager.GameState;
+import de.o.le.termite.backend.manager.state.GameState;
 import de.o.le.termite.dto.CommandContext;
 import de.o.le.termite.dto.CommandResult;
 import de.o.le.termite.util.LogService;

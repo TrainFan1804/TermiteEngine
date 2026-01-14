@@ -11,15 +11,15 @@ package de.o.le.termite.backend.data.room;
  */
 public class RoomExitAction {
 
-    private String required;
-    private String target;
-    private String failure;
+    private String requiredItemId;
+    private String targetRoomId;
+    private String failureMessage;
 
     public RoomExitAction() { }
 
-    public String getRequired() { return required; }
+    public String getRequiredItemId() { return requiredItemId; }
 
-    public String getTarget() { return target; }
+    public String getTargetRoomId() { return targetRoomId; }
 
-    public String getFailure() { return failure; }
+    public String getFailureMessage() { return failureMessage; }
 }

@@ -2,6 +2,7 @@ package de.o.le.termite.backend.data.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.o.le.termite.backend.utils.annotations.InjectId;
 
 /**
  * @author                              o.le
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Item {
 
+    @InjectId
     @JsonIgnore
     private String itemId;
 
@@ -19,8 +21,6 @@ public class Item {
     public Item() { }
 
     public String getItemId() { return itemId; }
-
-    public void setItemId(String itemId) { this.itemId = itemId; }
 
     public String getName() { return this.info.getName(); }
 
