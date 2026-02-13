@@ -1,6 +1,6 @@
 package de.o.le.termite;
 
-import de.o.le.termite.view.Termite;
+import de.o.le.termite.gui.Termite;
 
 import javafx.application.Application;
 

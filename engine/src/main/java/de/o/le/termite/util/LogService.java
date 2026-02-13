@@ -1,7 +1,5 @@
 package de.o.le.termite.util;
 
-import de.o.le.termite.backend.Engine;
-
 import java.util.logging.*;
 
 /**
@@ -15,23 +13,6 @@ public class LogService {
 
     private static boolean INITIALIZED = false;
     private static final ConsoleHandler CONSOLE_HANDLER = new ConsoleHandler();
-
-    public static void disableLogging() {
-
-        Logger l = LogManager.getLogManager().getLogger(Engine.class.getName());
-        l.severe("Loggin has been disabled globally! This option shouldn't be used.");
-        Level level = Level.OFF;
-        CONSOLE_HANDLER.setLevel(level);
-
-        // alle existierenden Logger aktualisieren
-        LogManager.getLogManager()
-                .getLoggerNames()
-                .asIterator()
-                .forEachRemaining(name -> {
-                    Logger logger = Logger.getLogger(name);
-                    logger.setLevel(level);
-                });
-    }
 
     private final Logger LOGGER;
 
