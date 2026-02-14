@@ -1,12 +1,10 @@
 package de.o.le.termite.application.commands;
 
 import de.o.le.termite.application.EngineContext;
-import de.o.le.termite.core.commands.ICommandHandler;
-import de.o.le.termite.core.state.GameState;
+import de.o.le.termite.application.state.GameState;
 import de.o.le.termite.core.model.GameObject;
-import de.o.le.termite.core.model.item.Item;
-import de.o.le.termite.core.model.room.Room;
-import de.o.le.termite.core.commands.CommandResult;
+import de.o.le.termite.core.model.Item;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class LookCommand implements ICommandHandler {
         GameState gs = context.gameState();
 
         String a = args.getFirst();
-        Room currentRoom = gs.getCurrentRoom();
+        RoomEntity currentRoom = gs.getCurrentRoom();
 
         String itemId = currentRoom.getLookItemId(a);
         if (itemId == null) {

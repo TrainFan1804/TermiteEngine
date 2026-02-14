@@ -1,4 +1,4 @@
-package de.o.le.termite.core.state;
+package de.o.le.termite.application.state;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

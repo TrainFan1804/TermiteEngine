@@ -1,7 +1,7 @@
 package de.o.le.termite.application.services;
 
 import de.o.le.termite.core.model.Inventory;
-import de.o.le.termite.core.model.item.Item;
+import de.o.le.termite.core.model.Item;
 
 import java.util.ArrayList;
 import java.util.List;

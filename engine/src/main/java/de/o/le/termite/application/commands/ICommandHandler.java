@@ -1,4 +1,4 @@
-package de.o.le.termite.core.commands;
+package de.o.le.termite.application.commands;
 
 import de.o.le.termite.application.EngineContext;
 

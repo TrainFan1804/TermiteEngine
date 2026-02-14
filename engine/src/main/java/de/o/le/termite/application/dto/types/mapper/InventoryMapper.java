@@ -1,7 +1,7 @@
 package de.o.le.termite.application.dto.types.mapper;
 
 import de.o.le.termite.core.model.Inventory;
-import de.o.le.termite.core.model.item.Item;
+import de.o.le.termite.core.model.Item;
 import de.o.le.termite.application.dto.types.ItemDTO;
 
 import java.util.ArrayList;

@@ -1,9 +1,10 @@
 package de.o.le.termite.application.dto.types;
 
 import de.o.le.termite.application.dto.types.mapper.ItemMapper;
+import de.o.le.termite.core.model.Item;
 
 /**
- * This DTO represent the {@link de.o.le.termite.core.model.item.Item} data object.
+ * This DTO represent the {@link Item} data object.
  * Use {@link ItemMapper} for object creation.
  *
  * @author                              o.le

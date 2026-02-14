@@ -1,8 +1,5 @@
 package de.o.le.termite.application.commands;
 
-import de.o.le.termite.core.commands.ICommandHandler;
-import de.o.le.termite.core.commands.NullCommand;
-
 import java.util.List;
 
 /**

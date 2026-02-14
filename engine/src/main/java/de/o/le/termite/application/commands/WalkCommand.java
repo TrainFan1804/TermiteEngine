@@ -1,11 +1,9 @@
 package de.o.le.termite.application.commands;
 
 import de.o.le.termite.application.EngineContext;
-import de.o.le.termite.core.commands.ICommandHandler;
-import de.o.le.termite.core.state.GameState;
+import de.o.le.termite.application.state.GameState;
 import de.o.le.termite.core.model.GameObject;
-import de.o.le.termite.core.model.room.Room;
-import de.o.le.termite.core.commands.CommandResult;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 
 import de.o.le.termite.application.dto.trans.TransContext;
 import de.o.le.termite.application.dto.trans.TransRoomContext;
@@ -39,13 +37,13 @@ public class WalkCommand implements ICommandHandler {
         GameState gs = context.gameState();
 
         String a = args.getFirst();
-        Room currentRoom = gs.getCurrentRoom();
+        RoomEntity currentRoom = gs.getCurrentRoom();
 
         String target = currentRoom.getExitTarget(a);
         if (target== null) {
             return CommandResult.failure("You can't go that way!");
         }
-        Room nextRoom = context.gameObjectManager().getData(GameObject.ROOM, target);
+        RoomEntity nextRoom = context.gameObjectManager().getData(GameObject.ROOM, target);
 
         // TODO check here for requirement to enter next room
 

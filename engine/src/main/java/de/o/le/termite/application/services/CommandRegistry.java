@@ -2,9 +2,9 @@ package de.o.le.termite.application.services;
 
 import de.o.le.termite.application.commands.CommandParser;
 
-import de.o.le.termite.core.commands.ICommandHandler;
-import de.o.le.termite.core.commands.CommandType;
-import de.o.le.termite.core.commands.NullCommand;
+import de.o.le.termite.application.commands.ICommandHandler;
+import de.o.le.termite.application.commands.CommandType;
+import de.o.le.termite.application.commands.NullCommand;
 
 import java.util.HashMap;
 import java.util.Map;

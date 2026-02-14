@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
-import de.o.le.termite.core.state.SaveState;
+import de.o.le.termite.application.state.SaveState;
 import de.o.le.termite.core.model.GameObject;
 
 import de.o.le.termite.util.LogService;

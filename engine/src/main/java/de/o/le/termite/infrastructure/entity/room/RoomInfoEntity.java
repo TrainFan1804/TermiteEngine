@@ -1,4 +1,4 @@
-package de.o.le.termite.core.model.room;
+package de.o.le.termite.infrastructure.entity.room;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @version                             1.1
  * @since                               25.12.20
  */
-public class RoomInfo {
+public class RoomInfoEntity {
 
     @JsonProperty(required = true)
     private String name;
@@ -19,7 +19,7 @@ public class RoomInfo {
 
     private String image;
 
-    public RoomInfo() { }
+    public RoomInfoEntity() { }
 
     public String getName() { return name; }
 

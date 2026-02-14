@@ -1,7 +1,7 @@
 package de.o.le.termite.application.services;
 
-import de.o.le.termite.core.state.GameState;
-import de.o.le.termite.core.state.SaveState;
+import de.o.le.termite.application.state.GameState;
+import de.o.le.termite.application.state.SaveState;
 
 /**
  * Static Class to map {@link GameState} to {@link SaveState}

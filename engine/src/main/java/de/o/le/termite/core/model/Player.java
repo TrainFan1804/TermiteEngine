@@ -1,6 +1,7 @@
 package de.o.le.termite.core.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import de.o.le.termite.core.model.room.Room;
+import de.o.le.termite.core.rules.IllegalMoveException;
 
 /**
  * @author                              o.le
@@ -9,15 +10,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Player {
 
-    @JsonProperty(required = true)
     private String name;
 
-    @JsonProperty(required = true)
-    private String startRoom;
+    private Room currentRoom;
 
-    public Player() { }
+    private Inventory inventory;
+
+    public Player(String name, Room currentRoom) {
+        this.name = name;
+        this.currentRoom = currentRoom;
+    }
 
     public String getName() { return this.name; }
 
-    public String getStartRoom() { return this.startRoom; }
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void moveTo(Room targetRoom) {
+        if (!currentRoom.findExit(targetRoom.getRoomId()).isPresent()) {
+            throw new IllegalMoveException(currentRoom, targetRoom);
+        }
+        this.currentRoom = targetRoom;
+    }
 }

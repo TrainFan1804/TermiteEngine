@@ -1,9 +1,9 @@
-package de.o.le.termite.core.state;
+package de.o.le.termite.application.state;
 
 import de.o.le.termite.core.model.Inventory;
 import de.o.le.termite.core.model.Player;
-import de.o.le.termite.core.model.item.Item;
-import de.o.le.termite.core.model.room.Room;
+import de.o.le.termite.core.model.Item;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 
 import de.o.le.termite.util.LogService;
 
@@ -21,9 +21,9 @@ public class GameState {
 
     private Player player;
     private Inventory inventory;
-    private Room currentRoom;
+    private RoomEntity currentRoom;
 
-    public Room getCurrentRoom() { return currentRoom; }
+    public RoomEntity getCurrentRoom() { return currentRoom; }
 
     public void setPlayer(Player player) {
         if (this.player != null) {
@@ -45,7 +45,7 @@ public class GameState {
         LOG.config("Inventory set");
     }
 
-    public void setCurrentRoom(Room room) {
+    public void setCurrentRoom(RoomEntity room) {
 
         if (currentRoom != null) {
             LOG.gameEvents("Old room: '" + currentRoom.getName()
@@ -58,7 +58,7 @@ public class GameState {
     }
 
     public void addItemToInventory(Item item) {
-        this.inventory.addItem(item);
+        this.inventory.add(item);
         LOG.gameEvents("Item added to inventory: '" + item.getName() + "'");
     }
 }

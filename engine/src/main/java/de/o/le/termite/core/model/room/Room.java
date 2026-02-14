@@ -1,64 +1,64 @@
 package de.o.le.termite.core.model.room;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import de.o.le.termite.core.model.ModelIdGenerator;
 
-import de.o.le.termite.infrastructure.persistance.utils.annotations.InjectId;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author                              o.le
- * @version                             1.5
- * @since                               25.12.3
+ * @version                             1.0
+ * @since                               26.02.14
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Room {
 
-    @InjectId
-    @JsonIgnore
     private String roomId;
 
-    private RoomInfo info;
-    private RoomActions actions;
+    private String description;
 
-    public String getRoomId() { return this.roomId; }
+    private List<Exit> exits;
 
-    public String getName() { return this.info.getName(); }
+    private List<Secret> secrets;
 
-    public String getDescription() { return this.info.getDescription(); }
-
-    public String getImage() { return this.info.getImage(); }
-
-    public String getExitTarget(String exit) {
-        RoomExitAction action = this.actions.getExit(exit);
-        if (action == null) {
-            return null;
-        }
-        return action.getTargetRoomId();
+    public Room(String description, List<Exit> exits, List<Secret> secrets) {
+        this.description = description;
+        this.exits = exits;
+        this.secrets = secrets;
+        this.roomId = ModelIdGenerator.generateId(this);
     }
 
-    public String getLookAltMessage(String look) {
-        RoomLookAction action = this.actions.getLook(look);
-        if (action == null) {
-            return null;
-        }
-        return action.getAltMessage();
+    public String getRoomId() {
+        return roomId;
     }
 
-    public String getLookMessage(String look) {
-        RoomLookAction action = this.actions.getLook(look);
-        if (action == null) {
-            return null;
-        }
-        return action.getMessage();
+    public String getDescription() {
+        return description;
     }
 
-    public String getLookItemId(String look) {
-        RoomLookAction action = this.actions.getLook(look);
-        if (action == null) {
-            return null;
-        }
-        return action.getItemId();
+    public List<Exit> getExits() {
+        return Collections.unmodifiableList(exits);
     }
 
-    public RoomActions getActions() { return this.actions; }
+    public Optional<Exit> findExit(String targetId) {
+        return exits.stream().filter(e -> e.getExitId().equals(targetId)).findFirst();
+    }
+
+    public Optional<Exit> findExit(Direction direction) {
+        return exits.stream().filter(e -> e.getDirection().equals(direction)).findFirst();
+    }
+
+    public List<Secret> getSecrets() {
+        return Collections.unmodifiableList(secrets);
+    }
+
+    public Optional<Secret> findSecret(String id) {
+        return secrets.stream().filter(s -> s.getSecretId().equals(id)).findFirst();
+    }
+
+    public List<Secret> getUndiscoveredSecrets() {
+        return secrets.stream()
+                .filter(s -> !s.isDiscovered())
+                .toList();
+    }
 }

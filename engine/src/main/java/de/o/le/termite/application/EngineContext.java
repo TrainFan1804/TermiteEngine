@@ -3,8 +3,8 @@ package de.o.le.termite.application;
 import de.o.le.termite.application.port.GameObjectRepository;
 import de.o.le.termite.application.services.SaveStateMapper;
 
-import de.o.le.termite.core.state.GameState;
-import de.o.le.termite.core.state.SaveState;
+import de.o.le.termite.application.state.GameState;
+import de.o.le.termite.application.state.SaveState;
 
 /**
  * This class is containing different manager that are needed in the engine itself.
@@ -25,15 +25,15 @@ import de.o.le.termite.core.state.SaveState;
  */
 public class EngineContext {
 
-    private GameObjectRepository gom;
+    private GameObjectRepository gor;
     private GameState gs;
 
-    public EngineContext(GameObjectRepository gom, GameState gs) {
-        this.gom = gom;
+    public EngineContext(GameObjectRepository gor, GameState gs) {
+        this.gor = gor;
         this.gs = gs;
     }
 
-    public GameObjectRepository gameObjectManager() { return this.gom; }
+    public GameObjectRepository gameObjectManager() { return this.gor; }
 
     public GameState gameState() { return this.gs; }
 

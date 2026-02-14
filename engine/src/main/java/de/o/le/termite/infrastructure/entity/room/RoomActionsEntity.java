@@ -1,4 +1,4 @@
-package de.o.le.termite.core.model.room;
+package de.o.le.termite.infrastructure.entity.room;
 
 import de.o.le.termite.application.services.RoomService;
 
@@ -10,19 +10,19 @@ import java.util.Map;
  * @version                             1.3
  * @since                               25.12.20
  */
-public class RoomActions {
+public class RoomActionsEntity {
 
-    private Map<String, RoomExitAction> exit = new HashMap<>();
-    private Map<String, RoomLookAction> look = new HashMap<>();
+    private Map<String, RoomExitActionEntity> exit = new HashMap<>();
+    private Map<String, RoomLookActionEntity> look = new HashMap<>();
 
-    public RoomActions() { }
+    public RoomActionsEntity() { }
 
     /**
      *
      * @param exit
      * @return {@code null} if <b>exit</b> is an unknown key. (Unknown exit)
      */
-    public RoomExitAction getExit(String exit) { return this.exit.get(exit); }
+    public RoomExitActionEntity getExit(String exit) { return this.exit.get(exit); }
 
     /**
      *
@@ -30,7 +30,7 @@ public class RoomActions {
      * @return {@code null} if <b>look</b> is an unknown key (No item is at the
      * given location)
      */
-    public RoomLookAction getLook(String look) { return this.look.get(look); }
+    public RoomLookActionEntity getLook(String look) { return this.look.get(look); }
 
     /**
      * This is used in {@link RoomService}
@@ -38,7 +38,7 @@ public class RoomActions {
      *
      * @return
      */
-    public Map<String, RoomExitAction> _exitMap() { return exit; }
+    public Map<String, RoomExitActionEntity> _exitMap() { return exit; }
 
     /**
      * This is used in {@link RoomService}
@@ -46,5 +46,5 @@ public class RoomActions {
      *
      * @return
      */
-    public Map<String, RoomLookAction> _lookMap() { return look; }
+    public Map<String, RoomLookActionEntity> _lookMap() { return look; }
 }

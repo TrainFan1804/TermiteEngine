@@ -1,10 +1,13 @@
 package de.o.le.termite.gui;
 
-import de.o.le.termite.Engine;
-import de.o.le.termite.core.model.room.Room;
-import de.o.le.termite.util.LogService;
+import de.o.le.termite.application.Engine;
+
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
+
 import de.o.le.termite.gui.components.ControlBar;
 import de.o.le.termite.gui.components.PlayArea;
+
+import de.o.le.termite.util.LogService;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -17,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * @author                              o.le
@@ -36,8 +40,17 @@ public class Termite extends Application {
     public void init() throws Exception {
         List<String> args = getParameters().getRaw();
         Engine engine = new Engine();
-        if (!args.isEmpty()) {
-            engine = new Engine(args.getFirst());
+
+        // ugly...
+        try {
+
+            String startPath = args.getFirst();
+            engine.init(startPath);
+        } catch (NoSuchElementException ex) {
+
+            String startPath = "game/default";
+            LOG.warning("You are using the default game path. This might not be your intention. Check your arguments!");
+            engine.init(startPath);
         }
         this.controller = new TermiteController(engine, this);
     }
@@ -84,7 +97,7 @@ public class Termite extends Application {
 
     public void showError(String msg) { this.playArea.updateAreaText(msg, Color.RED);}
 
-    public void showRoom(Room room) { this.roomNameLabel.setText(room.getName()); }
+    public void showRoom(RoomEntity room) { this.roomNameLabel.setText(room.getName()); }
 
     public void showRoom(String roomName) { this.roomNameLabel.setText(roomName); }
 }

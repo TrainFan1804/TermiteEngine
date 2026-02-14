@@ -1,6 +1,6 @@
 package de.o.le.termite.application.port;
 
-import de.o.le.termite.core.state.SaveState;
+import de.o.le.termite.application.state.SaveState;
 import de.o.le.termite.core.model.GameObject;
 
 /**

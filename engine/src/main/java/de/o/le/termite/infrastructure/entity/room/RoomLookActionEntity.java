@@ -1,4 +1,4 @@
-package de.o.le.termite.core.model.room;
+package de.o.le.termite.infrastructure.entity.room;
 
 /**
  * This is a wrapper for the room model's exit data. This model doesn't
@@ -9,13 +9,13 @@ package de.o.le.termite.core.model.room;
  * @version                             1.2
  * @since                               25.12.20
  */
-public class RoomLookAction {
+public class RoomLookActionEntity {
 
     private String itemId;
     private String message;
     private String altMessage;
 
-    public RoomLookAction() { }
+    public RoomLookActionEntity() { }
 
     public String getItemId() { return this.itemId; }
 

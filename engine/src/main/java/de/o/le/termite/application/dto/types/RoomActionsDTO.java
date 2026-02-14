@@ -1,9 +1,12 @@
 package de.o.le.termite.application.dto.types;
 
+import de.o.le.termite.infrastructure.entity.room.RoomExitActionEntity;
+import de.o.le.termite.infrastructure.entity.room.RoomLookActionEntity;
+
 /**
  * This DTO represent both the class
- * {@link de.o.le.termite.core.model.room.RoomLookAction} and
- * {@link de.o.le.termite.core.model.room.RoomExitAction} in term of type of
+ * {@link RoomLookActionEntity} and
+ * {@link RoomExitActionEntity} in term of type of
  * action and name of the object.   <br>
  * <b>Example:</b>     <br>
  * EXIT : north

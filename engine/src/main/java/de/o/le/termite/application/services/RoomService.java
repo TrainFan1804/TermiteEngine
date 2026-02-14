@@ -1,9 +1,9 @@
 package de.o.le.termite.application.services;
 
-import de.o.le.termite.core.model.room.Room;
-import de.o.le.termite.core.model.room.RoomActions;
-import de.o.le.termite.core.model.room.RoomExitAction;
-import de.o.le.termite.core.model.room.RoomLookAction;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
+import de.o.le.termite.infrastructure.entity.room.RoomActionsEntity;
+import de.o.le.termite.infrastructure.entity.room.RoomExitActionEntity;
+import de.o.le.termite.infrastructure.entity.room.RoomLookActionEntity;
 
 import de.o.le.termite.application.dto.types.RoomActionsDTO;
 
@@ -18,14 +18,14 @@ import java.util.Map;
  */
 public class RoomService {
 
-    public static List<RoomActionsDTO> getRoomActionNames(Room room) {
+    public static List<RoomActionsDTO> getRoomActionNames(RoomEntity room) {
 
         List<RoomActionsDTO> actions = new ArrayList<>();
 
-        RoomActions a = room.getActions();
+        RoomActionsEntity a = room.getActions();
 
-        Map<String, RoomExitAction> exit = a._exitMap();
-        Map<String, RoomLookAction> look = a._lookMap();
+        Map<String, RoomExitActionEntity> exit = a._exitMap();
+        Map<String, RoomLookActionEntity> look = a._lookMap();
 
         exit.keySet().forEach(key ->
                 actions.add(new RoomActionsDTO("EXIT", key))

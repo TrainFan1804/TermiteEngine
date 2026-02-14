@@ -1,8 +1,6 @@
 package de.o.le.termite.application.commands;
 
 import de.o.le.termite.application.EngineContext;
-import de.o.le.termite.core.commands.ICommandHandler;
-import de.o.le.termite.core.commands.CommandResult;
 
 /**
  * @author                              o.le

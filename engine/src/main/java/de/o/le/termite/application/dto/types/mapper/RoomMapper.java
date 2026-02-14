@@ -1,6 +1,6 @@
 package de.o.le.termite.application.dto.types.mapper;
 
-import de.o.le.termite.core.model.room.Room;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 import de.o.le.termite.application.dto.types.RoomDTO;
 
 /**
@@ -10,7 +10,7 @@ import de.o.le.termite.application.dto.types.RoomDTO;
  */
 public class RoomMapper {
 
-    public static RoomDTO from(Room room) {
+    public static RoomDTO from(RoomEntity room) {
         return new RoomDTO(room.getName());
     }
 }

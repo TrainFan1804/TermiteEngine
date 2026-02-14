@@ -3,8 +3,8 @@ package de.o.le.termite.infrastructure.persistance;
 import de.o.le.termite.core.model.GameObject;
 import de.o.le.termite.core.model.Inventory;
 import de.o.le.termite.core.model.Player;
-import de.o.le.termite.core.model.item.Item;
-import de.o.le.termite.core.model.room.Room;
+import de.o.le.termite.core.model.Item;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +18,7 @@ import java.util.Map;
 public class GameObjectStorageConfig {
 
     static final Map<GameObject, Class<?>> typeMap = Map.of(
-            GameObject.ROOM, Room.class,
+            GameObject.ROOM, RoomEntity.class,
             GameObject.PLAYER, Player.class,
             GameObject.ITEM, Item.class,
             GameObject.INVENTORY, Inventory.class

@@ -1,4 +1,4 @@
-package de.o.le.termite.core.model.item;
+package de.o.le.termite.infrastructure.entity.item;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,19 +7,19 @@ import de.o.le.termite.infrastructure.persistance.utils.annotations.InjectId;
 
 /**
  * @author                              o.le
- * @version                             1.1
- * @since                               25.12.26
+ * @version                             1.0
+ * @since                               25.02.14
  */
-public class Item {
+public class ItemEntity {
 
     @InjectId
     @JsonIgnore
     private String itemId;
 
     @JsonProperty
-    private ItemInfo info;
+    private ItemInfoEntity info;
 
-    public Item() { }
+    public ItemEntity() { }
 
     public String getItemId() { return itemId; }
 

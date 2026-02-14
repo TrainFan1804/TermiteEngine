@@ -2,6 +2,7 @@ package de.o.le.termite.core.commands;
 
 import de.o.le.termite.application.commands.CommandParser;
 import de.o.le.termite.application.commands.LookCommand;
+import de.o.le.termite.application.commands.NullCommand;
 import de.o.le.termite.application.commands.WalkCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

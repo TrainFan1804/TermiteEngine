@@ -1,9 +1,7 @@
 package de.o.le.termite.application.commands;
 
 import de.o.le.termite.application.EngineContext;
-import de.o.le.termite.core.commands.ICommandHandler;
 import de.o.le.termite.core.model.Inventory;
-import de.o.le.termite.core.commands.CommandResult;
 
 import de.o.le.termite.application.dto.trans.TransContext;
 import de.o.le.termite.application.dto.trans.TransInventoryContext;

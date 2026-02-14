@@ -1,15 +1,14 @@
-package de.o.le.termite;
+package de.o.le.termite.application;
 
+import de.o.le.termite.application.commands.ICommandHandler;
 import de.o.le.termite.application.port.GameObjectRepository;
-import de.o.le.termite.application.EngineContext;
 
-import de.o.le.termite.core.commands.*;
 import de.o.le.termite.core.model.GameObject;
 import de.o.le.termite.core.model.Inventory;
 import de.o.le.termite.core.model.Player;
-import de.o.le.termite.core.model.room.Room;
-import de.o.le.termite.core.state.GameState;
-import de.o.le.termite.core.commands.CommandResult;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
+import de.o.le.termite.application.state.GameState;
+import de.o.le.termite.application.commands.CommandResult;
 
 import de.o.le.termite.infrastructure.persistance.GameObjectManager;
 
@@ -33,18 +32,23 @@ public class Engine {
 
     private EngineContext context;
 
-    public Engine() throws IOException {
-        this("game/default");
-        LOG.warning("You are using the default game path. This might not be your intention. Check your arguments!");
+    public Engine() {
+        LOG.info("Create engine");
     }
 
-    public Engine(String startPath) throws IOException {
-        LOG.info("Start engine");
+    public boolean init(String startPath) throws IOException {
+
+        if (this.context != null) {
+            LOG.warning("Engine can't be initialized twice!");
+            return false;
+        }
 
         GameObjectManager gom = new GameObjectManager(startPath);
         GameState gs = new GameState();
 
         this.context = new EngineContext(gom, gs);
+        LOG.info("Start engine");
+        return true;
     }
 
     public CommandResult loadGame() {
@@ -53,7 +57,7 @@ public class Engine {
         GameObjectRepository gom = this.context.gameObjectManager();
         Player player = gom.getData(GameObject.PLAYER, "player");
         Inventory inventory = gom.getData(GameObject.INVENTORY, "inventory");
-        Room startRoom = gom.getData(GameObject.ROOM, player.getStartRoom());
+        RoomEntity startRoom = gom.getData(GameObject.ROOM, player.getStartRoom());
 
         GameState gs = this.context.gameState();
         gs.setCurrentRoom(startRoom);

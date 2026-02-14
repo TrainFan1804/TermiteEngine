@@ -1,21 +1,23 @@
-package de.o.le.termite.core.model.item;
+package de.o.le.termite.infrastructure.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * @author                              o.le
  * @version                             1.0
- * @since                               25.12.26
+ * @since                               26.02.14
  */
-public class ItemInfo {
+public class PlayerEntity {
 
     @JsonProperty(required = true)
     private String name;
 
     @JsonProperty(required = true)
-    private String description;
+    private String startRoom;
+
+    public PlayerEntity() { }
 
     public String getName() { return this.name; }
 
-    public String getDescription() { return this.description; }
+    public String getStartRoom() { return this.startRoom; }
 }

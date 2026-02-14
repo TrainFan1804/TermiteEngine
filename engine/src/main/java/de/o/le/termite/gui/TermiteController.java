@@ -1,7 +1,7 @@
 package de.o.le.termite.gui;
 
-import de.o.le.termite.Engine;
-import de.o.le.termite.core.commands.CommandResult;
+import de.o.le.termite.application.Engine;
+import de.o.le.termite.application.commands.CommandResult;
 import de.o.le.termite.application.dto.trans.TransContext;
 
 /**

@@ -2,8 +2,8 @@ package de.o.le.termite.core;
 
 import de.o.le.termite.core.model.GameObject;
 import de.o.le.termite.core.model.Player;
-import de.o.le.termite.core.model.item.Item;
-import de.o.le.termite.core.model.room.Room;
+import de.o.le.termite.core.model.Item;
+import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 
 import de.o.le.termite.infrastructure.persistance.GameObjectManager;
 import org.junit.jupiter.api.Test;
@@ -24,7 +24,7 @@ class GameObjectRepositoryTest {
         try {
             GameObjectManager manager = new GameObjectManager("game/default");
             Object room = manager.getData(GameObject.ROOM, "default");
-            assertInstanceOf(Room.class, room);
+            assertInstanceOf(RoomEntity.class, room);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
