@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 
 import de.o.le.termite.application.state.SaveState;
-import de.o.le.termite.core.model.GameObject;
 
 import de.o.le.termite.util.LogService;
 
@@ -18,7 +17,7 @@ import java.io.IOException;
  * This class will load a Json formatted file and map it to a given type.
  * 
  * @author o.le
- * @version 1.3
+ * @version 1.4
  * @since 1.4.5
  */
 public class JsonLoadHandler {
@@ -42,17 +41,16 @@ public class JsonLoadHandler {
 	 * given type.
 	 * <p>
 	 * <b>Caution</b>: Will <b>NOT</b> handle any exception!
-	 * 
-	 * @param <T> The type that was mapped from the files content.
+	 *
 	 * @param file The file that is read
-	 * @param go The type that should be mapped
+	 * @param type The type that should be mapped
 	 * @return The mapped object
 	 * @throws IOException
 	 */
-	public <T> T loadFileValue(File file,  GameObject go) {
+	public <T> T loadFileValue(File file, Class<T> type) {
 
         try {
-            T t = (T) this.MAPPER.readValue(file, GameObjectStorageConfig.typeMap.get(go));
+            T t = this.MAPPER.readValue(file, type);
 			LOG.filesystem("Game file '" + file + "' read and deserialized successfully");
 			return t;
         } catch (IOException e) {

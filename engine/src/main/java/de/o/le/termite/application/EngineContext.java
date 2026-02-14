@@ -1,6 +1,5 @@
 package de.o.le.termite.application;
 
-import de.o.le.termite.application.port.GameObjectRepository;
 import de.o.le.termite.application.services.SaveStateMapper;
 
 import de.o.le.termite.application.state.GameState;
@@ -33,7 +32,7 @@ public class EngineContext {
         this.gs = gs;
     }
 
-    public GameObjectRepository gameObjectManager() { return this.gor; }
+    public GameObjectRepository gameObjectRepository() { return this.gor; }
 
     public GameState gameState() { return this.gs; }
 

@@ -12,7 +12,7 @@ public class SaveCommand implements ICommandHandler {
     @Override
     public CommandResult execute(EngineContext context) {
 
-        context.gameObjectManager().loadData(context.saveState());
+        context.gameObjectRepository().loadData(context.saveState());
         return CommandResult.success("Saved successfully");
     }
 }

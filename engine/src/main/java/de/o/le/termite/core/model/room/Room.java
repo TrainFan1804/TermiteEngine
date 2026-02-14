@@ -15,13 +15,16 @@ public class Room {
 
     private String roomId;
 
+    private String name;
+
     private String description;
 
     private List<Exit> exits;
 
     private List<Secret> secrets;
 
-    public Room(String description, List<Exit> exits, List<Secret> secrets) {
+    public Room(String name, String description, List<Exit> exits, List<Secret> secrets) {
+        this.name = name;
         this.description = description;
         this.exits = exits;
         this.secrets = secrets;
@@ -30,6 +33,10 @@ public class Room {
 
     public String getRoomId() {
         return roomId;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getDescription() {

@@ -2,7 +2,6 @@ package de.o.le.termite.application.commands;
 
 import de.o.le.termite.application.EngineContext;
 import de.o.le.termite.application.state.GameState;
-import de.o.le.termite.core.model.GameObject;
 import de.o.le.termite.core.model.Item;
 import de.o.le.termite.infrastructure.entity.room.RoomEntity;
 
@@ -40,7 +39,7 @@ public class LookCommand implements ICommandHandler {
             return CommandResult.success(currentRoom.getLookAltMessage(a));
         }
 
-        Item roomItem = context.gameObjectManager().getData(GameObject.ITEM, itemId);
+        Item roomItem = context.gameObjectRepository().getData(GameObject.ITEM, itemId);
         gs.addItemToInventory(roomItem);
         // TODO persistent / cache save that item was pick up
         return CommandResult.success(currentRoom.getLookMessage(a));

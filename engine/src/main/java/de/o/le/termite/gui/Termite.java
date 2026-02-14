@@ -20,7 +20,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 /**
  * @author                              o.le
@@ -39,19 +38,18 @@ public class Termite extends Application {
     @Override
     public void init() throws Exception {
         List<String> args = getParameters().getRaw();
-        Engine engine = new Engine();
 
-        // ugly...
-        try {
-
-            String startPath = args.getFirst();
-            engine.init(startPath);
-        } catch (NoSuchElementException ex) {
-
-            String startPath = "game/default";
+        GameObjectRepository gor;
+        String startPath;
+        if (!args.isEmpty()) {
+            startPath = args.getFirst();
+        } else {
+            startPath = "game/default";
             LOG.warning("You are using the default game path. This might not be your intention. Check your arguments!");
-            engine.init(startPath);
         }
+        gor = new GameObjectManager(startPath);
+        Engine engine = new Engine(gor);
+
         this.controller = new TermiteController(engine, this);
     }
 
